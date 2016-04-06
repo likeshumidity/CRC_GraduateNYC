@@ -1,0 +1,150 @@
+/*
+Theme Name: Graduate NYC
+Description: Theme design with custom modifications for GraduateNYC.
+Version: 1.0
+Author: rodriguez valle creative
+Author URI: http://www.rodriguezvalle.com
+Template: enfold
+*/
+
+
+
+/*Add your own styles here:*/
+
+#top .av_header_glassy.av_header_transparency #header_main {
+
+background-color: rgba(0,0,0,0.5);
+}
+
+.av_font_icon.av-icon-style-border .av-icon-char {
+padding: 10px;
+}
+
+.main_menu ul:first-child > li > a { font-size: 14px; font-weight:400; }
+
+/* RVC - remove drop down menu top indicator 
+.html_header_top .header_color .main_menu ul:first-child >li > ul, .html_header_top #top .header_color .avia_mega_div > .sub-menu {
+  border-top-color: transparent;
+}
+*/
+
+#top .main_menu .menu li ul a { font-size: 14px; }
+
+#header_main .paypal-donate-button{ 
+  /*Add your button styles here*/
+  float: right;
+  margin-right: 100px;
+  background:#fff;
+}
+
+#header_main .nyccl-button{ 
+  /*Add your button styles here*/
+  float: right;
+  margin-right: 50px;
+  background:#fff;
+}
+
+.avia-menu-fx {
+display: none;
+}
+
+span.avia-menu-text {
+text-transform: none;
+}
+
+.iconbox_content{
+    background: white !important;
+}
+
+.avia-menu.av_menu_icon_beside {
+    border:0px;
+}
+
+div .slideshow_caption h2 {
+    text-transform: none;
+}
+
+.caption_framed .slideshow_caption .avia-caption-title, .avia-caption .avia-caption-content p, .avia-caption .avia-caption-title {
+    margin: 0;
+}
+
+.slideshow_caption {
+    width: 52%;
+    }
+
+.iconbox .iconbox_content p {
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+margin:0;
+}
+
+.iconbox_top .iconbox_content {
+    padding: 30px 20px 20px 20px;
+    border-radius: 0px;
+    box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.3);
+}
+
+.iconbox_content {
+    min-height:180px;
+}
+
+.iconbox_top .iconbox_icon { font-size: 30px!important; height: 30px; width: 30px; line-height: 30px; top: -34px; }
+
+
+
+.rvcwidgets {margin:0 auto;}
+.rvcwidget {display:inline; padding:0 10px;}
+.rvcCapped {text-transform:uppercase; letter-spacing:.08em;}
+
+#header_main .paypal-donate-button{ 
+  /*Add your button styles here*/
+  float: right;
+  margin-right: 20%;
+  margin-top:0px;
+  width:102px;
+  height:35px;
+  background:transparent url('images/donate-now-btn.png') no-repeat top left;
+}
+
+#header_main .nyccl-button{ 
+  /*Add your button styles here*/
+  float: right;
+  margin-right:18px;
+   margin-top:0px;
+  width:102px;
+  height:35px;
+  background:transparent url('images/nyc-college-line-btn.png') no-repeat top left;
+}
+
+.rvcClear {clear:both; padding:34px 0 0 0; background:transparent;}
+
+#footer .widget {
+  text-align: center;
+}
+
+span.copyright {
+  width: 100%;
+  text-align: center;
+}
+
+#socket { font-size: 12px; }
+
+#footer .textwidget a {
+  display: inline !important;
+}
+
+
+@media only screen and (max-width: 479px) {
+	.responsive .logo img { width: 200px !important; }
+
+	#top .av_header_glassy.av_header_transparency #header_main {
+    background-color: rgba(255,255,255,01);
+}
+}
+
+
+
+
+
+
