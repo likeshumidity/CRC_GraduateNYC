@@ -300,7 +300,7 @@ function crc_gnsm_acf_field_setup_listing_details() {
 				'key' => 'field_5706df2275f23',
 				'label' => 'Program Description',
 				'name' => 'program_description',
-				'type' => 'text',
+				'type' => 'textarea',
 				'instructions' => 'Describe the type of program and the services provided.',
 				'default_value' => '',
 				'placeholder' => 'program description',
