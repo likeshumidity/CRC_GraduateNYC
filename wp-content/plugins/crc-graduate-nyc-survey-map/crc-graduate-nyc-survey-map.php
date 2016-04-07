@@ -57,13 +57,13 @@ function crc_gnsm_post_type_setup() {
 }
 add_action('init', 'crc_gnsm_post_type_setup');
 
-function crc_gnsm_acf_field_setup() {
+function crc_gnsm_acf_field_setup_filters() {
 	// Adds custom fields
 	// Requires plugin: Advanced Custom Fields
 	if(function_exists("register_field_group")) {
 	register_field_group(array (
-		'id' => 'acf_graduate-nyc-college-readiness-map',
-		'title' => 'Graduate NYC - College Readiness Map',
+		'id' => 'acf_graduate-nyc-college-readiness-map-filters',
+		'title' => 'Graduate NYC - College Readiness Map Filters',
 		'fields' => array (
 			array (
 				'key' => 'field_57058bf68c3b6',
@@ -199,11 +199,14 @@ function crc_gnsm_acf_field_setup() {
 	));
 	}
 }
-add_action('init', 'crc_gnsm_acf_field_setup');
+add_action('init', 'crc_gnsm_acf_field_setup_filters');
 
 function crc_gnsm_activate() {
 	// Register custom post types
 	crc_gnsm_post_type_setup();
+
+	// Register custom fields (Depends on plugin: Advanced Custom Fields)
+	crc_gnsm_acf_field_setup_filters();
 
 	// Clear permalinks after post type registered
 	flush_rewrite_rules();
