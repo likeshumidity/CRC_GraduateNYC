@@ -57,6 +57,150 @@ function crc_gnsm_post_type_setup() {
 }
 add_action('init', 'crc_gnsm_post_type_setup');
 
+function crc_gnsm_acf_field_setup() {
+	// Adds custom fields
+	// Requires plugin: Advanced Custom Fields
+	if(function_exists("register_field_group")) {
+	register_field_group(array (
+		'id' => 'acf_graduate-nyc-college-readiness-map',
+		'title' => 'Graduate NYC - College Readiness Map',
+		'fields' => array (
+			array (
+				'key' => 'field_57058bf68c3b6',
+				'label' => 'Accepting Students',
+				'name' => 'accepting_students',
+				'type' => 'select',
+				'choices' => array (
+					'Open Application' => 'Open Application',
+					'Selective Application' => 'Selective Application',
+					'Closed Program' => 'Closed Program',
+				),
+				'default_value' => '',
+				'allow_null' => 0,
+				'multiple' => 0,
+			),
+			array (
+				'key' => 'field_57058d1a453c5',
+				'label' => 'Population Served',
+				'name' => 'population_served',
+				'type' => 'checkbox',
+				'instructions' => 'Select all that apply.',
+				'choices' => array (
+					'Academic Performance' => 'Academic Performance',
+					'Academic Performance - High' => 'Academic Performance - High',
+					'Academic Performance - Average to High' => 'Academic Performance - Average to High',
+					'Academic Performance - Low to Average' => 'Academic Performance - Low to Average',
+					'Academic Performance - Low' => 'Academic Performance - Low',
+					'English language learners' => 'English language learners',
+					'Disconnected youth/Out of school youth' => 'Disconnected youth/Out of school youth',
+					'Students with IEP or other learning challenges' => 'Students with IEP or other learning challenges',
+					'High school equivalency' => 'High school equivalency',
+					'Poverty guidelines/socioeconomic status' => 'Poverty guidelines/socioeconomic status',
+					'Justice involved youth' => 'Justice involved youth',
+					'First generation college students' => 'First generation college students',
+					'Racial or ethnic minorities' => 'Racial or ethnic minorities',
+					'Race or ethnicity: African American' => 'Race or ethnicity: African American',
+					'Race or ethnicity: Latin/Hispanic' => 'Race or ethnicity: Latin/Hispanic',
+					'Race or ethnicity: Middle Eastern/Arab' => 'Race or ethnicity: Middle Eastern/Arab',
+					'Race or ethnicity: Asian' => 'Race or ethnicity: Asian',
+					'Male' => 'Male',
+					'Female' => 'Female',
+					'Transgender' => 'Transgender',
+					'High School Equivalency/GED' => 'High School Equivalency/GED',
+					'LGBTQ' => 'LGBTQ',
+					'Adults' => 'Adults',
+					'Refugees/Asylees' => 'Refugees/Asylees',
+					'Other' => 'Other',
+				),
+				'default_value' => '',
+				'layout' => 'vertical',
+			),
+			array (
+				'key' => 'field_570592ca24d14',
+				'label' => 'Grades Served',
+				'name' => 'grades_served',
+				'type' => 'checkbox',
+				'choices' => array (
+					'Elementary' => 'Elementary',
+					'Middle School' => 'Middle School',
+					'High School' => 'High School',
+					'Non-Traditional/Adults' => 'Non-Traditional/Adults',
+					'College Freshmen' => 'College Freshmen',
+					'College Sophomore' => 'College Sophomore',
+					'College Junior' => 'College Junior',
+					'College Senior' => 'College Senior',
+					'Graduate Students' => 'Graduate Students',
+				),
+				'default_value' => '',
+				'layout' => 'vertical',
+			),
+			array (
+				'key' => 'field_570593872b93a',
+				'label' => 'Services',
+				'name' => 'services',
+				'type' => 'checkbox',
+				'choices' => array (
+					'Network for convening CBOs' => 'Network for convening CBOs',
+					'Academic behaviors' => 'Academic behaviors',
+					'Academic/degree planning' => 'Academic/degree planning',
+					'ACT/SAT/PSAT preparation' => 'ACT/SAT/PSAT preparation',
+					'Advocacy on behalf of the sector or segments of it' => 'Advocacy on behalf of the sector or segments of it',
+					'Career Counseling (e.g., identifying internship/work opportunities)' => 'Career Counseling (e.g., identifying internship/work opportunities)',
+					'Career Preparation' => 'Career Preparation',
+					'College application help' => 'College application help',
+					'College campus visits' => 'College campus visits',
+					'College exploration' => 'College exploration',
+					'College Matriculation' => 'College Matriculation',
+					'College Readiness' => 'College Readiness',
+					'College Retention' => 'College Retention',
+					'Connecting students to campus resources (e.g. bursar, tutoring, writing center)' => 'Connecting students to campus resources (e.g. bursar, tutoring, writing center)',
+					'Connecting to off-campus resources (e.g. day care, job opportunities, social services support)' => 'Connecting to off-campus resources (e.g. day care, job opportunities, social services support)',
+					'Course registration' => 'Course registration',
+					'Financial Aid (FAFSA filing/refiling, financial aid appeals, etc.)' => 'Financial Aid (FAFSA filing/refiling, financial aid appeals, etc.)',
+					'Financial Aid reapplication' => 'Financial Aid reapplication',
+					'Financial support/incentives' => 'Financial support/incentives',
+					'Financial support/incentives text' => 'Financial support/incentives text',
+					'Major selection' => 'Major selection',
+					'Mentoring' => 'Mentoring',
+					'Non-academic skills (e.g. soft skills)' => 'Non-academic skills (e.g. soft skills)',
+					'Online resources for students and/or staff' => 'Online resources for students and/or staff',
+					'Placement test prep (e.g. CUNY Assessment Tests)' => 'Placement test prep (e.g. CUNY Assessment Tests)',
+					'Professional development for college access and success staff' => 'Professional development for college access and success staff',
+					'Research connected to this field for practitioner use' => 'Research connected to this field for practitioner use',
+					'Resume and interview skills' => 'Resume and interview skills',
+					'Support services related to college retention' => 'Support services related to college retention',
+					'Technical assistance to community based organizations' => 'Technical assistance to community based organizations',
+					'Training or awareness for students' => 'Training or awareness for students',
+					'Tutoring' => 'Tutoring',
+					'Tutoring/academic support' => 'Tutoring/academic support',
+				),
+				'default_value' => '',
+				'layout' => 'vertical',
+			),
+		),
+		'location' => array (
+			array (
+				array (
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'gnsm_listing',
+					'order_no' => 0,
+					'group_no' => 0,
+				),
+			),
+		),
+		'options' => array (
+			'position' => 'normal',
+			'layout' => 'no_box',
+			'hide_on_screen' => array (
+			),
+		),
+		'menu_order' => 0,
+	));
+	}
+}
+add_action('init', 'crc_gnsm_acf_field_setup');
+
 function crc_gnsm_activate() {
 	// Register custom post types
 	crc_gnsm_post_type_setup();
