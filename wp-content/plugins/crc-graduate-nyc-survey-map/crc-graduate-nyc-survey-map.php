@@ -58,7 +58,7 @@ function crc_gnsm_post_type_setup() {
 add_action('init', 'crc_gnsm_post_type_setup');
 
 function crc_gnsm_acf_field_setup_filters() {
-	// Adds custom fields
+	// Adds custom fields for filtering
 	// Requires plugin: Advanced Custom Fields
 	if(function_exists("register_field_group")) {
 	register_field_group(array (
@@ -201,12 +201,145 @@ function crc_gnsm_acf_field_setup_filters() {
 }
 add_action('init', 'crc_gnsm_acf_field_setup_filters');
 
+function crc_gnsm_acf_field_setup_listing_details() {
+	// Adds custom fields for listing details
+	// Requires plugin: Advanced Custom Fields
+	if(function_exists("register_field_group")) {
+	register_field_group(array (
+		'id' => 'acf_graduate-nyc-college-readiness-map-listing-details',
+		'title' => 'Graduate NYC - College Readiness Map Listing Details',
+		'fields' => array (
+			array (
+				'key' => 'field_5706dda975f1c',
+				'label' => 'Display name for organization',
+				'name' => 'name',
+				'type' => 'text',
+				'required' => 1,
+				'default_value' => '',
+				'placeholder' => 'display name',
+				'prepend' => '',
+				'append' => '',
+				'formatting' => 'none',
+				'maxlength' => '',
+			),
+			array (
+				'key' => 'field_5706dddf75f1d',
+				'label' => 'Address - Line 1',
+				'name' => 'address_line_1',
+				'type' => 'text',
+				'default_value' => '',
+				'placeholder' => 'address line one',
+				'prepend' => '',
+				'append' => '',
+				'formatting' => 'none',
+				'maxlength' => '',
+			),
+			array (
+				'key' => 'field_5706de0275f1e',
+				'label' => 'Address - Line 2',
+				'name' => 'address_line_2',
+				'type' => 'text',
+				'default_value' => '',
+				'placeholder' => 'address line two',
+				'prepend' => '',
+				'append' => '',
+				'formatting' => 'none',
+				'maxlength' => '',
+			),
+			array (
+				'key' => 'field_5706de2575f1f',
+				'label' => 'Address - City',
+				'name' => 'address_city',
+				'type' => 'text',
+				'default_value' => '',
+				'placeholder' => 'address city',
+				'prepend' => '',
+				'append' => '',
+				'formatting' => 'html',
+				'maxlength' => '',
+			),
+			array (
+				'key' => 'field_5706de4675f20',
+				'label' => 'Address - State',
+				'name' => 'address_state',
+				'type' => 'text',
+				'default_value' => '',
+				'placeholder' => 'address state',
+				'prepend' => '',
+				'append' => '',
+				'formatting' => 'none',
+				'maxlength' => '',
+			),
+			array (
+				'key' => 'field_5706deca75f22',
+				'label' => 'Address - Postal Code/Zipcode',
+				'name' => 'address_postal_code',
+				'type' => 'text',
+				'default_value' => '',
+				'placeholder' => 'address postal code or zipcode',
+				'prepend' => '',
+				'append' => '',
+				'formatting' => 'none',
+				'maxlength' => '',
+			),
+			array (
+				'key' => 'field_5706de6175f21',
+				'label' => 'Contact Phone',
+				'name' => 'contact_phone',
+				'type' => 'number',
+				'instructions' => 'Include area code and phone number without any punctuation. (917) 335-5555 would be 9173355555.',
+				'default_value' => '',
+				'placeholder' => 'contact phone number',
+				'prepend' => '',
+				'append' => '',
+				'min' => '',
+				'max' => 99999999999,
+				'step' => '',
+			),
+			array (
+				'key' => 'field_5706df2275f23',
+				'label' => 'Program Description',
+				'name' => 'program_description',
+				'type' => 'text',
+				'instructions' => 'Describe the type of program and the services provided.',
+				'default_value' => '',
+				'placeholder' => 'program description',
+				'prepend' => '',
+				'append' => '',
+				'formatting' => 'none',
+				'maxlength' => '',
+			),
+		),
+		'location' => array (
+			array (
+				array (
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'gnsm_listing',
+					'order_no' => 0,
+					'group_no' => 0,
+				),
+			),
+		),
+		'options' => array (
+			'position' => 'normal',
+			'layout' => 'no_box',
+			'hide_on_screen' => array (
+			),
+		),
+		'menu_order' => 0,
+	));
+	}
+}
+add_action('init', 'crc_gnsm_acf_field_setup_listing_details');
+
 function crc_gnsm_activate() {
 	// Register custom post types
 	crc_gnsm_post_type_setup();
 
 	// Register custom fields (Depends on plugin: Advanced Custom Fields)
 	crc_gnsm_acf_field_setup_filters();
+	crc_gnsm_acf_field_setup_listing_details();
 
 	// Clear permalinks after post type registered
 	flush_rewrite_rules();
