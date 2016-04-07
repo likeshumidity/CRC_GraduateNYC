@@ -38,7 +38,7 @@ function crc_gnsm_post_type_setup() {
 		'label'                 => __( 'Program Survey Listing', 'text_domain' ),
 		'description'           => __( 'Program Survey Listings', 'text_domain' ),
 		'labels'                => $gnsm_listing_labels,
-		'supports'              => array( 'title', 'editor', 'custom-fields', ),
+		'supports'              => array( 'title', 'editor', ),
 		'hierarchical'          => false,
 		'public'                => true,
 		'show_ui'               => true,
