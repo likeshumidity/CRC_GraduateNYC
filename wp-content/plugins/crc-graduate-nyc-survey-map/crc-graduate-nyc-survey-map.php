@@ -458,13 +458,13 @@ function crc_gnsm_survey_results_data() {
 //			'post' => $thispost,
 			'post_id' => $thispost->ID,
 //			'meta' => $thispostmeta,
-			'program_name' => $program_name,
-			'burroughs' => $burroughs,
-			'neighborhoods' => $neighborhoods,
-			'grades' => $grades_served,
-			'target_population' => $target_population,
-			'services' => $services,
-			'accepting_students' => $accepting_students,
+			'program_name' => $program_name[0],
+			'burroughs' => $burroughs[0],
+			'neighborhoods' => $neighborhoods[0],
+			'grades' => $grades_served[0],
+			'target_population' => $target_population[0],
+			'services' => $services[0],
+			'accepting_students' => $accepting_students[0],
 		);
 	endwhile; wp_reset_postdata(); endif;
 
