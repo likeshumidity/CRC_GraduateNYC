@@ -421,14 +421,15 @@ function crc_gnsm_acf_field_setup_listing_details() {
 add_action('init', 'crc_gnsm_acf_field_setup_listing_details');
 
 function crc_gnsm_survey_results() {
-	add_rewrite_rule('crc-gnsm-survey-results', 'index.php?crc-gnsm-survey-results=1', 'top');
+	add_rewrite_tag('%crc-json%', '([^&]+)');
+	add_rewrite_rule('json/([^&]+)/?', 'index.php?crc-json=$1', 'top');
 }
 add_action('init', 'crc_gnsm_survey_results');
 
 function crc_gnsm_survey_results_data() {
 	global $wp_query;
 
-	$gnsm_tag = $wp_query->get('crc-gnsm-survey-results');
+	$gnsm_tag = $wp_query->get('crc-json');
 
 	if (!$gnsm_tag) {
 		return;
@@ -443,9 +444,27 @@ function crc_gnsm_survey_results_data() {
 	$query = new WP_Query($args);
 
 	if ($query->have_posts()) : while ($query->have_posts()) : $query->the_post();
-		$post_id = get_post_id();
+// print_r(get_post());
+		$thispost = get_post();
+//		$thispostmeta = get_post_meta($thispost->ID);
+		$program_name = get_post_meta($thispost->ID, 'name');
+		$burroughs = get_post_meta($thispost->ID, 'burroughs');
+		$neighborhoods = get_post_meta($thispost->ID, 'neighborhoods');
+		$grades_served = get_post_meta($thispost->ID, 'grades_served');
+		$target_population = get_post_meta($thispost->ID, 'population_served');
+		$services = get_post_meta($thispost->ID, 'services');
+		$accepting_students = get_post_meta($thispost->ID, 'accepting_students');
 		$results[] = array(
-			'post_id' => $post_id,
+//			'post' => $thispost,
+			'post_id' => $thispost->ID,
+//			'meta' => $thispostmeta,
+			'program_name' => $program_name,
+			'burroughs' => $burroughs,
+			'neighborhoods' => $neighborhoods,
+			'grades' => $grades_served,
+			'target_population' => $target_population,
+			'services' => $services,
+			'accepting_students' => $accepting_students,
 		);
 	endwhile; wp_reset_postdata(); endif;
 
