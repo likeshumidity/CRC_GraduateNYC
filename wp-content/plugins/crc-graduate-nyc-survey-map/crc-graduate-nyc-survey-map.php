@@ -420,6 +420,39 @@ function crc_gnsm_acf_field_setup_listing_details() {
 }
 add_action('init', 'crc_gnsm_acf_field_setup_listing_details');
 
+function crc_gnsm_survey_results() {
+	add_rewrite_rule('crc-gnsm-survey-results', 'index.php?crc-gnsm-survey-results=1', 'top');
+}
+add_action('init', 'crc_gnsm_survey_results');
+
+function crc_gnsm_survey_results_data() {
+	global $wp_query;
+
+	$gnsm_tag = $wp_query->get('crc-gnsm-survey-results');
+
+	if (!$gnsm_tag) {
+		return;
+	}
+
+	$results = array();
+
+	$args = array(
+		'post_type' => 'gnsm_listing',
+	);
+
+	$query = new WP_Query($args);
+
+	if ($query->have_posts()) : while ($query->have_posts()) : $query->the_post();
+		$post_id = get_post_id();
+		$results[] = array(
+			'post_id' => $post_id,
+		);
+	endwhile; wp_reset_postdata(); endif;
+
+	wp_send_json($results);
+}
+add_action('template_redirect', 'crc_gnsm_survey_results_data');
+
 function crc_gnsm_activate() {
 	// Register custom post types
 	crc_gnsm_post_type_setup();
