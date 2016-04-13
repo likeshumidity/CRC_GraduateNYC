@@ -454,17 +454,19 @@ function crc_gnsm_survey_results_data() {
 		$target_population = get_post_meta($thispost->ID, 'population_served');
 		$services = get_post_meta($thispost->ID, 'services');
 		$accepting_students = get_post_meta($thispost->ID, 'accepting_students');
-		$results[] = array(
+		$results[$program_name[0]] = array(
 //			'post' => $thispost,
-			'post_id' => $thispost->ID,
-//			'meta' => $thispostmeta,
-			'program_name' => $program_name[0],
-			'burroughs' => $burroughs[0],
-			'neighborhoods' => $neighborhoods[0],
-			'grades' => $grades_served[0],
-			'target_population' => $target_population[0],
-			'services' => $services[0],
-			'accepting_students' => $accepting_students[0],
+//			$program_name[0] => array(
+				'post_id' => $thispost->ID,
+//				'meta' => $thispostmeta,
+				'program_name' => $program_name[0],
+				'burroughs' => $burroughs[0],
+				'neighborhoods' => $neighborhoods[0],
+				'grades' => $grades_served[0],
+				'target_population' => $target_population[0],
+				'services' => $services[0],
+				'accepting_students' => $accepting_students[0],
+//			)
 		);
 	endwhile; wp_reset_postdata(); endif;
 
