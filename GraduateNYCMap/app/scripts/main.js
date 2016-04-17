@@ -1,9 +1,14 @@
 "use strict";
 
 var width = 700,
-    height = 1165;
+    height = 1165,
+    active = d3.select(null);
 
-var svg = d3.select(".map").append("svg")
+var neighborhoodSvg = d3.select(".map").append("svg")
+    .attr("width", width)
+    .attr("height", height);
+
+var boroughSvg = d3.select(".map").append("svg")
     .attr("width", width)
     .attr("height", height);
 
@@ -14,6 +19,16 @@ var projection = d3.geo.mercator()
 
 var path = d3.geo.path()
     .projection(projection)
+
+boroughSvg.append("rect")
+    .attr("class", "background")
+    .attr("width", width)
+    .attr("height", height)
+    .on("click", reset);
+
+var borG = boroughSvg.append("g")
+
+var ntaG = neighborhoodSvg.append("g")
 
 
 ///Range of colors based on density
@@ -113,9 +128,9 @@ var setUpArrays = function (data) {
 }
 
 var filterData = function () {
-    for (var item in allData){
+    for (var item in allData) {
         curData[item] = allData[item]
-    }    
+    }
     if (curTarget != "All") {
         for (var key in curData) {
             if (curData[key].Target.indexOf(curTarget) === -1) {
@@ -154,15 +169,34 @@ $(".service").change(function () {
 });
 
 
+
+d3.json("assets/Boroughs.json", function (error, bor) {
+    /* svg.insert("path", ".graticule")
+         .datum(topojson.feature(nta, nta.objects.NTA))
+         .attr("class", "NTA")
+         .attr("d", path);*/
+
+    borG.selectAll(".borough")
+        .data(topojson.feature(bor, bor.objects.Boroughs).features)
+        .enter().append("path")
+        .attr("class", "borough")
+        .attr("id", function (d) {
+            return d.properties.boroname;
+        })
+        .attr("d", path)
+        .on("click", clicked);
+})
+
 d3.json("assets/NTA.json", function (error, nta) {
     /* svg.insert("path", ".graticule")
          .datum(topojson.feature(nta, nta.objects.NTA))
          .attr("class", "NTA")
          .attr("d", path);*/
 
+    console.log("LOADING")
     geoData = nta;
 
-    svg.selectAll(".neighborhood")
+    ntaG.selectAll(".neighborhood")
         .data(topojson.feature(nta, nta.objects.NTA).features)
         .enter().append("path")
         .attr("class", "neighborhood")
@@ -179,5 +213,45 @@ d3.json("assets/NTA.json", function (error, nta) {
             return color(0)
         })
         .style('stroke-width', '.5px')
-        .style("stroke", "#cecece");
+        .style("stroke", "#cecece")
+        .on("click", clicked);
 })
+
+
+function clicked(d) {
+    console.log(this)
+    if (active.node() === this) return reset();
+    active.classed("active", false);
+    active = d3.select(this).classed("active", true);
+
+    var bounds = path.bounds(d),
+        dx = bounds[1][0] - bounds[0][0],
+        dy = bounds[1][1] - bounds[0][1],
+        x = (bounds[0][0] + bounds[1][0]) / 2,
+        y = (bounds[0][1] + bounds[1][1]) / 2,
+        scale = .9 / Math.max(dx / width, dy / height),
+        translate = [width / 2 - scale * x, height / 2 - scale * y];
+
+    borG.transition()
+        .duration(750)
+        .style("stroke-width", 1.5 / scale + "px")
+        .attr("transform", "translate(" + translate + ")scale(" + scale + ")");
+
+    ntaG.transition()
+        .duration(750)
+        .style("stroke-width", 1.5 / scale + "px")
+        .attr("transform", "translate(" + translate + ")scale(" + scale + ")");
+}
+
+function reset() {
+    active.classed("active", false);
+    active = d3.select(null);
+
+    borG.transition()
+        .duration(750)
+        .style("stroke-width", "1.5px")
+        .attr("transform", "");
+    ntaG.transition()
+        .duration(750)
+        .attr("transform", "");
+}
