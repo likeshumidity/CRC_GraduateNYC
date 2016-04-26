@@ -38,7 +38,7 @@ function crc_gnsm_post_type_setup() {
 		'label'                 => __( 'Program Survey Listing', 'text_domain' ),
 		'description'           => __( 'Program Survey Listings', 'text_domain' ),
 		'labels'                => $gnsm_listing_labels,
-		'supports'              => array( 'title', 'editor', ),
+		'supports'              => array( 'title', ),
 		'hierarchical'          => false,
 		'public'                => true,
 		'show_ui'               => true,
@@ -197,11 +197,10 @@ function crc_gnsm_acf_field_setup_filters() {
 		'fields' => array (
 			array (
 				'key' => 'field_570d7e356b64e',
-				'label' => 'Burroughs',
-				'name' => 'burroughs',
+				'label' => 'Borroughs',
+				'name' => 'borroughs',
 				'type' => 'checkbox',
 				'instructions' => 'Select all that apply.',
-				'required' => 1,
 				'choices' => array (
 					'Brooklyn' => 'Brooklyn',
 					'Bronx' => 'Bronx',
@@ -406,7 +405,7 @@ function crc_gnsm_survey_results_data() {
 		$thispost = get_post();
 //		$thispostmeta = get_post_meta($thispost->ID);
 		$program_name = get_post_meta($thispost->ID, 'name');
-		$burroughs = get_post_meta($thispost->ID, 'burroughs');
+		$borroughs = get_post_meta($thispost->ID, 'borroughs');
 		$neighborhoods = get_post_meta($thispost->ID, 'neighborhoods');
 		$grades_served = get_post_meta($thispost->ID, 'grades_served');
 		$target_population = get_post_meta($thispost->ID, 'population_served');
@@ -418,7 +417,7 @@ function crc_gnsm_survey_results_data() {
 				'post_id' => $thispost->ID,
 //				'meta' => $thispostmeta,
 				'program_name' => $program_name[0],
-				'burroughs' => $burroughs[0],
+				'borroughs' => $borroughs[0],
 				'neighborhoods' => $neighborhoods[0],
 				'grades' => $grades_served[0],
 				'target_population' => $target_population[0],
