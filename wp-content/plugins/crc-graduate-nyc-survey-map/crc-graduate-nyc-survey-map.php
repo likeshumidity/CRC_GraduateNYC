@@ -303,7 +303,6 @@ function crc_gnsm_acf_field_setup_filters() {
 				'instructions' => 'Select all that apply.',
 				'choices' => array (
 					'Academic Performance' => 'Academic Performance',
-					'Academic Performance text' => 'Academic Performance text',
 					'English language learners' => 'English language learners',
 					'Disconnected youth/Out of school youth' => 'Disconnected youth/Out of school youth',
 					'Students with IEP or other learning challenges' => 'Students with IEP or other learning challenges',
@@ -312,7 +311,6 @@ function crc_gnsm_acf_field_setup_filters() {
 					'Justice involved youth' => 'Justice involved youth',
 					'First generation college students' => 'First generation college students',
 					'Racial or ethnic minorities' => 'Racial or ethnic minorities',
-					'Racial or ethnic minorities text' => 'Racial or ethnic minorities text',
 					'Gender' => 'Gender',
 				),
 				'default_value' => '',
