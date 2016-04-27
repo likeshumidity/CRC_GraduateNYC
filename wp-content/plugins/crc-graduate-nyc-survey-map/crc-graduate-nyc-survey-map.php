@@ -401,27 +401,22 @@ function crc_gnsm_survey_results_data() {
 	if ($query->have_posts()) : while ($query->have_posts()) : $query->the_post();
 // print_r(get_post());
 		$thispost = get_post();
-//		$thispostmeta = get_post_meta($thispost->ID);
-		$program_name = get_post_meta($thispost->ID, 'name');
+		$program_name = get_the_title($thispost->ID);
 		$borroughs = get_post_meta($thispost->ID, 'borroughs');
 		$neighborhoods = get_post_meta($thispost->ID, 'neighborhoods');
 		$grades_served = get_post_meta($thispost->ID, 'grades_served');
-		$target_population = get_post_meta($thispost->ID, 'population_served');
+		$target_population = get_post_meta($thispost->ID, 'target_population');
 		$services = get_post_meta($thispost->ID, 'services');
 		$accepting_students = get_post_meta($thispost->ID, 'accepting_students');
-		$results[$program_name[0]] = array(
-//			'post' => $thispost,
-//			$program_name[0] => array(
-				'post_id' => $thispost->ID,
-//				'meta' => $thispostmeta,
-				'program_name' => $program_name[0],
-				'borroughs' => $borroughs[0],
-				'neighborhoods' => $neighborhoods[0],
-				'grades' => $grades_served[0],
-				'target_population' => $target_population[0],
-				'services' => $services[0],
-				'accepting_students' => $accepting_students[0],
-//			)
+		$results[$program_name] = array(
+			'post_id' => $thispost->ID,
+			'program_name' => $program_name,
+			'borroughs' => $borroughs[0],
+			'neighborhoods' => $neighborhoods[0],
+			'grades' => $grades_served[0],
+			'target_population' => $target_population[0],
+			'services' => $services[0],
+			'accepting_students' => $accepting_students[0],
 		);
 	endwhile; wp_reset_postdata(); endif;
 
