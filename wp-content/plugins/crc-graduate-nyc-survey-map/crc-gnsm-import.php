@@ -155,15 +155,6 @@ function crc_gnsm_translate_field_array($fieldValue) {
 
 // console_log('06');
 
-function crc_gnsm_create_post($postData) {
-// Create post object and assign meta data
-	print_r($postData);
-	print('<br />');
-// console_log('14');
-}
-
-// console_log('07');
-
 function crc_gnsm_array_from_string_no_empties($stringValue, $delimiter = ',') {
 	$newArray = array();
 
@@ -183,5 +174,33 @@ function crc_gnsm_array_from_string_no_empties($stringValue, $delimiter = ',') {
 crc_gnsm_import_data('sampleDataGNYC20160425a.csv');
 
 // console_log('08');
+
+function crc_gnsm_create_post($postData) {
+// Create post object and assign meta data
+	$postArray = array();
+	$wpError = '';
+
+	$postArray['post_title'] = $postData['name'];
+
+	$postID = wp_insert_post($postArray, $wpError);
+
+	if ($wpError != 1) {
+		//Add Metadata
+		foreach($postData as $key => $val) {
+			if (substr($key, 0, 5) == 'field') {
+				update_field($key, $val, $postID);
+			}
+		}
+
+		wp_publish_post($postID);
+	} else {
+		console_log($postData);
+	}
+//	print_r($postData);
+//	print('<br />');
+// console_log('14');
+}
+
+// console_log('07');
 
 ?>
