@@ -1,6 +1,6 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', True);
+// error_reporting(E_ALL);
+// ini_set('display_errors', True);
 
 /**
  * @package crc-graduate-nyc-survey-map
@@ -20,6 +20,9 @@ function console_log($data) {
 // console_log('01');
 
 function crc_gnsm_import_data($importFile) {
+//plugin_dir_path( __FILE__
+	$importFile = CRC__GNSM_PLUGIN_DIR . $importFile;
+// console_log($importFile);
 
 	$headers = array();
 	$row = 0;
@@ -171,7 +174,7 @@ function crc_gnsm_array_from_string_no_empties($stringValue, $delimiter = ',') {
 
 // console_log('07');
 
-crc_gnsm_import_data('sampleDataGNYC20160425a.csv');
+//crc_gnsm_import_data('sampleDataGNYC20160425a.csv');
 
 // console_log('08');
 
@@ -181,20 +184,23 @@ function crc_gnsm_create_post($postData) {
 	$wpError = '';
 
 	$postArray['post_title'] = $postData['name'];
+	$postArray['post_type'] = 'gnsm_listing';
 
-	$postID = wp_insert_post($postArray, $wpError);
+	if (get_page_by_title($postArray['post_title']) == null) {
+		$postID = wp_insert_post($postArray, $wpError);
 
-	if ($wpError != 1) {
-		//Add Metadata
-		foreach($postData as $key => $val) {
-			if (substr($key, 0, 5) == 'field') {
-				update_field($key, $val, $postID);
+		if ($wpError != 1) {
+			//Add Metadata
+			foreach($postData as $key => $val) {
+				if (substr($key, 0, 5) == 'field') {
+					update_field($key, $val, $postID);
+				}
 			}
+	
+			wp_publish_post($postID);
+		} else {
+//			console_log($postData);
 		}
-
-		wp_publish_post($postID);
-	} else {
-		console_log($postData);
 	}
 //	print_r($postData);
 //	print('<br />');

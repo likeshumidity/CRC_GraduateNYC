@@ -17,6 +17,10 @@ Graduate NYC - Program Survey Map is licensed exclusively to Graduate NYC and ca
 
 defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
+define( 'CRC__GNSM_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
+
+require_once( CRC__GNSM_PLUGIN_DIR . 'crc-gnsm-import.php' );
+
 function crc_gnsm_post_type_setup() {
 	// Register post type for listings
 	$gnsm_listing_labels = array(
@@ -431,6 +435,9 @@ function crc_gnsm_activate() {
 	// Register custom fields (Depends on plugin: Advanced Custom Fields)
 	crc_gnsm_acf_field_setup_filters();
 	crc_gnsm_acf_field_setup_listing_details();
+
+	// Load posts
+	crc_gnsm_import_data('sampleDataGNYC20160425a.csv');
 
 	// Clear permalinks after post type registered
 	flush_rewrite_rules();
