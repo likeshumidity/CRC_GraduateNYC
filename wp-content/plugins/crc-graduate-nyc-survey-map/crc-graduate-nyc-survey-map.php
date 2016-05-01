@@ -22,26 +22,34 @@ define( 'CRC__GNSM_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 require_once( CRC__GNSM_PLUGIN_DIR . 'crc-gnsm-import.php' );
 
 function crc_gnsm_post_type_setup() {
-	// Register post type for listings
-	$gnsm_listing_labels = array(
-		'name'                  => _x( 'Program Survey Listings', 'Post Type General Name', 'text_domain' ),
-		'singular_name'         => _x( 'Program Survey Listing', 'Post Type Singular Name', 'text_domain' ),
-		'menu_name'             => __( 'Program Survey Listings', 'text_domain' ),
-		'name_admin_bar'        => __( 'Program Survey Listing', 'text_domain' ),
-		'all_items'             => __( 'All Listings', 'text_domain' ),
-		'add_new_item'          => __( 'Add New Item', 'text_domain' ),
-		'add_new'               => __( 'Add Listing', 'text_domain' ),
-		'new_item'              => __( 'New Listing', 'text_domain' ),
-		'edit_item'             => __( 'Edit Listing', 'text_domain' ),
-		'update_item'           => __( 'Update Listing', 'text_domain' ),
-		'view_item'             => __( 'View Listing', 'text_domain' ),
-		'search_items'          => __( 'Search Listing', 'text_domain' ),
-	);
 
-	$gnsm_listing_args = array(
-		'label'                 => __( 'Program Survey Listing', 'text_domain' ),
-		'description'           => __( 'Program Survey Listings', 'text_domain' ),
-		'labels'                => $gnsm_listing_labels,
+	$labels = array(
+		'name'                  => 'GNYC Survey Listings',
+		'singular_name'         => 'GNYC Survey Listing',
+		'menu_name'             => 'Program Survey Listings',
+		'name_admin_bar'        => 'Survey Listings',
+		'archives'              => 'Graduate NYC Program Survey Listings',
+		'parent_item_colon'     => 'Parent Item:',
+		'all_items'             => 'All Listings',
+		'add_new_item'          => 'Add New Listing',
+		'add_new'               => 'Add New Listing',
+		'new_item'              => 'New Listing',
+		'edit_item'             => 'Edit Listing',
+		'update_item'           => 'Update Listing',
+		'view_item'             => 'View Listing',
+		'search_items'          => 'Search Listings',
+		'not_found'             => 'Listing Not Found',
+		'not_found_in_trash'    => 'Listing Not found in Trash',
+		'insert_into_item'      => 'Insert into listing',
+		'uploaded_to_this_item' => 'Uploaded to this listing',
+		'items_list'            => 'Listings list',
+		'items_list_navigation' => 'Listings list navigation',
+		'filter_items_list'     => 'Filter Listings list',
+	);
+	$args = array(
+		'label'                 => 'GNYC Program Survey Listing',
+		'description'           => 'GNYC Program Survey Listings',
+		'labels'                => $labels,
 		'supports'              => array( 'title', ),
 		'hierarchical'          => false,
 		'public'                => true,
@@ -54,10 +62,9 @@ function crc_gnsm_post_type_setup() {
 		'has_archive'           => true,		
 		'exclude_from_search'   => false,
 		'publicly_queryable'    => true,
-		'capability_type'       => 'page',
+		'capability_type'       => 'post',
 	);
-
-	register_post_type( 'gnsm_listing', $gnsm_listing_args );
+	register_post_type( 'gnsm_listing', $args );
 }
 add_action('init', 'crc_gnsm_post_type_setup');
 
@@ -390,18 +397,33 @@ function crc_gnsm_survey_results_data() {
 
 	$gnsm_tag = $wp_query->get('crc-json');
 
-	if (!$gnsm_tag) {
-		return;
+	switch($gnsm_tag) {
+		case 'all_listings':
+			crc_gnsm_survey_results_listings_all();
+			break;
+/*		case 'page_listings_filter':
+			crc_gnsm_survey_results_page_listings_filter();
+			break;
+*/
+		default:
+			return;
 	}
+}
+add_action('template_redirect', 'crc_gnsm_survey_results_data');
 
+function crc_gnsm_survey_results_listings_all() {
 	$results = array();
 
 	$args = array(
-		'post_type' => 'gnsm_listing',
+		'post_type' => array(
+			'gnsm_listing',
+			),
+		'posts_per_page' => -1,
 	);
 
 	$query = new WP_Query($args);
 
+// echo $query->request;
 	if ($query->have_posts()) : while ($query->have_posts()) : $query->the_post();
 // print_r(get_post());
 		$thispost = get_post();
@@ -422,11 +444,22 @@ function crc_gnsm_survey_results_data() {
 			'services' => $services[0],
 			'accepting_students' => $accepting_students[0],
 		);
-	endwhile; wp_reset_postdata(); endif;
+		wp_reset_postdata(); 
+	endwhile; endif;
 
 	wp_send_json($results);
 }
-add_action('template_redirect', 'crc_gnsm_survey_results_data');
+
+function crc_gnsm_archive_template($archive_template) {
+	global $post;
+
+	if (is_post_type_archive('gnsm_listing')) {
+		$archive_template = dirname(__FILE__) . '/archive-gnsm_listing.php';
+	}
+
+	return $archive_template;
+}
+add_filter('archive_template', 'crc_gnsm_archive_template');
 
 function crc_gnsm_activate() {
 	// Register custom post types
