@@ -22,32 +22,54 @@ do_action( 'ava_after_main_title' );
 						<form id="crc-gnsm-listings-form" method="get">
 							<fieldset>
 							<label for="gnsm-burroughs">Burroughs</a>
-							<select id="gnsm-burroughs">
-								<option value="All">All</option>
+							<select id="gnsm-burroughs" multiple>
+<?php
+foreach($crc_gnsm_listing_attributes['borroughs'] as $borrough) {
+	echo '<option value="' . $borrough . '">' . $borrough . '</option>';
+}
+?>
 							</select>
 							</fieldset>
 							<fieldset>
 							<label for="gnsm-open-status">Open status</a>
 							<select id="gnsm-open-status">
 								<option value="All">All</option>
+<?php
+foreach($crc_gnsm_listing_attributes['statuses'] as $optionAttribute) {
+	echo '<option value="' . $optionAttribute . '">' . $optionAttribute . '</option>';
+}
+?>
 							</select>
 							</fieldset>
 							<fieldset>
 							<label for="gnsm-target-population">Target population</a>
 							<select id="gnsm-target-population">
 								<option value="All">All</option>
+<?php
+foreach($crc_gnsm_listing_attributes['targetPopulation'] as $optionAttribute) {
+	echo '<option value="' . $optionAttribute . '">' . $optionAttribute . '</option>';
+}
+?>
 							</select>
 							</fieldset>
 							<fieldset>
 							<label for="gnsm-grades-served">Grades served</a>
-							<select id="gnsm-grades-served">
-								<option value="All">All</option>
+							<select id="gnsm-grades-served" multiple>
+<?php
+foreach($crc_gnsm_listing_attributes['gradesServed'] as $optionAttribute) {
+	echo '<option value="' . $optionAttribute . '">' . $optionAttribute . '</option>';
+}
+?>
 							</select>
 							</fieldset>
 							<fieldset>
 							<label for="gnsm-services">Services</a>
-							<select id="gnsm-services">
-								<option value="All">All</option>
+							<select id="gnsm-services" multiple>
+<?php
+foreach($crc_gnsm_listing_attributes['services'] as $optionAttribute) {
+	echo '<option value="' . $optionAttribute . '">' . $optionAttribute . '</option>';
+}
+?>
 							</select>
 							</fieldset>
 						</form>
