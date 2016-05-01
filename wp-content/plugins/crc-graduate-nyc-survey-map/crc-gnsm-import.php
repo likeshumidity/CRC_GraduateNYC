@@ -157,7 +157,7 @@ function crc_gnsm_create_post($postData) {
 	$postArray['post_title'] = $postData['name'];
 	$postArray['post_type'] = 'gnsm_listing';
 
-	if (!get_page_by_title($postArray['post_title'])) {
+	if (get_page_by_title($postArray['post_title'], OBJECT, 'post') == null) {
 		$postID = wp_insert_post($postArray, true);
 
 		//Add Metadata
