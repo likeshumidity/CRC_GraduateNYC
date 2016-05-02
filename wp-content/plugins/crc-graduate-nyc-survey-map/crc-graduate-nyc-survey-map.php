@@ -22,6 +22,13 @@ define( 'CRC__GNSM_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 require_once( CRC__GNSM_PLUGIN_DIR . 'crc-gnsm-import.php' );
 require_once( CRC__GNSM_PLUGIN_DIR . 'crc-gnsm-listing-attributes.php' );
 
+// used for debugging
+function console_log($data) {
+        echo '<script>';
+        echo 'console.log(' . json_encode($data) . ');';
+        echo '</script>';
+}
+
 function crc_gnsm_post_type_setup() {
 	$labels = array(
 		'name'                  => 'GNYC Survey Listings',

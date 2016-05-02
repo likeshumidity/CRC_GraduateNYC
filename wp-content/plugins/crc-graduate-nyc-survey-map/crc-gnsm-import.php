@@ -11,13 +11,6 @@
 Graduate NYC - Program Survey Map is licensed exclusively to Graduate NYC and cannot be used, redistributed or sold  except with their permission.
 */
 
-function console_log($data) {
-	echo '<script>';
-	echo 'console.log(' . json_encode($data) . ');';
-	echo '</script>';
-}
-
-
 function crc_gnsm_import_data($importFile) {
 	$importFile = CRC__GNSM_PLUGIN_DIR . $importFile;
 

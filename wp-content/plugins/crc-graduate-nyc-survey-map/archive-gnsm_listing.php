@@ -29,10 +29,13 @@ foreach($crc_gnsm_listing_attributes as $att => $attDetails) {
 	echo strtoupper(substr($att, 0, 1)) . str_replace('-', ' ', substr($att, 1));
 	echo '</label>';
 	echo '<' . str_replace('-', ' ', $attDetails[0]) . ' id="gnsm-' . $att . '" name="' . $att;
-	echo '">';
 	if ($attDetails[0] == 'select') {
+		echo '">';
 		echo '<option value=""></option>';
+	} else {
+		echo '[]">';
 	}
+
 	foreach($attDetails[1] as $attValue) {
 		echo '<option';
 		if (isset($_GET[$att])) {
