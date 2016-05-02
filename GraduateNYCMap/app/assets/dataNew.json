@@ -1,0 +1,1352 @@
+{
+    "Coney Island Prep High School": {
+        "post_id": 3663,
+        "program_name": "Coney Island Prep High School",
+        "borroughs": [],
+        "neighborhoods": [],
+        "grades": [],
+        "target_population": [],
+        "services": [],
+        "accepting_students": []
+    },
+    "Queens College": {
+        "post_id": 3565,
+        "program_name": "Queens College",
+        "borroughs": ["Queens"],
+        "neighborhoods": ["Queens - Astoria", "Queens - Bayside", "Queens - Elmhurst\/Corona", "Queens - Flushing", "Queens - Fresh Meadows\/Briarwood", "Queens - Howard Beach", "Queens - Jackson Heights", "Queens - Jamaica\/St. Albans", "Queens - Queens Village", "Queens - Rego Park\/Forest Hills", "Queens - Ridgewood\/Glendale", "Queens - Sunnyside\/Woodside", "Queens - The Rockaways", "Queens - Woodhaven"],
+        "grades": ["High School (9-12)", "College"],
+        "target_population": ["Racial or ethnic minorities"],
+        "services": ["College Readiness", "College Matriculation", "College Retention", "Career Preparation"],
+        "accepting_students": ["Open"]
+    },
+    "Beyond 12": {
+        "post_id": 3665,
+        "program_name": "Beyond 12",
+        "borroughs": [],
+        "neighborhoods": [],
+        "grades": [],
+        "target_population": [],
+        "services": [],
+        "accepting_students": []
+    },
+    "Kingsbridge Heights Community Center": {
+        "post_id": 3617,
+        "program_name": "Kingsbridge Heights Community Center",
+        "borroughs": ["Bronx"],
+        "neighborhoods": ["Bronx - Riverdale"],
+        "grades": ["Middle school (6-8)", "High School (9-12)", "College"],
+        "target_population": ["Academic Performance", "English language learners", "Disconnected youth\/Out of school youth", "Students with IEP or other learning challenges", "Poverty guidelines\/socioeconomic status", "First generation college students", "Racial or ethnic minorities", "Gender"],
+        "services": ["College Readiness", "College Matriculation", "College Retention", "Career Preparation"],
+        "accepting_students": ["Open"]
+    },
+    "South Bronx Overall Economic Development Corporation (SoBRO)": {
+        "post_id": 3667,
+        "program_name": "South Bronx Overall Economic Development Corporation (SoBRO)",
+        "borroughs": ["Bronx", "Manhattan"],
+        "neighborhoods": ["Bronx - Bedford Park", "Bronx - East Tremont", "Bronx - Hunts Point", "Bronx - Morrisania", "Bronx - Mott Haven", "Bronx - Riverdale", "Bronx - Throgs Neck", "Bronx - Unionport\/Soundview", "Bronx - University Heights", "Bronx - Williamsbridge", "Manhattan - Central Harlem", "Manhattan - East Harlem"],
+        "grades": ["Elementary school (K-5)", "Middle school (6-8)", "High School (9-12)", "College"],
+        "target_population": ["Academic Performance", "Disconnected youth\/Out of school youth", "High school equivalency", "Justice involved youth", "First generation college students"],
+        "services": ["College Readiness", "Career Preparation"],
+        "accepting_students": ["Open"]
+    },
+    "East Side House Settlement": {
+        "post_id": 3668,
+        "program_name": "East Side House Settlement",
+        "borroughs": ["Bronx", "Manhattan"],
+        "neighborhoods": ["Bronx - Bedford Park", "Bronx - Concourse\/Highbridge", "Bronx - East Tremont", "Bronx - Hunts Point", "Bronx - Morrisania", "Bronx - Mott Haven", "Bronx - Pelham Parkway", "Bronx - Riverdale", "Bronx - Throgs Neck", "Bronx - Unionport\/Soundview", "Bronx - University Heights", "Bronx - Williamsbridge"],
+        "grades": ["College"],
+        "target_population": ["Disconnected youth\/Out of school youth", "High school equivalency", "Justice involved youth"],
+        "services": ["College Readiness", "College Matriculation", "College Retention", "Career Preparation"],
+        "accepting_students": ["Open"]
+    },
+    "Lutheran Family Health Centers": {
+        "post_id": 3669,
+        "program_name": "Lutheran Family Health Centers",
+        "borroughs": ["Brooklyn"],
+        "neighborhoods": ["Brooklyn - Crown Heights North", "Brooklyn - Sunset Park"],
+        "grades": ["High School (9-12)"],
+        "target_population": ["Academic Performance", "High school equivalency", "Poverty guidelines\/socioeconomic status", "Racial or ethnic minorities"],
+        "services": ["College Readiness", "College Matriculation", "College Retention", "Career Preparation"],
+        "accepting_students": []
+    },
+    "Braven, Inc.": {
+        "post_id": 3647,
+        "program_name": "Braven, Inc.",
+        "borroughs": [],
+        "neighborhoods": [],
+        "grades": [],
+        "target_population": [],
+        "services": [],
+        "accepting_students": []
+    },
+    "Internationals Network For Public Schools": {
+        "post_id": 3648,
+        "program_name": "Internationals Network For Public Schools",
+        "borroughs": [],
+        "neighborhoods": [],
+        "grades": [],
+        "target_population": [],
+        "services": [],
+        "accepting_students": []
+    },
+    "College Summit": {
+        "post_id": 3649,
+        "program_name": "College Summit",
+        "borroughs": [],
+        "neighborhoods": [],
+        "grades": [],
+        "target_population": [],
+        "services": [],
+        "accepting_students": []
+    },
+    "Borough of Manhattan Community College\/CUNY": {
+        "post_id": 3650,
+        "program_name": "Borough of Manhattan Community College\/CUNY",
+        "borroughs": [],
+        "neighborhoods": [],
+        "grades": [],
+        "target_population": [],
+        "services": [],
+        "accepting_students": []
+    },
+    "Global Kids": {
+        "post_id": 3651,
+        "program_name": "Global Kids",
+        "borroughs": [],
+        "neighborhoods": [],
+        "grades": [],
+        "target_population": [],
+        "services": [],
+        "accepting_students": []
+    },
+    "Boys Club of New York": {
+        "post_id": 3652,
+        "program_name": "Boys Club of New York",
+        "borroughs": [],
+        "neighborhoods": [],
+        "grades": [],
+        "target_population": [],
+        "services": [],
+        "accepting_students": []
+    },
+    "New York University": {
+        "post_id": 3530,
+        "program_name": "New York University",
+        "borroughs": ["Brooklyn", "Bronx", "Manhattan", "Queens"],
+        "neighborhoods": ["Brooklyn - Bay Ridge ", "Brooklyn - Bedford Stuyvesant ", "Brooklyn - Bensonhurst ", "Brooklyn - Borough Park ", "Brooklyn - Brownsville ", "Brooklyn - Bushwick ", "Brooklyn - Canarsie", "Brooklyn - Coney Island", "Brooklyn - Crown Heights North", "Brooklyn - Crown Heights South", "Brooklyn - East Flatbush", "Brooklyn - East New York", "Brooklyn - Flatbush\/Midwood", "Brooklyn - Fort Greene\/Brooklyn Heights", "Brooklyn - Park Slope", "Brooklyn - Sheepshead Bay", "Brooklyn - Sunset Park", "Brooklyn - Williamsburg\/Greenpoint", "Bronx - Bedford Park", "Bronx - Concourse\/Highbridge", "Bronx - East Tremont", "Bronx - Hunts Point", "Bronx - Morrisania", "Bronx - Mott Haven", "Bronx - Pelham Parkway", "Bronx - Riverdale", "Bronx - Throgs Neck", "Bronx - Unionport\/Soundview", "Bronx - University Heights", "Bronx - Williamsbridge", "Manhattan - Battery Park\/Tribeca", "Manhattan - Central Harlem", "Manhattan - Chelsea\/Clinton", "Manhattan - East Harlem", "Manhattan - Greenwich Village", "Manhattan - Lower East Side", "Manhattan - Manhattanville", "Manhattan - Midtown Business District", "Manhattan - Murray Hill\/Stuyvesant", "Manhattan - Upper East Side", "Manhattan - Upper West Side", "Manhattan - Washington Heights", "Queens - Astoria", "Queens - Bayside", "Queens - Elmhurst\/Corona", "Queens - Flushing", "Queens - Fresh Meadows\/Briarwood", "Queens - Howard Beach", "Queens - Jackson Heights", "Queens - Jamaica\/St. Albans", "Queens - Queens Village", "Queens - Rego Park\/Forest Hills", "Queens - Ridgewood\/Glendale", "Queens - Sunnyside\/Woodside", "Queens - The Rockaways", "Queens - Woodhaven"],
+        "grades": ["College"],
+        "target_population": [],
+        "services": ["College Retention"],
+        "accepting_students": ["Open", "Limited"]
+    },
+    "Greater Chinatown Community Association": {
+        "post_id": 3654,
+        "program_name": "Greater Chinatown Community Association",
+        "borroughs": [],
+        "neighborhoods": [],
+        "grades": [],
+        "target_population": [],
+        "services": [],
+        "accepting_students": []
+    },
+    "YMCA of Greater NY": {
+        "post_id": 3655,
+        "program_name": "YMCA of Greater NY",
+        "borroughs": [],
+        "neighborhoods": [],
+        "grades": [],
+        "target_population": [],
+        "services": [],
+        "accepting_students": []
+    },
+    "SUNY Manhattan Educational Opportunity Center": {
+        "post_id": 3656,
+        "program_name": "SUNY Manhattan Educational Opportunity Center",
+        "borroughs": [],
+        "neighborhoods": [],
+        "grades": [],
+        "target_population": [],
+        "services": [],
+        "accepting_students": []
+    },
+    "Washington Heights Expeditionary Learning School": {
+        "post_id": 3657,
+        "program_name": "Washington Heights Expeditionary Learning School",
+        "borroughs": [],
+        "neighborhoods": [],
+        "grades": [],
+        "target_population": [],
+        "services": [],
+        "accepting_students": []
+    },
+    "Project Hospitality": {
+        "post_id": 3658,
+        "program_name": "Project Hospitality",
+        "borroughs": [],
+        "neighborhoods": [],
+        "grades": [],
+        "target_population": [],
+        "services": [],
+        "accepting_students": []
+    },
+    "College of Staten Island &#8211; Office of New Student Programs": {
+        "post_id": 3659,
+        "program_name": "College of Staten Island &#8211; Office of New Student Programs",
+        "borroughs": [],
+        "neighborhoods": [],
+        "grades": [],
+        "target_population": [],
+        "services": [],
+        "accepting_students": ["Open"]
+    },
+    "Phipps Neighborhoods": {
+        "post_id": 3661,
+        "program_name": "Phipps Neighborhoods",
+        "borroughs": [],
+        "neighborhoods": [],
+        "grades": [],
+        "target_population": [],
+        "services": [],
+        "accepting_students": []
+    },
+    "Achievement First Public Charter Schools": {
+        "post_id": 3592,
+        "program_name": "Achievement First Public Charter Schools",
+        "borroughs": ["Brooklyn"],
+        "neighborhoods": ["Brooklyn - Bay Ridge ", "Brooklyn - Bedford Stuyvesant ", "Brooklyn - Bensonhurst ", "Brooklyn - Borough Park ", "Brooklyn - Brownsville ", "Brooklyn - Bushwick ", "Brooklyn - Canarsie", "Brooklyn - Coney Island", "Brooklyn - Crown Heights North", "Brooklyn - Crown Heights South", "Brooklyn - East Flatbush", "Brooklyn - East New York", "Brooklyn - Flatbush\/Midwood", "Brooklyn - Fort Greene\/Brooklyn Heights", "Brooklyn - Park Slope", "Brooklyn - Sheepshead Bay", "Brooklyn - Sunset Park", "Brooklyn - Williamsburg\/Greenpoint"],
+        "grades": ["High School (9-12)", "College"],
+        "target_population": ["First generation college students", "Racial or ethnic minorities"],
+        "services": ["College Readiness", "College Matriculation", "College Retention", "Career Preparation"],
+        "accepting_students": []
+    },
+    "The Scholars&#8217; Academy": {
+        "post_id": 3632,
+        "program_name": "The Scholars&#8217; Academy",
+        "borroughs": [],
+        "neighborhoods": [],
+        "grades": ["High School (9-12)"],
+        "target_population": ["Academic Performance", "Students with IEP or other learning challenges", "High school equivalency", "First generation college students", "Gender"],
+        "services": ["College Readiness", "Career Preparation"],
+        "accepting_students": []
+    },
+    "Harlem RBI": {
+        "post_id": 3633,
+        "program_name": "Harlem RBI",
+        "borroughs": ["Bronx", "Manhattan"],
+        "neighborhoods": ["Bronx - Mott Haven", "Manhattan - East Harlem"],
+        "grades": ["Elementary school (K-5)", "Middle school (6-8)", "High School (9-12)", "College"],
+        "target_population": [],
+        "services": ["College Readiness", "College Matriculation", "College Retention", "Career Preparation"],
+        "accepting_students": ["Limited"]
+    },
+    "Graduate NYC": {
+        "post_id": 3634,
+        "program_name": "Graduate NYC",
+        "borroughs": [],
+        "neighborhoods": [],
+        "grades": [],
+        "target_population": [],
+        "services": ["Technical assistance to community based organizations", "A network for convening CBOs or programs that work on similar issues or work with overlapping sets of students", "Professional development for college access and success staff", "Training or awareness for students", "Research connected to this field for practitioner use", "Advocacy on behalf of the sector or segments of it", "Online resources for students and\/or staff"],
+        "accepting_students": []
+    },
+    "Grace Outreach": {
+        "post_id": 3635,
+        "program_name": "Grace Outreach",
+        "borroughs": ["Bronx"],
+        "neighborhoods": ["Bronx - Mott Haven"],
+        "grades": ["College"],
+        "target_population": ["Academic Performance", "High school equivalency", "Poverty guidelines\/socioeconomic status", "First generation college students", "Racial or ethnic minorities", "Gender"],
+        "services": ["College Readiness", "College Matriculation", "College Retention", "Career Preparation"],
+        "accepting_students": []
+    },
+    "East Harlem Tutorial Program": {
+        "post_id": 3636,
+        "program_name": "East Harlem Tutorial Program",
+        "borroughs": ["Brooklyn", "Bronx", "Manhattan", "Queens"],
+        "neighborhoods": ["Manhattan - Central Harlem", "Manhattan - East Harlem", "Manhattan - Upper East Side", "Manhattan - Washington Heights"],
+        "grades": [],
+        "target_population": ["English language learners", "Poverty guidelines\/socioeconomic status", "First generation college students", "Racial or ethnic minorities"],
+        "services": ["College Readiness", "College Matriculation", "College Retention", "Career Preparation"],
+        "accepting_students": ["Open"]
+    },
+    "College Access: Research &#038; Action (CARA)": {
+        "post_id": 3532,
+        "program_name": "College Access: Research &#038; Action (CARA)",
+        "borroughs": ["Brooklyn", "Bronx", "Manhattan", "Queens"],
+        "neighborhoods": ["Brooklyn - Bay Ridge ", "Brooklyn - Bedford Stuyvesant ", "Brooklyn - Bensonhurst ", "Brooklyn - Borough Park ", "Brooklyn - Brownsville ", "Brooklyn - Bushwick ", "Brooklyn - Canarsie", "Brooklyn - Coney Island", "Brooklyn - Crown Heights North", "Brooklyn - Crown Heights South", "Brooklyn - East Flatbush", "Brooklyn - East New York", "Brooklyn - Flatbush\/Midwood", "Brooklyn - Fort Greene\/Brooklyn Heights", "Brooklyn - Park Slope", "Brooklyn - Sheepshead Bay", "Brooklyn - Sunset Park", "Brooklyn - Williamsburg\/Greenpoint", "Bronx - Bedford Park", "Bronx - Concourse\/Highbridge", "Bronx - East Tremont", "Bronx - Hunts Point", "Bronx - Morrisania", "Bronx - Mott Haven", "Bronx - Pelham Parkway", "Bronx - Riverdale", "Bronx - Throgs Neck", "Bronx - Unionport\/Soundview", "Bronx - University Heights", "Bronx - Williamsbridge", "Manhattan - Battery Park\/Tribeca", "Manhattan - Central Harlem", "Manhattan - Chelsea\/Clinton", "Manhattan - East Harlem", "Manhattan - Greenwich Village", "Manhattan - Lower East Side", "Manhattan - Manhattanville", "Manhattan - Midtown Business District", "Manhattan - Murray Hill\/Stuyvesant", "Manhattan - Upper East Side", "Manhattan - Upper West Side", "Manhattan - Washington Heights", "Queens - Astoria", "Queens - Bayside", "Queens - Elmhurst\/Corona", "Queens - Flushing", "Queens - Fresh Meadows\/Briarwood", "Queens - Howard Beach", "Queens - Jackson Heights", "Queens - Jamaica\/St. Albans", "Queens - Queens Village", "Queens - Rego Park\/Forest Hills", "Queens - Ridgewood\/Glendale", "Queens - Sunnyside\/Woodside", "Queens - The Rockaways", "Queens - Woodhaven"],
+        "grades": ["College"],
+        "target_population": ["Poverty guidelines\/socioeconomic status", "First generation college students", "Racial or ethnic minorities"],
+        "services": ["College Retention"],
+        "accepting_students": ["Open"]
+    },
+    "College Access: Research and Action (CARA)": {
+        "post_id": 3638,
+        "program_name": "College Access: Research and Action (CARA)",
+        "borroughs": [],
+        "neighborhoods": [],
+        "grades": [],
+        "target_population": ["English language learners", "Poverty guidelines\/socioeconomic status", "First generation college students", "Racial or ethnic minorities"],
+        "services": ["Technical assistance to community based organizations", "A network for convening CBOs or programs that work on similar issues or work with overlapping sets of students", "Professional development for college access and success staff", "Training or awareness for students", "Research connected to this field for practitioner use", "Advocacy on behalf of the sector or segments of it", "Online resources for students and\/or staff"],
+        "accepting_students": []
+    },
+    "New Settlement Apartments": {
+        "post_id": 3639,
+        "program_name": "New Settlement Apartments",
+        "borroughs": ["Bronx"],
+        "neighborhoods": ["Bronx - Bedford Park", "Bronx - Concourse\/Highbridge", "Bronx - East Tremont", "Bronx - Hunts Point", "Bronx - Morrisania", "Bronx - Mott Haven", "Bronx - Pelham Parkway", "Bronx - Riverdale", "Bronx - Throgs Neck", "Bronx - University Heights", "Bronx - Williamsbridge"],
+        "grades": ["High School (9-12)", "College"],
+        "target_population": ["Disconnected youth\/Out of school youth", "High school equivalency", "Poverty guidelines\/socioeconomic status", "First generation college students", "Racial or ethnic minorities", "Gender"],
+        "services": ["College Matriculation", "College Retention"],
+        "accepting_students": ["Open"]
+    },
+    "BronxWorks": {
+        "post_id": 3581,
+        "program_name": "BronxWorks",
+        "borroughs": ["Bronx"],
+        "neighborhoods": ["Bronx - Bedford Park", "Bronx - Concourse\/Highbridge", "Bronx - East Tremont", "Bronx - Hunts Point", "Bronx - Morrisania", "Bronx - Mott Haven", "Bronx - Pelham Parkway", "Bronx - Riverdale", "Bronx - Throgs Neck", "Bronx - Unionport\/Soundview", "Bronx - University Heights", "Bronx - Williamsbridge"],
+        "grades": ["Middle school (6-8)", "High School (9-12)", "College"],
+        "target_population": [],
+        "services": [],
+        "accepting_students": ["Open"]
+    },
+    "Good Shepherd Services": {
+        "post_id": 3586,
+        "program_name": "Good Shepherd Services",
+        "borroughs": ["Brooklyn"],
+        "neighborhoods": ["Brooklyn - Bay Ridge ", "Brooklyn - Bedford Stuyvesant ", "Brooklyn - Bensonhurst ", "Brooklyn - Borough Park ", "Brooklyn - Brownsville ", "Brooklyn - Bushwick ", "Brooklyn - Canarsie", "Brooklyn - Coney Island", "Brooklyn - Crown Heights North", "Brooklyn - Crown Heights South", "Brooklyn - East Flatbush", "Brooklyn - East New York", "Brooklyn - Flatbush\/Midwood", "Brooklyn - Fort Greene\/Brooklyn Heights", "Brooklyn - Park Slope", "Brooklyn - Sheepshead Bay", "Brooklyn - Sunset Park", "Brooklyn - Williamsburg\/Greenpoint"],
+        "grades": ["High School (9-12)"],
+        "target_population": ["Disconnected youth\/Out of school youth", "Students with IEP or other learning challenges", "Poverty guidelines\/socioeconomic status", "First generation college students", "Racial or ethnic minorities"],
+        "services": ["College Readiness", "Career Preparation"],
+        "accepting_students": []
+    },
+    "Single Stop": {
+        "post_id": 3613,
+        "program_name": "Single Stop",
+        "borroughs": [],
+        "neighborhoods": [],
+        "grades": [],
+        "target_population": ["Poverty guidelines\/socioeconomic status", "First generation college students"],
+        "services": ["Technical assistance to community based organizations", "A network for convening CBOs or programs that work on similar issues or work with overlapping sets of students", "Professional development for college access and success staff", "Research connected to this field for practitioner use", "Advocacy on behalf of the sector or segments of it", "Online resources for students and\/or staff"],
+        "accepting_students": []
+    },
+    "Row New York": {
+        "post_id": 3644,
+        "program_name": "Row New York",
+        "borroughs": ["Brooklyn", "Bronx", "Manhattan", "Queens"],
+        "neighborhoods": ["Brooklyn - Canarsie", "Bronx - Concourse\/Highbridge", "Bronx - University Heights", "Manhattan - Washington Heights", "Queens - Astoria", "Queens - Elmhurst\/Corona", "Queens - Flushing", "Queens - Jackson Heights", "Queens - Jamaica\/St. Albans", "Queens - Sunnyside\/Woodside"],
+        "grades": ["Middle school (6-8)", "High School (9-12)", "College"],
+        "target_population": ["First generation college students", "Racial or ethnic minorities", "Gender"],
+        "services": ["College Readiness"],
+        "accepting_students": ["Limited"]
+    },
+    "Breakthrough New York": {
+        "post_id": 3645,
+        "program_name": "Breakthrough New York",
+        "borroughs": [],
+        "neighborhoods": [],
+        "grades": [],
+        "target_population": [],
+        "services": [],
+        "accepting_students": []
+    },
+    "Educational Alliance": {
+        "post_id": 3646,
+        "program_name": "Educational Alliance",
+        "borroughs": [],
+        "neighborhoods": [],
+        "grades": [],
+        "target_population": [],
+        "services": [],
+        "accepting_students": []
+    },
+    "Settlement Housing Fund, Inc.\/ DREAMS YouthBuild": {
+        "post_id": 3618,
+        "program_name": "Settlement Housing Fund, Inc.\/ DREAMS YouthBuild",
+        "borroughs": ["Brooklyn"],
+        "neighborhoods": ["Brooklyn - Bedford Stuyvesant ", "Brooklyn - Brownsville ", "Brooklyn - Bushwick ", "Brooklyn - Crown Heights North", "Brooklyn - Crown Heights South", "Brooklyn - East New York"],
+        "grades": [],
+        "target_population": ["Disconnected youth\/Out of school youth", "High school equivalency", "Poverty guidelines\/socioeconomic status", "Justice involved youth", "First generation college students"],
+        "services": ["College Readiness", "Career Preparation"],
+        "accepting_students": ["Open"]
+    },
+    "Queens Community House": {
+        "post_id": 3619,
+        "program_name": "Queens Community House",
+        "borroughs": ["Queens"],
+        "neighborhoods": ["Queens - Astoria", "Queens - Bayside", "Queens - Elmhurst\/Corona", "Queens - Flushing", "Queens - Fresh Meadows\/Briarwood", "Queens - Howard Beach", "Queens - Jackson Heights", "Queens - Jamaica\/St. Albans", "Queens - Queens Village", "Queens - Rego Park\/Forest Hills", "Queens - Ridgewood\/Glendale", "Queens - Sunnyside\/Woodside", "Queens - The Rockaways", "Queens - Woodhaven"],
+        "grades": ["High School (9-12)", "College"],
+        "target_population": ["English language learners", "Disconnected youth\/Out of school youth", "First generation college students", "Gender"],
+        "services": ["College Readiness", "College Matriculation", "College Retention"],
+        "accepting_students": ["Open", "Limited"]
+    },
+    "Stanley Isaacs Neigborhood Center": {
+        "post_id": 3620,
+        "program_name": "Stanley Isaacs Neigborhood Center",
+        "borroughs": ["Brooklyn", "Bronx", "Manhattan", "Queens"],
+        "neighborhoods": ["Manhattan - East Harlem"],
+        "grades": [],
+        "target_population": ["Disconnected youth\/Out of school youth", "Students with IEP or other learning challenges", "High school equivalency", "Justice involved youth", "Racial or ethnic minorities"],
+        "services": ["College Readiness", "Career Preparation"],
+        "accepting_students": ["Open"]
+    },
+    "Harlem Center for Education": {
+        "post_id": 3504,
+        "program_name": "Harlem Center for Education",
+        "borroughs": ["Brooklyn", "Bronx", "Manhattan", "Queens", "Staten Island"],
+        "neighborhoods": ["Brooklyn - Bay Ridge ", "Brooklyn - Bedford Stuyvesant ", "Brooklyn - Bensonhurst ", "Brooklyn - Borough Park ", "Brooklyn - Brownsville ", "Brooklyn - Bushwick ", "Brooklyn - Canarsie", "Brooklyn - Coney Island", "Brooklyn - Crown Heights North", "Brooklyn - Crown Heights South", "Brooklyn - East Flatbush", "Brooklyn - East New York", "Brooklyn - Flatbush\/Midwood", "Brooklyn - Fort Greene\/Brooklyn Heights", "Brooklyn - Park Slope", "Brooklyn - Sheepshead Bay", "Brooklyn - Sunset Park", "Brooklyn - Williamsburg\/Greenpoint", "Bronx - Bedford Park", "Bronx - Concourse\/Highbridge", "Bronx - East Tremont", "Bronx - Hunts Point", "Bronx - Morrisania", "Bronx - Mott Haven", "Bronx - Pelham Parkway", "Bronx - Riverdale", "Bronx - Throgs Neck", "Bronx - Unionport\/Soundview", "Bronx - University Heights", "Bronx - Williamsbridge", "Manhattan - Battery Park\/Tribeca", "Manhattan - Central Harlem", "Manhattan - Chelsea\/Clinton", "Manhattan - East Harlem", "Manhattan - Greenwich Village", "Manhattan - Lower East Side", "Manhattan - Manhattanville", "Manhattan - Midtown Business District", "Manhattan - Murray Hill\/Stuyvesant", "Manhattan - Upper East Side", "Manhattan - Upper West Side", "Manhattan - Washington Heights", "Queens - Astoria", "Queens - Bayside", "Queens - Elmhurst\/Corona", "Queens - Flushing", "Queens - Fresh Meadows\/Briarwood", "Queens - Howard Beach", "Queens - Jackson Heights", "Queens - Jamaica\/St. Albans", "Queens - Queens Village", "Queens - Rego Park\/Forest Hills", "Queens - Ridgewood\/Glendale", "Queens - Sunnyside\/Woodside", "Queens - The Rockaways", "Queens - Woodhaven", "Staten Island - South Beach", "Staten Island - St. George", "Staten Island - Tottenville"],
+        "grades": [],
+        "target_population": ["High school equivalency", "First generation college students"],
+        "services": ["College Matriculation"],
+        "accepting_students": ["Open"]
+    },
+    "College Access: Research &#038; Action": {
+        "post_id": 3622,
+        "program_name": "College Access: Research &#038; Action",
+        "borroughs": [],
+        "neighborhoods": [],
+        "grades": [],
+        "target_population": ["First generation college students"],
+        "services": ["Professional development for college access and success staff", "Training or awareness for students", "Research connected to this field for practitioner use", "Advocacy on behalf of the sector or segments of it", "Online resources for students and\/or staff"],
+        "accepting_students": []
+    },
+    "REACH Prep": {
+        "post_id": 3623,
+        "program_name": "REACH Prep",
+        "borroughs": ["Bronx"],
+        "neighborhoods": ["Bronx - Bedford Park", "Bronx - Concourse\/Highbridge", "Bronx - East Tremont", "Bronx - Hunts Point", "Bronx - Morrisania", "Bronx - Mott Haven", "Bronx - Pelham Parkway", "Bronx - Riverdale", "Bronx - Throgs Neck", "Bronx - Unionport\/Soundview", "Bronx - University Heights", "Bronx - Williamsbridge"],
+        "grades": ["Elementary school (K-5)", "Middle school (6-8)", "High School (9-12)", "College"],
+        "target_population": ["Academic Performance", "Poverty guidelines\/socioeconomic status", "First generation college students", "Racial or ethnic minorities"],
+        "services": ["College Readiness", "College Matriculation", "College Retention", "Career Preparation"],
+        "accepting_students": ["Limited"]
+    },
+    "SUNY Bronx Educational Opportunity Center": {
+        "post_id": 3624,
+        "program_name": "SUNY Bronx Educational Opportunity Center",
+        "borroughs": ["Bronx"],
+        "neighborhoods": ["Bronx - Bedford Park", "Bronx - Concourse\/Highbridge", "Bronx - East Tremont", "Bronx - Hunts Point", "Bronx - Morrisania", "Bronx - Mott Haven", "Bronx - Pelham Parkway", "Bronx - Riverdale", "Bronx - Throgs Neck", "Bronx - Unionport\/Soundview", "Bronx - University Heights", "Bronx - Williamsbridge"],
+        "grades": ["High School (9-12)"],
+        "target_population": ["Academic Performance", "English language learners", "Disconnected youth\/Out of school youth", "High school equivalency", "Poverty guidelines\/socioeconomic status", "Justice involved youth", "First generation college students"],
+        "services": ["College Readiness", "Career Preparation"],
+        "accepting_students": ["Open", "Limited"]
+    },
+    "SUNY Brooklyn Educational Opportunity Center (EOC)": {
+        "post_id": 3560,
+        "program_name": "SUNY Brooklyn Educational Opportunity Center (EOC)",
+        "borroughs": ["Brooklyn", "Staten Island"],
+        "neighborhoods": ["Brooklyn - Bay Ridge ", "Brooklyn - Bedford Stuyvesant ", "Brooklyn - Bensonhurst ", "Brooklyn - Borough Park ", "Brooklyn - Brownsville ", "Brooklyn - Bushwick ", "Brooklyn - Canarsie", "Brooklyn - Coney Island", "Brooklyn - Crown Heights North", "Brooklyn - Crown Heights South", "Brooklyn - East Flatbush", "Brooklyn - East New York", "Brooklyn - Flatbush\/Midwood", "Brooklyn - Fort Greene\/Brooklyn Heights", "Brooklyn - Park Slope", "Brooklyn - Sheepshead Bay", "Brooklyn - Sunset Park", "Brooklyn - Williamsburg\/Greenpoint", "Staten Island - South Beach", "Staten Island - St. George", "Staten Island - Tottenville"],
+        "grades": ["College"],
+        "target_population": ["Academic Performance", "English language learners", "High school equivalency", "Poverty guidelines\/socioeconomic status", "First generation college students", "Racial or ethnic minorities"],
+        "services": ["College Readiness", "College Retention", "Career Preparation"],
+        "accepting_students": ["Open"]
+    },
+    "CollegeSpring": {
+        "post_id": 3626,
+        "program_name": "CollegeSpring",
+        "borroughs": ["Brooklyn", "Bronx", "Manhattan"],
+        "neighborhoods": ["Manhattan - East Harlem", "Manhattan - Lower East Side"],
+        "grades": ["High School (9-12)", "College"],
+        "target_population": ["Academic Performance", "English language learners", "First generation college students", "Racial or ethnic minorities"],
+        "services": ["College Readiness", "College Retention"],
+        "accepting_students": ["Open"]
+    },
+    "Summer Search": {
+        "post_id": 3627,
+        "program_name": "Summer Search",
+        "borroughs": ["Brooklyn", "Bronx", "Manhattan", "Queens"],
+        "neighborhoods": ["Brooklyn - Bedford Stuyvesant ", "Brooklyn - Brownsville ", "Brooklyn - Bushwick ", "Brooklyn - Canarsie", "Brooklyn - Coney Island", "Brooklyn - Crown Heights North", "Brooklyn - East Flatbush", "Brooklyn - East New York", "Brooklyn - Flatbush\/Midwood", "Bronx - Mott Haven", "Bronx - University Heights", "Manhattan - East Harlem", "Manhattan - Murray Hill\/Stuyvesant", "Queens - Elmhurst\/Corona", "Queens - Flushing", "Queens - Jamaica\/St. Albans"],
+        "grades": ["High School (9-12)", "College"],
+        "target_population": ["High school equivalency", "First generation college students", "Racial or ethnic minorities"],
+        "services": ["College Readiness", "College Matriculation", "College Retention", "Career Preparation"],
+        "accepting_students": ["Limited"]
+    },
+    "Legal Outreach, Inc.": {
+        "post_id": 3628,
+        "program_name": "Legal Outreach, Inc.",
+        "borroughs": ["Brooklyn", "Bronx", "Manhattan", "Queens"],
+        "neighborhoods": ["Brooklyn - Bedford Stuyvesant ", "Brooklyn - Crown Heights North", "Brooklyn - East Flatbush", "Bronx - East Tremont", "Bronx - Morrisania", "Manhattan - Central Harlem", "Manhattan - East Harlem", "Manhattan - Manhattanville", "Manhattan - Washington Heights", "Queens - Astoria", "Queens - Elmhurst\/Corona", "Queens - Jamaica\/St. Albans"],
+        "grades": ["High School (9-12)"],
+        "target_population": ["First generation college students", "Racial or ethnic minorities"],
+        "services": ["College Readiness", "College Matriculation", "College Retention"],
+        "accepting_students": ["Limited"]
+    },
+    "Kaplan Educational Foundation": {
+        "post_id": 3629,
+        "program_name": "Kaplan Educational Foundation",
+        "borroughs": ["Brooklyn", "Bronx", "Manhattan", "Queens", "Staten Island"],
+        "neighborhoods": ["Brooklyn - Bay Ridge ", "Brooklyn - Bedford Stuyvesant ", "Brooklyn - Bensonhurst ", "Brooklyn - Borough Park ", "Brooklyn - Brownsville ", "Brooklyn - Bushwick ", "Brooklyn - Canarsie", "Brooklyn - Coney Island", "Brooklyn - Crown Heights North", "Brooklyn - Crown Heights South", "Brooklyn - East Flatbush", "Brooklyn - East New York", "Brooklyn - Flatbush\/Midwood", "Brooklyn - Fort Greene\/Brooklyn Heights", "Brooklyn - Park Slope", "Brooklyn - Sheepshead Bay", "Brooklyn - Sunset Park", "Brooklyn - Williamsburg\/Greenpoint", "Bronx - Bedford Park", "Bronx - Concourse\/Highbridge", "Bronx - East Tremont", "Bronx - Hunts Point", "Bronx - Morrisania", "Bronx - Mott Haven", "Bronx - Pelham Parkway", "Bronx - Riverdale", "Bronx - Throgs Neck", "Bronx - Unionport\/Soundview", "Bronx - University Heights", "Bronx - Williamsbridge", "Manhattan - Battery Park\/Tribeca", "Manhattan - Central Harlem", "Manhattan - Chelsea\/Clinton", "Manhattan - East Harlem", "Manhattan - Greenwich Village", "Manhattan - Lower East Side", "Manhattan - Manhattanville", "Manhattan - Midtown Business District", "Manhattan - Murray Hill\/Stuyvesant", "Manhattan - Upper East Side", "Manhattan - Upper West Side", "Manhattan - Washington Heights", "Queens - Astoria", "Queens - Bayside", "Queens - Elmhurst\/Corona", "Queens - Flushing", "Queens - Fresh Meadows\/Briarwood", "Queens - Howard Beach", "Queens - Jackson Heights", "Queens - Jamaica\/St. Albans", "Queens - Queens Village", "Queens - Rego Park\/Forest Hills", "Queens - Ridgewood\/Glendale", "Queens - Sunnyside\/Woodside", "Queens - The Rockaways", "Queens - Woodhaven", "Staten Island - South Beach", "Staten Island - St. George", "Staten Island - Tottenville"],
+        "grades": ["College"],
+        "target_population": ["Academic Performance", "High school equivalency", "Poverty guidelines\/socioeconomic status", "First generation college students", "Racial or ethnic minorities"],
+        "services": ["College Readiness", "College Matriculation", "College Retention", "Career Preparation"],
+        "accepting_students": ["Limited"]
+    },
+    "KIPP NYC": {
+        "post_id": 3575,
+        "program_name": "KIPP NYC",
+        "borroughs": ["Bronx"],
+        "neighborhoods": ["Bronx - Bedford Park", "Bronx - Concourse\/Highbridge", "Bronx - East Tremont", "Bronx - Hunts Point", "Bronx - Morrisania", "Bronx - Mott Haven", "Bronx - Pelham Parkway", "Bronx - Riverdale", "Bronx - Throgs Neck", "Bronx - Unionport\/Soundview", "Bronx - University Heights", "Bronx - Williamsbridge"],
+        "grades": ["High School (9-12)"],
+        "target_population": ["Students with IEP or other learning challenges", "Poverty guidelines\/socioeconomic status", "First generation college students", "Racial or ethnic minorities"],
+        "services": ["College Readiness", "College Matriculation", "Career Preparation"],
+        "accepting_students": ["Open"]
+    },
+    "PowerPlay NYC": {
+        "post_id": 3631,
+        "program_name": "PowerPlay NYC",
+        "borroughs": ["Brooklyn", "Bronx", "Manhattan", "Queens", "Staten Island"],
+        "neighborhoods": ["Brooklyn - Bedford Stuyvesant ", "Brooklyn - Bushwick ", "Brooklyn - Canarsie", "Brooklyn - Crown Heights North", "Brooklyn - East Flatbush", "Bronx - Bedford Park", "Bronx - East Tremont", "Bronx - Hunts Point", "Bronx - Mott Haven", "Bronx - Riverdale", "Bronx - Throgs Neck", "Manhattan - Chelsea\/Clinton", "Manhattan - Lower East Side", "Manhattan - Washington Heights", "Queens - Astoria", "Queens - Elmhurst\/Corona", "Queens - Flushing", "Queens - Jamaica\/St. Albans", "Queens - Rego Park\/Forest Hills", "Queens - Ridgewood\/Glendale", "Queens - Sunnyside\/Woodside", "Staten Island - South Beach"],
+        "grades": ["Elementary school (K-5)", "Middle school (6-8)", "High School (9-12)"],
+        "target_population": ["Poverty guidelines\/socioeconomic status", "First generation college students", "Racial or ethnic minorities", "Gender"],
+        "services": ["College Readiness", "College Matriculation", "Career Preparation"],
+        "accepting_students": ["Limited"]
+    },
+    "Directions for Our Youth, Inc. (DFOY)": {
+        "post_id": 3602,
+        "program_name": "Directions for Our Youth, Inc. (DFOY)",
+        "borroughs": ["Brooklyn", "Bronx", "Manhattan"],
+        "neighborhoods": ["Brooklyn - East New York", "Bronx - Morrisania"],
+        "grades": ["Elementary school (K-5)", "Middle school (6-8)", "High School (9-12)"],
+        "target_population": [],
+        "services": [],
+        "accepting_students": ["Open"]
+    },
+    "The Children&#8217;s Aid Society": {
+        "post_id": 3537,
+        "program_name": "The Children&#8217;s Aid Society",
+        "borroughs": ["Brooklyn", "Bronx", "Manhattan"],
+        "neighborhoods": ["Brooklyn - Bay Ridge ", "Brooklyn - Bedford Stuyvesant ", "Brooklyn - Bensonhurst ", "Brooklyn - Borough Park ", "Brooklyn - Brownsville ", "Brooklyn - Bushwick ", "Brooklyn - Canarsie", "Brooklyn - Coney Island", "Brooklyn - Crown Heights North", "Brooklyn - Crown Heights South", "Brooklyn - East Flatbush", "Brooklyn - East New York", "Brooklyn - Flatbush\/Midwood", "Brooklyn - Fort Greene\/Brooklyn Heights", "Brooklyn - Park Slope", "Brooklyn - Sheepshead Bay", "Brooklyn - Sunset Park", "Brooklyn - Williamsburg\/Greenpoint", "Bronx - Bedford Park", "Bronx - Concourse\/Highbridge", "Bronx - East Tremont", "Bronx - Hunts Point", "Bronx - Morrisania", "Bronx - Mott Haven", "Bronx - Pelham Parkway", "Bronx - Riverdale", "Bronx - Throgs Neck", "Bronx - Unionport\/Soundview", "Bronx - University Heights", "Bronx - Williamsbridge", "Manhattan - Battery Park\/Tribeca", "Manhattan - Central Harlem", "Manhattan - Chelsea\/Clinton", "Manhattan - East Harlem", "Manhattan - Greenwich Village", "Manhattan - Lower East Side", "Manhattan - Manhattanville", "Manhattan - Midtown Business District", "Manhattan - Murray Hill\/Stuyvesant", "Manhattan - Upper East Side", "Manhattan - Upper West Side", "Manhattan - Washington Heights"],
+        "grades": ["College"],
+        "target_population": ["Poverty guidelines\/socioeconomic status", "First generation college students", "Racial or ethnic minorities"],
+        "services": ["College Readiness", "College Matriculation", "College Retention", "Career Preparation"],
+        "accepting_students": ["Limited"]
+    },
+    "Union Settlement Association, Inc.": {
+        "post_id": 3604,
+        "program_name": "Union Settlement Association, Inc.",
+        "borroughs": ["Manhattan"],
+        "neighborhoods": ["Manhattan - East Harlem"],
+        "grades": ["Middle school (6-8)", "High School (9-12)"],
+        "target_population": ["Academic Performance", "English language learners", "Students with IEP or other learning challenges", "High school equivalency", "Poverty guidelines\/socioeconomic status", "First generation college students", "Racial or ethnic minorities"],
+        "services": ["College Readiness", "College Retention", "Career Preparation"],
+        "accepting_students": ["Open"]
+    },
+    "New Yorkers For Children": {
+        "post_id": 3605,
+        "program_name": "New Yorkers For Children",
+        "borroughs": ["Brooklyn", "Bronx", "Manhattan"],
+        "neighborhoods": ["Brooklyn - East New York", "Brooklyn - Fort Greene\/Brooklyn Heights", "Brooklyn - Williamsburg\/Greenpoint", "Bronx - Bedford Park", "Bronx - Morrisania", "Bronx - Unionport\/Soundview", "Manhattan - Chelsea\/Clinton", "Manhattan - East Harlem"],
+        "grades": ["College"],
+        "target_population": ["Poverty guidelines\/socioeconomic status", "First generation college students"],
+        "services": ["College Retention", "Career Preparation"],
+        "accepting_students": ["Limited"]
+    },
+    "Mosholu Montefiore Community Center": {
+        "post_id": 3606,
+        "program_name": "Mosholu Montefiore Community Center",
+        "borroughs": ["Bronx"],
+        "neighborhoods": ["Bronx - Bedford Park", "Bronx - Concourse\/Highbridge", "Bronx - East Tremont", "Bronx - Hunts Point", "Bronx - Morrisania", "Bronx - Mott Haven", "Bronx - Pelham Parkway", "Bronx - Riverdale", "Bronx - Throgs Neck", "Bronx - Unionport\/Soundview", "Bronx - University Heights", "Bronx - Williamsbridge"],
+        "grades": ["High School (9-12)", "College"],
+        "target_population": ["Academic Performance", "Disconnected youth\/Out of school youth", "Students with IEP or other learning challenges", "High school equivalency", "Poverty guidelines\/socioeconomic status", "First generation college students", "Racial or ethnic minorities"],
+        "services": ["College Readiness", "College Retention", "Career Preparation"],
+        "accepting_students": ["Open"]
+    },
+    "John Jay College": {
+        "post_id": 3607,
+        "program_name": "John Jay College",
+        "borroughs": [],
+        "neighborhoods": [],
+        "grades": ["High School (9-12)"],
+        "target_population": ["Academic Performance", "Racial or ethnic minorities"],
+        "services": ["College Readiness", "Career Preparation"],
+        "accepting_students": ["Limited"]
+    },
+    "Groundwork for Success": {
+        "post_id": 3608,
+        "program_name": "Groundwork for Success",
+        "borroughs": ["Brooklyn"],
+        "neighborhoods": ["Brooklyn - Brownsville ", "Brooklyn - East New York"],
+        "grades": ["High School (9-12)"],
+        "target_population": ["Academic Performance", "Poverty guidelines\/socioeconomic status", "First generation college students", "Racial or ethnic minorities"],
+        "services": ["College Readiness", "Career Preparation"],
+        "accepting_students": ["Open"]
+    },
+    "Per Scholas": {
+        "post_id": 3609,
+        "program_name": "Per Scholas",
+        "borroughs": ["Bronx"],
+        "neighborhoods": ["Bronx - Bedford Park", "Bronx - Concourse\/Highbridge", "Bronx - East Tremont", "Bronx - Hunts Point", "Bronx - Morrisania", "Bronx - Mott Haven", "Bronx - Pelham Parkway", "Bronx - Riverdale", "Bronx - Throgs Neck", "Bronx - Unionport\/Soundview", "Bronx - University Heights", "Bronx - Williamsbridge"],
+        "grades": ["College"],
+        "target_population": ["Disconnected youth\/Out of school youth", "High school equivalency", "Poverty guidelines\/socioeconomic status", "Justice involved youth", "First generation college students", "Racial or ethnic minorities"],
+        "services": ["Career Preparation"],
+        "accepting_students": []
+    },
+    "uAspire": {
+        "post_id": 3610,
+        "program_name": "uAspire",
+        "borroughs": [],
+        "neighborhoods": [],
+        "grades": ["High School (9-12)", "College"],
+        "target_population": ["Poverty guidelines\/socioeconomic status", "First generation college students"],
+        "services": ["College Readiness", "College Matriculation", "College Retention"],
+        "accepting_students": ["Open"]
+    },
+    "WHEDco": {
+        "post_id": 3611,
+        "program_name": "WHEDco",
+        "borroughs": ["Bronx", "Manhattan"],
+        "neighborhoods": ["Bronx - Concourse\/Highbridge"],
+        "grades": ["High School (9-12)"],
+        "target_population": [],
+        "services": ["College Readiness", "College Matriculation", "College Retention", "Career Preparation"],
+        "accepting_students": ["Limited"]
+    },
+    "Turning Point Brooklyn": {
+        "post_id": 3612,
+        "program_name": "Turning Point Brooklyn",
+        "borroughs": ["Brooklyn"],
+        "neighborhoods": ["Brooklyn - Sunset Park"],
+        "grades": [],
+        "target_population": ["English language learners", "Disconnected youth\/Out of school youth", "Students with IEP or other learning challenges", "High school equivalency", "Poverty guidelines\/socioeconomic status", "First generation college students", "Racial or ethnic minorities"],
+        "services": ["College Readiness", "College Retention", "Career Preparation"],
+        "accepting_students": []
+    },
+    "United Activities Unlimited, Inc.": {
+        "post_id": 3614,
+        "program_name": "United Activities Unlimited, Inc.",
+        "borroughs": ["Staten Island"],
+        "neighborhoods": ["Staten Island - South Beach", "Staten Island - St. George"],
+        "grades": ["High School (9-12)"],
+        "target_population": ["Academic Performance", "English language learners", "Disconnected youth\/Out of school youth", "Students with IEP or other learning challenges", "High school equivalency", "Poverty guidelines\/socioeconomic status", "Justice involved youth", "Racial or ethnic minorities", "Gender"],
+        "services": ["College Readiness", "College Matriculation", "College Retention", "Career Preparation"],
+        "accepting_students": ["Open", "Limited"]
+    },
+    "CAMBA, Inc.": {
+        "post_id": 3615,
+        "program_name": "CAMBA, Inc.",
+        "borroughs": ["Brooklyn"],
+        "neighborhoods": ["Brooklyn - East Flatbush", "Brooklyn - Flatbush\/Midwood"],
+        "grades": ["High School (9-12)"],
+        "target_population": ["Academic Performance", "Students with IEP or other learning challenges", "Poverty guidelines\/socioeconomic status", "Racial or ethnic minorities"],
+        "services": ["College Readiness"],
+        "accepting_students": ["Open"]
+    },
+    "International Rescue Committee": {
+        "post_id": 3616,
+        "program_name": "International Rescue Committee",
+        "borroughs": ["Brooklyn", "Bronx", "Manhattan", "Queens", "Staten Island"],
+        "neighborhoods": ["Brooklyn - Bay Ridge ", "Brooklyn - Bedford Stuyvesant ", "Brooklyn - Bensonhurst ", "Brooklyn - Borough Park ", "Brooklyn - Brownsville ", "Brooklyn - Bushwick ", "Brooklyn - Canarsie", "Brooklyn - Coney Island", "Brooklyn - Crown Heights North", "Brooklyn - Crown Heights South", "Brooklyn - East Flatbush", "Brooklyn - East New York", "Brooklyn - Flatbush\/Midwood", "Brooklyn - Fort Greene\/Brooklyn Heights", "Brooklyn - Park Slope", "Brooklyn - Sheepshead Bay", "Brooklyn - Sunset Park", "Brooklyn - Williamsburg\/Greenpoint", "Bronx - Bedford Park", "Bronx - Concourse\/Highbridge", "Bronx - East Tremont", "Bronx - Hunts Point", "Bronx - Morrisania", "Bronx - Mott Haven", "Bronx - Pelham Parkway", "Bronx - Riverdale", "Bronx - Throgs Neck", "Bronx - Unionport\/Soundview", "Bronx - University Heights", "Bronx - Williamsbridge", "Manhattan - Central Harlem", "Manhattan - East Harlem", "Manhattan - Lower East Side", "Manhattan - Manhattanville", "Manhattan - Washington Heights", "Queens - Astoria", "Queens - Bayside", "Queens - Elmhurst\/Corona", "Queens - Flushing", "Queens - Fresh Meadows\/Briarwood", "Queens - Howard Beach", "Queens - Jackson Heights", "Queens - Jamaica\/St. Albans", "Queens - Queens Village", "Queens - Rego Park\/Forest Hills", "Queens - Ridgewood\/Glendale", "Queens - Sunnyside\/Woodside", "Queens - The Rockaways", "Queens - Woodhaven", "Staten Island - St. George"],
+        "grades": ["Elementary school (K-5)", "Middle school (6-8)", "High School (9-12)"],
+        "target_population": ["English language learners"],
+        "services": ["College Readiness", "College Matriculation", "Career Preparation"],
+        "accepting_students": ["Limited"]
+    },
+    "Bottom Line": {
+        "post_id": 3515,
+        "program_name": "Bottom Line",
+        "borroughs": ["Brooklyn", "Bronx", "Manhattan", "Queens", "Staten Island"],
+        "neighborhoods": ["Brooklyn - Bay Ridge ", "Brooklyn - Bedford Stuyvesant ", "Brooklyn - Bensonhurst ", "Brooklyn - Borough Park ", "Brooklyn - Brownsville ", "Brooklyn - Bushwick ", "Brooklyn - Canarsie", "Brooklyn - Coney Island", "Brooklyn - Crown Heights North", "Brooklyn - Crown Heights South", "Brooklyn - East Flatbush", "Brooklyn - East New York", "Brooklyn - Flatbush\/Midwood", "Brooklyn - Fort Greene\/Brooklyn Heights", "Brooklyn - Park Slope", "Brooklyn - Sheepshead Bay", "Brooklyn - Sunset Park", "Brooklyn - Williamsburg\/Greenpoint", "Bronx - Bedford Park", "Bronx - Concourse\/Highbridge", "Bronx - East Tremont", "Bronx - Hunts Point", "Bronx - Morrisania", "Bronx - Mott Haven", "Bronx - Pelham Parkway", "Bronx - Riverdale", "Bronx - Throgs Neck", "Bronx - Unionport\/Soundview", "Bronx - University Heights", "Bronx - Williamsbridge", "Manhattan - Battery Park\/Tribeca", "Manhattan - Central Harlem", "Manhattan - Chelsea\/Clinton", "Manhattan - East Harlem", "Manhattan - Greenwich Village", "Manhattan - Lower East Side", "Manhattan - Manhattanville", "Manhattan - Midtown Business District", "Manhattan - Murray Hill\/Stuyvesant", "Manhattan - Upper East Side", "Manhattan - Upper West Side", "Manhattan - Washington Heights", "Queens - Astoria", "Queens - Bayside", "Queens - Elmhurst\/Corona", "Queens - Flushing", "Queens - Fresh Meadows\/Briarwood", "Queens - Howard Beach", "Queens - Jackson Heights", "Queens - Jamaica\/St. Albans", "Queens - Queens Village", "Queens - Rego Park\/Forest Hills", "Queens - Ridgewood\/Glendale", "Queens - Sunnyside\/Woodside", "Queens - The Rockaways", "Queens - Woodhaven", "Staten Island - South Beach", "Staten Island - St. George", "Staten Island - Tottenville"],
+        "grades": ["College"],
+        "target_population": ["Poverty guidelines\/socioeconomic status", "First generation college students"],
+        "services": ["College Matriculation", "College Retention"],
+        "accepting_students": ["Closed"]
+    },
+    "SCO Family of Services\/Center for Family Life": {
+        "post_id": 3590,
+        "program_name": "SCO Family of Services\/Center for Family Life",
+        "borroughs": ["Brooklyn"],
+        "neighborhoods": ["Brooklyn - Bay Ridge ", "Brooklyn - Bedford Stuyvesant ", "Brooklyn - Bensonhurst ", "Brooklyn - Borough Park ", "Brooklyn - Brownsville ", "Brooklyn - Bushwick ", "Brooklyn - Canarsie", "Brooklyn - Coney Island", "Brooklyn - Crown Heights North", "Brooklyn - Crown Heights South", "Brooklyn - East Flatbush", "Brooklyn - East New York", "Brooklyn - Flatbush\/Midwood", "Brooklyn - Fort Greene\/Brooklyn Heights", "Brooklyn - Park Slope", "Brooklyn - Sheepshead Bay", "Brooklyn - Sunset Park", "Brooklyn - Williamsburg\/Greenpoint"],
+        "grades": ["High School (9-12)", "College"],
+        "target_population": ["First generation college students"],
+        "services": ["College Readiness", "College Matriculation", "College Retention", "Career Preparation"],
+        "accepting_students": ["Open"]
+    },
+    "Center for Academic Writing Success": {
+        "post_id": 3591,
+        "program_name": "Center for Academic Writing Success",
+        "borroughs": ["Brooklyn"],
+        "neighborhoods": ["Brooklyn - Bay Ridge ", "Brooklyn - Bedford Stuyvesant ", "Brooklyn - Bensonhurst ", "Brooklyn - Borough Park ", "Brooklyn - Brownsville ", "Brooklyn - Bushwick ", "Brooklyn - Canarsie", "Brooklyn - Coney Island", "Brooklyn - Crown Heights North", "Brooklyn - Crown Heights South", "Brooklyn - East Flatbush", "Brooklyn - East New York", "Brooklyn - Flatbush\/Midwood", "Brooklyn - Fort Greene\/Brooklyn Heights", "Brooklyn - Park Slope", "Brooklyn - Sheepshead Bay", "Brooklyn - Sunset Park", "Brooklyn - Williamsburg\/Greenpoint"],
+        "grades": ["College"],
+        "target_population": ["Academic Performance", "English language learners", "Students with IEP or other learning challenges", "First generation college students", "Racial or ethnic minorities", "Gender"],
+        "services": ["College Matriculation", "College Retention"],
+        "accepting_students": ["Open"]
+    },
+    "Arab-American Family Support Center": {
+        "post_id": 3593,
+        "program_name": "Arab-American Family Support Center",
+        "borroughs": ["Brooklyn"],
+        "neighborhoods": ["Brooklyn - Bay Ridge ", "Brooklyn - Bedford Stuyvesant ", "Brooklyn - Bensonhurst ", "Brooklyn - Borough Park ", "Brooklyn - Brownsville ", "Brooklyn - Bushwick ", "Brooklyn - Canarsie", "Brooklyn - Coney Island", "Brooklyn - Crown Heights North", "Brooklyn - Crown Heights South", "Brooklyn - East Flatbush", "Brooklyn - East New York", "Brooklyn - Flatbush\/Midwood", "Brooklyn - Fort Greene\/Brooklyn Heights", "Brooklyn - Park Slope", "Brooklyn - Sheepshead Bay", "Brooklyn - Sunset Park", "Brooklyn - Williamsburg\/Greenpoint"],
+        "grades": ["Elementary school (K-5)", "Middle school (6-8)", "High School (9-12)"],
+        "target_population": ["Academic Performance", "English language learners", "Students with IEP or other learning challenges", "Poverty guidelines\/socioeconomic status", "Racial or ethnic minorities"],
+        "services": ["College Readiness", "College Matriculation", "College Retention", "Career Preparation"],
+        "accepting_students": ["Open"]
+    },
+    "Brooklyn College": {
+        "post_id": 3594,
+        "program_name": "Brooklyn College",
+        "borroughs": ["Brooklyn"],
+        "neighborhoods": ["Brooklyn - Bay Ridge ", "Brooklyn - Bedford Stuyvesant ", "Brooklyn - Bensonhurst ", "Brooklyn - Borough Park ", "Brooklyn - Brownsville ", "Brooklyn - Bushwick ", "Brooklyn - Canarsie", "Brooklyn - Coney Island", "Brooklyn - Crown Heights North", "Brooklyn - Crown Heights South", "Brooklyn - East Flatbush", "Brooklyn - East New York", "Brooklyn - Flatbush\/Midwood", "Brooklyn - Fort Greene\/Brooklyn Heights", "Brooklyn - Park Slope", "Brooklyn - Sheepshead Bay", "Brooklyn - Sunset Park", "Brooklyn - Williamsburg\/Greenpoint"],
+        "grades": [],
+        "target_population": [],
+        "services": [],
+        "accepting_students": []
+    },
+    "Kingsborough Community College": {
+        "post_id": 3595,
+        "program_name": "Kingsborough Community College",
+        "borroughs": ["Brooklyn"],
+        "neighborhoods": ["Brooklyn - Bay Ridge ", "Brooklyn - Bedford Stuyvesant ", "Brooklyn - Bensonhurst ", "Brooklyn - Borough Park ", "Brooklyn - Brownsville ", "Brooklyn - Bushwick ", "Brooklyn - Canarsie", "Brooklyn - Coney Island", "Brooklyn - Crown Heights North", "Brooklyn - Crown Heights South", "Brooklyn - East Flatbush", "Brooklyn - East New York", "Brooklyn - Flatbush\/Midwood", "Brooklyn - Fort Greene\/Brooklyn Heights", "Brooklyn - Park Slope", "Brooklyn - Sheepshead Bay", "Brooklyn - Sunset Park", "Brooklyn - Williamsburg\/Greenpoint"],
+        "grades": ["High School (9-12)"],
+        "target_population": ["Academic Performance", "English language learners", "Disconnected youth\/Out of school youth", "Students with IEP or other learning challenges"],
+        "services": ["College Readiness", "Career Preparation"],
+        "accepting_students": ["Open"]
+    },
+    "Let&#8217;s Get Ready": {
+        "post_id": 3526,
+        "program_name": "Let&#8217;s Get Ready",
+        "borroughs": ["Brooklyn", "Bronx", "Manhattan", "Queens"],
+        "neighborhoods": ["Brooklyn - Bay Ridge ", "Brooklyn - Bedford Stuyvesant ", "Brooklyn - Bensonhurst ", "Brooklyn - Borough Park ", "Brooklyn - Brownsville ", "Brooklyn - Bushwick ", "Brooklyn - Canarsie", "Brooklyn - Coney Island", "Brooklyn - Crown Heights North", "Brooklyn - Crown Heights South", "Brooklyn - East Flatbush", "Brooklyn - East New York", "Brooklyn - Flatbush\/Midwood", "Brooklyn - Fort Greene\/Brooklyn Heights", "Brooklyn - Park Slope", "Brooklyn - Sheepshead Bay", "Brooklyn - Sunset Park", "Brooklyn - Williamsburg\/Greenpoint", "Bronx - Bedford Park", "Bronx - Concourse\/Highbridge", "Bronx - East Tremont", "Bronx - Hunts Point", "Bronx - Morrisania", "Bronx - Mott Haven", "Bronx - Pelham Parkway", "Bronx - Riverdale", "Bronx - Throgs Neck", "Bronx - Unionport\/Soundview", "Bronx - University Heights", "Bronx - Williamsbridge", "Manhattan - Battery Park\/Tribeca", "Manhattan - Central Harlem", "Manhattan - Chelsea\/Clinton", "Manhattan - East Harlem", "Manhattan - Greenwich Village", "Manhattan - Lower East Side", "Manhattan - Manhattanville", "Manhattan - Midtown Business District", "Manhattan - Murray Hill\/Stuyvesant", "Manhattan - Upper East Side", "Manhattan - Upper West Side", "Manhattan - Washington Heights", "Queens - Astoria", "Queens - Bayside", "Queens - Elmhurst\/Corona", "Queens - Flushing", "Queens - Fresh Meadows\/Briarwood", "Queens - Howard Beach", "Queens - Jackson Heights", "Queens - Jamaica\/St. Albans", "Queens - Queens Village", "Queens - Rego Park\/Forest Hills", "Queens - Ridgewood\/Glendale", "Queens - Sunnyside\/Woodside", "Queens - The Rockaways", "Queens - Woodhaven"],
+        "grades": ["High School (9-12)", "College"],
+        "target_population": ["Poverty guidelines\/socioeconomic status", "First generation college students", "Racial or ethnic minorities"],
+        "services": ["College Readiness", "College Matriculation", "College Retention", "Career Preparation"],
+        "accepting_students": ["Open"]
+    },
+    "Urban Assembly School for Law and Justice": {
+        "post_id": 3597,
+        "program_name": "Urban Assembly School for Law and Justice",
+        "borroughs": ["Brooklyn"],
+        "neighborhoods": ["Brooklyn - Bay Ridge ", "Brooklyn - Bedford Stuyvesant ", "Brooklyn - Bensonhurst ", "Brooklyn - Borough Park ", "Brooklyn - Brownsville ", "Brooklyn - Bushwick ", "Brooklyn - Canarsie", "Brooklyn - Coney Island", "Brooklyn - Crown Heights North", "Brooklyn - Crown Heights South", "Brooklyn - East Flatbush", "Brooklyn - East New York", "Brooklyn - Flatbush\/Midwood", "Brooklyn - Fort Greene\/Brooklyn Heights", "Brooklyn - Park Slope", "Brooklyn - Sheepshead Bay", "Brooklyn - Sunset Park", "Brooklyn - Williamsburg\/Greenpoint"],
+        "grades": ["High School (9-12)"],
+        "target_population": ["Academic Performance", "Students with IEP or other learning challenges", "Poverty guidelines\/socioeconomic status", "First generation college students", "Racial or ethnic minorities"],
+        "services": ["College Readiness", "College Matriculation", "College Retention", "Career Preparation"],
+        "accepting_students": ["Open"]
+    },
+    "Chess in the Schools": {
+        "post_id": 3598,
+        "program_name": "Chess in the Schools",
+        "borroughs": ["Brooklyn", "Bronx", "Manhattan", "Queens", "Staten Island"],
+        "neighborhoods": ["Brooklyn - Bay Ridge ", "Brooklyn - Bedford Stuyvesant ", "Brooklyn - Bensonhurst ", "Brooklyn - Borough Park ", "Brooklyn - Brownsville ", "Brooklyn - Bushwick ", "Brooklyn - Canarsie", "Brooklyn - Coney Island", "Brooklyn - Crown Heights North", "Brooklyn - Crown Heights South", "Brooklyn - East Flatbush", "Brooklyn - East New York", "Brooklyn - Flatbush\/Midwood", "Brooklyn - Fort Greene\/Brooklyn Heights", "Brooklyn - Park Slope", "Brooklyn - Sheepshead Bay", "Brooklyn - Sunset Park", "Brooklyn - Williamsburg\/Greenpoint", "Bronx - Bedford Park", "Bronx - Concourse\/Highbridge", "Bronx - East Tremont", "Bronx - Hunts Point", "Bronx - Morrisania", "Bronx - Mott Haven", "Bronx - Pelham Parkway", "Bronx - Riverdale", "Bronx - Throgs Neck", "Bronx - Unionport\/Soundview", "Bronx - University Heights", "Bronx - Williamsbridge", "Manhattan - Central Harlem", "Manhattan - East Harlem", "Manhattan - Lower East Side", "Manhattan - Washington Heights", "Queens - Astoria", "Queens - Bayside", "Queens - Elmhurst\/Corona", "Queens - Flushing", "Queens - Fresh Meadows\/Briarwood", "Queens - Howard Beach", "Queens - Jackson Heights", "Queens - Jamaica\/St. Albans", "Queens - Queens Village", "Queens - Rego Park\/Forest Hills", "Queens - Ridgewood\/Glendale", "Queens - Sunnyside\/Woodside", "Queens - The Rockaways", "Queens - Woodhaven", "Staten Island - South Beach", "Staten Island - St. George", "Staten Island - Tottenville"],
+        "grades": ["High School (9-12)"],
+        "target_population": ["First generation college students", "Racial or ethnic minorities"],
+        "services": ["College Readiness"],
+        "accepting_students": ["Limited"]
+    },
+    "Young Invincibles": {
+        "post_id": 3599,
+        "program_name": "Young Invincibles",
+        "borroughs": [],
+        "neighborhoods": [],
+        "grades": [],
+        "target_population": ["English language learners", "Disconnected youth\/Out of school youth", "Poverty guidelines\/socioeconomic status", "First generation college students", "Racial or ethnic minorities"],
+        "services": ["A network for convening CBOs or programs that work on similar issues or work with overlapping sets of students", "Training or awareness for students", "Research connected to this field for practitioner use", "Advocacy on behalf of the sector or segments of it", "Online resources for students and\/or staff"],
+        "accepting_students": []
+    },
+    "Henry Street Settlement": {
+        "post_id": 3600,
+        "program_name": "Henry Street Settlement",
+        "borroughs": ["Brooklyn", "Bronx", "Manhattan", "Queens", "Staten Island"],
+        "neighborhoods": ["Manhattan - Lower East Side"],
+        "grades": ["High School (9-12)", "College"],
+        "target_population": ["Academic Performance", "First generation college students"],
+        "services": ["College Readiness", "College Matriculation", "College Retention", "Career Preparation"],
+        "accepting_students": []
+    },
+    "Make the Road New York": {
+        "post_id": 3601,
+        "program_name": "Make the Road New York",
+        "borroughs": ["Brooklyn", "Queens", "Staten Island"],
+        "neighborhoods": ["Brooklyn - Bushwick ", "Queens - Jackson Heights"],
+        "grades": ["High School (9-12)", "College"],
+        "target_population": ["English language learners", "Disconnected youth\/Out of school youth", "High school equivalency", "Poverty guidelines\/socioeconomic status", "Justice involved youth", "First generation college students", "Racial or ethnic minorities", "Gender"],
+        "services": ["College Readiness", "College Matriculation", "College Retention"],
+        "accepting_students": ["Open"]
+    },
+    "Red Hook Initiative": {
+        "post_id": 3584,
+        "program_name": "Red Hook Initiative",
+        "borroughs": ["Brooklyn"],
+        "neighborhoods": ["Brooklyn - Bay Ridge ", "Brooklyn - Bedford Stuyvesant ", "Brooklyn - Bensonhurst ", "Brooklyn - Borough Park ", "Brooklyn - Brownsville ", "Brooklyn - Bushwick ", "Brooklyn - Canarsie", "Brooklyn - Coney Island", "Brooklyn - Crown Heights North", "Brooklyn - Crown Heights South", "Brooklyn - East Flatbush", "Brooklyn - East New York", "Brooklyn - Flatbush\/Midwood", "Brooklyn - Fort Greene\/Brooklyn Heights", "Brooklyn - Park Slope", "Brooklyn - Sheepshead Bay", "Brooklyn - Sunset Park", "Brooklyn - Williamsburg\/Greenpoint"],
+        "grades": ["College"],
+        "target_population": ["Disconnected youth\/Out of school youth", "Students with IEP or other learning challenges", "High school equivalency", "Poverty guidelines\/socioeconomic status", "First generation college students", "Racial or ethnic minorities"],
+        "services": ["College Readiness", "College Retention", "Career Preparation"],
+        "accepting_students": ["Open"]
+    },
+    "Collegiate Science and Technology Entry Program": {
+        "post_id": 3585,
+        "program_name": "Collegiate Science and Technology Entry Program",
+        "borroughs": ["Brooklyn"],
+        "neighborhoods": ["Brooklyn - Bay Ridge ", "Brooklyn - Bedford Stuyvesant ", "Brooklyn - Bensonhurst ", "Brooklyn - Borough Park ", "Brooklyn - Brownsville ", "Brooklyn - Bushwick ", "Brooklyn - Canarsie", "Brooklyn - Coney Island", "Brooklyn - Crown Heights North", "Brooklyn - Crown Heights South", "Brooklyn - East Flatbush", "Brooklyn - East New York", "Brooklyn - Flatbush\/Midwood", "Brooklyn - Fort Greene\/Brooklyn Heights", "Brooklyn - Park Slope", "Brooklyn - Sheepshead Bay", "Brooklyn - Sunset Park", "Brooklyn - Williamsburg\/Greenpoint"],
+        "grades": ["Elementary school (K-5)", "College"],
+        "target_population": [],
+        "services": ["Career Preparation"],
+        "accepting_students": ["Limited"]
+    },
+    "Pace University": {
+        "post_id": 3550,
+        "program_name": "Pace University",
+        "borroughs": ["Manhattan"],
+        "neighborhoods": ["Manhattan - Battery Park\/Tribeca", "Manhattan - Central Harlem", "Manhattan - Chelsea\/Clinton", "Manhattan - East Harlem", "Manhattan - Greenwich Village", "Manhattan - Lower East Side", "Manhattan - Manhattanville", "Manhattan - Midtown Business District", "Manhattan - Murray Hill\/Stuyvesant", "Manhattan - Upper East Side", "Manhattan - Upper West Side", "Manhattan - Washington Heights"],
+        "grades": ["College"],
+        "target_population": ["Academic Performance", "First generation college students"],
+        "services": ["College Readiness", "College Matriculation", "College Retention"],
+        "accepting_students": ["Closed"]
+    },
+    "Lehman College\/CUNY": {
+        "post_id": 3572,
+        "program_name": "Lehman College\/CUNY",
+        "borroughs": ["Bronx"],
+        "neighborhoods": ["Bronx - Bedford Park", "Bronx - Concourse\/Highbridge", "Bronx - East Tremont", "Bronx - Hunts Point", "Bronx - Morrisania", "Bronx - Mott Haven", "Bronx - Pelham Parkway", "Bronx - Riverdale", "Bronx - Throgs Neck", "Bronx - Unionport\/Soundview", "Bronx - University Heights", "Bronx - Williamsbridge"],
+        "grades": ["College"],
+        "target_population": ["First generation college students"],
+        "services": [],
+        "accepting_students": []
+    },
+    "Hostos Community College": {
+        "post_id": 3573,
+        "program_name": "Hostos Community College",
+        "borroughs": ["Bronx"],
+        "neighborhoods": ["Bronx - Bedford Park", "Bronx - Concourse\/Highbridge", "Bronx - East Tremont", "Bronx - Hunts Point", "Bronx - Morrisania", "Bronx - Mott Haven", "Bronx - Pelham Parkway", "Bronx - Riverdale", "Bronx - Throgs Neck", "Bronx - Unionport\/Soundview", "Bronx - University Heights", "Bronx - Williamsbridge"],
+        "grades": ["College"],
+        "target_population": ["Academic Performance", "English language learners", "First generation college students", "Racial or ethnic minorities"],
+        "services": ["College Readiness", "College Retention"],
+        "accepting_students": ["Open", "Limited"]
+    },
+    "Bronx Community College": {
+        "post_id": 3574,
+        "program_name": "Bronx Community College",
+        "borroughs": ["Bronx"],
+        "neighborhoods": ["Bronx - Bedford Park", "Bronx - Concourse\/Highbridge", "Bronx - East Tremont", "Bronx - Hunts Point", "Bronx - Morrisania", "Bronx - Mott Haven", "Bronx - Pelham Parkway", "Bronx - Riverdale", "Bronx - Throgs Neck", "Bronx - Unionport\/Soundview", "Bronx - University Heights", "Bronx - Williamsbridge"],
+        "grades": ["College"],
+        "target_population": ["Poverty guidelines\/socioeconomic status", "First generation college students"],
+        "services": ["College Readiness", "College Retention"],
+        "accepting_students": ["Open"]
+    },
+    "Lehman College (The Bronx Institute)": {
+        "post_id": 3576,
+        "program_name": "Lehman College (The Bronx Institute)",
+        "borroughs": ["Bronx"],
+        "neighborhoods": ["Bronx - Bedford Park", "Bronx - Concourse\/Highbridge", "Bronx - East Tremont", "Bronx - Hunts Point", "Bronx - Morrisania", "Bronx - Mott Haven", "Bronx - Pelham Parkway", "Bronx - Riverdale", "Bronx - Throgs Neck", "Bronx - Unionport\/Soundview", "Bronx - University Heights", "Bronx - Williamsbridge"],
+        "grades": ["Middle school (6-8)", "High School (9-12)"],
+        "target_population": ["Academic Performance", "First generation college students", "Racial or ethnic minorities"],
+        "services": ["College Readiness", "Career Preparation"],
+        "accepting_students": ["Limited"]
+    },
+    "Summer on the Hill": {
+        "post_id": 3577,
+        "program_name": "Summer on the Hill",
+        "borroughs": ["Bronx"],
+        "neighborhoods": ["Bronx - Bedford Park", "Bronx - Concourse\/Highbridge", "Bronx - East Tremont", "Bronx - Hunts Point", "Bronx - Morrisania", "Bronx - Mott Haven", "Bronx - Pelham Parkway", "Bronx - Riverdale", "Bronx - Throgs Neck", "Bronx - Unionport\/Soundview", "Bronx - University Heights", "Bronx - Williamsbridge"],
+        "grades": ["Elementary school (K-5)", "Middle school (6-8)", "High School (9-12)"],
+        "target_population": ["Academic Performance", "Poverty guidelines\/socioeconomic status", "First generation college students"],
+        "services": ["College Readiness"],
+        "accepting_students": ["Limited"]
+    },
+    "The Committee for Hispanic Children and Families, Inc.": {
+        "post_id": 3578,
+        "program_name": "The Committee for Hispanic Children and Families, Inc.",
+        "borroughs": ["Bronx"],
+        "neighborhoods": ["Bronx - Bedford Park", "Bronx - Concourse\/Highbridge", "Bronx - East Tremont", "Bronx - Hunts Point", "Bronx - Morrisania", "Bronx - Mott Haven", "Bronx - Pelham Parkway", "Bronx - Riverdale", "Bronx - Throgs Neck", "Bronx - Unionport\/Soundview", "Bronx - University Heights", "Bronx - Williamsbridge"],
+        "grades": ["High School (9-12)"],
+        "target_population": ["Academic Performance", "English language learners", "Disconnected youth\/Out of school youth", "High school equivalency", "First generation college students", "Racial or ethnic minorities"],
+        "services": ["College Readiness", "Career Preparation"],
+        "accepting_students": ["Limited", "Closed"]
+    },
+    "Hyde Leadership Charter School": {
+        "post_id": 3580,
+        "program_name": "Hyde Leadership Charter School",
+        "borroughs": ["Bronx"],
+        "neighborhoods": ["Bronx - Bedford Park", "Bronx - Concourse\/Highbridge", "Bronx - East Tremont", "Bronx - Hunts Point", "Bronx - Morrisania", "Bronx - Mott Haven", "Bronx - Pelham Parkway", "Bronx - Riverdale", "Bronx - Throgs Neck", "Bronx - Unionport\/Soundview", "Bronx - University Heights", "Bronx - Williamsbridge"],
+        "grades": [],
+        "target_population": [],
+        "services": [],
+        "accepting_students": []
+    },
+    "Single Stop at Bronx Community College": {
+        "post_id": 3582,
+        "program_name": "Single Stop at Bronx Community College",
+        "borroughs": ["Bronx"],
+        "neighborhoods": ["Bronx - Bedford Park", "Bronx - Concourse\/Highbridge", "Bronx - East Tremont", "Bronx - Hunts Point", "Bronx - Morrisania", "Bronx - Mott Haven", "Bronx - Pelham Parkway", "Bronx - Riverdale", "Bronx - Throgs Neck", "Bronx - Unionport\/Soundview", "Bronx - University Heights", "Bronx - Williamsbridge"],
+        "grades": ["College"],
+        "target_population": ["First generation college students", "Racial or ethnic minorities"],
+        "services": ["College Retention"],
+        "accepting_students": ["Open"]
+    },
+    "Cypress Hills Local Development Corporation": {
+        "post_id": 3583,
+        "program_name": "Cypress Hills Local Development Corporation",
+        "borroughs": ["Brooklyn"],
+        "neighborhoods": ["Brooklyn - Bay Ridge ", "Brooklyn - Bedford Stuyvesant ", "Brooklyn - Bensonhurst ", "Brooklyn - Borough Park ", "Brooklyn - Brownsville ", "Brooklyn - Bushwick ", "Brooklyn - Canarsie", "Brooklyn - Coney Island", "Brooklyn - Crown Heights North", "Brooklyn - Crown Heights South", "Brooklyn - East Flatbush", "Brooklyn - East New York", "Brooklyn - Flatbush\/Midwood", "Brooklyn - Fort Greene\/Brooklyn Heights", "Brooklyn - Park Slope", "Brooklyn - Sheepshead Bay", "Brooklyn - Sunset Park", "Brooklyn - Williamsburg\/Greenpoint"],
+        "grades": ["High School (9-12)", "College"],
+        "target_population": ["English language learners", "Disconnected youth\/Out of school youth", "High school equivalency", "First generation college students", "Racial or ethnic minorities"],
+        "services": ["College Readiness", "College Matriculation", "College Retention", "Career Preparation"],
+        "accepting_students": []
+    },
+    "The Door &#8211; A Center of Alternatives": {
+        "post_id": 3557,
+        "program_name": "The Door &#8211; A Center of Alternatives",
+        "borroughs": ["Manhattan"],
+        "neighborhoods": ["Manhattan - Battery Park\/Tribeca", "Manhattan - Central Harlem", "Manhattan - Chelsea\/Clinton", "Manhattan - East Harlem", "Manhattan - Greenwich Village", "Manhattan - Lower East Side", "Manhattan - Manhattanville", "Manhattan - Midtown Business District", "Manhattan - Murray Hill\/Stuyvesant", "Manhattan - Upper East Side", "Manhattan - Upper West Side", "Manhattan - Washington Heights"],
+        "grades": ["High School (9-12)", "College"],
+        "target_population": ["Disconnected youth\/Out of school youth", "High school equivalency", "Poverty guidelines\/socioeconomic status", "First generation college students"],
+        "services": ["College Readiness", "College Matriculation", "College Retention"],
+        "accepting_students": ["Open"]
+    },
+    "NYC iSchool": {
+        "post_id": 3558,
+        "program_name": "NYC iSchool",
+        "borroughs": ["Manhattan"],
+        "neighborhoods": ["Manhattan - Battery Park\/Tribeca", "Manhattan - Central Harlem", "Manhattan - Chelsea\/Clinton", "Manhattan - East Harlem", "Manhattan - Greenwich Village", "Manhattan - Lower East Side", "Manhattan - Manhattanville", "Manhattan - Midtown Business District", "Manhattan - Murray Hill\/Stuyvesant", "Manhattan - Upper East Side", "Manhattan - Upper West Side", "Manhattan - Washington Heights"],
+        "grades": [],
+        "target_population": [],
+        "services": [],
+        "accepting_students": []
+    },
+    "Single Stop at John Jay College": {
+        "post_id": 3559,
+        "program_name": "Single Stop at John Jay College",
+        "borroughs": ["Manhattan"],
+        "neighborhoods": ["Manhattan - Battery Park\/Tribeca", "Manhattan - Central Harlem", "Manhattan - Chelsea\/Clinton", "Manhattan - East Harlem", "Manhattan - Greenwich Village", "Manhattan - Lower East Side", "Manhattan - Manhattanville", "Manhattan - Midtown Business District", "Manhattan - Murray Hill\/Stuyvesant", "Manhattan - Upper East Side", "Manhattan - Upper West Side", "Manhattan - Washington Heights"],
+        "grades": ["College"],
+        "target_population": ["Poverty guidelines\/socioeconomic status", "First generation college students", "Racial or ethnic minorities"],
+        "services": ["College Retention"],
+        "accepting_students": []
+    },
+    "College of Staten Island\/CUNY": {
+        "post_id": 3561,
+        "program_name": "College of Staten Island\/CUNY",
+        "borroughs": ["Staten Island"],
+        "neighborhoods": ["Staten Island - South Beach", "Staten Island - St. George", "Staten Island - Tottenville"],
+        "grades": ["College"],
+        "target_population": ["English language learners", "Racial or ethnic minorities"],
+        "services": [],
+        "accepting_students": ["Open"]
+    },
+    "College of Staten Island": {
+        "post_id": 3562,
+        "program_name": "College of Staten Island",
+        "borroughs": ["Staten Island"],
+        "neighborhoods": ["Staten Island - South Beach", "Staten Island - St. George", "Staten Island - Tottenville"],
+        "grades": ["Middle school (6-8)", "High School (9-12)"],
+        "target_population": ["Academic Performance", "English language learners", "Students with IEP or other learning challenges", "Poverty guidelines\/socioeconomic status", "Racial or ethnic minorities"],
+        "services": ["College Readiness", "Career Preparation"],
+        "accepting_students": ["Open"]
+    },
+    "York College\/CUNY": {
+        "post_id": 3563,
+        "program_name": "York College\/CUNY",
+        "borroughs": ["Queens"],
+        "neighborhoods": ["Queens - Astoria", "Queens - Bayside", "Queens - Elmhurst\/Corona", "Queens - Flushing", "Queens - Fresh Meadows\/Briarwood", "Queens - Howard Beach", "Queens - Jackson Heights", "Queens - Jamaica\/St. Albans", "Queens - Queens Village", "Queens - Rego Park\/Forest Hills", "Queens - Ridgewood\/Glendale", "Queens - Sunnyside\/Woodside", "Queens - The Rockaways", "Queens - Woodhaven"],
+        "grades": ["College"],
+        "target_population": ["Academic Performance", "First generation college students", "Racial or ethnic minorities"],
+        "services": ["College Matriculation", "College Retention"],
+        "accepting_students": ["Open"]
+    },
+    "LaGuardia Community College": {
+        "post_id": 3564,
+        "program_name": "LaGuardia Community College",
+        "borroughs": ["Queens"],
+        "neighborhoods": ["Queens - Astoria", "Queens - Bayside", "Queens - Elmhurst\/Corona", "Queens - Flushing", "Queens - Fresh Meadows\/Briarwood", "Queens - Howard Beach", "Queens - Jackson Heights", "Queens - Jamaica\/St. Albans", "Queens - Queens Village", "Queens - Rego Park\/Forest Hills", "Queens - Ridgewood\/Glendale", "Queens - Sunnyside\/Woodside", "Queens - The Rockaways", "Queens - Woodhaven"],
+        "grades": ["College"],
+        "target_population": ["Academic Performance", "English language learners", "Students with IEP or other learning challenges", "High school equivalency", "Poverty guidelines\/socioeconomic status", "First generation college students", "Racial or ethnic minorities", "Gender"],
+        "services": ["College Readiness", "College Matriculation", "College Retention", "Career Preparation"],
+        "accepting_students": ["Open"]
+    },
+    "St. John&#8217;s University": {
+        "post_id": 3566,
+        "program_name": "St. John&#8217;s University",
+        "borroughs": ["Queens"],
+        "neighborhoods": ["Queens - Astoria", "Queens - Bayside", "Queens - Elmhurst\/Corona", "Queens - Flushing", "Queens - Fresh Meadows\/Briarwood", "Queens - Howard Beach", "Queens - Jackson Heights", "Queens - Jamaica\/St. Albans", "Queens - Queens Village", "Queens - Rego Park\/Forest Hills", "Queens - Ridgewood\/Glendale", "Queens - Sunnyside\/Woodside", "Queens - The Rockaways", "Queens - Woodhaven"],
+        "grades": ["High School (9-12)"],
+        "target_population": ["Academic Performance", "Poverty guidelines\/socioeconomic status", "Racial or ethnic minorities"],
+        "services": ["College Readiness"],
+        "accepting_students": ["Open"]
+    },
+    "York College": {
+        "post_id": 3567,
+        "program_name": "York College",
+        "borroughs": ["Queens"],
+        "neighborhoods": ["Queens - Astoria", "Queens - Bayside", "Queens - Elmhurst\/Corona", "Queens - Flushing", "Queens - Fresh Meadows\/Briarwood", "Queens - Howard Beach", "Queens - Jackson Heights", "Queens - Jamaica\/St. Albans", "Queens - Queens Village", "Queens - Rego Park\/Forest Hills", "Queens - Ridgewood\/Glendale", "Queens - Sunnyside\/Woodside", "Queens - The Rockaways", "Queens - Woodhaven"],
+        "grades": ["High School (9-12)", "College"],
+        "target_population": ["Academic Performance", "Disconnected youth\/Out of school youth", "High school equivalency", "Poverty guidelines\/socioeconomic status", "Justice involved youth", "Racial or ethnic minorities", "Gender"],
+        "services": ["College Readiness", "College Retention"],
+        "accepting_students": ["Limited"]
+    },
+    "Single Stop at Queensborough Community College": {
+        "post_id": 3568,
+        "program_name": "Single Stop at Queensborough Community College",
+        "borroughs": ["Queens"],
+        "neighborhoods": ["Queens - Astoria", "Queens - Bayside", "Queens - Elmhurst\/Corona", "Queens - Flushing", "Queens - Fresh Meadows\/Briarwood", "Queens - Howard Beach", "Queens - Jackson Heights", "Queens - Jamaica\/St. Albans", "Queens - Queens Village", "Queens - Rego Park\/Forest Hills", "Queens - Ridgewood\/Glendale", "Queens - Sunnyside\/Woodside", "Queens - The Rockaways", "Queens - Woodhaven"],
+        "grades": ["College"],
+        "target_population": ["Poverty guidelines\/socioeconomic status"],
+        "services": ["College Retention"],
+        "accepting_students": []
+    },
+    "Lehman College": {
+        "post_id": 3571,
+        "program_name": "Lehman College",
+        "borroughs": ["Bronx"],
+        "neighborhoods": ["Bronx - Bedford Park", "Bronx - Concourse\/Highbridge", "Bronx - East Tremont", "Bronx - Hunts Point", "Bronx - Morrisania", "Bronx - Mott Haven", "Bronx - Pelham Parkway", "Bronx - Riverdale", "Bronx - Throgs Neck", "Bronx - Unionport\/Soundview", "Bronx - University Heights", "Bronx - Williamsbridge"],
+        "grades": ["College"],
+        "target_population": ["Academic Performance", "Racial or ethnic minorities"],
+        "services": ["College Retention", "Career Preparation"],
+        "accepting_students": []
+    },
+    "Frederick Douglass Academy III": {
+        "post_id": 3570,
+        "program_name": "Frederick Douglass Academy III",
+        "borroughs": ["Bronx"],
+        "neighborhoods": ["Bronx - Bedford Park", "Bronx - Concourse\/Highbridge", "Bronx - East Tremont", "Bronx - Hunts Point", "Bronx - Morrisania", "Bronx - Mott Haven", "Bronx - Pelham Parkway", "Bronx - Riverdale", "Bronx - Throgs Neck", "Bronx - Unionport\/Soundview", "Bronx - University Heights", "Bronx - Williamsbridge"],
+        "grades": ["High School (9-12)"],
+        "target_population": ["Academic Performance", "English language learners", "Students with IEP or other learning challenges", "Poverty guidelines\/socioeconomic status", "Justice involved youth", "Racial or ethnic minorities", "Gender"],
+        "services": ["College Readiness", "Career Preparation"],
+        "accepting_students": ["Limited"]
+    },
+    "Metropolitan College of New York": {
+        "post_id": 3542,
+        "program_name": "Metropolitan College of New York",
+        "borroughs": ["Bronx", "Manhattan"],
+        "neighborhoods": ["Bronx - Bedford Park", "Bronx - Concourse\/Highbridge", "Bronx - East Tremont", "Bronx - Hunts Point", "Bronx - Morrisania", "Bronx - Mott Haven", "Bronx - Pelham Parkway", "Bronx - Riverdale", "Bronx - Throgs Neck", "Bronx - Unionport\/Soundview", "Bronx - University Heights", "Bronx - Williamsbridge", "Manhattan - Battery Park\/Tribeca", "Manhattan - Central Harlem", "Manhattan - Chelsea\/Clinton", "Manhattan - East Harlem", "Manhattan - Greenwich Village", "Manhattan - Lower East Side", "Manhattan - Manhattanville", "Manhattan - Midtown Business District", "Manhattan - Murray Hill\/Stuyvesant", "Manhattan - Upper East Side", "Manhattan - Upper West Side", "Manhattan - Washington Heights"],
+        "grades": [],
+        "target_population": [],
+        "services": [],
+        "accepting_students": []
+    },
+    "CUNY": {
+        "post_id": 3518,
+        "program_name": "CUNY",
+        "borroughs": ["Brooklyn", "Bronx", "Manhattan", "Queens", "Staten Island"],
+        "neighborhoods": ["Brooklyn - Bay Ridge ", "Brooklyn - Bedford Stuyvesant ", "Brooklyn - Bensonhurst ", "Brooklyn - Borough Park ", "Brooklyn - Brownsville ", "Brooklyn - Bushwick ", "Brooklyn - Canarsie", "Brooklyn - Coney Island", "Brooklyn - Crown Heights North", "Brooklyn - Crown Heights South", "Brooklyn - East Flatbush", "Brooklyn - East New York", "Brooklyn - Flatbush\/Midwood", "Brooklyn - Fort Greene\/Brooklyn Heights", "Brooklyn - Park Slope", "Brooklyn - Sheepshead Bay", "Brooklyn - Sunset Park", "Brooklyn - Williamsburg\/Greenpoint", "Bronx - Bedford Park", "Bronx - Concourse\/Highbridge", "Bronx - East Tremont", "Bronx - Hunts Point", "Bronx - Morrisania", "Bronx - Mott Haven", "Bronx - Pelham Parkway", "Bronx - Riverdale", "Bronx - Throgs Neck", "Bronx - Unionport\/Soundview", "Bronx - University Heights", "Bronx - Williamsbridge", "Manhattan - Battery Park\/Tribeca", "Manhattan - Central Harlem", "Manhattan - Chelsea\/Clinton", "Manhattan - East Harlem", "Manhattan - Greenwich Village", "Manhattan - Lower East Side", "Manhattan - Manhattanville", "Manhattan - Midtown Business District", "Manhattan - Murray Hill\/Stuyvesant", "Manhattan - Upper East Side", "Manhattan - Upper West Side", "Manhattan - Washington Heights", "Queens - Astoria", "Queens - Bayside", "Queens - Elmhurst\/Corona", "Queens - Flushing", "Queens - Fresh Meadows\/Briarwood", "Queens - Howard Beach", "Queens - Jackson Heights", "Queens - Jamaica\/St. Albans", "Queens - Queens Village", "Queens - Rego Park\/Forest Hills", "Queens - Ridgewood\/Glendale", "Queens - Sunnyside\/Woodside", "Queens - The Rockaways", "Queens - Woodhaven", "Staten Island - South Beach", "Staten Island - St. George", "Staten Island - Tottenville"],
+        "grades": ["College"],
+        "target_population": ["Poverty guidelines\/socioeconomic status", "Justice involved youth"],
+        "services": ["College Readiness", "College Matriculation", "College Retention", "Career Preparation"],
+        "accepting_students": ["Open"]
+    },
+    "Double Discovery Center at Columbia University": {
+        "post_id": 3544,
+        "program_name": "Double Discovery Center at Columbia University",
+        "borroughs": ["Manhattan"],
+        "neighborhoods": ["Manhattan - Battery Park\/Tribeca", "Manhattan - Central Harlem", "Manhattan - Chelsea\/Clinton", "Manhattan - East Harlem", "Manhattan - Greenwich Village", "Manhattan - Lower East Side", "Manhattan - Manhattanville", "Manhattan - Midtown Business District", "Manhattan - Murray Hill\/Stuyvesant", "Manhattan - Upper East Side", "Manhattan - Upper West Side", "Manhattan - Washington Heights"],
+        "grades": ["Elementary school (K-5)", "Middle school (6-8)", "High School (9-12)"],
+        "target_population": ["First generation college students", "Racial or ethnic minorities"],
+        "services": ["College Readiness", "College Matriculation", "College Retention", "Career Preparation"],
+        "accepting_students": ["Open"]
+    },
+    "City College of New York": {
+        "post_id": 3553,
+        "program_name": "City College of New York",
+        "borroughs": ["Manhattan"],
+        "neighborhoods": ["Manhattan - Battery Park\/Tribeca", "Manhattan - Central Harlem", "Manhattan - Chelsea\/Clinton", "Manhattan - East Harlem", "Manhattan - Greenwich Village", "Manhattan - Lower East Side", "Manhattan - Manhattanville", "Manhattan - Midtown Business District", "Manhattan - Murray Hill\/Stuyvesant", "Manhattan - Upper East Side", "Manhattan - Upper West Side", "Manhattan - Washington Heights"],
+        "grades": ["College"],
+        "target_population": ["Academic Performance", "English language learners", "Students with IEP or other learning challenges", "First generation college students", "Racial or ethnic minorities", "Gender"],
+        "services": ["College Matriculation"],
+        "accepting_students": ["Open"]
+    },
+    "Hunter College Black Male Initiative": {
+        "post_id": 3546,
+        "program_name": "Hunter College Black Male Initiative",
+        "borroughs": ["Manhattan"],
+        "neighborhoods": ["Manhattan - Battery Park\/Tribeca", "Manhattan - Central Harlem", "Manhattan - Chelsea\/Clinton", "Manhattan - East Harlem", "Manhattan - Greenwich Village", "Manhattan - Lower East Side", "Manhattan - Manhattanville", "Manhattan - Midtown Business District", "Manhattan - Murray Hill\/Stuyvesant", "Manhattan - Upper East Side", "Manhattan - Upper West Side", "Manhattan - Washington Heights"],
+        "grades": ["College"],
+        "target_population": ["Academic Performance", "First generation college students", "Racial or ethnic minorities", "Gender"],
+        "services": ["College Readiness", "College Matriculation", "College Retention", "Career Preparation"],
+        "accepting_students": []
+    },
+    "Guttman Community College": {
+        "post_id": 3547,
+        "program_name": "Guttman Community College",
+        "borroughs": ["Manhattan"],
+        "neighborhoods": ["Manhattan - Battery Park\/Tribeca", "Manhattan - Central Harlem", "Manhattan - Chelsea\/Clinton", "Manhattan - East Harlem", "Manhattan - Greenwich Village", "Manhattan - Lower East Side", "Manhattan - Manhattanville", "Manhattan - Midtown Business District", "Manhattan - Murray Hill\/Stuyvesant", "Manhattan - Upper East Side", "Manhattan - Upper West Side", "Manhattan - Washington Heights"],
+        "grades": ["College"],
+        "target_population": ["Poverty guidelines\/socioeconomic status"],
+        "services": [],
+        "accepting_students": []
+    },
+    "Goddard Riverside Community Center": {
+        "post_id": 3549,
+        "program_name": "Goddard Riverside Community Center",
+        "borroughs": ["Manhattan"],
+        "neighborhoods": ["Manhattan - Battery Park\/Tribeca", "Manhattan - Central Harlem", "Manhattan - Chelsea\/Clinton", "Manhattan - East Harlem", "Manhattan - Greenwich Village", "Manhattan - Lower East Side", "Manhattan - Manhattanville", "Manhattan - Midtown Business District", "Manhattan - Murray Hill\/Stuyvesant", "Manhattan - Upper East Side", "Manhattan - Upper West Side", "Manhattan - Washington Heights"],
+        "grades": ["High School (9-12)", "College"],
+        "target_population": ["Disconnected youth\/Out of school youth", "High school equivalency", "Poverty guidelines\/socioeconomic status", "First generation college students", "Racial or ethnic minorities"],
+        "services": ["College Readiness", "College Matriculation", "College Retention"],
+        "accepting_students": ["Limited"]
+    },
+    "Barnard College Academic Success and Enrichment Programs": {
+        "post_id": 3551,
+        "program_name": "Barnard College Academic Success and Enrichment Programs",
+        "borroughs": ["Manhattan"],
+        "neighborhoods": ["Manhattan - Battery Park\/Tribeca", "Manhattan - Central Harlem", "Manhattan - Chelsea\/Clinton", "Manhattan - East Harlem", "Manhattan - Greenwich Village", "Manhattan - Lower East Side", "Manhattan - Manhattanville", "Manhattan - Midtown Business District", "Manhattan - Murray Hill\/Stuyvesant", "Manhattan - Upper East Side", "Manhattan - Upper West Side", "Manhattan - Washington Heights"],
+        "grades": ["College"],
+        "target_population": ["Academic Performance", "Poverty guidelines\/socioeconomic status", "First generation college students", "Gender"],
+        "services": ["College Matriculation", "College Retention"],
+        "accepting_students": ["Limited"]
+    },
+    "Comprehensive Development, Inc.": {
+        "post_id": 3520,
+        "program_name": "Comprehensive Development, Inc.",
+        "borroughs": ["Brooklyn", "Bronx", "Manhattan", "Queens", "Staten Island"],
+        "neighborhoods": ["Brooklyn - Bay Ridge ", "Brooklyn - Bedford Stuyvesant ", "Brooklyn - Bensonhurst ", "Brooklyn - Borough Park ", "Brooklyn - Brownsville ", "Brooklyn - Bushwick ", "Brooklyn - Canarsie", "Brooklyn - Coney Island", "Brooklyn - Crown Heights North", "Brooklyn - Crown Heights South", "Brooklyn - East Flatbush", "Brooklyn - East New York", "Brooklyn - Flatbush\/Midwood", "Brooklyn - Fort Greene\/Brooklyn Heights", "Brooklyn - Park Slope", "Brooklyn - Sheepshead Bay", "Brooklyn - Sunset Park", "Brooklyn - Williamsburg\/Greenpoint", "Bronx - Bedford Park", "Bronx - Concourse\/Highbridge", "Bronx - East Tremont", "Bronx - Hunts Point", "Bronx - Morrisania", "Bronx - Mott Haven", "Bronx - Pelham Parkway", "Bronx - Riverdale", "Bronx - Throgs Neck", "Bronx - Unionport\/Soundview", "Bronx - University Heights", "Bronx - Williamsbridge", "Manhattan - Battery Park\/Tribeca", "Manhattan - Central Harlem", "Manhattan - Chelsea\/Clinton", "Manhattan - East Harlem", "Manhattan - Greenwich Village", "Manhattan - Lower East Side", "Manhattan - Manhattanville", "Manhattan - Midtown Business District", "Manhattan - Murray Hill\/Stuyvesant", "Manhattan - Upper East Side", "Manhattan - Upper West Side", "Manhattan - Washington Heights", "Queens - Astoria", "Queens - Bayside", "Queens - Elmhurst\/Corona", "Queens - Flushing", "Queens - Fresh Meadows\/Briarwood", "Queens - Howard Beach", "Queens - Jackson Heights", "Queens - Jamaica\/St. Albans", "Queens - Queens Village", "Queens - Rego Park\/Forest Hills", "Queens - Ridgewood\/Glendale", "Queens - Sunnyside\/Woodside", "Queens - The Rockaways", "Queens - Woodhaven", "Staten Island - South Beach", "Staten Island - St. George", "Staten Island - Tottenville"],
+        "grades": [],
+        "target_population": [],
+        "services": [],
+        "accepting_students": []
+    },
+    "Guttman Community College\/CUNY": {
+        "post_id": 3554,
+        "program_name": "Guttman Community College\/CUNY",
+        "borroughs": ["Manhattan"],
+        "neighborhoods": ["Manhattan - Battery Park\/Tribeca", "Manhattan - Central Harlem", "Manhattan - Chelsea\/Clinton", "Manhattan - East Harlem", "Manhattan - Greenwich Village", "Manhattan - Lower East Side", "Manhattan - Manhattanville", "Manhattan - Midtown Business District", "Manhattan - Murray Hill\/Stuyvesant", "Manhattan - Upper East Side", "Manhattan - Upper West Side", "Manhattan - Washington Heights"],
+        "grades": ["College"],
+        "target_population": [],
+        "services": ["College Matriculation", "College Retention"],
+        "accepting_students": ["Open"]
+    },
+    "John Jay College\/CUNY": {
+        "post_id": 3555,
+        "program_name": "John Jay College\/CUNY",
+        "borroughs": ["Manhattan"],
+        "neighborhoods": ["Manhattan - Battery Park\/Tribeca", "Manhattan - Central Harlem", "Manhattan - Chelsea\/Clinton", "Manhattan - East Harlem", "Manhattan - Greenwich Village", "Manhattan - Lower East Side", "Manhattan - Manhattanville", "Manhattan - Midtown Business District", "Manhattan - Murray Hill\/Stuyvesant", "Manhattan - Upper East Side", "Manhattan - Upper West Side", "Manhattan - Washington Heights"],
+        "grades": ["High School (9-12)"],
+        "target_population": ["Academic Performance", "English language learners", "Disconnected youth\/Out of school youth", "Poverty guidelines\/socioeconomic status", "First generation college students"],
+        "services": [],
+        "accepting_students": ["Limited"]
+    },
+    "Cornelia Connelly Center": {
+        "post_id": 3524,
+        "program_name": "Cornelia Connelly Center",
+        "borroughs": ["Brooklyn", "Manhattan", "Queens", "Staten Island"],
+        "neighborhoods": ["Brooklyn - Bay Ridge ", "Brooklyn - Bedford Stuyvesant ", "Brooklyn - Bensonhurst ", "Brooklyn - Borough Park ", "Brooklyn - Brownsville ", "Brooklyn - Bushwick ", "Brooklyn - Canarsie", "Brooklyn - Coney Island", "Brooklyn - Crown Heights North", "Brooklyn - Crown Heights South", "Brooklyn - East Flatbush", "Brooklyn - East New York", "Brooklyn - Flatbush\/Midwood", "Brooklyn - Fort Greene\/Brooklyn Heights", "Brooklyn - Park Slope", "Brooklyn - Sheepshead Bay", "Brooklyn - Sunset Park", "Brooklyn - Williamsburg\/Greenpoint", "Manhattan - Battery Park\/Tribeca", "Manhattan - Central Harlem", "Manhattan - Chelsea\/Clinton", "Manhattan - East Harlem", "Manhattan - Greenwich Village", "Manhattan - Lower East Side", "Manhattan - Manhattanville", "Manhattan - Midtown Business District", "Manhattan - Murray Hill\/Stuyvesant", "Manhattan - Upper East Side", "Manhattan - Upper West Side", "Manhattan - Washington Heights", "Queens - Astoria", "Queens - Bayside", "Queens - Elmhurst\/Corona", "Queens - Flushing", "Queens - Fresh Meadows\/Briarwood", "Queens - Howard Beach", "Queens - Jackson Heights", "Queens - Jamaica\/St. Albans", "Queens - Queens Village", "Queens - Rego Park\/Forest Hills", "Queens - Ridgewood\/Glendale", "Queens - Sunnyside\/Woodside", "Queens - The Rockaways", "Queens - Woodhaven", "Staten Island - South Beach", "Staten Island - St. George", "Staten Island - Tottenville"],
+        "grades": ["High School (9-12)", "College"],
+        "target_population": ["Academic Performance", "Students with IEP or other learning challenges", "Poverty guidelines\/socioeconomic status", "First generation college students", "Racial or ethnic minorities", "Gender"],
+        "services": ["College Readiness", "College Matriculation", "College Retention"],
+        "accepting_students": []
+    },
+    "CUNY Graduation Success Initiative (GSI)": {
+        "post_id": 3528,
+        "program_name": "CUNY Graduation Success Initiative (GSI)",
+        "borroughs": ["Brooklyn", "Bronx", "Manhattan", "Queens"],
+        "neighborhoods": ["Brooklyn - Bay Ridge ", "Brooklyn - Bedford Stuyvesant ", "Brooklyn - Bensonhurst ", "Brooklyn - Borough Park ", "Brooklyn - Brownsville ", "Brooklyn - Bushwick ", "Brooklyn - Canarsie", "Brooklyn - Coney Island", "Brooklyn - Crown Heights North", "Brooklyn - Crown Heights South", "Brooklyn - East Flatbush", "Brooklyn - East New York", "Brooklyn - Flatbush\/Midwood", "Brooklyn - Fort Greene\/Brooklyn Heights", "Brooklyn - Park Slope", "Brooklyn - Sheepshead Bay", "Brooklyn - Sunset Park", "Brooklyn - Williamsburg\/Greenpoint", "Bronx - Bedford Park", "Bronx - Concourse\/Highbridge", "Bronx - East Tremont", "Bronx - Hunts Point", "Bronx - Morrisania", "Bronx - Mott Haven", "Bronx - Pelham Parkway", "Bronx - Riverdale", "Bronx - Throgs Neck", "Bronx - Unionport\/Soundview", "Bronx - University Heights", "Bronx - Williamsbridge", "Manhattan - Battery Park\/Tribeca", "Manhattan - Central Harlem", "Manhattan - Chelsea\/Clinton", "Manhattan - East Harlem", "Manhattan - Greenwich Village", "Manhattan - Lower East Side", "Manhattan - Manhattanville", "Manhattan - Midtown Business District", "Manhattan - Murray Hill\/Stuyvesant", "Manhattan - Upper East Side", "Manhattan - Upper West Side", "Manhattan - Washington Heights", "Queens - Astoria", "Queens - Bayside", "Queens - Elmhurst\/Corona", "Queens - Flushing", "Queens - Fresh Meadows\/Briarwood", "Queens - Howard Beach", "Queens - Jackson Heights", "Queens - Jamaica\/St. Albans", "Queens - Queens Village", "Queens - Rego Park\/Forest Hills", "Queens - Ridgewood\/Glendale", "Queens - Sunnyside\/Woodside", "Queens - The Rockaways", "Queens - Woodhaven"],
+        "grades": ["College"],
+        "target_population": ["Poverty guidelines\/socioeconomic status"],
+        "services": ["College Retention"],
+        "accepting_students": []
+    },
+    "Young Women&#8217;s Leadership Network": {
+        "post_id": 3531,
+        "program_name": "Young Women&#8217;s Leadership Network",
+        "borroughs": ["Brooklyn", "Bronx", "Manhattan", "Queens"],
+        "neighborhoods": ["Brooklyn - Bay Ridge ", "Brooklyn - Bedford Stuyvesant ", "Brooklyn - Bensonhurst ", "Brooklyn - Borough Park ", "Brooklyn - Brownsville ", "Brooklyn - Bushwick ", "Brooklyn - Canarsie", "Brooklyn - Coney Island", "Brooklyn - Crown Heights North", "Brooklyn - Crown Heights South", "Brooklyn - East Flatbush", "Brooklyn - East New York", "Brooklyn - Flatbush\/Midwood", "Brooklyn - Fort Greene\/Brooklyn Heights", "Brooklyn - Park Slope", "Brooklyn - Sheepshead Bay", "Brooklyn - Sunset Park", "Brooklyn - Williamsburg\/Greenpoint", "Bronx - Bedford Park", "Bronx - Concourse\/Highbridge", "Bronx - East Tremont", "Bronx - Hunts Point", "Bronx - Morrisania", "Bronx - Mott Haven", "Bronx - Pelham Parkway", "Bronx - Riverdale", "Bronx - Throgs Neck", "Bronx - Unionport\/Soundview", "Bronx - University Heights", "Bronx - Williamsbridge", "Manhattan - Battery Park\/Tribeca", "Manhattan - Central Harlem", "Manhattan - Chelsea\/Clinton", "Manhattan - East Harlem", "Manhattan - Greenwich Village", "Manhattan - Lower East Side", "Manhattan - Manhattanville", "Manhattan - Midtown Business District", "Manhattan - Murray Hill\/Stuyvesant", "Manhattan - Upper East Side", "Manhattan - Upper West Side", "Manhattan - Washington Heights", "Queens - Astoria", "Queens - Bayside", "Queens - Elmhurst\/Corona", "Queens - Flushing", "Queens - Fresh Meadows\/Briarwood", "Queens - Howard Beach", "Queens - Jackson Heights", "Queens - Jamaica\/St. Albans", "Queens - Queens Village", "Queens - Rego Park\/Forest Hills", "Queens - Ridgewood\/Glendale", "Queens - Sunnyside\/Woodside", "Queens - The Rockaways", "Queens - Woodhaven"],
+        "grades": ["Middle school (6-8)", "High School (9-12)"],
+        "target_population": ["English language learners", "Students with IEP or other learning challenges", "Poverty guidelines\/socioeconomic status", "First generation college students", "Racial or ethnic minorities", "Gender"],
+        "services": ["College Readiness", "College Matriculation"],
+        "accepting_students": ["Open"]
+    },
+    "The Urban Assembly": {
+        "post_id": 3536,
+        "program_name": "The Urban Assembly",
+        "borroughs": ["Brooklyn", "Bronx", "Manhattan"],
+        "neighborhoods": ["Brooklyn - Bay Ridge ", "Brooklyn - Bedford Stuyvesant ", "Brooklyn - Bensonhurst ", "Brooklyn - Borough Park ", "Brooklyn - Brownsville ", "Brooklyn - Bushwick ", "Brooklyn - Canarsie", "Brooklyn - Coney Island", "Brooklyn - Crown Heights North", "Brooklyn - Crown Heights South", "Brooklyn - East Flatbush", "Brooklyn - East New York", "Brooklyn - Flatbush\/Midwood", "Brooklyn - Fort Greene\/Brooklyn Heights", "Brooklyn - Park Slope", "Brooklyn - Sheepshead Bay", "Brooklyn - Sunset Park", "Brooklyn - Williamsburg\/Greenpoint", "Bronx - Bedford Park", "Bronx - Concourse\/Highbridge", "Bronx - East Tremont", "Bronx - Hunts Point", "Bronx - Morrisania", "Bronx - Mott Haven", "Bronx - Pelham Parkway", "Bronx - Riverdale", "Bronx - Throgs Neck", "Bronx - Unionport\/Soundview", "Bronx - University Heights", "Bronx - Williamsbridge", "Manhattan - Battery Park\/Tribeca", "Manhattan - Central Harlem", "Manhattan - Chelsea\/Clinton", "Manhattan - East Harlem", "Manhattan - Greenwich Village", "Manhattan - Lower East Side", "Manhattan - Manhattanville", "Manhattan - Midtown Business District", "Manhattan - Murray Hill\/Stuyvesant", "Manhattan - Upper East Side", "Manhattan - Upper West Side", "Manhattan - Washington Heights"],
+        "grades": ["Middle school (6-8)", "High School (9-12)", "College"],
+        "target_population": [],
+        "services": ["College Readiness", "College Matriculation", "College Retention", "Career Preparation"],
+        "accepting_students": ["Open"]
+    },
+    "OneGoal (NYC)": {
+        "post_id": 3538,
+        "program_name": "OneGoal (NYC)",
+        "borroughs": ["Brooklyn", "Bronx", "Manhattan"],
+        "neighborhoods": ["Brooklyn - Bay Ridge ", "Brooklyn - Bedford Stuyvesant ", "Brooklyn - Bensonhurst ", "Brooklyn - Borough Park ", "Brooklyn - Brownsville ", "Brooklyn - Bushwick ", "Brooklyn - Canarsie", "Brooklyn - Coney Island", "Brooklyn - Crown Heights North", "Brooklyn - Crown Heights South", "Brooklyn - East Flatbush", "Brooklyn - East New York", "Brooklyn - Flatbush\/Midwood", "Brooklyn - Fort Greene\/Brooklyn Heights", "Brooklyn - Park Slope", "Brooklyn - Sheepshead Bay", "Brooklyn - Sunset Park", "Brooklyn - Williamsburg\/Greenpoint", "Bronx - Bedford Park", "Bronx - Concourse\/Highbridge", "Bronx - East Tremont", "Bronx - Hunts Point", "Bronx - Morrisania", "Bronx - Mott Haven", "Bronx - Pelham Parkway", "Bronx - Riverdale", "Bronx - Throgs Neck", "Bronx - Unionport\/Soundview", "Bronx - University Heights", "Bronx - Williamsbridge", "Manhattan - Battery Park\/Tribeca", "Manhattan - Central Harlem", "Manhattan - Chelsea\/Clinton", "Manhattan - East Harlem", "Manhattan - Greenwich Village", "Manhattan - Lower East Side", "Manhattan - Manhattanville", "Manhattan - Midtown Business District", "Manhattan - Murray Hill\/Stuyvesant", "Manhattan - Upper East Side", "Manhattan - Upper West Side", "Manhattan - Washington Heights"],
+        "grades": ["High School (9-12)", "College"],
+        "target_population": ["Academic Performance", "Poverty guidelines\/socioeconomic status", "First generation college students", "Racial or ethnic minorities"],
+        "services": ["College Readiness", "College Matriculation", "College Retention"],
+        "accepting_students": ["Limited"]
+    },
+    "iMentor": {
+        "post_id": 3539,
+        "program_name": "iMentor",
+        "borroughs": ["Brooklyn", "Bronx", "Manhattan"],
+        "neighborhoods": ["Brooklyn - Bay Ridge ", "Brooklyn - Bedford Stuyvesant ", "Brooklyn - Bensonhurst ", "Brooklyn - Borough Park ", "Brooklyn - Brownsville ", "Brooklyn - Bushwick ", "Brooklyn - Canarsie", "Brooklyn - Coney Island", "Brooklyn - Crown Heights North", "Brooklyn - Crown Heights South", "Brooklyn - East Flatbush", "Brooklyn - East New York", "Brooklyn - Flatbush\/Midwood", "Brooklyn - Fort Greene\/Brooklyn Heights", "Brooklyn - Park Slope", "Brooklyn - Sheepshead Bay", "Brooklyn - Sunset Park", "Brooklyn - Williamsburg\/Greenpoint", "Bronx - Bedford Park", "Bronx - Concourse\/Highbridge", "Bronx - East Tremont", "Bronx - Hunts Point", "Bronx - Morrisania", "Bronx - Mott Haven", "Bronx - Pelham Parkway", "Bronx - Riverdale", "Bronx - Throgs Neck", "Bronx - Unionport\/Soundview", "Bronx - University Heights", "Bronx - Williamsbridge", "Manhattan - Battery Park\/Tribeca", "Manhattan - Central Harlem", "Manhattan - Chelsea\/Clinton", "Manhattan - East Harlem", "Manhattan - Greenwich Village", "Manhattan - Lower East Side", "Manhattan - Manhattanville", "Manhattan - Midtown Business District", "Manhattan - Murray Hill\/Stuyvesant", "Manhattan - Upper East Side", "Manhattan - Upper West Side", "Manhattan - Washington Heights"],
+        "grades": ["High School (9-12)", "College"],
+        "target_population": ["First generation college students", "Racial or ethnic minorities"],
+        "services": ["College Readiness", "College Matriculation", "College Retention", "Career Preparation"],
+        "accepting_students": ["Open"]
+    },
+    "Blue Engine": {
+        "post_id": 3540,
+        "program_name": "Blue Engine",
+        "borroughs": ["Brooklyn", "Bronx", "Manhattan"],
+        "neighborhoods": ["Brooklyn - Bay Ridge ", "Brooklyn - Bedford Stuyvesant ", "Brooklyn - Bensonhurst ", "Brooklyn - Borough Park ", "Brooklyn - Brownsville ", "Brooklyn - Bushwick ", "Brooklyn - Canarsie", "Brooklyn - Coney Island", "Brooklyn - Crown Heights North", "Brooklyn - Crown Heights South", "Brooklyn - East Flatbush", "Brooklyn - East New York", "Brooklyn - Flatbush\/Midwood", "Brooklyn - Fort Greene\/Brooklyn Heights", "Brooklyn - Park Slope", "Brooklyn - Sheepshead Bay", "Brooklyn - Sunset Park", "Brooklyn - Williamsburg\/Greenpoint", "Bronx - Bedford Park", "Bronx - Concourse\/Highbridge", "Bronx - East Tremont", "Bronx - Hunts Point", "Bronx - Morrisania", "Bronx - Mott Haven", "Bronx - Pelham Parkway", "Bronx - Riverdale", "Bronx - Throgs Neck", "Bronx - Unionport\/Soundview", "Bronx - University Heights", "Bronx - Williamsbridge", "Manhattan - Battery Park\/Tribeca", "Manhattan - Central Harlem", "Manhattan - Chelsea\/Clinton", "Manhattan - East Harlem", "Manhattan - Greenwich Village", "Manhattan - Lower East Side", "Manhattan - Manhattanville", "Manhattan - Midtown Business District", "Manhattan - Murray Hill\/Stuyvesant", "Manhattan - Upper East Side", "Manhattan - Upper West Side", "Manhattan - Washington Heights"],
+        "grades": ["High School (9-12)"],
+        "target_population": ["Academic Performance", "Poverty guidelines\/socioeconomic status"],
+        "services": ["College Readiness"],
+        "accepting_students": ["Open"]
+    },
+    "Jewish Home Lifecare": {
+        "post_id": 3541,
+        "program_name": "Jewish Home Lifecare",
+        "borroughs": ["Bronx", "Manhattan"],
+        "neighborhoods": ["Bronx - Bedford Park", "Bronx - Concourse\/Highbridge", "Bronx - East Tremont", "Bronx - Hunts Point", "Bronx - Morrisania", "Bronx - Mott Haven", "Bronx - Pelham Parkway", "Bronx - Riverdale", "Bronx - Throgs Neck", "Bronx - Unionport\/Soundview", "Bronx - University Heights", "Bronx - Williamsbridge", "Manhattan - Battery Park\/Tribeca", "Manhattan - Central Harlem", "Manhattan - Chelsea\/Clinton", "Manhattan - East Harlem", "Manhattan - Greenwich Village", "Manhattan - Lower East Side", "Manhattan - Manhattanville", "Manhattan - Midtown Business District", "Manhattan - Murray Hill\/Stuyvesant", "Manhattan - Upper East Side", "Manhattan - Upper West Side", "Manhattan - Washington Heights"],
+        "grades": ["High School (9-12)", "College"],
+        "target_population": ["Academic Performance", "Disconnected youth\/Out of school youth", "Students with IEP or other learning challenges", "First generation college students", "Racial or ethnic minorities"],
+        "services": ["College Readiness", "College Matriculation", "College Retention", "Career Preparation"],
+        "accepting_students": ["Limited"]
+    },
+    "CUNY &#8211; Research Foundation of CUNY": {
+        "post_id": 3512,
+        "program_name": "CUNY &#8211; Research Foundation of CUNY",
+        "borroughs": ["Brooklyn", "Bronx", "Manhattan", "Queens", "Staten Island"],
+        "neighborhoods": ["Brooklyn - Bay Ridge ", "Brooklyn - Bedford Stuyvesant ", "Brooklyn - Bensonhurst ", "Brooklyn - Borough Park ", "Brooklyn - Brownsville ", "Brooklyn - Bushwick ", "Brooklyn - Canarsie", "Brooklyn - Coney Island", "Brooklyn - Crown Heights North", "Brooklyn - Crown Heights South", "Brooklyn - East Flatbush", "Brooklyn - East New York", "Brooklyn - Flatbush\/Midwood", "Brooklyn - Fort Greene\/Brooklyn Heights", "Brooklyn - Park Slope", "Brooklyn - Sheepshead Bay", "Brooklyn - Sunset Park", "Brooklyn - Williamsburg\/Greenpoint", "Bronx - Bedford Park", "Bronx - Concourse\/Highbridge", "Bronx - East Tremont", "Bronx - Hunts Point", "Bronx - Morrisania", "Bronx - Mott Haven", "Bronx - Pelham Parkway", "Bronx - Riverdale", "Bronx - Throgs Neck", "Bronx - Unionport\/Soundview", "Bronx - University Heights", "Bronx - Williamsbridge", "Manhattan - Battery Park\/Tribeca", "Manhattan - Central Harlem", "Manhattan - Chelsea\/Clinton", "Manhattan - East Harlem", "Manhattan - Greenwich Village", "Manhattan - Lower East Side", "Manhattan - Manhattanville", "Manhattan - Midtown Business District", "Manhattan - Murray Hill\/Stuyvesant", "Manhattan - Upper East Side", "Manhattan - Upper West Side", "Manhattan - Washington Heights", "Queens - Astoria", "Queens - Bayside", "Queens - Elmhurst\/Corona", "Queens - Flushing", "Queens - Fresh Meadows\/Briarwood", "Queens - Howard Beach", "Queens - Jackson Heights", "Queens - Jamaica\/St. Albans", "Queens - Queens Village", "Queens - Rego Park\/Forest Hills", "Queens - Ridgewood\/Glendale", "Queens - Sunnyside\/Woodside", "Queens - The Rockaways", "Queens - Woodhaven", "Staten Island - South Beach", "Staten Island - St. George", "Staten Island - Tottenville"],
+        "grades": ["High School (9-12)", "College"],
+        "target_population": ["Academic Performance", "Disconnected youth\/Out of school youth", "Poverty guidelines\/socioeconomic status", "First generation college students", "Racial or ethnic minorities"],
+        "services": ["College Readiness", "College Matriculation", "College Retention", "Career Preparation"],
+        "accepting_students": []
+    },
+    "CUNY Collaborative Programs": {
+        "post_id": 3514,
+        "program_name": "CUNY Collaborative Programs",
+        "borroughs": ["Brooklyn", "Bronx", "Manhattan", "Queens", "Staten Island"],
+        "neighborhoods": ["Brooklyn - Bay Ridge ", "Brooklyn - Bedford Stuyvesant ", "Brooklyn - Bensonhurst ", "Brooklyn - Borough Park ", "Brooklyn - Brownsville ", "Brooklyn - Bushwick ", "Brooklyn - Canarsie", "Brooklyn - Coney Island", "Brooklyn - Crown Heights North", "Brooklyn - Crown Heights South", "Brooklyn - East Flatbush", "Brooklyn - East New York", "Brooklyn - Flatbush\/Midwood", "Brooklyn - Fort Greene\/Brooklyn Heights", "Brooklyn - Park Slope", "Brooklyn - Sheepshead Bay", "Brooklyn - Sunset Park", "Brooklyn - Williamsburg\/Greenpoint", "Bronx - Bedford Park", "Bronx - Concourse\/Highbridge", "Bronx - East Tremont", "Bronx - Hunts Point", "Bronx - Morrisania", "Bronx - Mott Haven", "Bronx - Pelham Parkway", "Bronx - Riverdale", "Bronx - Throgs Neck", "Bronx - Unionport\/Soundview", "Bronx - University Heights", "Bronx - Williamsbridge", "Manhattan - Battery Park\/Tribeca", "Manhattan - Central Harlem", "Manhattan - Chelsea\/Clinton", "Manhattan - East Harlem", "Manhattan - Greenwich Village", "Manhattan - Lower East Side", "Manhattan - Manhattanville", "Manhattan - Midtown Business District", "Manhattan - Murray Hill\/Stuyvesant", "Manhattan - Upper East Side", "Manhattan - Upper West Side", "Manhattan - Washington Heights", "Queens - Astoria", "Queens - Bayside", "Queens - Elmhurst\/Corona", "Queens - Flushing", "Queens - Fresh Meadows\/Briarwood", "Queens - Howard Beach", "Queens - Jackson Heights", "Queens - Jamaica\/St. Albans", "Queens - Queens Village", "Queens - Rego Park\/Forest Hills", "Queens - Ridgewood\/Glendale", "Queens - Sunnyside\/Woodside", "Queens - The Rockaways", "Queens - Woodhaven", "Staten Island - South Beach", "Staten Island - St. George", "Staten Island - Tottenville"],
+        "grades": ["High School (9-12)"],
+        "target_population": ["Academic Performance", "First generation college students"],
+        "services": ["College Readiness"],
+        "accepting_students": []
+    },
+    "Chinese American Planning Council, Inc.": {
+        "post_id": 3516,
+        "program_name": "Chinese American Planning Council, Inc.",
+        "borroughs": ["Brooklyn", "Bronx", "Manhattan", "Queens", "Staten Island"],
+        "neighborhoods": ["Brooklyn - Bay Ridge ", "Brooklyn - Bedford Stuyvesant ", "Brooklyn - Bensonhurst ", "Brooklyn - Borough Park ", "Brooklyn - Brownsville ", "Brooklyn - Bushwick ", "Brooklyn - Canarsie", "Brooklyn - Coney Island", "Brooklyn - Crown Heights North", "Brooklyn - Crown Heights South", "Brooklyn - East Flatbush", "Brooklyn - East New York", "Brooklyn - Flatbush\/Midwood", "Brooklyn - Fort Greene\/Brooklyn Heights", "Brooklyn - Park Slope", "Brooklyn - Sheepshead Bay", "Brooklyn - Sunset Park", "Brooklyn - Williamsburg\/Greenpoint", "Bronx - Bedford Park", "Bronx - Concourse\/Highbridge", "Bronx - East Tremont", "Bronx - Hunts Point", "Bronx - Morrisania", "Bronx - Mott Haven", "Bronx - Pelham Parkway", "Bronx - Riverdale", "Bronx - Throgs Neck", "Bronx - Unionport\/Soundview", "Bronx - University Heights", "Bronx - Williamsbridge", "Manhattan - Battery Park\/Tribeca", "Manhattan - Central Harlem", "Manhattan - Chelsea\/Clinton", "Manhattan - East Harlem", "Manhattan - Greenwich Village", "Manhattan - Lower East Side", "Manhattan - Manhattanville", "Manhattan - Midtown Business District", "Manhattan - Murray Hill\/Stuyvesant", "Manhattan - Upper East Side", "Manhattan - Upper West Side", "Manhattan - Washington Heights", "Queens - Astoria", "Queens - Bayside", "Queens - Elmhurst\/Corona", "Queens - Flushing", "Queens - Fresh Meadows\/Briarwood", "Queens - Howard Beach", "Queens - Jackson Heights", "Queens - Jamaica\/St. Albans", "Queens - Queens Village", "Queens - Rego Park\/Forest Hills", "Queens - Ridgewood\/Glendale", "Queens - Sunnyside\/Woodside", "Queens - The Rockaways", "Queens - Woodhaven", "Staten Island - South Beach", "Staten Island - St. George", "Staten Island - Tottenville"],
+        "grades": ["High School (9-12)", "College"],
+        "target_population": ["Poverty guidelines\/socioeconomic status", "First generation college students"],
+        "services": ["College Readiness"],
+        "accepting_students": ["Open"]
+    },
+    "A Better Chance": {
+        "post_id": 3519,
+        "program_name": "A Better Chance",
+        "borroughs": ["Brooklyn", "Bronx", "Manhattan", "Queens", "Staten Island"],
+        "neighborhoods": ["Brooklyn - Bay Ridge ", "Brooklyn - Bedford Stuyvesant ", "Brooklyn - Bensonhurst ", "Brooklyn - Borough Park ", "Brooklyn - Brownsville ", "Brooklyn - Bushwick ", "Brooklyn - Canarsie", "Brooklyn - Coney Island", "Brooklyn - Crown Heights North", "Brooklyn - Crown Heights South", "Brooklyn - East Flatbush", "Brooklyn - East New York", "Brooklyn - Flatbush\/Midwood", "Brooklyn - Fort Greene\/Brooklyn Heights", "Brooklyn - Park Slope", "Brooklyn - Sheepshead Bay", "Brooklyn - Sunset Park", "Brooklyn - Williamsburg\/Greenpoint", "Bronx - Bedford Park", "Bronx - Concourse\/Highbridge", "Bronx - East Tremont", "Bronx - Hunts Point", "Bronx - Morrisania", "Bronx - Mott Haven", "Bronx - Pelham Parkway", "Bronx - Riverdale", "Bronx - Throgs Neck", "Bronx - Unionport\/Soundview", "Bronx - University Heights", "Bronx - Williamsbridge", "Manhattan - Battery Park\/Tribeca", "Manhattan - Central Harlem", "Manhattan - Chelsea\/Clinton", "Manhattan - East Harlem", "Manhattan - Greenwich Village", "Manhattan - Lower East Side", "Manhattan - Manhattanville", "Manhattan - Midtown Business District", "Manhattan - Murray Hill\/Stuyvesant", "Manhattan - Upper East Side", "Manhattan - Upper West Side", "Manhattan - Washington Heights", "Queens - Astoria", "Queens - Bayside", "Queens - Elmhurst\/Corona", "Queens - Flushing", "Queens - Fresh Meadows\/Briarwood", "Queens - Howard Beach", "Queens - Jackson Heights", "Queens - Jamaica\/St. Albans", "Queens - Queens Village", "Queens - Rego Park\/Forest Hills", "Queens - Ridgewood\/Glendale", "Queens - Sunnyside\/Woodside", "Queens - The Rockaways", "Queens - Woodhaven", "Staten Island - South Beach", "Staten Island - St. George", "Staten Island - Tottenville"],
+        "grades": ["Middle school (6-8)", "High School (9-12)"],
+        "target_population": ["Academic Performance", "Racial or ethnic minorities"],
+        "services": ["College Readiness", "College Matriculation", "Career Preparation"],
+        "accepting_students": ["Open"]
+    },
+    "America Needs You": {
+        "post_id": 3521,
+        "program_name": "America Needs You",
+        "borroughs": ["Brooklyn", "Bronx", "Manhattan", "Queens", "Staten Island"],
+        "neighborhoods": ["Brooklyn - Bay Ridge ", "Brooklyn - Bedford Stuyvesant ", "Brooklyn - Bensonhurst ", "Brooklyn - Borough Park ", "Brooklyn - Brownsville ", "Brooklyn - Bushwick ", "Brooklyn - Canarsie", "Brooklyn - Coney Island", "Brooklyn - Crown Heights North", "Brooklyn - Crown Heights South", "Brooklyn - East Flatbush", "Brooklyn - East New York", "Brooklyn - Flatbush\/Midwood", "Brooklyn - Fort Greene\/Brooklyn Heights", "Brooklyn - Park Slope", "Brooklyn - Sheepshead Bay", "Brooklyn - Sunset Park", "Brooklyn - Williamsburg\/Greenpoint", "Bronx - Bedford Park", "Bronx - Concourse\/Highbridge", "Bronx - East Tremont", "Bronx - Hunts Point", "Bronx - Morrisania", "Bronx - Mott Haven", "Bronx - Pelham Parkway", "Bronx - Riverdale", "Bronx - Throgs Neck", "Bronx - Unionport\/Soundview", "Bronx - University Heights", "Bronx - Williamsbridge", "Manhattan - Battery Park\/Tribeca", "Manhattan - Central Harlem", "Manhattan - Chelsea\/Clinton", "Manhattan - East Harlem", "Manhattan - Greenwich Village", "Manhattan - Lower East Side", "Manhattan - Manhattanville", "Manhattan - Midtown Business District", "Manhattan - Murray Hill\/Stuyvesant", "Manhattan - Upper East Side", "Manhattan - Upper West Side", "Manhattan - Washington Heights", "Queens - Astoria", "Queens - Bayside", "Queens - Elmhurst\/Corona", "Queens - Flushing", "Queens - Fresh Meadows\/Briarwood", "Queens - Howard Beach", "Queens - Jackson Heights", "Queens - Jamaica\/St. Albans", "Queens - Queens Village", "Queens - Rego Park\/Forest Hills", "Queens - Ridgewood\/Glendale", "Queens - Sunnyside\/Woodside", "Queens - The Rockaways", "Queens - Woodhaven", "Staten Island - South Beach", "Staten Island - St. George", "Staten Island - Tottenville"],
+        "grades": [],
+        "target_population": [],
+        "services": [],
+        "accepting_students": []
+    },
+    "PENCIL": {
+        "post_id": 3510,
+        "program_name": "PENCIL",
+        "borroughs": ["Brooklyn", "Bronx", "Manhattan", "Queens", "Staten Island"],
+        "neighborhoods": ["Brooklyn - Bay Ridge ", "Brooklyn - Bedford Stuyvesant ", "Brooklyn - Bensonhurst ", "Brooklyn - Borough Park ", "Brooklyn - Brownsville ", "Brooklyn - Bushwick ", "Brooklyn - Canarsie", "Brooklyn - Coney Island", "Brooklyn - Crown Heights North", "Brooklyn - Crown Heights South", "Brooklyn - East Flatbush", "Brooklyn - East New York", "Brooklyn - Flatbush\/Midwood", "Brooklyn - Fort Greene\/Brooklyn Heights", "Brooklyn - Park Slope", "Brooklyn - Sheepshead Bay", "Brooklyn - Sunset Park", "Brooklyn - Williamsburg\/Greenpoint", "Bronx - Bedford Park", "Bronx - Concourse\/Highbridge", "Bronx - East Tremont", "Bronx - Hunts Point", "Bronx - Morrisania", "Bronx - Mott Haven", "Bronx - Pelham Parkway", "Bronx - Riverdale", "Bronx - Throgs Neck", "Bronx - Unionport\/Soundview", "Bronx - University Heights", "Bronx - Williamsbridge", "Manhattan - Battery Park\/Tribeca", "Manhattan - Central Harlem", "Manhattan - Chelsea\/Clinton", "Manhattan - East Harlem", "Manhattan - Greenwich Village", "Manhattan - Lower East Side", "Manhattan - Manhattanville", "Manhattan - Midtown Business District", "Manhattan - Murray Hill\/Stuyvesant", "Manhattan - Upper East Side", "Manhattan - Upper West Side", "Manhattan - Washington Heights", "Queens - Astoria", "Queens - Bayside", "Queens - Elmhurst\/Corona", "Queens - Flushing", "Queens - Fresh Meadows\/Briarwood", "Queens - Howard Beach", "Queens - Jackson Heights", "Queens - Jamaica\/St. Albans", "Queens - Queens Village", "Queens - Rego Park\/Forest Hills", "Queens - Ridgewood\/Glendale", "Queens - Sunnyside\/Woodside", "Queens - The Rockaways", "Queens - Woodhaven", "Staten Island - South Beach", "Staten Island - St. George", "Staten Island - Tottenville"],
+        "grades": ["Elementary school (K-5)", "Middle school (6-8)", "High School (9-12)"],
+        "target_population": ["First generation college students", "Racial or ethnic minorities", "Gender"],
+        "services": ["College Readiness", "College Matriculation", "Career Preparation"],
+        "accepting_students": ["Limited", "Closed"]
+    },
+    "NYC Outward Bound Schools": {
+        "post_id": 3523,
+        "program_name": "NYC Outward Bound Schools",
+        "borroughs": ["Brooklyn", "Manhattan", "Queens", "Staten Island"],
+        "neighborhoods": ["Brooklyn - Bay Ridge ", "Brooklyn - Bedford Stuyvesant ", "Brooklyn - Bensonhurst ", "Brooklyn - Borough Park ", "Brooklyn - Brownsville ", "Brooklyn - Bushwick ", "Brooklyn - Canarsie", "Brooklyn - Coney Island", "Brooklyn - Crown Heights North", "Brooklyn - Crown Heights South", "Brooklyn - East Flatbush", "Brooklyn - East New York", "Brooklyn - Flatbush\/Midwood", "Brooklyn - Fort Greene\/Brooklyn Heights", "Brooklyn - Park Slope", "Brooklyn - Sheepshead Bay", "Brooklyn - Sunset Park", "Brooklyn - Williamsburg\/Greenpoint", "Manhattan - Battery Park\/Tribeca", "Manhattan - Central Harlem", "Manhattan - Chelsea\/Clinton", "Manhattan - East Harlem", "Manhattan - Greenwich Village", "Manhattan - Lower East Side", "Manhattan - Manhattanville", "Manhattan - Midtown Business District", "Manhattan - Murray Hill\/Stuyvesant", "Manhattan - Upper East Side", "Manhattan - Upper West Side", "Manhattan - Washington Heights", "Queens - Astoria", "Queens - Bayside", "Queens - Elmhurst\/Corona", "Queens - Flushing", "Queens - Fresh Meadows\/Briarwood", "Queens - Howard Beach", "Queens - Jackson Heights", "Queens - Jamaica\/St. Albans", "Queens - Queens Village", "Queens - Rego Park\/Forest Hills", "Queens - Ridgewood\/Glendale", "Queens - Sunnyside\/Woodside", "Queens - The Rockaways", "Queens - Woodhaven", "Staten Island - South Beach", "Staten Island - St. George", "Staten Island - Tottenville"],
+        "grades": ["High School (9-12)", "College"],
+        "target_population": ["Poverty guidelines\/socioeconomic status", "First generation college students", "Racial or ethnic minorities"],
+        "services": ["College Readiness", "College Matriculation", "College Retention"],
+        "accepting_students": ["Closed"]
+    },
+    "Queensborough Community College\/CUNY": {
+        "post_id": 3525,
+        "program_name": "Queensborough Community College\/CUNY",
+        "borroughs": ["Brooklyn", "Bronx", "Manhattan", "Queens"],
+        "neighborhoods": ["Brooklyn - Bay Ridge ", "Brooklyn - Bedford Stuyvesant ", "Brooklyn - Bensonhurst ", "Brooklyn - Borough Park ", "Brooklyn - Brownsville ", "Brooklyn - Bushwick ", "Brooklyn - Canarsie", "Brooklyn - Coney Island", "Brooklyn - Crown Heights North", "Brooklyn - Crown Heights South", "Brooklyn - East Flatbush", "Brooklyn - East New York", "Brooklyn - Flatbush\/Midwood", "Brooklyn - Fort Greene\/Brooklyn Heights", "Brooklyn - Park Slope", "Brooklyn - Sheepshead Bay", "Brooklyn - Sunset Park", "Brooklyn - Williamsburg\/Greenpoint", "Bronx - Bedford Park", "Bronx - Concourse\/Highbridge", "Bronx - East Tremont", "Bronx - Hunts Point", "Bronx - Morrisania", "Bronx - Mott Haven", "Bronx - Pelham Parkway", "Bronx - Riverdale", "Bronx - Throgs Neck", "Bronx - Unionport\/Soundview", "Bronx - University Heights", "Bronx - Williamsbridge", "Manhattan - Battery Park\/Tribeca", "Manhattan - Central Harlem", "Manhattan - Chelsea\/Clinton", "Manhattan - East Harlem", "Manhattan - Greenwich Village", "Manhattan - Lower East Side", "Manhattan - Manhattanville", "Manhattan - Midtown Business District", "Manhattan - Murray Hill\/Stuyvesant", "Manhattan - Upper East Side", "Manhattan - Upper West Side", "Manhattan - Washington Heights", "Queens - Astoria", "Queens - Bayside", "Queens - Elmhurst\/Corona", "Queens - Flushing", "Queens - Fresh Meadows\/Briarwood", "Queens - Howard Beach", "Queens - Jackson Heights", "Queens - Jamaica\/St. Albans", "Queens - Queens Village", "Queens - Rego Park\/Forest Hills", "Queens - Ridgewood\/Glendale", "Queens - Sunnyside\/Woodside", "Queens - The Rockaways", "Queens - Woodhaven"],
+        "grades": ["High School (9-12)", "College"],
+        "target_population": ["Academic Performance", "Poverty guidelines\/socioeconomic status"],
+        "services": ["College Readiness", "College Matriculation", "College Retention"],
+        "accepting_students": ["Closed"]
+    },
+    "HEALTH for Youths": {
+        "post_id": 3502,
+        "program_name": "HEALTH for Youths",
+        "borroughs": ["Brooklyn", "Bronx", "Manhattan", "Queens", "Staten Island"],
+        "neighborhoods": ["Brooklyn - Bay Ridge ", "Brooklyn - Bedford Stuyvesant ", "Brooklyn - Bensonhurst ", "Brooklyn - Borough Park ", "Brooklyn - Brownsville ", "Brooklyn - Bushwick ", "Brooklyn - Canarsie", "Brooklyn - Coney Island", "Brooklyn - Crown Heights North", "Brooklyn - Crown Heights South", "Brooklyn - East Flatbush", "Brooklyn - East New York", "Brooklyn - Flatbush\/Midwood", "Brooklyn - Fort Greene\/Brooklyn Heights", "Brooklyn - Park Slope", "Brooklyn - Sheepshead Bay", "Brooklyn - Sunset Park", "Brooklyn - Williamsburg\/Greenpoint", "Bronx - Bedford Park", "Bronx - Concourse\/Highbridge", "Bronx - East Tremont", "Bronx - Hunts Point", "Bronx - Morrisania", "Bronx - Mott Haven", "Bronx - Pelham Parkway", "Bronx - Riverdale", "Bronx - Throgs Neck", "Bronx - Unionport\/Soundview", "Bronx - University Heights", "Bronx - Williamsbridge", "Manhattan - Battery Park\/Tribeca", "Manhattan - Central Harlem", "Manhattan - Chelsea\/Clinton", "Manhattan - East Harlem", "Manhattan - Greenwich Village", "Manhattan - Lower East Side", "Manhattan - Manhattanville", "Manhattan - Midtown Business District", "Manhattan - Murray Hill\/Stuyvesant", "Manhattan - Upper East Side", "Manhattan - Upper West Side", "Manhattan - Washington Heights", "Queens - Astoria", "Queens - Bayside", "Queens - Elmhurst\/Corona", "Queens - Flushing", "Queens - Fresh Meadows\/Briarwood", "Queens - Howard Beach", "Queens - Jackson Heights", "Queens - Jamaica\/St. Albans", "Queens - Queens Village", "Queens - Rego Park\/Forest Hills", "Queens - Ridgewood\/Glendale", "Queens - Sunnyside\/Woodside", "Queens - The Rockaways", "Queens - Woodhaven", "Staten Island - South Beach", "Staten Island - St. George", "Staten Island - Tottenville"],
+        "grades": ["Elementary school (K-5)", "Middle school (6-8)", "High School (9-12)", "College"],
+        "target_population": ["Academic Performance", "Disconnected youth\/Out of school youth", "Poverty guidelines\/socioeconomic status", "Justice involved youth", "First generation college students", "Racial or ethnic minorities", "Gender"],
+        "services": ["College Readiness", "College Matriculation", "College Retention", "Career Preparation"],
+        "accepting_students": ["Open"]
+    },
+    "Baruch College STEP Academy": {
+        "post_id": 3503,
+        "program_name": "Baruch College STEP Academy",
+        "borroughs": ["Brooklyn", "Bronx", "Manhattan", "Queens", "Staten Island"],
+        "neighborhoods": ["Brooklyn - Bay Ridge ", "Brooklyn - Bedford Stuyvesant ", "Brooklyn - Bensonhurst ", "Brooklyn - Borough Park ", "Brooklyn - Brownsville ", "Brooklyn - Bushwick ", "Brooklyn - Canarsie", "Brooklyn - Coney Island", "Brooklyn - Crown Heights North", "Brooklyn - Crown Heights South", "Brooklyn - East Flatbush", "Brooklyn - East New York", "Brooklyn - Flatbush\/Midwood", "Brooklyn - Fort Greene\/Brooklyn Heights", "Brooklyn - Park Slope", "Brooklyn - Sheepshead Bay", "Brooklyn - Sunset Park", "Brooklyn - Williamsburg\/Greenpoint", "Bronx - Bedford Park", "Bronx - Concourse\/Highbridge", "Bronx - East Tremont", "Bronx - Hunts Point", "Bronx - Morrisania", "Bronx - Mott Haven", "Bronx - Pelham Parkway", "Bronx - Riverdale", "Bronx - Throgs Neck", "Bronx - Unionport\/Soundview", "Bronx - University Heights", "Bronx - Williamsbridge", "Manhattan - Battery Park\/Tribeca", "Manhattan - Central Harlem", "Manhattan - Chelsea\/Clinton", "Manhattan - East Harlem", "Manhattan - Greenwich Village", "Manhattan - Lower East Side", "Manhattan - Manhattanville", "Manhattan - Midtown Business District", "Manhattan - Murray Hill\/Stuyvesant", "Manhattan - Upper East Side", "Manhattan - Upper West Side", "Manhattan - Washington Heights", "Queens - Astoria", "Queens - Bayside", "Queens - Elmhurst\/Corona", "Queens - Flushing", "Queens - Fresh Meadows\/Briarwood", "Queens - Howard Beach", "Queens - Jackson Heights", "Queens - Jamaica\/St. Albans", "Queens - Queens Village", "Queens - Rego Park\/Forest Hills", "Queens - Ridgewood\/Glendale", "Queens - Sunnyside\/Woodside", "Queens - The Rockaways", "Queens - Woodhaven", "Staten Island - South Beach", "Staten Island - St. George", "Staten Island - Tottenville"],
+        "grades": ["Middle school (6-8)", "High School (9-12)"],
+        "target_population": ["Racial or ethnic minorities"],
+        "services": ["College Readiness"],
+        "accepting_students": ["Limited"]
+    },
+    "CUNY Black Male Initiative": {
+        "post_id": 3505,
+        "program_name": "CUNY Black Male Initiative",
+        "borroughs": ["Brooklyn", "Bronx", "Manhattan", "Queens", "Staten Island"],
+        "neighborhoods": ["Brooklyn - Bay Ridge ", "Brooklyn - Bedford Stuyvesant ", "Brooklyn - Bensonhurst ", "Brooklyn - Borough Park ", "Brooklyn - Brownsville ", "Brooklyn - Bushwick ", "Brooklyn - Canarsie", "Brooklyn - Coney Island", "Brooklyn - Crown Heights North", "Brooklyn - Crown Heights South", "Brooklyn - East Flatbush", "Brooklyn - East New York", "Brooklyn - Flatbush\/Midwood", "Brooklyn - Fort Greene\/Brooklyn Heights", "Brooklyn - Park Slope", "Brooklyn - Sheepshead Bay", "Brooklyn - Sunset Park", "Brooklyn - Williamsburg\/Greenpoint", "Bronx - Bedford Park", "Bronx - Concourse\/Highbridge", "Bronx - East Tremont", "Bronx - Hunts Point", "Bronx - Morrisania", "Bronx - Mott Haven", "Bronx - Pelham Parkway", "Bronx - Riverdale", "Bronx - Throgs Neck", "Bronx - Unionport\/Soundview", "Bronx - University Heights", "Bronx - Williamsbridge", "Manhattan - Battery Park\/Tribeca", "Manhattan - Central Harlem", "Manhattan - Chelsea\/Clinton", "Manhattan - East Harlem", "Manhattan - Greenwich Village", "Manhattan - Lower East Side", "Manhattan - Manhattanville", "Manhattan - Midtown Business District", "Manhattan - Murray Hill\/Stuyvesant", "Manhattan - Upper East Side", "Manhattan - Upper West Side", "Manhattan - Washington Heights", "Queens - Astoria", "Queens - Bayside", "Queens - Elmhurst\/Corona", "Queens - Flushing", "Queens - Fresh Meadows\/Briarwood", "Queens - Howard Beach", "Queens - Jackson Heights", "Queens - Jamaica\/St. Albans", "Queens - Queens Village", "Queens - Rego Park\/Forest Hills", "Queens - Ridgewood\/Glendale", "Queens - Sunnyside\/Woodside", "Queens - The Rockaways", "Queens - Woodhaven", "Staten Island - South Beach", "Staten Island - St. George", "Staten Island - Tottenville"],
+        "grades": ["College"],
+        "target_population": ["High school equivalency", "Justice involved youth", "Racial or ethnic minorities"],
+        "services": ["College Readiness", "College Matriculation", "College Retention", "Career Preparation"],
+        "accepting_students": ["Open"]
+    },
+    "Children&#8217;s Defense Fund": {
+        "post_id": 3506,
+        "program_name": "Children&#8217;s Defense Fund",
+        "borroughs": ["Brooklyn", "Bronx", "Manhattan", "Queens", "Staten Island"],
+        "neighborhoods": ["Brooklyn - Bay Ridge ", "Brooklyn - Bedford Stuyvesant ", "Brooklyn - Bensonhurst ", "Brooklyn - Borough Park ", "Brooklyn - Brownsville ", "Brooklyn - Bushwick ", "Brooklyn - Canarsie", "Brooklyn - Coney Island", "Brooklyn - Crown Heights North", "Brooklyn - Crown Heights South", "Brooklyn - East Flatbush", "Brooklyn - East New York", "Brooklyn - Flatbush\/Midwood", "Brooklyn - Fort Greene\/Brooklyn Heights", "Brooklyn - Park Slope", "Brooklyn - Sheepshead Bay", "Brooklyn - Sunset Park", "Brooklyn - Williamsburg\/Greenpoint", "Bronx - Bedford Park", "Bronx - Concourse\/Highbridge", "Bronx - East Tremont", "Bronx - Hunts Point", "Bronx - Morrisania", "Bronx - Mott Haven", "Bronx - Pelham Parkway", "Bronx - Riverdale", "Bronx - Throgs Neck", "Bronx - Unionport\/Soundview", "Bronx - University Heights", "Bronx - Williamsbridge", "Manhattan - Battery Park\/Tribeca", "Manhattan - Central Harlem", "Manhattan - Chelsea\/Clinton", "Manhattan - East Harlem", "Manhattan - Greenwich Village", "Manhattan - Lower East Side", "Manhattan - Manhattanville", "Manhattan - Midtown Business District", "Manhattan - Murray Hill\/Stuyvesant", "Manhattan - Upper East Side", "Manhattan - Upper West Side", "Manhattan - Washington Heights", "Queens - Astoria", "Queens - Bayside", "Queens - Elmhurst\/Corona", "Queens - Flushing", "Queens - Fresh Meadows\/Briarwood", "Queens - Howard Beach", "Queens - Jackson Heights", "Queens - Jamaica\/St. Albans", "Queens - Queens Village", "Queens - Rego Park\/Forest Hills", "Queens - Ridgewood\/Glendale", "Queens - Sunnyside\/Woodside", "Queens - The Rockaways", "Queens - Woodhaven", "Staten Island - South Beach", "Staten Island - St. George", "Staten Island - Tottenville"],
+        "grades": ["High School (9-12)"],
+        "target_population": ["Poverty guidelines\/socioeconomic status", "First generation college students", "Racial or ethnic minorities", "Gender"],
+        "services": ["College Readiness", "College Matriculation", "College Retention", "Career Preparation"],
+        "accepting_students": []
+    },
+    "Sponsors for Educational Opportunity (SEO) Scholars": {
+        "post_id": 3507,
+        "program_name": "Sponsors for Educational Opportunity (SEO) Scholars",
+        "borroughs": ["Brooklyn", "Bronx", "Manhattan", "Queens", "Staten Island"],
+        "neighborhoods": ["Brooklyn - Bay Ridge ", "Brooklyn - Bedford Stuyvesant ", "Brooklyn - Bensonhurst ", "Brooklyn - Borough Park ", "Brooklyn - Brownsville ", "Brooklyn - Bushwick ", "Brooklyn - Canarsie", "Brooklyn - Coney Island", "Brooklyn - Crown Heights North", "Brooklyn - Crown Heights South", "Brooklyn - East Flatbush", "Brooklyn - East New York", "Brooklyn - Flatbush\/Midwood", "Brooklyn - Fort Greene\/Brooklyn Heights", "Brooklyn - Park Slope", "Brooklyn - Sheepshead Bay", "Brooklyn - Sunset Park", "Brooklyn - Williamsburg\/Greenpoint", "Bronx - Bedford Park", "Bronx - Concourse\/Highbridge", "Bronx - East Tremont", "Bronx - Hunts Point", "Bronx - Morrisania", "Bronx - Mott Haven", "Bronx - Pelham Parkway", "Bronx - Riverdale", "Bronx - Throgs Neck", "Bronx - Unionport\/Soundview", "Bronx - University Heights", "Bronx - Williamsbridge", "Manhattan - Battery Park\/Tribeca", "Manhattan - Central Harlem", "Manhattan - Chelsea\/Clinton", "Manhattan - East Harlem", "Manhattan - Greenwich Village", "Manhattan - Lower East Side", "Manhattan - Manhattanville", "Manhattan - Midtown Business District", "Manhattan - Murray Hill\/Stuyvesant", "Manhattan - Upper East Side", "Manhattan - Upper West Side", "Manhattan - Washington Heights", "Queens - Astoria", "Queens - Bayside", "Queens - Elmhurst\/Corona", "Queens - Flushing", "Queens - Fresh Meadows\/Briarwood", "Queens - Howard Beach", "Queens - Jackson Heights", "Queens - Jamaica\/St. Albans", "Queens - Queens Village", "Queens - Rego Park\/Forest Hills", "Queens - Ridgewood\/Glendale", "Queens - Sunnyside\/Woodside", "Queens - The Rockaways", "Queens - Woodhaven", "Staten Island - South Beach", "Staten Island - St. George", "Staten Island - Tottenville"],
+        "grades": ["High School (9-12)", "College"],
+        "target_population": ["Academic Performance", "Poverty guidelines\/socioeconomic status", "First generation college students", "Racial or ethnic minorities"],
+        "services": ["College Readiness", "College Matriculation", "College Retention"],
+        "accepting_students": ["Limited"]
+    },
+    "Cooper Union Saturday Program": {
+        "post_id": 3508,
+        "program_name": "Cooper Union Saturday Program",
+        "borroughs": ["Brooklyn", "Bronx", "Manhattan", "Queens", "Staten Island"],
+        "neighborhoods": ["Brooklyn - Bay Ridge ", "Brooklyn - Bedford Stuyvesant ", "Brooklyn - Bensonhurst ", "Brooklyn - Borough Park ", "Brooklyn - Brownsville ", "Brooklyn - Bushwick ", "Brooklyn - Canarsie", "Brooklyn - Coney Island", "Brooklyn - Crown Heights North", "Brooklyn - Crown Heights South", "Brooklyn - East Flatbush", "Brooklyn - East New York", "Brooklyn - Flatbush\/Midwood", "Brooklyn - Fort Greene\/Brooklyn Heights", "Brooklyn - Park Slope", "Brooklyn - Sheepshead Bay", "Brooklyn - Sunset Park", "Brooklyn - Williamsburg\/Greenpoint", "Bronx - Bedford Park", "Bronx - Concourse\/Highbridge", "Bronx - East Tremont", "Bronx - Hunts Point", "Bronx - Morrisania", "Bronx - Mott Haven", "Bronx - Pelham Parkway", "Bronx - Riverdale", "Bronx - Throgs Neck", "Bronx - Unionport\/Soundview", "Bronx - University Heights", "Bronx - Williamsbridge", "Manhattan - Battery Park\/Tribeca", "Manhattan - Central Harlem", "Manhattan - Chelsea\/Clinton", "Manhattan - East Harlem", "Manhattan - Greenwich Village", "Manhattan - Lower East Side", "Manhattan - Manhattanville", "Manhattan - Midtown Business District", "Manhattan - Murray Hill\/Stuyvesant", "Manhattan - Upper East Side", "Manhattan - Upper West Side", "Manhattan - Washington Heights", "Queens - Astoria", "Queens - Bayside", "Queens - Elmhurst\/Corona", "Queens - Flushing", "Queens - Fresh Meadows\/Briarwood", "Queens - Howard Beach", "Queens - Jackson Heights", "Queens - Jamaica\/St. Albans", "Queens - Queens Village", "Queens - Rego Park\/Forest Hills", "Queens - Ridgewood\/Glendale", "Queens - Sunnyside\/Woodside", "Queens - The Rockaways", "Queens - Woodhaven", "Staten Island - South Beach", "Staten Island - St. George", "Staten Island - Tottenville"],
+        "grades": ["High School (9-12)"],
+        "target_population": [],
+        "services": ["College Readiness", "Career Preparation"],
+        "accepting_students": []
+    },
+    "Management Leadership for Tomorrow (MLT)": {
+        "post_id": 3509,
+        "program_name": "Management Leadership for Tomorrow (MLT)",
+        "borroughs": ["Brooklyn", "Bronx", "Manhattan", "Queens", "Staten Island"],
+        "neighborhoods": ["Brooklyn - Bay Ridge ", "Brooklyn - Bedford Stuyvesant ", "Brooklyn - Bensonhurst ", "Brooklyn - Borough Park ", "Brooklyn - Brownsville ", "Brooklyn - Bushwick ", "Brooklyn - Canarsie", "Brooklyn - Coney Island", "Brooklyn - Crown Heights North", "Brooklyn - Crown Heights South", "Brooklyn - East Flatbush", "Brooklyn - East New York", "Brooklyn - Flatbush\/Midwood", "Brooklyn - Fort Greene\/Brooklyn Heights", "Brooklyn - Park Slope", "Brooklyn - Sheepshead Bay", "Brooklyn - Sunset Park", "Brooklyn - Williamsburg\/Greenpoint", "Bronx - Bedford Park", "Bronx - Concourse\/Highbridge", "Bronx - East Tremont", "Bronx - Hunts Point", "Bronx - Morrisania", "Bronx - Mott Haven", "Bronx - Pelham Parkway", "Bronx - Riverdale", "Bronx - Throgs Neck", "Bronx - Unionport\/Soundview", "Bronx - University Heights", "Bronx - Williamsbridge", "Manhattan - Battery Park\/Tribeca", "Manhattan - Central Harlem", "Manhattan - Chelsea\/Clinton", "Manhattan - East Harlem", "Manhattan - Greenwich Village", "Manhattan - Lower East Side", "Manhattan - Manhattanville", "Manhattan - Midtown Business District", "Manhattan - Murray Hill\/Stuyvesant", "Manhattan - Upper East Side", "Manhattan - Upper West Side", "Manhattan - Washington Heights", "Queens - Astoria", "Queens - Bayside", "Queens - Elmhurst\/Corona", "Queens - Flushing", "Queens - Fresh Meadows\/Briarwood", "Queens - Howard Beach", "Queens - Jackson Heights", "Queens - Jamaica\/St. Albans", "Queens - Queens Village", "Queens - Rego Park\/Forest Hills", "Queens - Ridgewood\/Glendale", "Queens - Sunnyside\/Woodside", "Queens - The Rockaways", "Queens - Woodhaven", "Staten Island - South Beach", "Staten Island - St. George", "Staten Island - Tottenville"],
+        "grades": ["College"],
+        "target_population": ["First generation college students", "Racial or ethnic minorities"],
+        "services": ["Career Preparation"],
+        "accepting_students": ["Limited"]
+    },
+    "New York Asian Women&#8217;s Center": {
+        "post_id": 3511,
+        "program_name": "New York Asian Women&#8217;s Center",
+        "borroughs": ["Brooklyn", "Bronx", "Manhattan", "Queens", "Staten Island"],
+        "neighborhoods": ["Brooklyn - Bay Ridge ", "Brooklyn - Bedford Stuyvesant ", "Brooklyn - Bensonhurst ", "Brooklyn - Borough Park ", "Brooklyn - Brownsville ", "Brooklyn - Bushwick ", "Brooklyn - Canarsie", "Brooklyn - Coney Island", "Brooklyn - Crown Heights North", "Brooklyn - Crown Heights South", "Brooklyn - East Flatbush", "Brooklyn - East New York", "Brooklyn - Flatbush\/Midwood", "Brooklyn - Fort Greene\/Brooklyn Heights", "Brooklyn - Park Slope", "Brooklyn - Sheepshead Bay", "Brooklyn - Sunset Park", "Brooklyn - Williamsburg\/Greenpoint", "Bronx - Bedford Park", "Bronx - Concourse\/Highbridge", "Bronx - East Tremont", "Bronx - Hunts Point", "Bronx - Morrisania", "Bronx - Mott Haven", "Bronx - Pelham Parkway", "Bronx - Riverdale", "Bronx - Throgs Neck", "Bronx - Unionport\/Soundview", "Bronx - University Heights", "Bronx - Williamsbridge", "Manhattan - Battery Park\/Tribeca", "Manhattan - Central Harlem", "Manhattan - Chelsea\/Clinton", "Manhattan - East Harlem", "Manhattan - Greenwich Village", "Manhattan - Lower East Side", "Manhattan - Manhattanville", "Manhattan - Midtown Business District", "Manhattan - Murray Hill\/Stuyvesant", "Manhattan - Upper East Side", "Manhattan - Upper West Side", "Manhattan - Washington Heights", "Queens - Astoria", "Queens - Bayside", "Queens - Elmhurst\/Corona", "Queens - Flushing", "Queens - Fresh Meadows\/Briarwood", "Queens - Howard Beach", "Queens - Jackson Heights", "Queens - Jamaica\/St. Albans", "Queens - Queens Village", "Queens - Rego Park\/Forest Hills", "Queens - Ridgewood\/Glendale", "Queens - Sunnyside\/Woodside", "Queens - The Rockaways", "Queens - Woodhaven", "Staten Island - South Beach", "Staten Island - St. George", "Staten Island - Tottenville"],
+        "grades": ["College"],
+        "target_population": ["English language learners", "Poverty guidelines\/socioeconomic status", "First generation college students", "Racial or ethnic minorities"],
+        "services": [],
+        "accepting_students": []
+    }
+}

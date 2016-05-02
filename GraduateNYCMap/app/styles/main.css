@@ -114,6 +114,7 @@ svg {
 .borough.active {
     stroke: orange;
     stroke-width: 1px;
+    fill: none;
 }
 .borough:hover{
     stroke: orange;
