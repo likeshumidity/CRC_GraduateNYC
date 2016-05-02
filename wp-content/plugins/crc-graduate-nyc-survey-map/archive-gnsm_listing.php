@@ -9,6 +9,7 @@ get_header();
 echo avia_title(array('title' => 'Graduate NYC Program Survey Listings'));
 		
 do_action( 'ava_after_main_title' );
+
 ?>
 
 		<div class='container_wrap container_wrap_first main_color <?php avia_layout_class( 'main' ); ?>'>
@@ -20,72 +21,49 @@ do_action( 'ava_after_main_title' );
 					<div class="crc-gnsm-back-to-map"><a href="mapLink">Map View</a></div>
 					<div class="crc-gnsm-form-container">
 						<form id="crc-gnsm-listings-form" method="get">
-							<fieldset>
-							<label for="gnsm-burroughs">Burroughs</a>
-							<select id="gnsm-burroughs" multiple>
 <?php
-foreach($crc_gnsm_listing_attributes['borroughs'] as $borrough) {
-	echo '<option value="' . $borrough . '">' . $borrough . '</option>';
+
+foreach($crc_gnsm_listing_attributes as $att => $attDetails) {
+	echo '<fieldset>';
+	echo '<label for="gnsm-' . $att . '">';
+	echo strtoupper(substr($att, 0, 1)) . str_replace('-', ' ', substr($att, 1));
+	echo '</label>';
+	echo '<' . str_replace('-', ' ', $attDetails[0]) . ' id="gnsm-' . $att . '" name="' . $att;
+	echo '">';
+	if ($attDetails[0] == 'select') {
+		echo '<option value=""></option>';
+	}
+	foreach($attDetails[1] as $attValue) {
+		echo '<option';
+		if (isset($_GET[$att])) {
+			if (gettype($_GET[$att]) == 'array') {
+				if (in_array($attValue, $_GET[$att])) {
+					echo ' selected';
+				}
+			} else {
+				if ($_GET[$att] == $attValue) {
+					echo ' selected';
+				}
+			}
+		}
+		echo ' value="' . $attValue . '">';
+		echo $attValue;
+		echo '</option>';
+	}
+	echo '</select>';
+	echo '</fieldset>' . "\n";
 }
+
 ?>
-							</select>
-							</fieldset>
-							<fieldset>
-							<label for="gnsm-open-status">Open status</a>
-							<select id="gnsm-open-status">
-								<option value="All">All</option>
-<?php
-foreach($crc_gnsm_listing_attributes['statuses'] as $optionAttribute) {
-	echo '<option value="' . $optionAttribute . '">' . $optionAttribute . '</option>';
-}
-?>
-							</select>
-							</fieldset>
-							<fieldset>
-							<label for="gnsm-target-population">Target population</a>
-							<select id="gnsm-target-population">
-								<option value="All">All</option>
-<?php
-foreach($crc_gnsm_listing_attributes['targetPopulation'] as $optionAttribute) {
-	echo '<option value="' . $optionAttribute . '">' . $optionAttribute . '</option>';
-}
-?>
-							</select>
-							</fieldset>
-							<fieldset>
-							<label for="gnsm-grades-served">Grades served</a>
-							<select id="gnsm-grades-served" multiple>
-<?php
-foreach($crc_gnsm_listing_attributes['gradesServed'] as $optionAttribute) {
-	echo '<option value="' . $optionAttribute . '">' . $optionAttribute . '</option>';
-}
-?>
-							</select>
-							</fieldset>
-							<fieldset>
-							<label for="gnsm-services">Services</a>
-							<select id="gnsm-services" multiple>
-<?php
-foreach($crc_gnsm_listing_attributes['services'] as $optionAttribute) {
-	echo '<option value="' . $optionAttribute . '">' . $optionAttribute . '</option>';
-}
-?>
-							</select>
-							</fieldset>
+
+							<input type="submit" value="Update Listings" />
 						</form>
 					</div>
 <?php
-// $avia_config['blog_style'] = apply_filters('avf_blog_style', avia_get_option('blog_style','multi-big'), 'archive');
-$queryArgs = array(
-	'post_type' => 'gnsm_listing',
-	'posts_per_page' => -1,
-);
 
-$the_query = new WP_Query($queryArgs);
+echo '<div class="post-count">' . $wp_query->post_count . ' matching programs.</div>';
 
-echo '<div class="post-count">' . $the_query->post_count . ' matching programs.</div>';
-
-if ($the_query->have_posts()) {
+if ($wp_query->have_posts()) {
 	echo '<ul class="gnsm-program-listings">';
 	$fields_for_listing = array(
 		'program-listing' => array('li', '', array(
@@ -102,21 +80,21 @@ if ($the_query->have_posts()) {
 		)),
 				
 	);
-	while($the_query->have_posts()) {
-		$the_query->the_post();
-		crc_gnsm_listing_echo($fields_for_listing, $the_query);
+	while($wp_query->have_posts()) {
+		$wp_query->the_post();
+		crc_gnsm_listing_echo($fields_for_listing, $wp_query);
 	}
 	echo '</ul>';
 } else {
 	echo '<p class="nomatchinglistings">No matching listings. Please try using less filters.</p>';
 }
 
-function crc_gnsm_listing_echo($listingArray, $the_query) {
+function crc_gnsm_listing_echo($listingArray, $query) {
 	if(gettype($listingArray) == 'array') {
 		foreach($listingArray as $listingClass => $listingSpecs) {
 			echo '<' . $listingSpecs[0] . ' class="' . $listingClass . '">';
 			if (empty($listingSpecs[1])) {
-				crc_gnsm_listing_echo($listingSpecs[2], $the_query);
+				crc_gnsm_listing_echo($listingSpecs[2], $query);
 			} else {
 				eval($listingSpecs[1]);
 			}

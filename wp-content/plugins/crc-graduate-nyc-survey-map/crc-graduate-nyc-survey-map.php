@@ -461,6 +461,17 @@ function crc_gnsm_archive_template($archive_template) {
 }
 add_filter('archive_template', 'crc_gnsm_archive_template');
 
+function crc_gnsm_archive_filter($query) {
+	if (!is_admin() && is_post_type_archive('gnsm_listing') && $query->is_main_query()) {
+//	if (!is_admin() && is_post_type_archive('gnsm_listing')) {
+		$query->set('posts_per_page', -1);
+		$query->set('post_type', 'gnsm_listing');
+	} else {
+		return $query;
+	}
+}
+add_action('pre_get_posts', 'crc_gnsm_archive_filter');
+
 function crc_gnsm_activate() {
 	// Register custom post types
 	crc_gnsm_post_type_setup();
