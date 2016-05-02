@@ -469,10 +469,38 @@ function crc_gnsm_archive_template($archive_template) {
 add_filter('archive_template', 'crc_gnsm_archive_template');
 
 function crc_gnsm_archive_filter($query) {
+	global $crc_gnsm_listing_attributes;
 	if (!is_admin() && is_post_type_archive('gnsm_listing') && $query->is_main_query()) {
-//	if (!is_admin() && is_post_type_archive('gnsm_listing')) {
 		$query->set('posts_per_page', -1);
 		$query->set('post_type', 'gnsm_listing');
+
+		foreach($crc_gnsm_listing_attributes as $att => $attDetails) {
+/*
+        echo strtoupper(substr($att, 0, 1)) . str_replace('-', ' ', substr($att, 1));
+        echo '<' . str_replace('-', ' ', $attDetails[0]) . ' id="gnsm-' . $att . '" name="' . $att;
+        if ($attDetails[0] == 'select') {
+                echo '">';
+                echo '<option value=""></option>';
+        } else {
+                echo '[]">';
+        }
+
+        foreach($attDetails[1] as $attValue) {
+                if (isset($_GET[$att])) {
+                        if (gettype($_GET[$att]) == 'array') {
+                                if (in_array($attValue, $_GET[$att])) {
+                                        echo ' selected';
+                                }
+                        } else {
+                                if ($_GET[$att] == $attValue) {
+                                        echo ' selected';
+                                }
+                        }
+                }
+                echo $attValue;
+        }
+*/
+		}
 	} else {
 		return $query;
 	}
