@@ -57,9 +57,13 @@ foreach($crc_gnsm_listing_attributes as $att => $attDetails) {
 	echo '</fieldset>' . "\n";
 }
 
+console_log($wp_query->query_vars);
+console_log($wp_query->request);
+
 ?>
 
 							<input type="submit" value="Update Listings" />
+							<a href="../gnsm_listing">Clear filters</a>
 						</form>
 					</div>
 <?php

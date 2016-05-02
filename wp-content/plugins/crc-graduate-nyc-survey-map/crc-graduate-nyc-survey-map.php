@@ -474,32 +474,55 @@ function crc_gnsm_archive_filter($query) {
 		$query->set('posts_per_page', -1);
 		$query->set('post_type', 'gnsm_listing');
 
-		foreach($crc_gnsm_listing_attributes as $att => $attDetails) {
-/*
-        echo strtoupper(substr($att, 0, 1)) . str_replace('-', ' ', substr($att, 1));
-        echo '<' . str_replace('-', ' ', $attDetails[0]) . ' id="gnsm-' . $att . '" name="' . $att;
-        if ($attDetails[0] == 'select') {
-                echo '">';
-                echo '<option value=""></option>';
-        } else {
-                echo '[]">';
-        }
+		$meta_query = array();
 
-        foreach($attDetails[1] as $attValue) {
-                if (isset($_GET[$att])) {
-                        if (gettype($_GET[$att]) == 'array') {
-                                if (in_array($attValue, $_GET[$att])) {
-                                        echo ' selected';
-                                }
-                        } else {
-                                if ($_GET[$att] == $attValue) {
-                                        echo ' selected';
-                                }
-                        }
-                }
-                echo $attValue;
-        }
+		foreach($crc_gnsm_listing_attributes as $att => $attDetails) {
+			$attSelected = array();
+
+			foreach($attDetails[1] as $attValue) {
+				if (isset($_GET[$att])) {
+                        		if (gettype($_GET[$att]) == 'array') {
+		                                if (in_array($attValue, $_GET[$att])) {
+							$meta_query[] = array(
+								'key' => $attDetails[2],
+								'value' => $attValue,
+								'compare' => 'LIKE',
+							);
+		                                }
+		                        } else {
+		                                if ($_GET[$att] == $attValue) {
+							$meta_query[] = array(
+								'key' => $attDetails[2],
+								'value' => $attValue,
+								'compare' => 'LIKE',
+							);
+		                                }
+		                        }
+				}
+			}
+
+/*
+			if (!empty($attSelected)) {
+				if (count($attSelected) == 1) {
+					$meta_query[] = array(
+						'key' => $attDetails[2],
+						'value' => $attSelected[0],
+						'compare' => 'LIKE',
+					);
+				} else {
+					$meta_query[] = array(
+						'key' => $attDetails[2],
+						'value' => $attSelected,
+						'compare' => 'IN',
+					);
+				}
+			}
 */
+		}
+
+		if (!empty($meta_query)) {
+			$meta_query['relation'] = 'AND';
+			$query->set('meta_query', $meta_query);
 		}
 	} else {
 		return $query;
