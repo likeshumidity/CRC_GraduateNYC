@@ -12,6 +12,71 @@ do_action( 'ava_after_main_title' );
 
 ?>
 
+<script>
+var GETURIRequest = {};
+GETURIRequest.decode = function() {
+// retrieves GET request from URI and returns parameters as JSON
+// returns false if no parameters assigned
+	var URIsearch = location.search,
+		requestParameters = {},
+		requests = [],
+		i = 0,
+		keyValPair = [];
+
+	if (URIsearch.length > 1) {
+		URIsearch = URIsearch.substr(1);
+		URIsearch = URIsearch.split('&');
+
+		for (i = 0; i < URIsearch.length; i++) {
+			keyValPair = [];
+			keyValPair = URIsearch[i].split('=');
+			keyValPair[0] = decodeURIComponent(keyValPair[0]);
+			keyValPair[1] = decodeURIComponent(keyValPair[1].replace(/\+/g,' '));
+
+			if (typeof requestParameters[keyValPair[0]] == 'undefined') {
+				requestParameters[keyValPair[0]] = [];
+			}
+
+			requestParameters[keyValPair[0]].push(decodeURI(keyValPair[1]));
+		}
+		
+		return requestParameters;
+	} else {
+		return false;
+	}
+};
+
+GETURIRequest.encode = function(parametersJSON, baseURL) {
+// accepts object in the same format as the output of GETURIRequest.decode
+// returns string that can be appended to URI
+	var URIsearch = '',
+		key = '',
+		i = 0,
+		isFirst = true;
+
+	for (var keyArray in parametersJSON) {
+		if (parametersJSON.hasOwnProperty(keyArray)) {
+			key = encodeURIComponent(keyArray);
+
+			for (i = 0; i < keyArray.length; i++) {
+				if (isFirst) {
+					URIsearch += '?';
+					isFirst = false;
+				} else {
+					URIsearch += '&';
+				}
+				URIsearch += key.replace(/ /g, '+');
+				URIsearch += '=';
+				URIsearch += encodeURIComponent(keyArray[i]).replace(/ /g, '+');
+			}
+		}
+	}
+
+	return URIsearch;
+};
+
+</script>
+
 		<div class='container_wrap container_wrap_first main_color <?php avia_layout_class( 'main' ); ?>'>
 
 			<div class='container template-blog '>
@@ -57,8 +122,8 @@ foreach($crc_gnsm_listing_attributes as $att => $attDetails) {
 	echo '</fieldset>' . "\n";
 }
 
-console_log($wp_query->query_vars);
-console_log($wp_query->request);
+// console_log($wp_query->query_vars);
+// console_log($wp_query->request);
 
 ?>
 
