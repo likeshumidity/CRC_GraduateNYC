@@ -58,7 +58,7 @@ GETURIRequest.encode = function(parametersJSON, baseURL) {
 		if (parametersJSON.hasOwnProperty(keyArray)) {
 			key = encodeURIComponent(keyArray);
 
-			for (i = 0; i < keyArray.length; i++) {
+			for (i = 0; i < parametersJSON[keyArray].length; i++) {
 				if (isFirst) {
 					URIsearch += '?';
 					isFirst = false;
@@ -67,7 +67,7 @@ GETURIRequest.encode = function(parametersJSON, baseURL) {
 				}
 				URIsearch += key.replace(/ /g, '+');
 				URIsearch += '=';
-				URIsearch += encodeURIComponent(keyArray[i]).replace(/ /g, '+');
+				URIsearch += encodeURIComponent(parametersJSON[keyArray][i]).replace(/ /g, '+');
 			}
 		}
 	}
