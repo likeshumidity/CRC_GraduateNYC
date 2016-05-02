@@ -10,7 +10,7 @@ $crc_gnsm_listing_attributes = array(
 			'Queens',
 			'Staten Island',
 		),
-		'field_570d7e356b64e',
+		'borroughs',
 	),
 	'open-status' => array(
 		'select',
@@ -19,7 +19,7 @@ $crc_gnsm_listing_attributes = array(
 			'Limited',
 			'Closed',
 		),
-		'field_57058bf68c3b6',
+		'accepting_students',
 	),
 	'target-population' => array(
 		'select',
@@ -35,7 +35,7 @@ $crc_gnsm_listing_attributes = array(
 			'Racial or ethnic minorities',
 			'Gender',
 		),
-		'field_57058d1a453c5',
+		'target_population',
 	),
 	'grades-served' => array(
 		'select-multiple',
@@ -45,7 +45,7 @@ $crc_gnsm_listing_attributes = array(
 			'High School (9-12)',
 			'College',
 		),
-		'field_570592ca24d14',
+		'grades_served',
 	),
 	'services' => array(
 		'select-multiple',
@@ -62,7 +62,7 @@ $crc_gnsm_listing_attributes = array(
 			'Advocacy on behalf of the sector or segments of it',
 			'Online resources for students and/or staff',
 		),
-		'field_570593872b93a',
+		'services',
 	),
 );
 
