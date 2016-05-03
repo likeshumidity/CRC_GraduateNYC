@@ -430,29 +430,30 @@ function crc_gnsm_survey_results_listings_all() {
 
 	$query = new WP_Query($args);
 
-// echo $query->request;
-	if ($query->have_posts()) : while ($query->have_posts()) : $query->the_post();
-// print_r(get_post());
-		$thispost = get_post();
-		$program_name = get_the_title($thispost->ID);
-		$borroughs = get_post_meta($thispost->ID, 'borroughs');
-		$neighborhoods = get_post_meta($thispost->ID, 'neighborhoods');
-		$grades_served = get_post_meta($thispost->ID, 'grades_served');
-		$target_population = get_post_meta($thispost->ID, 'target_population');
-		$services = get_post_meta($thispost->ID, 'services');
-		$accepting_students = get_post_meta($thispost->ID, 'accepting_students');
-		$results[$program_name] = array(
-			'post_id' => $thispost->ID,
-			'program_name' => $program_name,
-			'borroughs' => $borroughs[0],
-			'neighborhoods' => $neighborhoods[0],
-			'grades' => $grades_served[0],
-			'target_population' => $target_population[0],
-			'services' => $services[0],
-			'accepting_students' => $accepting_students[0],
-		);
-		wp_reset_postdata(); 
-	endwhile; endif;
+	if ($query->have_posts()) {
+		while ($query->have_posts()) {
+			$query->the_post();
+			$thispost = get_post();
+			$program_name = get_the_title($thispost->ID);
+			$borroughs = get_post_meta($thispost->ID, 'borroughs');
+			$neighborhoods = get_post_meta($thispost->ID, 'neighborhoods');
+			$grades_served = get_post_meta($thispost->ID, 'grades_served');
+			$target_population = get_post_meta($thispost->ID, 'target_population');
+			$services = get_post_meta($thispost->ID, 'services');
+			$accepting_students = get_post_meta($thispost->ID, 'accepting_students');
+			$results[$program_name] = array(
+				'post_id' => $thispost->ID,
+				'program_name' => $program_name,
+				'borroughs' => $borroughs[0],
+				'neighborhoods' => $neighborhoods[0],
+				'grades' => $grades_served[0],
+				'target_population' => $target_population[0],
+				'services' => $services[0],
+				'accepting_students' => $accepting_students[0],
+			);
+			wp_reset_postdata();
+		}
+	}
 
 	wp_send_json($results);
 }
@@ -500,24 +501,6 @@ function crc_gnsm_archive_filter($query) {
 		                        }
 				}
 			}
-
-/*
-			if (!empty($attSelected)) {
-				if (count($attSelected) == 1) {
-					$meta_query[] = array(
-						'key' => $attDetails[2],
-						'value' => $attSelected[0],
-						'compare' => 'LIKE',
-					);
-				} else {
-					$meta_query[] = array(
-						'key' => $attDetails[2],
-						'value' => $attSelected,
-						'compare' => 'IN',
-					);
-				}
-			}
-*/
 		}
 
 		if (!empty($meta_query)) {
