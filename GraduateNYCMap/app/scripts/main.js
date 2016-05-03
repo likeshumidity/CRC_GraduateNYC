@@ -4,13 +4,19 @@ var width = 700,
     height = 1165,
     active = d3.select(null);
 
-var neighborhoodSvg = d3.select(".map").append("svg")
-    .attr("width", width)
-    .attr("height", height);
+var tooltip = d3.select("body")
+    .append("div")
+    .attr("class", "tooltip")
+    .style("opacity", 0);
 
 var boroughSvg = d3.select(".map").append("svg")
     .attr("width", width)
     .attr("height", height);
+
+var neighborhoodSvg = d3.select(".map").append("svg")
+    .attr("width", width)
+    .attr("height", height)
+    .style("pointer-events", 'none');
 
 var projection = d3.geo.mercator()
     .center([-73.94, 40.50])
@@ -54,7 +60,8 @@ var allData = {};
 var curData = {};
 var geoData = {};
 
-d3.json("assets/dataNew.json", function (error, json) {
+//d3.json("assets/dataNew.json", function (error, json) { use this line if you can't see any data. 
+d3.json("http://54.174.151.164/GraduateNYC/?crc-json=all_listings", function (error, json) {
     if (error) return console.warn(error);
     allData = json;
     setUpArrays(json)
@@ -207,7 +214,7 @@ var updateMap = function () {
             for (var key in window[d.properties.boroname + "Array"]) {
                 var neighb = key.split(" - ")[1]
                 if (d.properties.ntaname.indexOf(neighb) > -1) {
-                     d.density = window[d.properties.boroname + "Array"][key];
+                    d.density = window[d.properties.boroname + "Array"][key];
                     return color(window[d.properties.boroname + "Array"][key])
                 }
             }
@@ -263,7 +270,23 @@ d3.json("assets/Boroughs.json", function (error, bor) {
             return d.properties.boroname;
         })
         .attr("d", path)
-        .on("click", clicked);
+        .on("mouseover", function (d) {
+            tooltip.transition()
+                .duration(500)
+                .style("opacity", 0);
+            tooltip.transition()
+                .duration(200)
+                .style("opacity", .9);
+            tooltip.html('<b>' + d.properties.boroname + '</b>')
+                .style("left", (d3.event.pageX) + "px")
+                .style("top", (d3.event.pageY - 28) + "px");
+        })
+        .on("mouseleave", function (d) {
+            tooltip.transition()
+                .duration(200)
+                .style("opacity", 0);
+        })
+        .on("click", clicked)
 })
 
 d3.json("assets/NTA.json", function (error, nta) {
@@ -290,12 +313,12 @@ d3.json("assets/NTA.json", function (error, nta) {
         })
         .style('stroke-width', '.5px')
         .style("stroke", "#cecece")
-        .on("click", clicked);
+        .style("pointer-events", 'none')
 })
 
 
 function clicked(d) {
-
+    var curBoro = d.properties.boroname.replace(" Island", "");
     if (active.node() === this) return reset();
     active.classed("active", false);
     active = d3.select(this).classed("active", true);
@@ -308,6 +331,10 @@ function clicked(d) {
         scale = .5 / Math.max(dx / width, dy / height),
         translate = [width / 2 - scale * x, height / 2 - scale * y];
 
+    tooltip.transition()
+        .duration(200)
+        .style("opacity", 0);
+
     borG.transition()
         .duration(750)
         .style("stroke-width", 1.5 / scale + "px")
@@ -317,9 +344,48 @@ function clicked(d) {
         .duration(750)
         .style("stroke-width", 1.5 / scale + "px")
         .attr("transform", "translate(" + translate + ")scale(" + scale + ")")
-    
-    ntaG.append("svg:title")
-        .text("hi")
+
+    ntaG.selectAll(".neighborhood")
+        .style("pointer-events", function (d) {
+            if (d.properties.boroname === curBoro) {
+                return 'all'
+            } else {
+                return 'none'
+            }
+        })
+        .on("mouseenter", function (d) {
+            if (d.density != undefined) {
+                tooltip.transition()
+                    .duration(500)
+                    .style("opacity", 0);
+                tooltip.transition()
+                    .duration(200)
+                    .style("opacity", .9);
+                tooltip.html('<b>' + d.properties.ntaname + ': </b>' + d.density)
+                    .style("left", (d3.event.pageX) + "px")
+                    .style("top", (d3.event.pageY - 28) + "px");
+            }
+        })
+        .on("mouseleave", function (d) {
+            tooltip.transition()
+                .duration(200)
+                .style("opacity", 0);
+        })
+        .on("click", function () {
+            if (d.density != undefined) {
+                tooltip.transition()
+                    .duration(500)
+                    .style("opacity", 0);
+                tooltip.transition()
+                    .duration(200)
+                    .style("opacity", .9);
+                tooltip.html('<b>' + d.properties.ntaname + ': </b>' + d.density)
+                    .style("left", (d3.event.pageX) + "px")
+                    .style("top", (d3.event.pageY - 28) + "px");
+            }
+        })
+
+
 }
 
 function reset() {
@@ -333,4 +399,7 @@ function reset() {
     ntaG.transition()
         .duration(750)
         .attr("transform", "");
+
+    ntaG.selectAll(".neighborhood")
+        .style("pointer-events", 'none')
 }

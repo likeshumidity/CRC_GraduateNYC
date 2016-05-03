@@ -114,11 +114,17 @@ svg {
 .borough.active {
     stroke: orange;
     stroke-width: 1px;
-    fill: none;
+    pointer-events: none;
 }
 .borough:hover{
     stroke: orange;
     stroke-width: 1px;
+}
+.tooltip {
+    background: white;
+    height: auto;
+    width: auto;
+    padding: 2px;
 }
 .background {
   fill: none;
