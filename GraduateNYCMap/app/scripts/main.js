@@ -4,13 +4,19 @@ var width = 700,
     height = 1165,
     active = d3.select(null);
 
-var neighborhoodSvg = d3.select(".map").append("svg")
-    .attr("width", width)
-    .attr("height", height);
+var tooltip = d3.select("body")
+    .append("div")
+    .attr("class", "tooltip")
+    .style("opacity", 0);
 
 var boroughSvg = d3.select(".map").append("svg")
     .attr("width", width)
     .attr("height", height);
+
+var neighborhoodSvg = d3.select(".map").append("svg")
+    .attr("width", width)
+    .attr("height", height)
+    .style("pointer-events", 'none');
 
 var projection = d3.geo.mercator()
     .center([-73.94, 40.50])
@@ -33,7 +39,7 @@ var ntaG = neighborhoodSvg.append("g")
 
 ///Range of colors based on density
 var color = d3.scale.linear()
-    .domain([0, 15])
+    .domain([0, 60])
     .range(["white", "black"]);
 
 var BrooklynArray = {},
@@ -41,31 +47,23 @@ var BrooklynArray = {},
     QueensArray = {},
     ManhattanArray = {},
     StatenArray = {},
-    TargetArray = [],
     curTarget = "All",
-    GradesArray = ["Elem", "MS", "HS", "College"],
-    ServicesArray = ["CR", "CM", "CT", "CP"],
-    EnrollArray = ["All", "open", "limited", "closed"],
-    curEnroll = "All"
+    filterArray = [
+        ["Brooklyn", "Bronx", "Queens", "Manhattan", "Staten Island"],
+        "All",
+        "All",
+        ["Elementary school (K-5)", "Middle school (6-8)", "High School (9-12)", "College"],
+        ["College Readiness", "College Matriculation", "College Retention", "Career Preparation", "Technical assistance to community based organizations", "A network for convening CBOs or programs that work on similar issues or work with overlapping sets of students", "Professional development for college access and success staff", "Training or awareness for students", "Research connected to this field for practitioner use", "Advocacy on behalf of the sector or segments of it", "Online resources for students and/or staff"]
+    ]
 
 var allData = {};
 var curData = {};
 var geoData = {};
 
-d3.json("assets/data.json", function (error, json) {
+//d3.json("assets/dataNew.json", function (error, json) { use this line if you can't see any data. 
+d3.json("http://54.174.151.164/GraduateNYC/?crc-json=all_listings", function (error, json) {
     if (error) return console.warn(error);
     allData = json;
-    for (var key in json) {
-        if (json[key].Target.length != 0) {
-            for (let i = 0; i < json[key].Target.length; i++) {
-                if (TargetArray.indexOf(json[key].Target[i]) === -1) {
-                    TargetArray.push(json[key].Target[i])
-                    var option = $('<option />').val(json[key].Target[i]).text(json[key].Target[i]);
-                    $("#dropDownTarget").append(option);
-                }
-            }
-        }
-    }
     setUpArrays(json)
 });
 
@@ -75,70 +73,138 @@ var setUpArrays = function (data) {
     QueensArray = {}
     ManhattanArray = {}
     StatenArray = {}
+
     for (var key in data) {
-        if (data[key].Brooklyn.length != 0) {
-            for (let i = 0; i < data[key].Brooklyn.length; i++) {
-                if (data[key].Brooklyn[i] in BrooklynArray) {
-                    BrooklynArray[data[key].Brooklyn[i]] += 1;
-                } else {
-                    BrooklynArray[data[key].Brooklyn[i]] = 1;
-                }
-            }
-        }
-        if (data[key].Bronx.length != 0) {
-            for (let i = 0; i < data[key].Bronx.length; i++) {
-                if (data[key].Bronx[i] in BronxArray) {
-                    BronxArray[data[key].Bronx[i]] += 1;
-                } else {
-                    BronxArray[data[key].Bronx[i]] = 1;
-                }
-            }
-        }
-        if (data[key].Queens.length != 0) {
-            for (let i = 0; i < data[key].Queens.length; i++) {
-                if (data[key].Queens[i] in QueensArray) {
-                    QueensArray[data[key].Queens[i]] += 1;
-                } else {
-                    QueensArray[data[key].Queens[i]] = 1;
-                }
-            }
-        }
-        if (data[key].Manhattan.length != 0) {
-            for (let i = 0; i < data[key].Manhattan.length; i++) {
-                if (data[key].Manhattan[i] in ManhattanArray) {
-                    ManhattanArray[data[key].Manhattan[i]] += 1;
-                } else {
-                    ManhattanArray[data[key].Manhattan[i]] = 1;
-                }
-            }
-        }
-        if (data[key].Staten.length != 0) {
-            for (let i = 0; i < data[key].Staten.length; i++) {
-                if (data[key].Staten[i] in StatenArray) {
-                    StatenArray[data[key].Staten[i]] += 1;
-                } else {
-                    StatenArray[data[key].Staten[i]] = 1;
+        if (data[key].borroughs.indexOf("Brooklyn") >= -1) {
+            for (let i = 0; i < data[key].neighborhoods.length; i++) {
+                if (data[key].neighborhoods[i].indexOf("Brooklyn") > -1) {
+                    if (data[key].neighborhoods[i] in BrooklynArray) {
+                        BrooklynArray[data[key].neighborhoods[i]] += 1;
+                    } else {
+                        BrooklynArray[data[key].neighborhoods[i]] = 1;
+                    }
                 }
             }
         }
 
+        if (data[key].borroughs.indexOf("Queens") >= -1) {
+            for (let i = 0; i < data[key].neighborhoods.length; i++) {
+                if (data[key].neighborhoods[i].indexOf("Queens") > -1) {
+                    if (data[key].neighborhoods[i] in QueensArray) {
+                        QueensArray[data[key].neighborhoods[i]] += 1;
+                    } else {
+                        QueensArray[data[key].neighborhoods[i]] = 1;
+                    }
+                }
+            }
+        }
+
+        if (data[key].borroughs.indexOf("Bronx") >= -1) {
+            for (let i = 0; i < data[key].neighborhoods.length; i++) {
+                if (data[key].neighborhoods[i].indexOf("Bronx") > -1) {
+                    if (data[key].neighborhoods[i] in BronxArray) {
+                        BronxArray[data[key].neighborhoods[i]] += 1;
+                    } else {
+                        BronxArray[data[key].neighborhoods[i]] = 1;
+                    }
+                }
+            }
+        }
+
+        if (data[key].borroughs.indexOf("Staten") >= -1) {
+            for (let i = 0; i < data[key].neighborhoods.length; i++) {
+                if (data[key].neighborhoods[i].indexOf("Staten") > -1) {
+                    if (data[key].neighborhoods[i] in StatenArray) {
+                        StatenArray[data[key].neighborhoods[i]] += 1;
+                    } else {
+                        StatenArray[data[key].neighborhoods[i]] = 1;
+                    }
+                }
+            }
+        }
+
+        if (data[key].borroughs.indexOf("Manhattan") >= -1) {
+            for (let i = 0; i < data[key].neighborhoods.length; i++) {
+                if (data[key].neighborhoods[i].indexOf("Manhattan") > -1) {
+                    if (data[key].neighborhoods[i] in ManhattanArray) {
+                        ManhattanArray[data[key].neighborhoods[i]] += 1;
+                    } else {
+                        ManhattanArray[data[key].neighborhoods[i]] = 1;
+                    }
+                }
+            }
+        }
     }
+
     updateMap();
 
 }
 
-var filterData = function () {
-    for (var item in allData) {
-        curData[item] = allData[item]
-    }
-    if (curTarget != "All") {
-        for (var key in curData) {
-            if (curData[key].Target.indexOf(curTarget) === -1) {
-                delete curData[key]
-            }
+var filterData = function (program) {
+    var check = true;
+
+    //check boroughs
+    var neighbCheck = false;
+    for (let i = 0; i < filterArray[0].length; i++) {
+        if (program.borroughs.indexOf(filterArray[0][i]) > -1) {
+            neighbCheck = true;
         }
     }
-    setUpArrays(curData)
+    if (neighbCheck === false) {
+        return false;
+    }
+
+    //check open status
+    var openCheck = false;
+    if (filterArray[1] === "All" || program.accepting_students.indexOf(filterArray[1]) > -1) {
+        openCheck = 'true';
+    }
+    if (openCheck === false) {
+        return false;
+    }
+
+    //check target population
+    var targetCheck = false;
+    if (filterArray[2] === "All" || program.target_population.indexOf(filterArray[2]) > -1) {
+        targetCheck = 'true';
+    }
+    if (targetCheck === false) {
+        return false;
+    }
+
+    //check grades
+    var gradesCheck = false;
+    for (let i = 0; i < filterArray[3].length; i++) {
+        if (program.grades.indexOf(filterArray[3][i]) > -1) {
+            gradesCheck = true;
+        }
+    }
+    if (gradesCheck === false) {
+        return false;
+    }
+
+    //check services
+    var serviceCheck = false;
+    for (let i = 0; i < filterArray[4].length; i++) {
+        if (program.services.indexOf(filterArray[4][i]) > -1) {
+            serviceCheck = true;
+        }
+    }
+    if (serviceCheck === false) {
+        return false;
+    }
+
+    return check;
+
+}
+var createFilteredObj = function (data) {
+    var filterObj = {};
+    for (var key in data) {
+        if (filterData(data[key])) {
+            filterObj[key] = data[key]
+        }
+    }
+    return filterObj
 }
 
 var updateMap = function () {
@@ -146,35 +212,55 @@ var updateMap = function () {
         .duration(750)
         .style("fill", function (d) {
             for (var key in window[d.properties.boroname + "Array"]) {
-                if (d.properties.ntaname.indexOf(key) > -1) {
+                var neighb = key.split(" - ")[1]
+                if (d.properties.ntaname.indexOf(neighb) > -1) {
+                    d.density = window[d.properties.boroname + "Array"][key];
                     return color(window[d.properties.boroname + "Array"][key])
                 }
             }
             return color(0)
         })
 }
-$('#dropDownTarget').on('change', function () {
-    curTarget = $(this).val()
-    console.log(curTarget)
-    filterData();
+
+
+$('#gnsm-burroughs').on('change', function () {
+
+    filterArray[0] = $(this).val();
+    var filterData = createFilteredObj(allData)
+    setUpArrays(filterData)
 });
-$('#dropDownEnrollment').on('change', function () {
-    console.log($(this).val())
+
+$('#gnsm-open-status').on('change', function () {
+
+    filterArray[1] = $(this).val();
+    var filterData = createFilteredObj(allData)
+    setUpArrays(filterData)
 });
-$(".grades").change(function () {
-    console.log($(this).val())
+
+$('#gnsm-target-population').on('change', function () {
+
+    filterArray[2] = $(this).val();
+    var filterData = createFilteredObj(allData)
+    setUpArrays(filterData)
 });
-$(".service").change(function () {
-    console.log($(this).val())
+
+$("#gnsm-grades-served").change(function () {
+
+    filterArray[3] = $(this).val();
+    var filterData = createFilteredObj(allData)
+    setUpArrays(filterData)
+});
+
+$("#gnsm-services").change(function () {
+
+    filterArray[4] = $(this).val();
+    var filterData = createFilteredObj(allData)
+    setUpArrays(filterData)
 });
 
 
 
 d3.json("assets/Boroughs.json", function (error, bor) {
-    /* svg.insert("path", ".graticule")
-         .datum(topojson.feature(nta, nta.objects.NTA))
-         .attr("class", "NTA")
-         .attr("d", path);*/
 
     borG.selectAll(".borough")
         .data(topojson.feature(bor, bor.objects.Boroughs).features)
@@ -184,16 +270,27 @@ d3.json("assets/Boroughs.json", function (error, bor) {
             return d.properties.boroname;
         })
         .attr("d", path)
-        .on("click", clicked);
+        .on("mouseover", function (d) {
+            tooltip.transition()
+                .duration(500)
+                .style("opacity", 0);
+            tooltip.transition()
+                .duration(200)
+                .style("opacity", .9);
+            tooltip.html('<b>' + d.properties.boroname + '</b>')
+                .style("left", (d3.event.pageX) + "px")
+                .style("top", (d3.event.pageY - 28) + "px");
+        })
+        .on("mouseleave", function (d) {
+            tooltip.transition()
+                .duration(200)
+                .style("opacity", 0);
+        })
+        .on("click", clicked)
 })
 
 d3.json("assets/NTA.json", function (error, nta) {
-    /* svg.insert("path", ".graticule")
-         .datum(topojson.feature(nta, nta.objects.NTA))
-         .attr("class", "NTA")
-         .attr("d", path);*/
 
-    console.log("LOADING")
     geoData = nta;
 
     ntaG.selectAll(".neighborhood")
@@ -206,7 +303,9 @@ d3.json("assets/NTA.json", function (error, nta) {
         .attr("d", path)
         .style("fill", function (d) {
             for (var key in window[d.properties.boroname + "Array"]) {
-                if (d.properties.ntaname.indexOf(key) > -1) {
+                var neighb = key.split(" - ")[1]
+                if (d.properties.ntaname.indexOf(neighb) > -1) {
+                    d.density = window[d.properties.boroname + "Array"][key];
                     return color(window[d.properties.boroname + "Array"][key])
                 }
             }
@@ -214,12 +313,12 @@ d3.json("assets/NTA.json", function (error, nta) {
         })
         .style('stroke-width', '.5px')
         .style("stroke", "#cecece")
-        .on("click", clicked);
+        .style("pointer-events", 'none')
 })
 
 
 function clicked(d) {
-    console.log(this)
+    var curBoro = d.properties.boroname.replace(" Island", "");
     if (active.node() === this) return reset();
     active.classed("active", false);
     active = d3.select(this).classed("active", true);
@@ -229,18 +328,64 @@ function clicked(d) {
         dy = bounds[1][1] - bounds[0][1],
         x = (bounds[0][0] + bounds[1][0]) / 2,
         y = (bounds[0][1] + bounds[1][1]) / 2,
-        scale = .9 / Math.max(dx / width, dy / height),
+        scale = .5 / Math.max(dx / width, dy / height),
         translate = [width / 2 - scale * x, height / 2 - scale * y];
+
+    tooltip.transition()
+        .duration(200)
+        .style("opacity", 0);
 
     borG.transition()
         .duration(750)
         .style("stroke-width", 1.5 / scale + "px")
-        .attr("transform", "translate(" + translate + ")scale(" + scale + ")");
+        .attr("transform", "translate(" + translate + ")scale(" + scale + ")")
 
     ntaG.transition()
         .duration(750)
         .style("stroke-width", 1.5 / scale + "px")
-        .attr("transform", "translate(" + translate + ")scale(" + scale + ")");
+        .attr("transform", "translate(" + translate + ")scale(" + scale + ")")
+
+    ntaG.selectAll(".neighborhood")
+        .style("pointer-events", function (d) {
+            if (d.properties.boroname === curBoro) {
+                return 'all'
+            } else {
+                return 'none'
+            }
+        })
+        .on("mouseenter", function (d) {
+            if (d.density != undefined) {
+                tooltip.transition()
+                    .duration(500)
+                    .style("opacity", 0);
+                tooltip.transition()
+                    .duration(200)
+                    .style("opacity", .9);
+                tooltip.html('<b>' + d.properties.ntaname + ': </b>' + d.density)
+                    .style("left", (d3.event.pageX) + "px")
+                    .style("top", (d3.event.pageY - 28) + "px");
+            }
+        })
+        .on("mouseleave", function (d) {
+            tooltip.transition()
+                .duration(200)
+                .style("opacity", 0);
+        })
+        .on("click", function () {
+            if (d.density != undefined) {
+                tooltip.transition()
+                    .duration(500)
+                    .style("opacity", 0);
+                tooltip.transition()
+                    .duration(200)
+                    .style("opacity", .9);
+                tooltip.html('<b>' + d.properties.ntaname + ': </b>' + d.density)
+                    .style("left", (d3.event.pageX) + "px")
+                    .style("top", (d3.event.pageY - 28) + "px");
+            }
+        })
+
+
 }
 
 function reset() {
@@ -254,4 +399,7 @@ function reset() {
     ntaG.transition()
         .duration(750)
         .attr("transform", "");
+
+    ntaG.selectAll(".neighborhood")
+        .style("pointer-events", 'none')
 }
