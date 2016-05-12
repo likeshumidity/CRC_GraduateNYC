@@ -18,7 +18,6 @@ do_action( 'ava_after_main_title' );
 
 				<main class='content <?php avia_layout_class( 'content' ); ?> units' <?php avia_markup_helper(array('context' => 'content','post_type'=>'gnsm_listing'));?>>
 
-					<div class="crc-gnsm-back-to-map"><a href="mapLink">Map View</a></div>
 					<div class="crc-gnsm-form-container">
 						<form id="crc-gnsm-listings-form" method="get">
 <?php
@@ -29,6 +28,7 @@ foreach($crc_gnsm_listing_attributes as $att => $attDetails) {
 	echo strtoupper(substr($att, 0, 1)) . str_replace('-', ' ', substr($att, 1));
 	echo '</label>';
 	echo '<' . str_replace('-', ' ', $attDetails[0]) . ' id="gnsm-' . $att . '" name="' . $att;
+
 	if ($attDetails[0] == 'select') {
 		echo '">';
 		echo '<option value=""></option>';
@@ -54,6 +54,11 @@ foreach($crc_gnsm_listing_attributes as $att => $attDetails) {
 		echo '</option>';
 	}
 	echo '</select>';
+
+	if ($attDetails[0] == 'select-multiple') {
+		echo '<p class="instructions-below">Use Ctrl or Command and click to select multiple.</p>';
+	}
+
 	echo '</fieldset>' . "\n";
 }
 
