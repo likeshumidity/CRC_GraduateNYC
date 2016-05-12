@@ -215,8 +215,8 @@ function crc_gnsm_acf_field_setup_filters() {
 		'fields' => array (
 			array (
 				'key' => 'field_570d7e356b64e',
-				'label' => 'Borroughs',
-				'name' => 'borroughs',
+				'label' => 'Boroughs',
+				'name' => 'boroughs',
 				'type' => 'checkbox',
 				'instructions' => 'Select all that apply.',
 				'choices' => array (
@@ -435,7 +435,7 @@ function crc_gnsm_survey_results_listings_all() {
 			$query->the_post();
 			$thispost = get_post();
 			$program_name = get_the_title($thispost->ID);
-			$borroughs = get_post_meta($thispost->ID, 'borroughs');
+			$boroughs = get_post_meta($thispost->ID, 'borroughs'); // MISSPELLED
 			$neighborhoods = get_post_meta($thispost->ID, 'neighborhoods');
 			$grades_served = get_post_meta($thispost->ID, 'grades_served');
 			$target_population = get_post_meta($thispost->ID, 'target_population');
@@ -444,7 +444,7 @@ function crc_gnsm_survey_results_listings_all() {
 			$results[$program_name] = array(
 				'post_id' => $thispost->ID,
 				'program_name' => $program_name,
-				'borroughs' => $borroughs[0],
+				'boroughs' => $boroughs[0],
 				'neighborhoods' => $neighborhoods[0],
 				'grades' => $grades_served[0],
 				'target_population' => $target_population[0],

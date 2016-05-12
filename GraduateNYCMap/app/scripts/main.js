@@ -75,7 +75,7 @@ var setUpArrays = function (data) {
     StatenArray = {}
 
     for (var key in data) {
-        if (data[key].borroughs.indexOf("Brooklyn") >= -1) {
+        if (data[key].boroughs.indexOf("Brooklyn") >= -1) {
             for (let i = 0; i < data[key].neighborhoods.length; i++) {
                 if (data[key].neighborhoods[i].indexOf("Brooklyn") > -1) {
                     if (data[key].neighborhoods[i] in BrooklynArray) {
@@ -87,7 +87,7 @@ var setUpArrays = function (data) {
             }
         }
 
-        if (data[key].borroughs.indexOf("Queens") >= -1) {
+        if (data[key].boroughs.indexOf("Queens") >= -1) {
             for (let i = 0; i < data[key].neighborhoods.length; i++) {
                 if (data[key].neighborhoods[i].indexOf("Queens") > -1) {
                     if (data[key].neighborhoods[i] in QueensArray) {
@@ -99,7 +99,7 @@ var setUpArrays = function (data) {
             }
         }
 
-        if (data[key].borroughs.indexOf("Bronx") >= -1) {
+        if (data[key].boroughs.indexOf("Bronx") >= -1) {
             for (let i = 0; i < data[key].neighborhoods.length; i++) {
                 if (data[key].neighborhoods[i].indexOf("Bronx") > -1) {
                     if (data[key].neighborhoods[i] in BronxArray) {
@@ -111,7 +111,7 @@ var setUpArrays = function (data) {
             }
         }
 
-        if (data[key].borroughs.indexOf("Staten") >= -1) {
+        if (data[key].boroughs.indexOf("Staten") >= -1) {
             for (let i = 0; i < data[key].neighborhoods.length; i++) {
                 if (data[key].neighborhoods[i].indexOf("Staten") > -1) {
                     if (data[key].neighborhoods[i] in StatenArray) {
@@ -123,7 +123,7 @@ var setUpArrays = function (data) {
             }
         }
 
-        if (data[key].borroughs.indexOf("Manhattan") >= -1) {
+        if (data[key].boroughs.indexOf("Manhattan") >= -1) {
             for (let i = 0; i < data[key].neighborhoods.length; i++) {
                 if (data[key].neighborhoods[i].indexOf("Manhattan") > -1) {
                     if (data[key].neighborhoods[i] in ManhattanArray) {
@@ -146,7 +146,7 @@ var filterData = function (program) {
     //check boroughs
     var neighbCheck = false;
     for (let i = 0; i < filterArray[0].length; i++) {
-        if (program.borroughs.indexOf(filterArray[0][i]) > -1) {
+        if (program.boroughs.indexOf(filterArray[0][i]) > -1) {
             neighbCheck = true;
         }
     }
@@ -223,7 +223,7 @@ var updateMap = function () {
 }
 
 
-$('#gnsm-burroughs').on('change', function () {
+$('#gnsm-boroughs').on('change', function () {
 
     filterArray[0] = $(this).val();
     var filterData = createFilteredObj(allData)

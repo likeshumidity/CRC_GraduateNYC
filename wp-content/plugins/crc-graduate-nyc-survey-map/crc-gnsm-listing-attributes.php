@@ -1,7 +1,7 @@
 <?php
 
 $crc_gnsm_listing_attributes = array(
-	'borroughs' => array(
+	'boroughs' => array(
 		'select-multiple',
 		array(
 			'Brooklyn',
@@ -10,9 +10,9 @@ $crc_gnsm_listing_attributes = array(
 			'Queens',
 			'Staten Island',
 		),
-		'borroughs',
+		'boroughs',
 	),
-	'open-status' => array(
+	'enrollment-type' => array(
 		'select',
 		array(
 			'Open',
