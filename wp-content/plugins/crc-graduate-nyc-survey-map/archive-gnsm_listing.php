@@ -64,6 +64,7 @@ foreach($crc_gnsm_listing_attributes as $att => $attDetails) {
 
 							<input type="submit" value="Update Listings" />
 							<a href="../gnsm_listing">Clear filters</a>
+							<div><a href="../GraduateNYCMap/app/<?php print '?' . $_SERVER['QUERY_STRING']; ?>">&lt; Map View</a></div>
 						</form>
 					</div>
 <?php
