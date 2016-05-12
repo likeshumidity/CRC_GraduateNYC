@@ -112,21 +112,31 @@ svg {
 }
 
 .borough.active {
-    stroke: orange;
-    stroke-width: 1px;
+    stroke: #73DEFF;
+    stroke-width: 3px;
     pointer-events: none;
 }
 .borough:hover{
-    stroke: orange;
-    stroke-width: 1px;
+    stroke: #73DEFF;
+    stroke-width: 3px;
 }
 .tooltip {
-    background: white;
+    background: #73DEFF;
     height: auto;
     width: auto;
     padding: 2px;
+    color: white;
+    text-transform: uppercase;
 }
 .background {
   fill: none;
   pointer-events: all;
+}
+.link-to-listings {
+    background: white;
+    height: auto;
+    width: auto;
+    padding: 2px;
+    cursor: pointer;
+    -webkit-user-select: none;
 }

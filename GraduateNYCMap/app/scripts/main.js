@@ -1,5 +1,7 @@
 "use strict";
 
+var GETURIRequest = {};
+
 var width = 700,
     height = 1165,
     active = d3.select(null);
@@ -40,7 +42,7 @@ var ntaG = neighborhoodSvg.append("g")
 ///Range of colors based on density
 var color = d3.scale.linear()
     .domain([0, 60])
-    .range(["white", "black"]);
+    .range(["white", "#2F5C61"]);
 
 var BrooklynArray = {},
     BronxArray = {},
@@ -48,6 +50,7 @@ var BrooklynArray = {},
     ManhattanArray = {},
     StatenArray = {},
     curTarget = "All",
+    parametersJSON = {},
     filterArray = [
         ["Brooklyn", "Bronx", "Queens", "Manhattan", "Staten Island"],
         "All",
@@ -60,7 +63,7 @@ var allData = {};
 var curData = {};
 var geoData = {};
 
-//d3.json("assets/dataNew.json", function (error, json) { use this line if you can't see any data. 
+//d3.json("assets/dataNew.json", function (error, json) { //use this line if you can't see any data. 
 d3.json("http://54.174.151.164/GraduateNYC/?crc-json=all_listings", function (error, json) {
     if (error) return console.warn(error);
     allData = json;
@@ -139,6 +142,8 @@ var setUpArrays = function (data) {
     updateMap();
 
 }
+
+
 
 var filterData = function (program) {
     var check = true;
@@ -225,6 +230,7 @@ var updateMap = function () {
 
 $('#gnsm-boroughs').on('change', function () {
 
+    parametersJSON.boroughs = $(this).val();
     filterArray[0] = $(this).val();
     var filterData = createFilteredObj(allData)
     setUpArrays(filterData)
@@ -232,20 +238,23 @@ $('#gnsm-boroughs').on('change', function () {
 
 $('#gnsm-open-status').on('change', function () {
 
-    filterArray[1] = $(this).val();
+    parametersJSON['enrollment-type'] = [$(this).val()];
+    filterArray[1] = [$(this).val()];
     var filterData = createFilteredObj(allData)
     setUpArrays(filterData)
 });
 
 $('#gnsm-target-population').on('change', function () {
 
-    filterArray[2] = $(this).val();
+    parametersJSON['target-population'] = [$(this).val()];
+    filterArray[2] = [$(this).val()];
     var filterData = createFilteredObj(allData)
     setUpArrays(filterData)
 });
 
 $("#gnsm-grades-served").change(function () {
 
+    parametersJSON['grades-served'] = $(this).val();
     filterArray[3] = $(this).val();
     var filterData = createFilteredObj(allData)
     setUpArrays(filterData)
@@ -253,6 +262,7 @@ $("#gnsm-grades-served").change(function () {
 
 $("#gnsm-services").change(function () {
 
+    parametersJSON['services'] = $(this).val();
     filterArray[4] = $(this).val();
     var filterData = createFilteredObj(allData)
     setUpArrays(filterData)
@@ -276,7 +286,7 @@ d3.json("assets/Boroughs.json", function (error, bor) {
                 .style("opacity", 0);
             tooltip.transition()
                 .duration(200)
-                .style("opacity", .9);
+                .style("opacity", 1);
             tooltip.html('<b>' + d.properties.boroname + '</b>')
                 .style("left", (d3.event.pageX) + "px")
                 .style("top", (d3.event.pageY - 28) + "px");
@@ -360,7 +370,7 @@ function clicked(d) {
                     .style("opacity", 0);
                 tooltip.transition()
                     .duration(200)
-                    .style("opacity", .9);
+                    .style("opacity", 1);
                 tooltip.html('<b>' + d.properties.ntaname + ': </b>' + d.density)
                     .style("left", (d3.event.pageX) + "px")
                     .style("top", (d3.event.pageY - 28) + "px");
@@ -403,3 +413,72 @@ function reset() {
     ntaG.selectAll(".neighborhood")
         .style("pointer-events", 'none')
 }
+
+
+GETURIRequest.decode = function () {
+    // retrieves GET request from URI and returns parameters as JSON
+    // returns false if no parameters assigned
+    var URIsearch = location.search,
+        requestParameters = {},
+        requests = [],
+        i = 0,
+        keyValPair = [];
+
+    if (URIsearch.length > 1) {
+        URIsearch = URIsearch.substr(1);
+        URIsearch = URIsearch.split('&');
+
+        for (i = 0; i < URIsearch.length; i++) {
+            keyValPair = [];
+            keyValPair = URIsearch[i].split('=');
+            keyValPair[0] = decodeURIComponent(keyValPair[0]);
+            keyValPair[1] = decodeURIComponent(keyValPair[1].replace(/\+/g, ' '));
+
+            if (typeof requestParameters[keyValPair[0]] == 'undefined') {
+                requestParameters[keyValPair[0]] = [];
+            }
+
+            requestParameters[keyValPair[0]].push(decodeURI(keyValPair[1]));
+        }
+
+        return requestParameters;
+    } else {
+        return false;
+    }
+};
+
+GETURIRequest.encode = function (parametersJSON, baseURL) {
+    // accepts object in the same format as the output of GETURIRequest.decode
+    // returns string that can be appended to URI
+    var URIsearch = '',
+        key = '',
+        i = 0,
+        isFirst = true;
+
+    for (var keyArray in parametersJSON) {
+        if (parametersJSON.hasOwnProperty(keyArray)) {
+            key = encodeURIComponent(keyArray);
+
+            for (i = 0; i < parametersJSON[keyArray].length; i++) {
+                if (isFirst) {
+                    URIsearch += '?';
+                    isFirst = false;
+                } else {
+                    URIsearch += '&';
+                }
+                URIsearch += key.replace(/ /g, '+');
+                URIsearch += '=';
+                URIsearch += encodeURIComponent(parametersJSON[keyArray][i]).replace(/ /g, '+');
+            }
+        }
+    }
+
+    return baseURL + URIsearch;
+};
+
+$(document).ready(function () {
+    $('.link-to-listings').click(function () {
+        console.log(GETURIRequest.encode(parametersJSON, 'http://54.174.151.164/GraduateNYC/gnsm_listing/'))
+        window.location.href = GETURIRequest.encode(parametersJSON, 'http://54.174.151.164/GraduateNYC/gnsm_listing/')
+    })
+});
