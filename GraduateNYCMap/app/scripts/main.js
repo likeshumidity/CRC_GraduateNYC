@@ -130,8 +130,8 @@ var setUpSelections = function () {
 
 }
 
-d3.json("assets/dataNew.json", function (error, json) { //use this line if you can't see any data. 
-    //d3.json("http://54.174.151.164/GraduateNYC/?crc-json=all_listings", function (error, json) {
+//d3.json("assets/dataNew.json", function (error, json) { //use this line if you can't see any data. 
+d3.json("http://54.174.151.164/GraduateNYC/?crc-json=all_listings", function (error, json) {
     if (error) return console.warn(error);
     allData = json;
     var filterData = createFilteredObj(allData)
@@ -524,7 +524,7 @@ GETURIRequest.encode = function (parametersJSON, baseURL) {
         isFirst = true;
 
     for (var keyArray in parametersJSON) {
-        console.log(keyArray)
+
         if (parametersJSON.hasOwnProperty(keyArray)) {
             key = encodeURIComponent(keyArray);
 
