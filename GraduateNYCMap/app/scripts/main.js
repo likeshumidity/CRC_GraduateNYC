@@ -83,7 +83,7 @@ var noQuerySetUp = function () {
 var setUpSelections = function () {
 
     var boroughForm = document.getElementById('gnsm-boroughs')
-    for (let i = 0; i < boroughForm.options.length; i++) {
+    for (var i = 0; i < boroughForm.options.length; i++) {
         if (filterArray[0].indexOf(boroughForm.options[i].value) > -1) {
             boroughForm.options[i].selected = true;
         } else {
@@ -92,46 +92,46 @@ var setUpSelections = function () {
     }
 
     var openForm = document.getElementById('gnsm-open-status')
-    for (let i = 0; i < openForm.options.length; i++) {
-        if (filterArray[1] === openForm.options[i].value) {
-            openForm.options[i].selected = true;
+    for (var j = 0; j < openForm.options.length; j++) {
+        if (filterArray[1] === openForm.options[j].value) {
+            openForm.options[j].selected = true;
         } else {
-            openForm.options[i].selected = false;
+            openForm.options[j].selected = false;
         }
     }
 
     var targetForm = document.getElementById('gnsm-target-population')
-    for (let i = 0; i < targetForm.options.length; i++) {
-        if (filterArray[2] === targetForm.options[i].value) {
-            targetForm.options[i].selected = true;
+    for (var k = 0; k < targetForm.options.length; k++) {
+        if (filterArray[2] === targetForm.options[k].value) {
+            targetForm.options[k].selected = true;
         } else {
-            targetForm.options[i].selected = false;
+            targetForm.options[k].selected = false;
         }
     }
 
     var gradesForm = document.getElementById('gnsm-grades-served')
-    for (let i = 0; i < gradesForm.options.length; i++) {
-        if (filterArray[3].indexOf(gradesForm.options[i].value) > -1) {
-            gradesForm.options[i].selected = true;
+    for (var l = 0; l < gradesForm.options.length; l++) {
+        if (filterArray[3].indexOf(gradesForm.options[l].value) > -1) {
+            gradesForm.options[l].selected = true;
         } else {
-            gradesForm.options[i].selected = false;
+            gradesForm.options[l].selected = false;
         }
     }
 
     var servicesForm = document.getElementById('gnsm-services')
-    for (let i = 0; i < servicesForm.options.length; i++) {
-        if (filterArray[4].indexOf(servicesForm.options[i].value) > -1) {
-            servicesForm.options[i].selected = true;
+    for (var m = 0; m < servicesForm.options.length; m++) {
+        if (filterArray[4].indexOf(servicesForm.options[m].value) > -1) {
+            servicesForm.options[m].selected = true;
         } else {
-            servicesForm.options[i].selected = false;
+            servicesForm.options[m].selected = false;
         }
     }
     
 
 }
 
-//d3.json("assets/dataNew.json", function (error, json) { //use this line if you can't see any data. 
-d3.json("http://54.174.151.164/GraduateNYC/?crc-json=all_listings", function (error, json) {
+d3.json("assets/dataNew.json", function (error, json) { //use this line if you can't see any data. 
+//d3.json("http://54.174.151.164/GraduateNYC/?crc-json=all_listings", function (error, json) {
     if (error) return console.warn(error);
     allData = json;
     var filterData = createFilteredObj(allData)
@@ -148,7 +148,7 @@ var setUpArrays = function (data) {
 
     for (var key in data) {
         if (data[key].boroughs.indexOf("Brooklyn") >= -1) {
-            for (let i = 0; i < data[key].neighborhoods.length; i++) {
+            for (var i = 0; i < data[key].neighborhoods.length; i++) {
                 if (data[key].neighborhoods[i].indexOf("Brooklyn") > -1) {
                     if (data[key].neighborhoods[i] in BrooklynArray) {
                         BrooklynArray[data[key].neighborhoods[i]] += 1;
@@ -160,48 +160,48 @@ var setUpArrays = function (data) {
         }
 
         if (data[key].boroughs.indexOf("Queens") >= -1) {
-            for (let i = 0; i < data[key].neighborhoods.length; i++) {
-                if (data[key].neighborhoods[i].indexOf("Queens") > -1) {
-                    if (data[key].neighborhoods[i] in QueensArray) {
-                        QueensArray[data[key].neighborhoods[i]] += 1;
+            for (var j = 0; j < data[key].neighborhoods.length; j++) {
+                if (data[key].neighborhoods[j].indexOf("Queens") > -1) {
+                    if (data[key].neighborhoods[j] in QueensArray) {
+                        QueensArray[data[key].neighborhoods[j]] += 1;
                     } else {
-                        QueensArray[data[key].neighborhoods[i]] = 1;
+                        QueensArray[data[key].neighborhoods[j]] = 1;
                     }
                 }
             }
         }
 
         if (data[key].boroughs.indexOf("Bronx") >= -1) {
-            for (let i = 0; i < data[key].neighborhoods.length; i++) {
-                if (data[key].neighborhoods[i].indexOf("Bronx") > -1) {
-                    if (data[key].neighborhoods[i] in BronxArray) {
-                        BronxArray[data[key].neighborhoods[i]] += 1;
+            for (var k = 0; k < data[key].neighborhoods.length; k++) {
+                if (data[key].neighborhoods[k].indexOf("Bronx") > -1) {
+                    if (data[key].neighborhoods[k] in BronxArray) {
+                        BronxArray[data[key].neighborhoods[k]] += 1;
                     } else {
-                        BronxArray[data[key].neighborhoods[i]] = 1;
+                        BronxArray[data[key].neighborhoods[k]] = 1;
                     }
                 }
             }
         }
 
         if (data[key].boroughs.indexOf("Staten") >= -1) {
-            for (let i = 0; i < data[key].neighborhoods.length; i++) {
-                if (data[key].neighborhoods[i].indexOf("Staten") > -1) {
-                    if (data[key].neighborhoods[i] in StatenArray) {
-                        StatenArray[data[key].neighborhoods[i]] += 1;
+            for (var l = 0; l < data[key].neighborhoods.length; l++) {
+                if (data[key].neighborhoods[l].indexOf("Staten") > -1) {
+                    if (data[key].neighborhoods[l] in StatenArray) {
+                        StatenArray[data[key].neighborhoods[l]] += 1;
                     } else {
-                        StatenArray[data[key].neighborhoods[i]] = 1;
+                        StatenArray[data[key].neighborhoods[l]] = 1;
                     }
                 }
             }
         }
 
         if (data[key].boroughs.indexOf("Manhattan") >= -1) {
-            for (let i = 0; i < data[key].neighborhoods.length; i++) {
-                if (data[key].neighborhoods[i].indexOf("Manhattan") > -1) {
-                    if (data[key].neighborhoods[i] in ManhattanArray) {
-                        ManhattanArray[data[key].neighborhoods[i]] += 1;
+            for (var m = 0; m < data[key].neighborhoods.length; m++) {
+                if (data[key].neighborhoods[m].indexOf("Manhattan") > -1) {
+                    if (data[key].neighborhoods[m] in ManhattanArray) {
+                        ManhattanArray[data[key].neighborhoods[m]] += 1;
                     } else {
-                        ManhattanArray[data[key].neighborhoods[i]] = 1;
+                        ManhattanArray[data[key].neighborhoods[m]] = 1;
                     }
                 }
             }
@@ -217,7 +217,7 @@ var filterData = function (program) {
 
     //check boroughs
     var neighbCheck = false;
-    for (let i = 0; i < filterArray[0].length; i++) {
+    for (var i = 0; i < filterArray[0].length; i++) {
         if (program.boroughs.indexOf(filterArray[0][i]) > -1) {
             neighbCheck = true;
         }
@@ -246,8 +246,8 @@ var filterData = function (program) {
 
     //check grades
     var gradesCheck = false;
-    for (let i = 0; i < filterArray[3].length; i++) {
-        if (program.grades.indexOf(filterArray[3][i]) > -1) {
+    for (var j = 0; j < filterArray[3].length; j++) {
+        if (program.grades.indexOf(filterArray[3][j]) > -1) {
             gradesCheck = true;
         }
     }
@@ -257,8 +257,8 @@ var filterData = function (program) {
 
     //check services
     var serviceCheck = false;
-    for (let i = 0; i < filterArray[4].length; i++) {
-        if (program.services.indexOf(filterArray[4][i]) > -1) {
+    for (var k = 0; k < filterArray[4].length; k++) {
+        if (program.services.indexOf(filterArray[4][k]) > -1) {
             serviceCheck = true;
         }
     }
