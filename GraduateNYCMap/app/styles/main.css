@@ -95,7 +95,7 @@ body {
     .header {
         margin-bottom: 30px;
     }
-    /* Remove the bottom border on the jumbotron for visual effect */
+    /* Remove the bsottom border on the jumbotron for visual effect */
     .jumbotron {
         border-bottom: 0;
     }
@@ -106,7 +106,7 @@ svg {
 }
 
 .borough {
-    cursor: pointer;
+    cursor: zoom-in;
     fill: #ccc;
     fill-opacity: 0;
 }
@@ -139,4 +139,18 @@ svg {
     padding: 2px;
     cursor: pointer;
     -webkit-user-select: none;
+}
+.svg-container {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%; /* aspect ratio */
+    vertical-align: top;
+    overflow: hidden;
+}
+.svg-content-responsive {
+    display: inline-block;
+    position: absolute;
+    top: 10px;
+    left: 0;
 }

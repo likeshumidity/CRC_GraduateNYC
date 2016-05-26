@@ -11,14 +11,20 @@ var tooltip = d3.select("body")
     .attr("class", "tooltip")
     .style("opacity", 0);
 
-var boroughSvg = d3.select(".map").append("svg")
-    .attr("width", width)
-    .attr("height", height);
+d3.select(".map")
+    .append("div")
+    .classed("svg-container", true) 
 
-var neighborhoodSvg = d3.select(".map").append("svg")
-    .attr("width", width)
-    .attr("height", height)
-    .style("pointer-events", 'none');
+var boroughSvg = d3.select(".svg-container").append("svg")
+    .attr("preserveAspectRatio", "xMinYMin meet")
+    .attr("viewBox", "0 0 " + width + " " + height)
+    .classed("svg-content-responsive", true);
+
+var neighborhoodSvg = d3.select(".svg-container").append("svg")
+    .style("pointer-events", 'none')
+    .attr("preserveAspectRatio", "xMinYMin meet")
+    .attr("viewBox", "0 0 " + width + " " + height)
+    .classed("svg-content-responsive", true);
 
 var projection = d3.geo.mercator()
     .center([-73.94, 40.50])
@@ -76,7 +82,7 @@ var noQuerySetUp = function () {
     parametersJSON['target-population'] = [filterArray[2]]
     parametersJSON['grades-served'] = filterArray[3]
     parametersJSON['services'] = filterArray[4]
-    
+
     setUpSelections();
 }
 
@@ -126,7 +132,7 @@ var setUpSelections = function () {
             servicesForm.options[m].selected = false;
         }
     }
-    
+
 
 }
 
@@ -407,7 +413,10 @@ function clicked(d) {
         x = (bounds[0][0] + bounds[1][0]) / 2,
         y = (bounds[0][1] + bounds[1][1]) / 2,
         scale = .5 / Math.max(dx / width, dy / height),
-        translate = [width / 2 - scale * x, height / 2 - scale * y];
+        translate = [width / 2 - scale * x, ( height / 2 - scale * y ) - 130];
+
+    d3.select(".background")
+        .attr("cursor", "zoom-out")
 
     tooltip.transition()
         .duration(200)
@@ -467,8 +476,12 @@ function clicked(d) {
 }
 
 function reset() {
+
     active.classed("active", false);
     active = d3.select(null);
+
+    d3.select(".background")
+        .attr("cursor", "default")
 
     borG.transition()
         .duration(750)
@@ -563,7 +576,7 @@ $(document).ready(function () {
         noQuerySetUp();
     }
     $('.link-to-listings').click(function () {
-        //console.log(GETURIRequest.encode(parametersJSON, 'http://54.174.151.164/GraduateNYC/gnsm_listing/'))
+    
         window.location.href = GETURIRequest.encode(parametersJSON, 'http://54.174.151.164/GraduateNYC/gnsm_listing/')
     })
 });
