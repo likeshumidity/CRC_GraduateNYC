@@ -31,7 +31,7 @@ foreach($crc_gnsm_listing_attributes as $att => $attDetails) {
 
 	if ($attDetails[0] == 'select') {
 		echo '">';
-		echo '<option value=""></option>';
+		echo '<option value="">Any</option>';
 	} else {
 		echo '[]">';
 	}
