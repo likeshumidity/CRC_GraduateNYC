@@ -513,6 +513,18 @@ function crc_gnsm_archive_filter($query) {
 }
 add_action('pre_get_posts', 'crc_gnsm_archive_filter');
 
+// Add shortcode to display filters for map
+function crc_gnyc_map_filters_display() {
+	return 'x';
+}
+add_shortcode('crc-gnsm-map-filters', 'crc_gnyc_map_filters_display');
+
+// Add shortcode to display map
+function crc_gnyc_map_display() {
+	return 'x';
+}
+add_shortcode('crc-gnsm-map', 'crc_gnyc_map_display');
+
 function crc_gnsm_activate() {
 	// Register custom post types
 	crc_gnsm_post_type_setup();
