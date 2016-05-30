@@ -75,20 +75,53 @@ var noQuerySetUp = function () {
         "All",
         ["Elementary school (K-5)", "Middle school (6-8)", "High School (9-12)", "College"],
         ["College Readiness", "College Matriculation", "College Retention", "Career Preparation", "Technical assistance to community based organizations", "A network for convening CBOs or programs that work on similar issues or work with overlapping sets of students", "Professional development for college access and success staff", "Training or awareness for students", "Research connected to this field for practitioner use", "Advocacy on behalf of the sector or segments of it", "Online resources for students and/or staff"]
-    ]
+    ];
 
     parametersJSON.boroughs = filterArray[0];
-    parametersJSON['enrollment-type'] = [filterArray[1]]
-    parametersJSON['target-population'] = [filterArray[2]]
-    parametersJSON['grades-served'] = filterArray[3]
-    parametersJSON['services'] = filterArray[4]
+    parametersJSON['enrollment-type'] = [filterArray[1]];
+    parametersJSON['target-population'] = [filterArray[2]];
+    parametersJSON['grades-served'] = filterArray[3];
+    parametersJSON['services'] = filterArray[4];
 
     setUpSelections();
 }
 
 var setUpSelections = function () {
+//*
+    var formList = [
+        ['gnsm-boroughs', 0, 'multiple'],
+        ['gnsm-open-status', 1, 'single'],
+        ['gnsm-target-population', 2, 'single'],
+        ['gnsm-grades-served', 3, 'multiple'],
+        ['gnsm-services', 4, 'multiple'],
+        ];
 
-    var boroughForm = document.getElementById('gnsm-boroughs')
+    for (var i = 0; i < formList.length; i++) {
+        var selectedForm = document.getElementById(formList[i][0]);
+	console.log(formList[i]);
+
+        for (var j = 0; j < selectedForm.options.length; j++) {
+            if (formList[i][2] === 'multiple') {
+//                console.log('multiple');
+                if (filterArray[formList[i][1]].indexOf(selectedForm.options[j].value) > -1) {
+                    console.log(true);
+                    selectedForm.options[j].selected = true;
+                } else {
+                    selectedForm.options[j].selected = false;
+                }
+            } else {
+//                console.log('single');
+                if (filterArray[formList[i][1]] === selectedForm.options[j].value) {
+                    console.log(true);
+                    selectedForm.options[j].selected = true;
+                } else {
+                    selectedForm.options[j].selected = false;
+                }
+            }
+        }
+    }
+/*/
+    var boroughForm = document.getElementById('gnsm-boroughs');
     for (var i = 0; i < boroughForm.options.length; i++) {
         if (filterArray[0].indexOf(boroughForm.options[i].value) > -1) {
             boroughForm.options[i].selected = true;
@@ -133,7 +166,7 @@ var setUpSelections = function () {
         }
     }
 
-
+//*/
 }
 
 //d3.json("includes/static/dataNew.json", function (error, json) { //use this line if you can't see any data. 
@@ -283,7 +316,7 @@ var createFilteredObj = function (data) {
             filterObj[key] = data[key]
         }
     }
-    return filterObj
+    return filterObj;
 }
 
 var updateMap = function () {
@@ -435,9 +468,9 @@ function clicked(d) {
     ntaG.selectAll(".neighborhood")
         .style("pointer-events", function (d) {
             if (d.properties.boroname === curBoro) {
-                return 'all'
+                return 'all';
             } else {
-                return 'none'
+                return 'none';
             }
         })
         .on("mouseenter", function (d) {
@@ -537,8 +570,8 @@ GETURIRequest.encode = function (parametersJSON, baseURL) {
         isFirst = true;
 
     for (var keyArray in parametersJSON) {
-
-        if (parametersJSON.hasOwnProperty(keyArray)) {
+        if (parametersJSON.hasOwnProperty(keyArray) && parametersJSON[keyArray] !== null) {
+            console.log(parametersJSON);
             key = encodeURIComponent(keyArray);
 
             for (i = 0; i < parametersJSON[keyArray].length; i++) {
@@ -549,6 +582,11 @@ GETURIRequest.encode = function (parametersJSON, baseURL) {
                     URIsearch += '&';
                 }
                 URIsearch += key.replace(/ /g, '+');
+		if (parametersJSON[keyArray].length > 1) {
+			URIsearch += '%5B%5D';
+			console.log(keyArray);
+			console.log(parametersJSON[keyArray].length);
+		}
                 URIsearch += '=';
                 URIsearch += encodeURIComponent(parametersJSON[keyArray][i]).replace(/ /g, '+');
             }
@@ -564,11 +602,11 @@ $(document).ready(function () {
     if (GETURIRequest.decode()) {
         parametersJSON = GETURIRequest.decode();
 
-        filterArray[0] = parametersJSON.boroughs
-        filterArray[1] = parametersJSON['enrollment-type'][0]
-        filterArray[2] = parametersJSON['target-population'][0]
-        filterArray[3] = parametersJSON['grades-served']
-        filterArray[4] = parametersJSON['services']
+        filterArray[0] = parametersJSON.boroughs;
+        filterArray[1] = parametersJSON['enrollment-type'][0];
+        filterArray[2] = parametersJSON['target-population'][0];
+        filterArray[3] = parametersJSON['grades-served'];
+        filterArray[4] = parametersJSON['services'];
 
         setUpSelections();
 
@@ -577,6 +615,7 @@ $(document).ready(function () {
     }
     $('.link-to-listings').click(function () {
     
-        window.location.href = GETURIRequest.encode(parametersJSON, 'http://54.174.151.164/GraduateNYC/gnsm_listing/')
+        console.log(GETURIRequest.encode(parametersJSON, 'http://54.174.151.164/GraduateNYC/gnsm_listing/'));
+//        window.location.href = GETURIRequest.encode(parametersJSON, 'http://54.174.151.164/GraduateNYC/gnsm_listing/');
     })
 });

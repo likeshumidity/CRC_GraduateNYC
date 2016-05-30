@@ -435,7 +435,7 @@ function crc_gnsm_survey_results_listings_all() {
 			$query->the_post();
 			$thispost = get_post();
 			$program_name = get_the_title($thispost->ID);
-			$boroughs = get_post_meta($thispost->ID, 'borroughs'); // MISSPELLED
+			$boroughs = get_post_meta($thispost->ID, 'boroughs');
 			$neighborhoods = get_post_meta($thispost->ID, 'neighborhoods');
 			$grades_served = get_post_meta($thispost->ID, 'grades_served');
 			$target_population = get_post_meta($thispost->ID, 'target_population');
