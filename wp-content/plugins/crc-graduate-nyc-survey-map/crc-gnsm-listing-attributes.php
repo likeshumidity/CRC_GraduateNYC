@@ -31,8 +31,6 @@ $crc_gnsm_listing_attributes = array(
 			'High school equivalency',
 			'Poverty guidelines/socioeconomic status',
 			'Justice involved youth',
-			'First generation college students',
-			'Racial or ethnic minorities',
 			'Gender',
 		),
 		'target_population',
