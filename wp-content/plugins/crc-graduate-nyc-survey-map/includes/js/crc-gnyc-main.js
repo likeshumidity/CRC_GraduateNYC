@@ -136,7 +136,7 @@ var setUpSelections = function () {
 
 }
 
-//d3.json("assets/dataNew.json", function (error, json) { //use this line if you can't see any data. 
+//d3.json("includes/static/dataNew.json", function (error, json) { //use this line if you can't see any data. 
 d3.json("http://54.174.151.164/GraduateNYC/?crc-json=all_listings", function (error, json) {
     if (error) return console.warn(error);
     allData = json;
@@ -344,7 +344,7 @@ $("#gnsm-services").change(function () {
 
 
 
-d3.json("assets/Boroughs.json", function (error, bor) {
+d3.json("includes/static/Boroughs.json", function (error, bor) {
 
     borG.selectAll(".borough")
         .data(topojson.feature(bor, bor.objects.Boroughs).features)
@@ -373,7 +373,7 @@ d3.json("assets/Boroughs.json", function (error, bor) {
         .on("click", clicked)
 })
 
-d3.json("assets/NTA.json", function (error, nta) {
+d3.json("includes/static/NTA.json", function (error, nta) {
 
     geoData = nta;
 
