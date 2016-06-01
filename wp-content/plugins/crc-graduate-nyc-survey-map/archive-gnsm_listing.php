@@ -69,7 +69,7 @@ console_log($wp_query->request);
 
 							<input type="submit" value="Update Listings" />
 							<a href="../gnsm_listing">Clear filters</a>
-							<div><a href="../GraduateNYCMap/app/<?php print '?' . $_SERVER['QUERY_STRING']; ?>">&lt; Map View</a></div>
+							<div><a href="../graduate-nyc-map-4/<?php print '?' . $_SERVER['QUERY_STRING']; ?>">&lt; Map View</a></div>
 						</form>
 					</div>
 <?php
