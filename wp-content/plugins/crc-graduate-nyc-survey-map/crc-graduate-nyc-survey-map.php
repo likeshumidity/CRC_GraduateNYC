@@ -435,7 +435,7 @@ function crc_gnsm_survey_results_listings_all() {
 			$query->the_post();
 			$thispost = get_post();
 			$program_name = get_the_title($thispost->ID);
-			$boroughs = get_post_meta($thispost->ID, 'borroughs'); // MISSPELLED
+			$boroughs = get_post_meta($thispost->ID, 'boroughs');
 			$neighborhoods = get_post_meta($thispost->ID, 'neighborhoods');
 			$grades_served = get_post_meta($thispost->ID, 'grades_served');
 			$target_population = get_post_meta($thispost->ID, 'target_population');
@@ -513,6 +513,18 @@ function crc_gnsm_archive_filter($query) {
 }
 add_action('pre_get_posts', 'crc_gnsm_archive_filter');
 
+// Add shortcode to display filters for map
+function crc_gnyc_map_filters_display() {
+	return 'x';
+}
+add_shortcode('crc-gnsm-map-filters', 'crc_gnyc_map_filters_display');
+
+// Add shortcode to display map
+function crc_gnyc_map_display() {
+	return 'x';
+}
+add_shortcode('crc-gnsm-map', 'crc_gnyc_map_display');
+
 function crc_gnsm_activate() {
 	// Register custom post types
 	crc_gnsm_post_type_setup();
@@ -536,5 +548,12 @@ function crc_gnsm_deactivate() {
 }
 
 register_deactivation_hook(__FILE__, 'crc_gnsm_deactivate');
+
+function crc_styles_enqueue() {
+	wp_enqueue_style('bootstrap-crc', '/wp-content/plugins/crc-graduate-nyc-survey-map/includes/styles/bootstrap.css');
+	wp_enqueue_style('crc-gnyc-main', '/wp-content/plugins/crc-graduate-nyc-survey-map/includes/styles/crc-gnyc-main.css');
+	wp_enqueue_style('modernizr-crc', '/wp-content/plugins/crc-graduate-nyc-survey-map/includes/js/modernizr.js');
+}
+add_action('wp_enqueue_scripts', 'crc_styles_enqueue');
 
 ?>

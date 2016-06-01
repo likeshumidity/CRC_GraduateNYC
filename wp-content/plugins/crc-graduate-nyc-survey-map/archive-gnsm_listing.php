@@ -31,7 +31,7 @@ foreach($crc_gnsm_listing_attributes as $att => $attDetails) {
 
 	if ($attDetails[0] == 'select') {
 		echo '">';
-		echo '<option value=""></option>';
+		echo '<option value="">Any</option>';
 	} else {
 		echo '[]">';
 	}
@@ -62,14 +62,14 @@ foreach($crc_gnsm_listing_attributes as $att => $attDetails) {
 	echo '</fieldset>' . "\n";
 }
 
-// console_log($wp_query->query_vars);
-// console_log($wp_query->request);
+console_log($wp_query->query_vars);
+console_log($wp_query->request);
 
 ?>
 
 							<input type="submit" value="Update Listings" />
 							<a href="../gnsm_listing">Clear filters</a>
-							<div><a href="../GraduateNYCMap/app/<?php print '?' . $_SERVER['QUERY_STRING']; ?>">&lt; Map View</a></div>
+							<div><a href="../graduate-nyc-map-4/<?php print '?' . $_SERVER['QUERY_STRING']; ?>">&lt; Map View</a></div>
 						</form>
 					</div>
 <?php
