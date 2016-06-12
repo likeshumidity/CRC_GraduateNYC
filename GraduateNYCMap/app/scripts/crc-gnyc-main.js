@@ -87,7 +87,6 @@ var noQuerySetUp = function () {
 }
 
 var setUpSelections = function () {
-//*
     var formList = [
         ['gnsm-boroughs', 0, 'multiple'],
         ['gnsm-open-status', 1, 'single'],
@@ -293,7 +292,6 @@ var updateMap = function () {
 
 
 $('#gnsm-boroughs').on('change', function () {
-
     var array = $(this).val()? $(this).val(): [];
     parametersJSON['boroughs'] = array;
     filterArray[0] = array;
@@ -302,7 +300,6 @@ $('#gnsm-boroughs').on('change', function () {
 });
 
 $('#gnsm-open-status').on('change', function () {
-
     parametersJSON['enrollment-type'] = [$(this).val()];
     filterArray[1] = $(this).val();
     var filterData = createFilteredObj(allData)
@@ -310,7 +307,6 @@ $('#gnsm-open-status').on('change', function () {
 });
 
 $('#gnsm-target-population').on('change', function () {
-
     parametersJSON['target-population'] = [$(this).val()];
     filterArray[2] = $(this).val();
     var filterData = createFilteredObj(allData)
@@ -318,7 +314,6 @@ $('#gnsm-target-population').on('change', function () {
 });
 
 $("#gnsm-grades-served").change(function () {
-
     var array = $(this).val()? $(this).val(): [];
     parametersJSON['grades-served'] = array;
     filterArray[3] = array;
@@ -327,14 +322,12 @@ $("#gnsm-grades-served").change(function () {
 });
 
 $("#gnsm-services").change(function () {
-
     var array = $(this).val()? $(this).val(): [];
     parametersJSON['services'] = array;
     filterArray[4] = array;
     var filterData = createFilteredObj(allData)
     setUpArrays(filterData)
 });
-
 
 
 d3.json("../wp-content/plugins/crc-graduate-nyc-survey-map/includes/static/Boroughs.json", function (error, bor) {
@@ -530,7 +523,7 @@ GETURIRequest.encode = function (parametersJSON, baseURL) {
         isFirst = true;
 
     for (var keyArray in parametersJSON) {
-        if (parametersJSON.hasOwnProperty(keyArray)) { 
+        if (parametersJSON.hasOwnProperty(keyArray)) {
 //        if (parametersJSON.hasOwnProperty(keyArray) && parametersJSON[keyArray] !== null) {
 //            console.log(parametersJSON);
             key = encodeURIComponent(keyArray);
@@ -543,11 +536,11 @@ GETURIRequest.encode = function (parametersJSON, baseURL) {
                     URIsearch += '&';
                 }
                 URIsearch += key.replace(/ /g, '+');
-		if (parametersJSON[keyArray].length > 1) {
-			URIsearch += '%5B%5D';
-//			console.log(keyArray);
-//			console.log(parametersJSON[keyArray].length);
-		}
+                if (parametersJSON[keyArray].length > 1) {
+                        URIsearch += '%5B%5D';
+//                      console.log(keyArray);
+//                      console.log(parametersJSON[keyArray].length);
+                }
                 URIsearch += '=';
                 URIsearch += encodeURIComponent(parametersJSON[keyArray][i]).replace(/ /g, '+');
             }
@@ -575,8 +568,6 @@ $(document).ready(function () {
         noQuerySetUp();
     }
     $('.link-to-listings').click(function () {
-    
-//        console.log(GETURIRequest.encode(parametersJSON, 'http://54.174.151.164/GraduateNYC/gnsm_listing/'));
         window.location.href = GETURIRequest.encode(parametersJSON, 'http://54.174.151.164/GraduateNYC/gnsm_listing/');
     })
 });
