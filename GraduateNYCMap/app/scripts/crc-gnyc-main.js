@@ -87,56 +87,37 @@ var noQuerySetUp = function () {
 }
 
 var setUpSelections = function () {
+//*
+    var formList = [
+        ['gnsm-boroughs', 0, 'multiple'],
+        ['gnsm-open-status', 1, 'single'],
+        ['gnsm-target-population', 2, 'single'],
+        ['gnsm-grades-served', 3, 'multiple'],
+        ['gnsm-services', 4, 'multiple'],
+        ];
 
-    var boroughForm = document.getElementById('gnsm-boroughs')
-    for (var i = 0; i < boroughForm.options.length; i++) {
-        if (filterArray[0].indexOf(boroughForm.options[i].value) > -1) {
-            boroughForm.options[i].selected = true;
-        } else {
-            boroughForm.options[i].selected = false;
+    for (var i = 0; i < formList.length; i++) {
+        var selectedForm = document.getElementById(formList[i][0]);
+
+        for (var j = 0; j < selectedForm.options.length; j++) {
+            if (formList[i][2] === 'multiple') {
+                if (filterArray[formList[i][1]].indexOf(selectedForm.options[j].value) > -1) {
+                    selectedForm.options[j].selected = true;
+                } else {
+                    selectedForm.options[j].selected = false;
+                }
+            } else {
+                if (filterArray[formList[i][1]] === selectedForm.options[j].value) {
+                    selectedForm.options[j].selected = true;
+                } else {
+                    selectedForm.options[j].selected = false;
+                }
+            }
         }
     }
-
-    var openForm = document.getElementById('gnsm-open-status')
-    for (var j = 0; j < openForm.options.length; j++) {
-        if (filterArray[1] === openForm.options[j].value) {
-            openForm.options[j].selected = true;
-        } else {
-            openForm.options[j].selected = false;
-        }
-    }
-
-    var targetForm = document.getElementById('gnsm-target-population')
-    for (var k = 0; k < targetForm.options.length; k++) {
-        if (filterArray[2] === targetForm.options[k].value) {
-            targetForm.options[k].selected = true;
-        } else {
-            targetForm.options[k].selected = false;
-        }
-    }
-
-    var gradesForm = document.getElementById('gnsm-grades-served')
-    for (var l = 0; l < gradesForm.options.length; l++) {
-        if (filterArray[3].indexOf(gradesForm.options[l].value) > -1) {
-            gradesForm.options[l].selected = true;
-        } else {
-            gradesForm.options[l].selected = false;
-        }
-    }
-
-    var servicesForm = document.getElementById('gnsm-services')
-    for (var m = 0; m < servicesForm.options.length; m++) {
-        if (filterArray[4].indexOf(servicesForm.options[m].value) > -1) {
-            servicesForm.options[m].selected = true;
-        } else {
-            servicesForm.options[m].selected = false;
-        }
-    }
-
-
 }
 
-//d3.json("assets/dataNew.json", function (error, json) { //use this line if you can't see any data. 
+//d3.json("includes/static/dataNew.json", function (error, json) { //use this line if you can't see any data. 
 d3.json("http://54.174.151.164/GraduateNYC/?crc-json=all_listings", function (error, json) {
     if (error) return console.warn(error);
     allData = json;
@@ -312,7 +293,7 @@ var updateMap = function () {
 
 
 $('#gnsm-boroughs').on('change', function () {
-    
+
     var array = $(this).val()? $(this).val(): [];
     parametersJSON['boroughs'] = array;
     filterArray[0] = array;
@@ -356,7 +337,7 @@ $("#gnsm-services").change(function () {
 
 
 
-d3.json("assets/Boroughs.json", function (error, bor) {
+d3.json("../wp-content/plugins/crc-graduate-nyc-survey-map/includes/static/Boroughs.json", function (error, bor) {
 
     borG.selectAll(".borough")
         .data(topojson.feature(bor, bor.objects.Boroughs).features)
@@ -385,7 +366,7 @@ d3.json("assets/Boroughs.json", function (error, bor) {
         .on("click", clicked)
 })
 
-d3.json("assets/NTA.json", function (error, nta) {
+d3.json("../wp-content/plugins/crc-graduate-nyc-survey-map/includes/static/NTA.json", function (error, nta) {
 
     geoData = nta;
 
@@ -533,6 +514,7 @@ GETURIRequest.decode = function () {
 
             requestParameters[keyValPair[0]].push(decodeURI(keyValPair[1]));
         }
+
         return requestParameters;
     } else {
         return false;
@@ -548,7 +530,7 @@ GETURIRequest.encode = function (parametersJSON, baseURL) {
         isFirst = true;
 
     for (var keyArray in parametersJSON) {
-        if (parametersJSON.hasOwnProperty(keyArray)) {
+        if (parametersJSON.hasOwnProperty(keyArray)) { 
 //        if (parametersJSON.hasOwnProperty(keyArray) && parametersJSON[keyArray] !== null) {
 //            console.log(parametersJSON);
             key = encodeURIComponent(keyArray);
@@ -561,6 +543,11 @@ GETURIRequest.encode = function (parametersJSON, baseURL) {
                     URIsearch += '&';
                 }
                 URIsearch += key.replace(/ /g, '+');
+		if (parametersJSON[keyArray].length > 1) {
+			URIsearch += '%5B%5D';
+//			console.log(keyArray);
+//			console.log(parametersJSON[keyArray].length);
+		}
                 URIsearch += '=';
                 URIsearch += encodeURIComponent(parametersJSON[keyArray][i]).replace(/ /g, '+');
             }
@@ -588,8 +575,8 @@ $(document).ready(function () {
         noQuerySetUp();
     }
     $('.link-to-listings').click(function () {
-        //console.log(GETURIRequest.encode(parametersJSON, 'http://54.174.151.164/GraduateNYC/gnsm_listing/'))
-
-        window.location.href = GETURIRequest.encode(parametersJSON, 'http://54.174.151.164/GraduateNYC/gnsm_listing/')
+    
+//        console.log(GETURIRequest.encode(parametersJSON, 'http://54.174.151.164/GraduateNYC/gnsm_listing/'));
+        window.location.href = GETURIRequest.encode(parametersJSON, 'http://54.174.151.164/GraduateNYC/gnsm_listing/');
     })
 });
