@@ -13,7 +13,7 @@ var tooltip = d3.select("body")
 
 d3.select(".map")
     .append("div")
-    .classed("svg-container", true) 
+    .classed("svg-container", true);
 
 var boroughSvg = d3.select(".svg-container").append("svg")
     .attr("preserveAspectRatio", "xMinYMin meet")
@@ -70,14 +70,14 @@ var geoData = {};
 var noQuerySetUp = function () {
 
     filterArray = [
-        ["Brooklyn", "Bronx", "Queens", "Manhattan", "Staten Island"],
+        [],
         "All",
         "All",
-        ["Elementary school (K-5)", "Middle school (6-8)", "High School (9-12)", "College"],
-        ["College Readiness", "College Matriculation", "College Retention", "Career Preparation", "Technical assistance to community based organizations", "A network for convening CBOs or programs that work on similar issues or work with overlapping sets of students", "Professional development for college access and success staff", "Training or awareness for students", "Research connected to this field for practitioner use", "Advocacy on behalf of the sector or segments of it", "Online resources for students and/or staff"]
+        [],
+        [],
     ];
 
-    parametersJSON.boroughs = filterArray[0];
+    parametersJSON['boroughs'] = filterArray[0];
     parametersJSON['enrollment-type'] = [filterArray[1]];
     parametersJSON['target-population'] = [filterArray[2]];
     parametersJSON['grades-served'] = filterArray[3];
@@ -87,7 +87,6 @@ var noQuerySetUp = function () {
 }
 
 var setUpSelections = function () {
-//*
     var formList = [
         ['gnsm-boroughs', 0, 'multiple'],
         ['gnsm-open-status', 1, 'single'],
@@ -203,13 +202,16 @@ var filterData = function (program) {
     var check = true;
 
     //check boroughs
-    var neighbCheck = false;
+    var neighbCheck = true;
     for (var i = 0; i < filterArray[0].length; i++) {
         if (program.boroughs.indexOf(filterArray[0][i]) > -1) {
             neighbCheck = true;
+        } else {
+            neighbCheck = false;
+            break;
         }
     }
-    if (neighbCheck === false) {
+    if (neighbCheck === false && filterArray[0].length !== 0) {
         return false;
     }
 
@@ -232,24 +234,30 @@ var filterData = function (program) {
     }
 
     //check grades
-    var gradesCheck = false;
+    var gradesCheck = true;
     for (var j = 0; j < filterArray[3].length; j++) {
         if (program.grades.indexOf(filterArray[3][j]) > -1) {
             gradesCheck = true;
+        } else {
+            gradesCheck = false;
+            break;
         }
     }
-    if (gradesCheck === false) {
+    if (gradesCheck === false && filterArray[3].length !== 0) {
         return false;
     }
 
     //check services
-    var serviceCheck = false;
+    var serviceCheck = true;
     for (var k = 0; k < filterArray[4].length; k++) {
         if (program.services.indexOf(filterArray[4][k]) > -1) {
             serviceCheck = true;
+        } else {
+            serviceCheck = false;
+            break;
         }
     }
-    if (serviceCheck === false) {
+    if (serviceCheck === false && filterArray[4].length !== 0) {
         return false;
     }
 
@@ -284,15 +292,14 @@ var updateMap = function () {
 
 
 $('#gnsm-boroughs').on('change', function () {
-
-    parametersJSON.boroughs = $(this).val();
-    filterArray[0] = $(this).val();
+    var array = $(this).val()? $(this).val(): [];
+    parametersJSON['boroughs'] = array;
+    filterArray[0] = array;
     var filterData = createFilteredObj(allData)
     setUpArrays(filterData)
 });
 
 $('#gnsm-open-status').on('change', function () {
-
     parametersJSON['enrollment-type'] = [$(this).val()];
     filterArray[1] = $(this).val();
     var filterData = createFilteredObj(allData)
@@ -300,7 +307,6 @@ $('#gnsm-open-status').on('change', function () {
 });
 
 $('#gnsm-target-population').on('change', function () {
-
     parametersJSON['target-population'] = [$(this).val()];
     filterArray[2] = $(this).val();
     var filterData = createFilteredObj(allData)
@@ -308,21 +314,20 @@ $('#gnsm-target-population').on('change', function () {
 });
 
 $("#gnsm-grades-served").change(function () {
-
-    parametersJSON['grades-served'] = $(this).val();
-    filterArray[3] = $(this).val();
+    var array = $(this).val()? $(this).val(): [];
+    parametersJSON['grades-served'] = array;
+    filterArray[3] = array;
     var filterData = createFilteredObj(allData)
     setUpArrays(filterData)
 });
 
 $("#gnsm-services").change(function () {
-
-    parametersJSON['services'] = $(this).val();
-    filterArray[4] = $(this).val();
+    var array = $(this).val()? $(this).val(): [];
+    parametersJSON['services'] = array;
+    filterArray[4] = array;
     var filterData = createFilteredObj(allData)
     setUpArrays(filterData)
 });
-
 
 
 d3.json("../wp-content/plugins/crc-graduate-nyc-survey-map/includes/static/Boroughs.json", function (error, bor) {
@@ -394,7 +399,7 @@ function clicked(d) {
         x = (bounds[0][0] + bounds[1][0]) / 2,
         y = (bounds[0][1] + bounds[1][1]) / 2,
         scale = .5 / Math.max(dx / width, dy / height),
-        translate = [width / 2 - scale * x, ( height / 2 - scale * y ) - 130];
+        translate = [width / 2 - scale * x, (height / 2 - scale * y) - 130];
 
     d3.select(".background")
         .attr("cursor", "zoom-out")
@@ -518,7 +523,8 @@ GETURIRequest.encode = function (parametersJSON, baseURL) {
         isFirst = true;
 
     for (var keyArray in parametersJSON) {
-        if (parametersJSON.hasOwnProperty(keyArray) && parametersJSON[keyArray] !== null) {
+        if (parametersJSON.hasOwnProperty(keyArray)) {
+//        if (parametersJSON.hasOwnProperty(keyArray) && parametersJSON[keyArray] !== null) {
 //            console.log(parametersJSON);
             key = encodeURIComponent(keyArray);
 
@@ -530,11 +536,11 @@ GETURIRequest.encode = function (parametersJSON, baseURL) {
                     URIsearch += '&';
                 }
                 URIsearch += key.replace(/ /g, '+');
-		if (parametersJSON[keyArray].length > 1) {
-			URIsearch += '%5B%5D';
-//			console.log(keyArray);
-//			console.log(parametersJSON[keyArray].length);
-		}
+                if (parametersJSON[keyArray].length > 1) {
+                        URIsearch += '%5B%5D';
+//                      console.log(keyArray);
+//                      console.log(parametersJSON[keyArray].length);
+                }
                 URIsearch += '=';
                 URIsearch += encodeURIComponent(parametersJSON[keyArray][i]).replace(/ /g, '+');
             }
@@ -550,7 +556,7 @@ $(document).ready(function () {
     if (GETURIRequest.decode()) {
         parametersJSON = GETURIRequest.decode();
 
-        filterArray[0] = parametersJSON.boroughs;
+        filterArray[0] = parametersJSON['boroughs'];
         filterArray[1] = parametersJSON['enrollment-type'][0];
         filterArray[2] = parametersJSON['target-population'][0];
         filterArray[3] = parametersJSON['grades-served'];
@@ -562,8 +568,6 @@ $(document).ready(function () {
         noQuerySetUp();
     }
     $('.link-to-listings').click(function () {
-    
-//        console.log(GETURIRequest.encode(parametersJSON, 'http://54.174.151.164/GraduateNYC/gnsm_listing/'));
         window.location.href = GETURIRequest.encode(parametersJSON, 'http://54.174.151.164/GraduateNYC/gnsm_listing/');
     })
 });
