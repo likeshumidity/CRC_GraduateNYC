@@ -276,6 +276,41 @@ var createFilteredObj = function (data) {
 }
 
 var updateMap = function () {
+//*
+    var breadcrumbs = "",
+        i = 0,
+        j = 0;
+
+    var filters = [
+        'gnsm-boroughs',
+        'gnsm-open-status',
+        'gnsm-population',
+        'gnsm-grades-served',
+        'gnsm-services',
+        ];
+
+    for (i = 0; i < breadcrumbs.length; i++) {
+        var snippet = filters[0].substring(4).replace('-',' '),
+            capitalizeNext = false;
+
+        for (j = 0; j < snippet.length; j++) {
+            if (j === 0) {
+                snippet[j] = snippet[j].toUpperCase;
+            }
+
+            if (snippet[j] === ' ') {
+                capitalizeNext = true;
+            } else {
+                capitalizeNext = false;
+            }
+        }
+
+        breadcrumbs += snippet;
+    }
+
+    $('.breadcrumbs p').html(breadcrumbs);
+//*/
+
     d3.selectAll('.neighborhood').transition()
         .duration(750)
         .style("fill", function (d) {
@@ -287,7 +322,7 @@ var updateMap = function () {
                 }
             }
             return color(0)
-        })
+        });
 }
 
 

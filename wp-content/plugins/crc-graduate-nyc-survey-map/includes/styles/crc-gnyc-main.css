@@ -250,3 +250,53 @@ ul.nav-tabs li a:hover {
     top: 980px;
     left: 750px;   
 }
+
+.patterns {
+    width: 380px;
+}
+
+/* COLLAPSABLE */
+
+#formContainer {
+    float: left;
+    width: 0;
+    position: relative;
+    z-index: 0;
+}
+
+#accordian.container {
+    height: 950px;
+}
+
+.panel-group#accordion {
+    max-width: 400px;
+}
+
+/* LISTINGS STYLE */
+
+.program-listing {
+    border-bottom: 1px solid #d0d0d0;
+    margin-bottom: 8px;
+    padding-bottom: 8px;
+}
+
+.program-listing .title {
+    color: #226372;
+    font-weight: bold;
+}
+
+.program-listing .physical-address {
+    text-transform: uppercase;   
+}
+
+.program-listing .physical-address .line-1, .program-listing .physical-address .line-2, .program-listing .physical-address .city  {
+    display: block;
+}
+
+.program-listing .physical-address .state, .program-listing .physical-address .zip {
+    padding-right: 4px;
+}
+
+.program-listing .description {
+    font-style: italic;
+}
