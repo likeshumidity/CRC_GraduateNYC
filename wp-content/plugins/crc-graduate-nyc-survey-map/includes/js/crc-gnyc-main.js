@@ -114,6 +114,7 @@ var noQuerySetUp = function () {
 }
 
 var setUpSelections = function () {
+/*
     for (var i = 0; i < GNYC.filters.length; i++) {
         var selectedForm = document.getElementById(GNYC.filters[i][0]);
 
@@ -133,6 +134,28 @@ var setUpSelections = function () {
             }
         }
     }
+//*/
+    for (var i = 0; i < GNYC.filters.length; i++) {
+        var thisInput = $('input[name="' + GNYC.filters[i][0] + '"]');
+
+        thisInput.each(function () {
+            console.log($(this).val());
+            if (GNYC.filters[i][2] === 'multiple') {
+                if (filterArray[GNYC.filters[i][1]].indexOf($(this).val()) > -1) {
+                    this.checked = true;
+                } else {
+                    this.checked = false;
+                }
+            } else {
+                if (filterArray[GNYC.filters[i][1]] === $(this).val()) {
+                    this.checked = true;
+                } else {
+                    this.checked = false;
+                }
+            }
+        });
+    }
+//*/
 }
 
 d3.json("http://54.174.151.164/GraduateNYC/?crc-json=all_listings", function (error, json) {
