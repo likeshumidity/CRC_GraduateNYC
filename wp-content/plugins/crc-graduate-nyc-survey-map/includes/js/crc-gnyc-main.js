@@ -1,5 +1,26 @@
 "use strict";
 
+var GNYC = {};
+
+// [formElementID, index, selectionType, shortName, onMapFilters, defaultSelection]
+GNYC.filters = [
+    ['gnsm-boroughs', 0, 'multiple', 'boroughs', false, []],
+    ['gnsm-open-status', 1, 'single', 'open-status', true, 'All'],
+    ['gnsm-target-population', 2, 'single', 'target-population', true, 'All'],
+    ['gnsm-grades-served', 3, 'multiple', 'grades-served', true, []],
+    ['gnsm-services', 4, 'multiple', 'services', true, []],
+    ];
+
+GNYC.boroughs = {
+    'density': {
+        'Brooklyn': {},
+        'Queens': {},
+        'Bronx': {},
+        'Staten Island': {},
+        'Manhattan': {},
+    },
+    };
+
 var GETURIRequest = {};
 
 var width = 700,
@@ -60,15 +81,21 @@ var BrooklynArray = {},
     filterArray = [];
 
 
-
-
 var allData = {};
 var curData = {};
 var geoData = {};
 
 
 var noQuerySetUp = function () {
-
+/*
+    for (var i = 0; i < GNYC.filters.length; i++) {
+        if (GNYC.filters[i][2] == 'multiple') {
+            parametersJSON[GNYC.filters[i][3]] = GNYC.filters[i][5];
+        } else {
+            parametersJSON[GNYC.filters[i][3]] = [GNYC.filters[i][5]];
+        }
+    }
+*/
     filterArray = [
         [],
         "All",
@@ -87,26 +114,18 @@ var noQuerySetUp = function () {
 }
 
 var setUpSelections = function () {
-    var formList = [
-        ['gnsm-boroughs', 0, 'multiple'],
-        ['gnsm-open-status', 1, 'single'],
-        ['gnsm-target-population', 2, 'single'],
-        ['gnsm-grades-served', 3, 'multiple'],
-        ['gnsm-services', 4, 'multiple'],
-        ];
-
-    for (var i = 0; i < formList.length; i++) {
-        var selectedForm = document.getElementById(formList[i][0]);
+    for (var i = 0; i < GNYC.filters.length; i++) {
+        var selectedForm = document.getElementById(GNYC.filters[i][0]);
 
         for (var j = 0; j < selectedForm.options.length; j++) {
-            if (formList[i][2] === 'multiple') {
-                if (filterArray[formList[i][1]].indexOf(selectedForm.options[j].value) > -1) {
+            if (GNYC.filters[i][2] === 'multiple') {
+                if (filterArray[GNYC.filters[i][1]].indexOf(selectedForm.options[j].value) > -1) {
                     selectedForm.options[j].selected = true;
                 } else {
                     selectedForm.options[j].selected = false;
                 }
             } else {
-                if (filterArray[formList[i][1]] === selectedForm.options[j].value) {
+                if (filterArray[GNYC.filters[i][1]] === selectedForm.options[j].value) {
                     selectedForm.options[j].selected = true;
                 } else {
                     selectedForm.options[j].selected = false;
@@ -116,21 +135,19 @@ var setUpSelections = function () {
     }
 }
 
-//d3.json("includes/static/dataNew.json", function (error, json) { //use this line if you can't see any data. 
 d3.json("http://54.174.151.164/GraduateNYC/?crc-json=all_listings", function (error, json) {
     if (error) return console.warn(error);
     allData = json;
-    var filterData = createFilteredObj(allData)
-    setUpArrays(filterData)
+    var filterData = createFilteredObj(allData);
+    setUpArrays(filterData);
 });
 
 var setUpArrays = function (data) {
-
-    BrooklynArray = {}
-    BronxArray = {}
-    QueensArray = {}
-    ManhattanArray = {}
-    StatenArray = {}
+    BrooklynArray = {};
+    BronxArray = {};
+    QueensArray = {};
+    ManhattanArray = {};
+    StatenArray = {};
 
     for (var key in data) {
         if (data[key].boroughs.indexOf("Brooklyn") >= -1) {
@@ -325,6 +342,17 @@ var updateMap = function () {
         });
 }
 
+
+/*
+GNYC.filters = [
+    ['gnsm-boroughs', 0, 'multiple', 'boroughs', false, []],
+    ['gnsm-open-status', 1, 'single', 'open-status', true, 'All'],
+    ['gnsm-target-population', 2, 'single', 'target-population', true, 'All'],
+    ['gnsm-grades-served', 3, 'multiple', 'grades-served', true, []],
+    ['gnsm-services', 4, 'multiple', 'services', true, []],
+    ];
+
+*/
 
 $('#gnsm-boroughs').on('change', function () {
     var array = $(this).val()? $(this).val(): [];
