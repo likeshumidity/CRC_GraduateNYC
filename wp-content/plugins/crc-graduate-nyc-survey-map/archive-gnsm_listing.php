@@ -89,6 +89,7 @@ if ($wp_query->have_posts()) {
 				'state' => array('span', '', 'field_5706de4675f20'),
 				'postal-code' => array('span', '', 'field_5706deca75f22'),
 			)),
+			'google-map-link' => array('span', 'google_map_link();'),
 			'description' => array('div', '', 'field_5706df2275f23'),
 		)),
 				
@@ -100,6 +101,10 @@ if ($wp_query->have_posts()) {
 	echo '</ul>';
 } else {
 	echo '<p class="nomatchinglistings">No matching listings. Please try using less filters.</p>';
+}
+
+function google_map_link() {
+	echo '<a href="https://www.google.com/maps/place/217+East+42+St,+New+York,+NY+10017">See on Map</a>';
 }
 
 function crc_gnsm_listing_echo($listingArray, $query) {
