@@ -76,14 +76,13 @@ var BrooklynArray = {},
     QueensArray = {},
     ManhattanArray = {},
     StatenArray = {},
-    curTarget = "All",
+//    curTarget = "All",
     parametersJSON = {},
     filterArray = [];
 
 
 var allData = {};
 var curData = {};
-var geoData = {};
 
 
 var noQuerySetUp = function () {
@@ -139,7 +138,6 @@ var setUpSelections = function () {
         var thisInput = $('input[name="' + GNYC.filters[i][0] + '"]');
 
         thisInput.each(function () {
-            console.log($(this).val());
             if (GNYC.filters[i][2] === 'multiple') {
                 if (filterArray[GNYC.filters[i][1]].indexOf($(this).val()) > -1) {
                     this.checked = true;
@@ -159,7 +157,10 @@ var setUpSelections = function () {
 }
 
 d3.json("http://54.174.151.164/GraduateNYC/?crc-json=all_listings", function (error, json) {
-    if (error) return console.warn(error);
+    if (error) {
+        return console.warn(error);
+    }
+
     allData = json;
     var filterData = createFilteredObj(allData);
     setUpArrays(filterData);
@@ -172,7 +173,32 @@ var setUpArrays = function (data) {
     ManhattanArray = {};
     StatenArray = {};
 
+//*
+    for (var bor in GNYC.boroughs.density) {
+//        bor = bor.replace(" Island", "");
+
+        for (var key in data) {
+            if (data[key].boroughs.indexOf(bor) >= -1) {
+                for (var i = 0; i < data[key].neighborhoods.length; i++) {
+                    if (data[key].neighborhoods[i].indexOf(bor) > -1) {
+//console.log(data[key].neighborhoods[i]);
+//console.log(GNYC.boroughs.density[bor]);
+                        if (data[key].neighborhoods[i] in GNYC.boroughs.density[bor]) {
+                            GNYC.boroughs.density[bor][data[key].neighborhoods[i]] += 1;
+//                            console.log(bor + ' - +=1');
+                        } else {
+                            GNYC.boroughs.density[bor][data[key].neighborhoods[i]] = 1;
+//                            console.log(bor + ' - =1');
+                        }
+                    }
+                }
+            }
+        }
+    }
+//*/
+
     for (var key in data) {
+//console.log(key);
         if (data[key].boroughs.indexOf("Brooklyn") >= -1) {
             for (var i = 0; i < data[key].neighborhoods.length; i++) {
                 if (data[key].neighborhoods[i].indexOf("Brooklyn") > -1) {
@@ -354,13 +380,19 @@ var updateMap = function () {
     d3.selectAll('.neighborhood').transition()
         .duration(750)
         .style("fill", function (d) {
+//*/
+//            for (var key in GNYC.boroughs.density
+//*/
             for (var key in window[d.properties.boroname + "Array"]) {
+console.log(key);
+console.log(window[d.properties.boroname + 'Array']);
                 var neighb = key.split(" - ")[1]
                 if (d.properties.ntaname.indexOf(neighb) > -1) {
                     d.density = window[d.properties.boroname + "Array"][key];
                     return color(window[d.properties.boroname + "Array"][key])
                 }
             }
+//*
             return color(0)
         });
 }
@@ -446,8 +478,6 @@ d3.json("../wp-content/plugins/crc-graduate-nyc-survey-map/includes/static/Borou
 })
 
 d3.json("../wp-content/plugins/crc-graduate-nyc-survey-map/includes/static/NTA.json", function (error, nta) {
-
-    geoData = nta;
 
     ntaG.selectAll(".neighborhood")
         .data(topojson.feature(nta, nta.objects.NTA).features)
