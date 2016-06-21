@@ -1,6 +1,99 @@
 "use strict";
 
+var GETURIRequest = {};
 var GNYC = {};
+
+GNYC.filters = {
+    'boroughs': {
+        'type': 'checkbox',
+        'onMap': false,
+        'onListings': true,
+        'values': [
+            'Brooklyn',
+            'Bronx',
+            'Manhattan',
+            'Queens',
+            'Staten Island',
+        ],
+        'default': [],
+        'density': {
+            'Brooklyn': {},
+            'Queens': {},
+            'Bronx': {},
+            'Staten Island': {},
+            'Manhattan': {},
+        },
+    },
+    'population-served': {
+        'type': 'radio',
+        'onMap': true,
+        'onListings': true,
+        'values': [
+            'All',
+            'Academic performance level',
+            'English language learners',
+            'Disconnected youth/Out of school youth',
+            'Student with IEP or other learning challenges',
+            'High school equivalency (HSE)',
+            'Poverty guidelines/socioeconomic status',
+            'Justice involved youth',
+            'Gender',
+            'Immigrants/Refugees',
+        ],
+        'default': 'All',
+        'oldName': 'target-population',
+    },
+    'grades-served': {
+        'type': 'checkbox',
+        'onMap': true,
+        'onListings': true,
+        'values': [
+            'Elementary school (K-5)',
+            'Middle school (6-8)',
+            'High school (9-12)',
+            'Post-secondary school',
+            'Adult learners and High School Equivalency',
+        ],
+        'default': [],
+    },
+    'enrollment-type': {
+        'type': 'radio',
+        'onMap': true,
+        'onListings': true,
+        'values': [
+            'All',
+            'Open enrollment',
+            'Limited enrollment',
+            'Closed program',
+        ],
+        'default': 'All',
+        'oldName': 'open-status',
+    },
+    'services': {
+        'type': 'checkbox',
+        'onMap': true,
+        'onListings': true,
+        'values': [
+            'College Readiness',
+            'College Matriculation',
+            'College Retention',
+            'Career Preparation',
+        ],
+        'default': [],
+    },
+};
+
+GNYC.map = {
+    "width": 600,
+    "height": 600,
+    "active": d3.select(null),
+};
+
+GNYC.map.tooltip = d3.select("body")
+    .append("div")
+    .attr("class", "tooltip")
+    .style("opacity", 0);
+
 
 // [formElementID, index, selectionType, shortName, onMapFilters, defaultSelection]
 GNYC.filters = [
@@ -21,24 +114,13 @@ GNYC.boroughs = {
     },
     };
 
-var GETURIRequest = {};
-
-var width = 600,
-    height = 600,
-    active = d3.select(null);
-
-var tooltip = d3.select("body")
-    .append("div")
-    .attr("class", "tooltip")
-    .style("opacity", 0);
-
 d3.select(".map")
     .append("div")
     .classed("svg-container", true);
 
 var svg = d3.select(".svg-container").append("svg")
     .attr("preserveAspectRatio", "xMinYMin meet")
-    .attr("viewBox", "0 0 " + width + " " + height)
+    .attr("viewBox", "0 0 " + GNYC.map.width + " " + GNYC.map.height)
     .classed("svg-content-responsive", true);
 
 /*
@@ -52,15 +134,15 @@ var neighborhoodSvg = d3.select(".svg-container").append("svg")
 var projection = d3.geo.mercator()
     .center([-73.94, 40.70])
     .scale(50000)
-    .translate([(width) / 2, (height) / 2]);
+    .translate([(GNYC.map.width) / 2, (GNYC.map.height) / 2]);
 
 var path = d3.geo.path()
     .projection(projection)
 
 svg.append("rect")
     .attr("class", "background")
-    .attr("width", width)
-    .attr("height", height)
+    .attr("width", GNYC.map.width)
+    .attr("height", GNYC.map.height)
     .on("click", reset);
 
 var ntaG = svg.append("g")
@@ -461,18 +543,18 @@ d3.json("../wp-content/plugins/crc-graduate-nyc-survey-map/includes/static/Borou
         })
         .attr("d", path)
         .on("mouseover", function (d) {
-            tooltip.transition()
+            GNYC.map.tooltip.transition()
                 .duration(500)
                 .style("opacity", 0);
-            tooltip.transition()
+            GNYC.map.tooltip.transition()
                 .duration(200)
                 .style("opacity", 1);
-            tooltip.html('<b>' + d.properties.boroname + '</b>')
+            GNYC.map.tooltip.html('<b>' + d.properties.boroname + '</b>')
                 .style("left", (d3.event.pageX) + "px")
                 .style("top", (d3.event.pageY - 28) + "px");
         })
         .on("mouseleave", function (d) {
-            tooltip.transition()
+            GNYC.map.tooltip.transition()
                 .duration(200)
                 .style("opacity", 0);
         })
@@ -507,22 +589,22 @@ d3.json("../wp-content/plugins/crc-graduate-nyc-survey-map/includes/static/NTA.j
 
 function clicked(d) {
     var curBoro = d.properties.boroname.replace(" Island", "");
-    if (active.node() === this) return reset();
-    active.classed("active", false);
-    active = d3.select(this).classed("active", true);
+    if (GNYC.map.active.node() === this) return reset();
+    GNYC.map.active.classed("active", false);
+    GNYC.map.active = d3.select(this).classed("active", true);
 
     var bounds = path.bounds(d),
         dx = bounds[1][0] - bounds[0][0],
         dy = bounds[1][1] - bounds[0][1],
         x = (bounds[0][0] + bounds[1][0]) / 2,
         y = (bounds[0][1] + bounds[1][1]) / 2,
-        scale = .5 / Math.max(dx / width, dy / height),
-        translate = [width / 2 - scale * x, (height / 2 - scale * y) - 130];
+        scale = .5 / Math.max(dx / GNYC.map.width, dy / GNYC.map.height),
+        translate = [GNYC.map.width / 2 - scale * x, (GNYC.map.height / 2 - scale * y) - 130];
 
     d3.select(".background")
         .attr("cursor", "zoom-out")
 
-    tooltip.transition()
+    GNYC.map.tooltip.transition()
         .duration(200)
         .style("opacity", 0);
 
@@ -546,31 +628,31 @@ function clicked(d) {
         })
         .on("mouseenter", function (d) {
             if (d.density != undefined) {
-                tooltip.transition()
+                GNYC.map.tooltip.transition()
                     .duration(500)
                     .style("opacity", 0);
-                tooltip.transition()
+                GNYC.map.tooltip.transition()
                     .duration(200)
                     .style("opacity", 1);
-                tooltip.html('<b>' + d.properties.ntaname + ': </b>' + d.density)
+                GNYC.map.tooltip.html('<b>' + d.properties.ntaname + ': </b>' + d.density)
                     .style("left", (d3.event.pageX) + "px")
                     .style("top", (d3.event.pageY - 28) + "px");
             }
         })
         .on("mouseleave", function (d) {
-            tooltip.transition()
+            GNYC.map.tooltip.transition()
                 .duration(200)
                 .style("opacity", 0);
         })
         .on("click", function () {
             if (d.density != undefined) {
-                tooltip.transition()
+                GNYC.map.tooltip.transition()
                     .duration(500)
                     .style("opacity", 0);
-                tooltip.transition()
+                GNYC.map.tooltip.transition()
                     .duration(200)
                     .style("opacity", .9);
-                tooltip.html('<b>' + d.properties.ntaname + ': </b>' + d.density)
+                GNYC.map.tooltip.html('<b>' + d.properties.ntaname + ': </b>' + d.density)
                     .style("left", (d3.event.pageX) + "px")
                     .style("top", (d3.event.pageY - 28) + "px");
             }
@@ -581,8 +663,8 @@ function clicked(d) {
 
 function reset() {
 
-    active.classed("active", false);
-    active = d3.select(null);
+    GNYC.map.active.classed("active", false);
+    GNYC.map.active = d3.select(null);
 
     d3.select(".background")
         .attr("cursor", "default")
