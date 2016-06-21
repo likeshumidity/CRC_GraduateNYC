@@ -73,7 +73,7 @@ foreach($crc_gnsm_listing_attributes as $att => $attDetails) {
 						</form>
 					</div>
 
-					<div class="results-container col-md-7">
+					<div class="crc-gnsm-results-container col-md-7">
 <?php
 
 echo '<div class="post-count">' . $wp_query->post_count . ' matching programs.</div>';
@@ -144,7 +144,7 @@ function crc_gnsm_listing_echo($listingArray, $query) {
 }
 
 ?>
-				</div><!-- results-container -->
+				</div><!-- crc-gnsm-results-container -->
 				</div><!-- row -->
 				</main><!-- content -->
 
