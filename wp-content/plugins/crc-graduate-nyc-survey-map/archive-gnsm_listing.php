@@ -15,10 +15,10 @@ do_action( 'ava_after_main_title' );
 		<div class='container_wrap container_wrap_first main_color <?php avia_layout_class( 'main' ); ?>'>
 
 			<div class='container template-blog '>
+				<main class='content container <?php avia_layout_class( 'content' ); ?> units' <?php avia_markup_helper(array('context' => 'content','post_type'=>'gnsm_listing'));?>>
+				<div class="row">
 
-				<main class='content <?php avia_layout_class( 'content' ); ?> units' <?php avia_markup_helper(array('context' => 'content','post_type'=>'gnsm_listing'));?>>
-
-					<div class="crc-gnsm-form-container">
+					<div class="crc-gnsm-form-container col-md-5">
 						<form id="crc-gnsm-listings-form" method="get">
 <?php
 
@@ -62,8 +62,8 @@ foreach($crc_gnsm_listing_attributes as $att => $attDetails) {
 	echo '</fieldset>' . "\n";
 }
 
-console_log($wp_query->query_vars);
-console_log($wp_query->request);
+// console_log($wp_query->query_vars);
+// console_log($wp_query->request);
 
 ?>
 
@@ -72,12 +72,15 @@ console_log($wp_query->request);
 							<div><a href="../graduate-nyc-map-4/<?php print '?' . $_SERVER['QUERY_STRING']; ?>">&lt; Map View</a></div>
 						</form>
 					</div>
+
+					<div class="results-container col-md-7">
 <?php
 
 echo '<div class="post-count">' . $wp_query->post_count . ' matching programs.</div>';
 
 if ($wp_query->have_posts()) {
 	echo '<ul class="gnsm-program-listings">';
+
 	$fields_for_listing = array(
 		'program-listing' => array('li', '', array(
 			'title' => array('div', 'the_title();'),
@@ -89,7 +92,7 @@ if ($wp_query->have_posts()) {
 				'state' => array('span', '', 'field_5706de4675f20'),
 				'postal-code' => array('span', '', 'field_5706deca75f22'),
 			)),
-			'google-map-link' => array('span', 'google_map_link();'),
+			'google-map-link' => array('span', 'google_map_link($listingArray[\'physical-address\'][2]);'),
 			'description' => array('div', '', 'field_5706df2275f23'),
 		)),
 				
@@ -103,13 +106,27 @@ if ($wp_query->have_posts()) {
 	echo '<p class="nomatchinglistings">No matching listings. Please try using less filters.</p>';
 }
 
-function google_map_link() {
-	echo '<a href="https://www.google.com/maps/place/217+East+42+St,+New+York,+NY+10017">See on Map</a>';
+function google_map_link($addressParts) {
+	$addressPhysical = '';
+
+	foreach ($addressParts as $addressPart => $addressPartSpecs) {
+// console_log($addressParts);
+		if (!empty(get_field($addressPartSpecs[2]))) {
+			$addressPhysical .= get_field($addressPartSpecs[2]);
+			if ($addressPart != 'postal-code') {
+				$addressPhysical .= ', ';
+			}
+		}
+	}
+
+	if (strlen($addressPhysical) > 0) {
+		echo '<a href="https://www.google.com/maps/place/' . urlencode($addressPhysical) . '">See on Map</a>';
+	}
 }
 
 function crc_gnsm_listing_echo($listingArray, $query) {
-	if(gettype($listingArray) == 'array') {
-		foreach($listingArray as $listingClass => $listingSpecs) {
+	if (gettype($listingArray) == 'array') {
+		foreach ($listingArray as $listingClass => $listingSpecs) {
 			echo '<' . $listingSpecs[0] . ' class="' . $listingClass . '">';
 			if (empty($listingSpecs[1])) {
 				crc_gnsm_listing_echo($listingSpecs[2], $query);
@@ -127,10 +144,11 @@ function crc_gnsm_listing_echo($listingArray, $query) {
 }
 
 ?>
+				</div><!-- results-container -->
+				</div><!-- row -->
+				</main><!-- content -->
 
-				</main><!--end content-->
-
-			</div><!--end container-->
+			</div><!-- container -->
 
 		</div><!-- close default .container_wrap element -->
 
