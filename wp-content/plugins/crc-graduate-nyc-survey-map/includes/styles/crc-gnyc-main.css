@@ -101,12 +101,6 @@ body {
     }
 }
 
-/*
-svg {
-    position: absolute;
-}
-*/
-
 .borough {
     cursor: zoom-in;
     fill: #ccc;
@@ -143,142 +137,18 @@ svg {
     -webkit-user-select: none;
 }
 
-/*
-.svg-container {
-    display: inline-block;
-    position: relative;
-    width: 100%;
-    padding-bottom: 100%; /* aspect ratio */
-/*    vertical-align: top;
-    overflow: hidden;
-}
-.svg-content-responsive {
-    display: inline-block;
-    position: absolute;
-    top: 10px;
-    left: 0;
-}
-*/
-
 /* SR MAP MOCKUP */
 
-/*
-.col-md-7 .col-sm-5 {
-    position: relative;
-    width: 570px;
-    z-index: 99999;
-}
-
-#crc-gnsm-listings-form {
- position: relative;
- width: 480px;
- z-index: 9999;   
-}
-
-.tabs-left {
-
-}
-
-.tab-content > .active {
-    display: block;
-    background: #f8f8f8 !important;
-    margin-left: 178px;
-}
-
-.tab-content .tab-pane {
-    border-bottom:1px solid #dfdfdf; 
-    border-right:1px solid #dfdfdf; 
-    border-top:1px solid #dfdfdf; 
-    border-radius: 0 4px 4px 0;
-    min-height: 178px;
-    width: 300px;
-}
-
-ul.nav-tabs {
-    border-bottom:1px solid #dfdfdf; 
-    border-left:1px solid #dfdfdf; 
-    border-top:1px solid #dfdfdf; 
-    border-radius: 4px 0 0 4px;
-    float: left;
-    width: 171px;   
-}
-
-ul.nav-tabs li {
-    margin: 0;
-    width: 170px;
-}
-
-.nav-tabs > li > a {
-    margin: 0;
-}
-
-ul.nav-tabs li a {
-    color: #8f8f8f;
-}
-
-ul.nav-tabs li:hover {
-    background: #f8f8f8;
-}
-
-ul.nav-tabs li.active {
-        background: #f8f8f8;
-}
-
-ul.nav-tabs li.active a, ul.nav-tabs li.active a:hover, ul.nav-tabs li.active a:focus, ul.nav-tabs li a, ul.nav-tabs li a:hover, ul.nav-tabs li a:focus  {
-    background: transparent;
-    border: none !important;
-    color: #656565;
-}
-
-.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
- background: #f8f8f8;
- color: #9f9f9f;
- font-weight: bold;
-}
-
-ul.nav-tabs li a:hover {
-    background: #f8f8f8;
-    border: none !important;
-    border-radius: 0;
-    color: #656565;
-    font-weight: bold;
-}
-
 .map {
-    position: relative;
-    right: -250px;
-    top: -650px;
-    z-index: 8888;
 }
 
 .map-key {
-    position: relative;
-    top: 980px;
-    left: 750px;   
 }
 
 .patterns {
-    width: 300px;
 }
 
 /* COLLAPSABLE */
-
-/*
-#formContainer {
-    float: left;
-    width: 0;
-    position: relative;
-    z-index: 0;
-}
-
-#accordian.container {
-    height: 950px;
-}
-
-.panel-group#accordion {
-    max-width: 400px;
-}
-*/
 
 
 /* LISTINGS STYLE */
