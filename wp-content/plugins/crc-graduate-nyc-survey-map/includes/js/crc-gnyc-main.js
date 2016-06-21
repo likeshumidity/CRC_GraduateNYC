@@ -23,8 +23,8 @@ GNYC.boroughs = {
 
 var GETURIRequest = {};
 
-var width = 700,
-    height = 1165,
+var width = 600,
+    height = 600,
     active = d3.select(null);
 
 var tooltip = d3.select("body")
@@ -36,34 +36,36 @@ d3.select(".map")
     .append("div")
     .classed("svg-container", true);
 
-var boroughSvg = d3.select(".svg-container").append("svg")
+var svg = d3.select(".svg-container").append("svg")
     .attr("preserveAspectRatio", "xMinYMin meet")
     .attr("viewBox", "0 0 " + width + " " + height)
     .classed("svg-content-responsive", true);
 
+/*
 var neighborhoodSvg = d3.select(".svg-container").append("svg")
     .style("pointer-events", 'none')
     .attr("preserveAspectRatio", "xMinYMin meet")
     .attr("viewBox", "0 0 " + width + " " + height)
     .classed("svg-content-responsive", true);
+//*/
 
 var projection = d3.geo.mercator()
-    .center([-73.94, 40.50])
+    .center([-73.94, 40.70])
     .scale(50000)
     .translate([(width) / 2, (height) / 2]);
 
 var path = d3.geo.path()
     .projection(projection)
 
-boroughSvg.append("rect")
+svg.append("rect")
     .attr("class", "background")
     .attr("width", width)
     .attr("height", height)
     .on("click", reset);
 
-var borG = boroughSvg.append("g")
+var ntaG = svg.append("g")
 
-var ntaG = neighborhoodSvg.append("g")
+var borG = svg.append("g")
 
 
 ///Range of colors based on density
@@ -384,8 +386,8 @@ var updateMap = function () {
 //            for (var key in GNYC.boroughs.density
 //*/
             for (var key in window[d.properties.boroname + "Array"]) {
-console.log(key);
-console.log(window[d.properties.boroname + 'Array']);
+//console.log(key);
+//console.log(window[d.properties.boroname + 'Array']);
                 var neighb = key.split(" - ")[1]
                 if (d.properties.ntaname.indexOf(neighb) > -1) {
                     d.density = window[d.properties.boroname + "Array"][key];

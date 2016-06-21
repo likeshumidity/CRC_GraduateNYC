@@ -556,4 +556,7 @@ function crc_styles_enqueue() {
 }
 add_action('wp_enqueue_scripts', 'crc_styles_enqueue');
 
+remove_filter( 'the_content', 'wpautop' );
+remove_filter( 'the_excerpt', 'wpautop' );
+
 ?>

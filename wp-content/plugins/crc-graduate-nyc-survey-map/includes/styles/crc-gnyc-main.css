@@ -101,9 +101,11 @@ body {
     }
 }
 
+/*
 svg {
     position: absolute;
 }
+*/
 
 .borough {
     cursor: zoom-in;
@@ -140,12 +142,14 @@ svg {
     cursor: pointer;
     -webkit-user-select: none;
 }
+
+/*
 .svg-container {
     display: inline-block;
     position: relative;
     width: 100%;
     padding-bottom: 100%; /* aspect ratio */
-    vertical-align: top;
+/*    vertical-align: top;
     overflow: hidden;
 }
 .svg-content-responsive {
@@ -154,9 +158,11 @@ svg {
     top: 10px;
     left: 0;
 }
+*/
 
 /* SR MAP MOCKUP */
 
+/*
 .col-md-7 .col-sm-5 {
     position: relative;
     width: 570px;
@@ -257,6 +263,7 @@ ul.nav-tabs li a:hover {
 
 /* COLLAPSABLE */
 
+/*
 #formContainer {
     float: left;
     width: 0;
@@ -271,7 +278,7 @@ ul.nav-tabs li a:hover {
 .panel-group#accordion {
     max-width: 400px;
 }
-
+*/
 
 
 /* LISTINGS STYLE */
