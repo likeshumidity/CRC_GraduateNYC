@@ -3,8 +3,9 @@
 var GETURIRequest = {};
 var GNYC = {};
 
-GNYC.filters = {
+GNYC.filters2 = {
     'boroughs': {
+        'order': 0,
         'type': 'checkbox',
         'onMap': false,
         'onListings': true,
@@ -25,6 +26,7 @@ GNYC.filters = {
         },
     },
     'population-served': {
+        'order': 2,
         'type': 'radio',
         'onMap': true,
         'onListings': true,
@@ -44,6 +46,7 @@ GNYC.filters = {
         'oldName': 'target-population',
     },
     'grades-served': {
+        'order': 3,
         'type': 'checkbox',
         'onMap': true,
         'onListings': true,
@@ -57,6 +60,7 @@ GNYC.filters = {
         'default': [],
     },
     'enrollment-type': {
+        'order': 1,
         'type': 'radio',
         'onMap': true,
         'onListings': true,
@@ -70,6 +74,7 @@ GNYC.filters = {
         'oldName': 'open-status',
     },
     'services': {
+        'order': 4,
         'type': 'checkbox',
         'onMap': true,
         'onListings': true,
@@ -122,6 +127,17 @@ GNYC.groups = {
     "boroughs": GNYC.svg.append("g"),
 };
 
+GNYC.filterToFieldName = function(filter) {
+    var fieldName = filter.replace('-',' ');
+
+    fieldName = fieldName.substring(0,1).toUpperCase() + fieldName.substring(1);
+
+    return fieldName;
+};
+
+GNYC.filterToFieldID = function(filter, prefix) {
+    return prefix + '-' + filter;
+};
 
 // [formElementID, index, selectionType, shortName, onMapFilters, defaultSelection]
 GNYC.filters = [
@@ -162,32 +178,23 @@ var allData = {};
 var curData = {};
 
 
-var noQuerySetUp = function () {
-/*
-    for (var i = 0; i < GNYC.filters.length; i++) {
-        if (GNYC.filters[i][2] == 'multiple') {
-            parametersJSON[GNYC.filters[i][3]] = GNYC.filters[i][5];
-        } else {
-            parametersJSON[GNYC.filters[i][3]] = [GNYC.filters[i][5]];
+GNYC.noQuerySetUp = function() {
+    for (var filter in GNYC.filters2) {
+        if (GNYC.filters2.hasOwnProperty(filter)) {
+            if (GNYC.filters2[filter].type === 'checkbox') {
+                parametersJSON[filter] = GNYC.filters2[filter].default;
+                filterArray[GNYC.filters2[filter].order] = GNYC.filters2[filter].default; // REMOVE filterArray at some point
+            } else if (GNYC.filters2[filter].type === 'radio') {
+                parametersJSON[filter] = [GNYC.filters2[filter].default];
+                filterArray[GNYC.filters2[filter].order] = GNYC.filters2[filter].default; // REMOVE filterArray at some point
+            } else {
+                console.log('ERROR: INVALID FILTER TYPE: in noQuerySetUp()');
+            }
         }
     }
-*/
-    filterArray = [
-        [],
-        "All",
-        "All",
-        [],
-        [],
-    ];
-
-    parametersJSON['boroughs'] = filterArray[0];
-    parametersJSON['enrollment-type'] = [filterArray[1]];
-    parametersJSON['target-population'] = [filterArray[2]];
-    parametersJSON['grades-served'] = filterArray[3];
-    parametersJSON['services'] = filterArray[4];
 
     setUpSelections();
-}
+};
 
 var setUpSelections = function () {
 /*
@@ -475,16 +482,6 @@ var updateMap = function () {
 }
 
 
-/*
-GNYC.filters = [
-    ['gnsm-boroughs', 0, 'multiple', 'boroughs', false, []],
-    ['gnsm-open-status', 1, 'single', 'open-status', true, 'All'],
-    ['gnsm-target-population', 2, 'single', 'target-population', true, 'All'],
-    ['gnsm-grades-served', 3, 'multiple', 'grades-served', true, []],
-    ['gnsm-services', 4, 'multiple', 'services', true, []],
-    ];
-
-*/
 
 $('#gnsm-boroughs').on('change', function () {
     var array = $(this).val()? $(this).val(): [];
@@ -740,7 +737,6 @@ GETURIRequest.encode = function (parametersJSON, baseURL) {
 
 
 $(document).ready(function () {
-
     if (GETURIRequest.decode()) {
         parametersJSON = GETURIRequest.decode();
 
@@ -751,10 +747,10 @@ $(document).ready(function () {
         filterArray[4] = parametersJSON['services'];
 
         setUpSelections();
-
     } else {
-        noQuerySetUp();
+        GNYC.noQuerySetUp();
     }
+
     $('.link-to-listings').click(function () {
         window.location.href = GETURIRequest.encode(parametersJSON, 'http://54.174.151.164/GraduateNYC/gnsm_listing/');
     })
