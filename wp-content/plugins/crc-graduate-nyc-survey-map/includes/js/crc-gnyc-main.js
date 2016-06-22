@@ -94,6 +94,33 @@ GNYC.map.tooltip = d3.select("body")
     .attr("class", "tooltip")
     .style("opacity", 0);
 
+d3.select(".map")
+    .append("div")
+    .classed("svg-container", true);
+
+GNYC.svg = d3.select(".svg-container").append("svg")
+    .attr("preserveAspectRatio", "xMinYMin meet")
+    .attr("viewBox", "0 0 " + GNYC.map.width + " " + GNYC.map.height)
+    .classed("svg-content-responsive", true);
+
+GNYC.projection = d3.geo.mercator()
+    .center([-73.94, 40.70])
+    .scale(50000)
+    .translate([(GNYC.map.width) / 2, (GNYC.map.height) / 2]);
+
+GNYC.path = d3.geo.path()
+    .projection(GNYC.projection)
+
+GNYC.svg.append("rect")
+    .attr("class", "background")
+    .attr("width", GNYC.map.width)
+    .attr("height", GNYC.map.height)
+    .on("click", reset);
+
+var ntaG = GNYC.svg.append("g")
+
+var borG = GNYC.svg.append("g")
+
 
 // [formElementID, index, selectionType, shortName, onMapFilters, defaultSelection]
 GNYC.filters = [
@@ -112,42 +139,7 @@ GNYC.boroughs = {
         'Staten Island': {},
         'Manhattan': {},
     },
-    };
-
-d3.select(".map")
-    .append("div")
-    .classed("svg-container", true);
-
-var svg = d3.select(".svg-container").append("svg")
-    .attr("preserveAspectRatio", "xMinYMin meet")
-    .attr("viewBox", "0 0 " + GNYC.map.width + " " + GNYC.map.height)
-    .classed("svg-content-responsive", true);
-
-/*
-var neighborhoodSvg = d3.select(".svg-container").append("svg")
-    .style("pointer-events", 'none')
-    .attr("preserveAspectRatio", "xMinYMin meet")
-    .attr("viewBox", "0 0 " + width + " " + height)
-    .classed("svg-content-responsive", true);
-//*/
-
-var projection = d3.geo.mercator()
-    .center([-73.94, 40.70])
-    .scale(50000)
-    .translate([(GNYC.map.width) / 2, (GNYC.map.height) / 2]);
-
-var path = d3.geo.path()
-    .projection(projection)
-
-svg.append("rect")
-    .attr("class", "background")
-    .attr("width", GNYC.map.width)
-    .attr("height", GNYC.map.height)
-    .on("click", reset);
-
-var ntaG = svg.append("g")
-
-var borG = svg.append("g")
+};
 
 
 ///Range of colors based on density
@@ -541,7 +533,7 @@ d3.json("../wp-content/plugins/crc-graduate-nyc-survey-map/includes/static/Borou
         .attr("id", function (d) {
             return d.properties.boroname;
         })
-        .attr("d", path)
+        .attr("d", GNYC.path)
         .on("mouseover", function (d) {
             GNYC.map.tooltip.transition()
                 .duration(500)
@@ -570,7 +562,7 @@ d3.json("../wp-content/plugins/crc-graduate-nyc-survey-map/includes/static/NTA.j
         .attr("id", function (d) {
             return d.properties.ntaname;
         })
-        .attr("d", path)
+        .attr("d", GNYC.path)
         .style("fill", function (d) {
             for (var key in window[d.properties.boroname + "Array"]) {
                 var neighb = key.split(" - ")[1]
@@ -593,7 +585,7 @@ function clicked(d) {
     GNYC.map.active.classed("active", false);
     GNYC.map.active = d3.select(this).classed("active", true);
 
-    var bounds = path.bounds(d),
+    var bounds = GNYC.path.bounds(d),
         dx = bounds[1][0] - bounds[0][0],
         dy = bounds[1][1] - bounds[0][1],
         x = (bounds[0][0] + bounds[1][0]) / 2,
