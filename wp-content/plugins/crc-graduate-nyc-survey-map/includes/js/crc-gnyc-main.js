@@ -147,6 +147,16 @@ GNYC.filterToFieldID = function(filter, prefix) {
     return prefix + '-' + filter;
 };
 
+///Range of colors based on density
+GNYC.color = d3.scale.linear()
+    .domain([0, 60])
+    .range(["white", "#2F5C61"]);
+
+
+
+
+
+
 // [formElementID, index, selectionType, shortName, onMapFilters, defaultSelection]
 GNYC.filters = [
     ['gnsm-boroughs', 0, 'multiple', 'boroughs', false, []],
@@ -167,20 +177,13 @@ GNYC.boroughs = {
 };
 
 
-///Range of colors based on density
-var color = d3.scale.linear()
-    .domain([0, 60])
-    .range(["white", "#2F5C61"]);
-
 var BrooklynArray = {},
     BronxArray = {},
     QueensArray = {},
     ManhattanArray = {},
     StatenArray = {},
-//    curTarget = "All",
     parametersJSON = {},
     filterArray = [];
-
 
 var allData = {};
 var curData = {};
@@ -481,11 +484,11 @@ var updateMap = function () {
                 var neighb = key.split(" - ")[1]
                 if (d.properties.ntaname.indexOf(neighb) > -1) {
                     d.density = window[d.properties.boroname + "Array"][key];
-                    return color(window[d.properties.boroname + "Array"][key])
+                    return GNYC.color(window[d.properties.boroname + "Array"][key])
                 }
             }
 //*
-            return color(0)
+            return GNYC.color(0)
         });
 }
 
@@ -572,10 +575,10 @@ d3.json("../wp-content/plugins/crc-graduate-nyc-survey-map/includes/static/NTA.j
                 var neighb = key.split(" - ")[1]
                 if (d.properties.ntaname.indexOf(neighb) > -1) {
                     d.density = window[d.properties.boroname + "Array"][key];
-                    return color(window[d.properties.boroname + "Array"][key])
+                    return GNYC.color(window[d.properties.boroname + "Array"][key])
                 }
             }
-            return color(0)
+            return GNYC.color(0)
         })
         .style('stroke-width', '.5px')
         .style("stroke", "#cecece")
