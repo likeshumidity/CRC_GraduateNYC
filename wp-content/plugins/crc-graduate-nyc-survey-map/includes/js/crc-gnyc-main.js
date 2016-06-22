@@ -3,7 +3,15 @@
 var GETURIRequest = {};
 var GNYC = {};
 
-GNYC.filters2 = {
+GNYC.url = {
+    "base": window.location.origin,
+    "rootPath": window.location.pathname.substring(0, window.location.pathname.indexOf("/", 1)),
+    "basePath": function() {
+        return this.base + this.rootPath + '/';
+    },
+};
+
+GNYC.filterS = {
     'boroughs': {
         'order': 0,
         'type': 'checkbox',
@@ -179,14 +187,14 @@ var curData = {};
 
 
 GNYC.noQuerySetUp = function() {
-    for (var filter in GNYC.filters2) {
-        if (GNYC.filters2.hasOwnProperty(filter)) {
-            if (GNYC.filters2[filter].type === 'checkbox') {
-                parametersJSON[filter] = GNYC.filters2[filter].default;
-                filterArray[GNYC.filters2[filter].order] = GNYC.filters2[filter].default; // REMOVE filterArray at some point
-            } else if (GNYC.filters2[filter].type === 'radio') {
-                parametersJSON[filter] = [GNYC.filters2[filter].default];
-                filterArray[GNYC.filters2[filter].order] = GNYC.filters2[filter].default; // REMOVE filterArray at some point
+    for (var filter in GNYC.filterS) {
+        if (GNYC.filterS.hasOwnProperty(filter)) {
+            if (GNYC.filterS[filter].type === 'checkbox') {
+                parametersJSON[filter] = GNYC.filterS[filter].default;
+                filterArray[GNYC.filterS[filter].order] = GNYC.filterS[filter].default; // REMOVE filterArray at some point
+            } else if (GNYC.filterS[filter].type === 'radio') {
+                parametersJSON[filter] = [GNYC.filterS[filter].default];
+                filterArray[GNYC.filterS[filter].order] = GNYC.filterS[filter].default; // REMOVE filterArray at some point
             } else {
                 console.log('ERROR: INVALID FILTER TYPE: in noQuerySetUp()');
             }
@@ -240,7 +248,7 @@ var setUpSelections = function () {
 //*/
 }
 
-d3.json("http://54.174.151.164/GraduateNYC/?crc-json=all_listings", function (error, json) {
+d3.json(GNYC.url.basePath() + '?crc-json=all_listings', function (error, json) {
     if (error) {
         return console.warn(error);
     }
@@ -752,7 +760,7 @@ $(document).ready(function () {
     }
 
     $('.link-to-listings').click(function () {
-        window.location.href = GETURIRequest.encode(parametersJSON, 'http://54.174.151.164/GraduateNYC/gnsm_listing/');
+        window.location.href = GETURIRequest.encode(parametersJSON, GNYC.url.basePath() + 'gnsm_listing/');
     })
 });
 
