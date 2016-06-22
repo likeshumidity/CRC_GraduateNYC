@@ -117,9 +117,10 @@ GNYC.svg.append("rect")
     .attr("height", GNYC.map.height)
     .on("click", reset);
 
-var ntaG = GNYC.svg.append("g")
-
-var borG = GNYC.svg.append("g")
+GNYC.groups = {
+    "neighborhoods": GNYC.svg.append("g"),
+    "boroughs": GNYC.svg.append("g"),
+};
 
 
 // [formElementID, index, selectionType, shortName, onMapFilters, defaultSelection]
@@ -525,8 +526,7 @@ $("#gnsm-services").change(function () {
 
 
 d3.json("../wp-content/plugins/crc-graduate-nyc-survey-map/includes/static/Boroughs.json", function (error, bor) {
-
-    borG.selectAll(".borough")
+    GNYC.groups.boroughs.selectAll(".borough")
         .data(topojson.feature(bor, bor.objects.Boroughs).features)
         .enter().append("path")
         .attr("class", "borough")
@@ -554,8 +554,7 @@ d3.json("../wp-content/plugins/crc-graduate-nyc-survey-map/includes/static/Borou
 })
 
 d3.json("../wp-content/plugins/crc-graduate-nyc-survey-map/includes/static/NTA.json", function (error, nta) {
-
-    ntaG.selectAll(".neighborhood")
+    GNYC.groups.neighborhoods.selectAll(".neighborhood")
         .data(topojson.feature(nta, nta.objects.NTA).features)
         .enter().append("path")
         .attr("class", "neighborhood")
@@ -600,17 +599,17 @@ function clicked(d) {
         .duration(200)
         .style("opacity", 0);
 
-    borG.transition()
+    GNYC.groups.boroughs.transition()
         .duration(750)
         .style("stroke-width", 1.5 / scale + "px")
         .attr("transform", "translate(" + translate + ")scale(" + scale + ")")
 
-    ntaG.transition()
+    GNYC.groups.neighborhoods.transition()
         .duration(750)
         .style("stroke-width", 1.5 / scale + "px")
         .attr("transform", "translate(" + translate + ")scale(" + scale + ")")
 
-    ntaG.selectAll(".neighborhood")
+    GNYC.groups.neighborhoods.selectAll(".neighborhood")
         .style("pointer-events", function (d) {
             if (d.properties.boroname === curBoro) {
                 return 'all';
@@ -654,22 +653,21 @@ function clicked(d) {
 }
 
 function reset() {
-
     GNYC.map.active.classed("active", false);
     GNYC.map.active = d3.select(null);
 
     d3.select(".background")
         .attr("cursor", "default")
 
-    borG.transition()
+    GNYC.groups.boroughs.transition()
         .duration(750)
         .style("stroke-width", "1.5px")
         .attr("transform", "");
-    ntaG.transition()
+    GNYC.groups.neighborhoods.transition()
         .duration(750)
         .attr("transform", "");
 
-    ntaG.selectAll(".neighborhood")
+    GNYC.groups.neighborhoods.selectAll(".neighborhood")
         .style("pointer-events", 'none')
 }
 
@@ -730,8 +728,6 @@ GETURIRequest.encode = function (parametersJSON, baseURL) {
                 URIsearch += key.replace(/ /g, '+');
                 if (parametersJSON[keyArray].length > 1) {
                         URIsearch += '%5B%5D';
-//                      console.log(keyArray);
-//                      console.log(parametersJSON[keyArray].length);
                 }
                 URIsearch += '=';
                 URIsearch += encodeURIComponent(parametersJSON[keyArray][i]).replace(/ /g, '+');
@@ -763,3 +759,5 @@ $(document).ready(function () {
         window.location.href = GETURIRequest.encode(parametersJSON, 'http://54.174.151.164/GraduateNYC/gnsm_listing/');
     })
 });
+
+
