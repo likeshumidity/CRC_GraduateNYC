@@ -182,10 +182,14 @@ GNYC.createFilterFormFields = function(venue) {
             }
         }
     } else {
-        console.log('ERROR: invalid venue');
+        console.warn('ERROR: invalid venue');
     }
 };
 
+GNYC.data = {
+    "all": {},
+    "filtered": {},
+};
 
 
 
@@ -207,9 +211,6 @@ var BrooklynArray = {},
     parametersJSON = {},
     filterArray = [];
 
-var allData = {};
-var curData = {};
-
 
 GNYC.noQuerySetUp = function() {
     for (var filter in GNYC.filterS) {
@@ -221,65 +222,45 @@ GNYC.noQuerySetUp = function() {
                 parametersJSON[filter] = [GNYC.filterS[filter].default];
                 filterArray[GNYC.filterS[filter].order] = GNYC.filterS[filter].default; // REMOVE filterArray at some point
             } else {
-                console.log('ERROR: INVALID FILTER TYPE: in noQuerySetUp()');
+                console.warn('ERROR: INVALID FILTER TYPE: in noQuerySetUp()');
             }
         }
     }
 
-    setUpSelections();
+    GNYC.updateFilterFieldSelections()
 };
 
-var setUpSelections = function () {
-/*
-    for (var i = 0; i < GNYC.filters.length; i++) {
-        var selectedForm = document.getElementById(GNYC.filters[i][0]);
+GNYC.updateFilterFieldSelections = function () {
+    for (var filter in GNYC.filterS) {
+        var thisInput = $('input[name="' + GNYC.filterToFieldID(filter, 'gnsm') + '"]');
 
-        for (var j = 0; j < selectedForm.options.length; j++) {
-            if (GNYC.filters[i][2] === 'multiple') {
-                if (filterArray[GNYC.filters[i][1]].indexOf(selectedForm.options[j].value) > -1) {
-                    selectedForm.options[j].selected = true;
+        thisInput.each(function() {
+            if (GNYC.filterS[filter].type === 'checkbox') {
+                if (filterArray[GNYC.filterS[filter].order].indexOf($(this).val()) > -1) {
+                    this.checked = true;
                 } else {
-                    selectedForm.options[j].selected = false;
+                    this.checked = false;
                 }
-            } else {
-                if (filterArray[GNYC.filters[i][1]] === selectedForm.options[j].value) {
-                    selectedForm.options[j].selected = true;
-                } else {
-                    selectedForm.options[j].selected = false;
-                }
-            }
-        }
-    }
-//*/
-    for (var i = 0; i < GNYC.filters.length; i++) {
-        var thisInput = $('input[name="' + GNYC.filters[i][0] + '"]');
-
-        thisInput.each(function () {
-            if (GNYC.filters[i][2] === 'multiple') {
-                if (filterArray[GNYC.filters[i][1]].indexOf($(this).val()) > -1) {
+            } else if (GNYC.filterS[filter].type === 'radio') {
+                if (filterArray[GNYC.filterS[filter].order] === $(this).val()) {
                     this.checked = true;
                 } else {
                     this.checked = false;
                 }
             } else {
-                if (filterArray[GNYC.filters[i][1]] === $(this).val()) {
-                    this.checked = true;
-                } else {
-                    this.checked = false;
-                }
+                console.warn('ERROR: invalid field type');
             }
         });
     }
-//*/
-}
+};
 
 d3.json(GNYC.url.basePath() + '?crc-json=all_listings', function (error, json) {
     if (error) {
         return console.warn(error);
     }
 
-    allData = json;
-    var filterData = createFilteredObj(allData);
+    GNYC.data.all = json;
+    var filterData = createFilteredObj(GNYC.data.all);
     setUpArrays(filterData);
 });
 
@@ -520,21 +501,21 @@ $('#gnsm-boroughs').on('change', function () {
     var array = $(this).val()? $(this).val(): [];
     parametersJSON['boroughs'] = array;
     filterArray[0] = array;
-    var filterData = createFilteredObj(allData)
+    var filterData = createFilteredObj(GNYC.data.all)
     setUpArrays(filterData)
 });
 
 $('#gnsm-open-status').on('change', function () {
     parametersJSON['enrollment-type'] = [$(this).val()];
     filterArray[1] = $(this).val();
-    var filterData = createFilteredObj(allData)
+    var filterData = createFilteredObj(GNYC.data.all)
     setUpArrays(filterData)
 });
 
 $('#gnsm-target-population').on('change', function () {
     parametersJSON['target-population'] = [$(this).val()];
     filterArray[2] = $(this).val();
-    var filterData = createFilteredObj(allData)
+    var filterData = createFilteredObj(GNYC.data.all)
     setUpArrays(filterData)
 });
 
@@ -542,7 +523,7 @@ $("#gnsm-grades-served").change(function () {
     var array = $(this).val()? $(this).val(): [];
     parametersJSON['grades-served'] = array;
     filterArray[3] = array;
-    var filterData = createFilteredObj(allData)
+    var filterData = createFilteredObj(GNYC.data.all)
     setUpArrays(filterData)
 });
 
@@ -550,7 +531,7 @@ $("#gnsm-services").change(function () {
     var array = $(this).val()? $(this).val(): [];
     parametersJSON['services'] = array;
     filterArray[4] = array;
-    var filterData = createFilteredObj(allData)
+    var filterData = createFilteredObj(GNYC.data.all)
     setUpArrays(filterData)
 });
 
@@ -781,7 +762,7 @@ $(document).ready(function () {
         filterArray[3] = parametersJSON['grades-served'];
         filterArray[4] = parametersJSON['services'];
 
-        setUpSelections();
+        GNYC.updateFilterFieldSelections();
     } else {
         GNYC.noQuerySetUp();
     }
