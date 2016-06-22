@@ -120,7 +120,7 @@ function google_map_link($addressParts) {
 	}
 
 	if (strlen($addressPhysical) > 0) {
-		echo '<a href="https://www.google.com/maps/place/' . urlencode($addressPhysical) . '">See on Map</a>';
+		echo '<a href="https://www.google.com/maps/place/' . urlencode($addressPhysical) . '">Get directions</a>';
 	}
 }
 

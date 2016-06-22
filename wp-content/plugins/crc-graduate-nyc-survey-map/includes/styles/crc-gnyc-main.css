@@ -169,7 +169,10 @@ body {
 }
 
 .program-listing .physical-address .line-1, .program-listing .physical-address .line-2, .program-listing .physical-address .city  {
+    padding-left: 5px;
+/* 
     display: block;
+ */
 }
 
 .program-listing .physical-address .state, .program-listing .physical-address .zip {
