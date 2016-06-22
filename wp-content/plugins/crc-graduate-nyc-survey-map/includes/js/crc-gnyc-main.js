@@ -616,8 +616,6 @@ function clicked(d) {
                     .style("top", (d3.event.pageY - 28) + "px");
             }
         })
-
-
 }
 
 function reset() {
