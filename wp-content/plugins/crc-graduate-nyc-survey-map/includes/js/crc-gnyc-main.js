@@ -96,6 +96,11 @@ GNYC.filterS = {
     },
 };
 
+GNYC.venues = [
+    'map',
+    'listings',
+];
+
 GNYC.map = {
     "width": 600,
     "height": 600,
@@ -147,12 +152,39 @@ GNYC.filterToFieldID = function(filter, prefix) {
     return prefix + '-' + filter;
 };
 
-///Range of colors based on density
+// Range of colors based on density
 GNYC.color = d3.scale.linear()
     .domain([0, 60])
     .range(["white", "#2F5C61"]);
 
+// create filter form fields
+GNYC.createFilterFormFields = function(venue) {
+    var fieldSet = {},
+        fieldInput = '',
+        i = 0;
 
+    if ($.inArray(venue, this.venues) > -1) {
+        for (var filter in this.filterS) {
+            if (GNYC.filterS[filter]['on' + venue.substring(0, 1).toUpperCase() + venue.substring(1)]) {
+                fieldSet = $('#' + this.filterToFieldID(filter, 'panel') + ' fieldset');
+
+                for (i = 0; i < this.filterS[filter].values.length; i++) {
+                    fieldInput += '<span class="field-input">';
+                    fieldInput += '<input type="' + this.filterS[filter].type + '" name="' + this.filterToFieldID(filter, 'gnsm') + '" ';
+                    fieldInput += 'id="' + this.filterToFieldID(filter, 'gnsm') + i + '" ';
+                    fieldInput += 'value="' + this.filterS[filter].values[i] + '" />';
+                    fieldInput += '<label for="' + this.filterToFieldID(filter, 'gnsm') + i + '">';
+                    fieldInput += this.filterS[filter].values[i] + '</label>' + '</span>';
+
+                    fieldSet.append(fieldInput);
+                    fieldInput = '';
+                } 
+            }
+        }
+    } else {
+        console.log('ERROR: invalid venue');
+    }
+};
 
 
 
@@ -165,16 +197,6 @@ GNYC.filters = [
     ['gnsm-grades-served', 3, 'multiple', 'grades-served', true, []],
     ['gnsm-services', 4, 'multiple', 'services', true, []],
     ];
-
-GNYC.boroughs = {
-    'density': {
-        'Brooklyn': {},
-        'Queens': {},
-        'Bronx': {},
-        'Staten Island': {},
-        'Manhattan': {},
-    },
-};
 
 
 var BrooklynArray = {},
@@ -269,7 +291,7 @@ var setUpArrays = function (data) {
     StatenArray = {};
 
 //*
-    for (var bor in GNYC.boroughs.density) {
+    for (var bor in GNYC.filterS.boroughs.density) {
 //        bor = bor.replace(" Island", "");
 
         for (var key in data) {
@@ -277,12 +299,12 @@ var setUpArrays = function (data) {
                 for (var i = 0; i < data[key].neighborhoods.length; i++) {
                     if (data[key].neighborhoods[i].indexOf(bor) > -1) {
 //console.log(data[key].neighborhoods[i]);
-//console.log(GNYC.boroughs.density[bor]);
-                        if (data[key].neighborhoods[i] in GNYC.boroughs.density[bor]) {
-                            GNYC.boroughs.density[bor][data[key].neighborhoods[i]] += 1;
+//console.log(GNYC.filterS.boroughs.density[bor]);
+                        if (data[key].neighborhoods[i] in GNYC.filterS.boroughs.density[bor]) {
+                            GNYC.filterS.boroughs.density[bor][data[key].neighborhoods[i]] += 1;
 //                            console.log(bor + ' - +=1');
                         } else {
-                            GNYC.boroughs.density[bor][data[key].neighborhoods[i]] = 1;
+                            GNYC.filterS.boroughs.density[bor][data[key].neighborhoods[i]] = 1;
 //                            console.log(bor + ' - =1');
                         }
                     }
@@ -712,7 +734,7 @@ GETURIRequest.decode = function () {
     }
 };
 
-GETURIRequest.encode = function (parametersJSON, baseURL) {
+GETURIRequest.encode = function (parameters, baseURL) {
     // accepts object in the same format as the output of GETURIRequest.decode
     // returns string that can be appended to URI
     var URIsearch = '',
@@ -720,13 +742,13 @@ GETURIRequest.encode = function (parametersJSON, baseURL) {
         i = 0,
         isFirst = true;
 
-    for (var keyArray in parametersJSON) {
-        if (parametersJSON.hasOwnProperty(keyArray)) {
-//        if (parametersJSON.hasOwnProperty(keyArray) && parametersJSON[keyArray] !== null) {
-//            console.log(parametersJSON);
+    for (var keyArray in parameters) {
+        if (parameters.hasOwnProperty(keyArray)) {
+//        if (parameters.hasOwnProperty(keyArray) && parameters[keyArray] !== null) {
+//            console.log(parameters);
             key = encodeURIComponent(keyArray);
 
-            for (i = 0; i < parametersJSON[keyArray].length; i++) {
+            for (i = 0; i < parameters[keyArray].length; i++) {
                 if (isFirst) {
                     URIsearch += '?';
                     isFirst = false;
@@ -734,11 +756,11 @@ GETURIRequest.encode = function (parametersJSON, baseURL) {
                     URIsearch += '&';
                 }
                 URIsearch += key.replace(/ /g, '+');
-                if (parametersJSON[keyArray].length > 1) {
+                if (parameters[keyArray].length > 1) {
                         URIsearch += '%5B%5D';
                 }
                 URIsearch += '=';
-                URIsearch += encodeURIComponent(parametersJSON[keyArray][i]).replace(/ /g, '+');
+                URIsearch += encodeURIComponent(parameters[keyArray][i]).replace(/ /g, '+');
             }
         }
     }
@@ -748,6 +770,8 @@ GETURIRequest.encode = function (parametersJSON, baseURL) {
 
 
 $(document).ready(function () {
+    GNYC.createFilterFormFields('map');
+
     if (GETURIRequest.decode()) {
         parametersJSON = GETURIRequest.decode();
 
