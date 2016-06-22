@@ -9,6 +9,7 @@ GNYC.url = {
     "basePath": function() {
         return this.base + this.rootPath + '/';
     },
+    "parameters": {},
 };
 
 GNYC.filterS = {
@@ -188,27 +189,15 @@ GNYC.createFilterFormFields = function(venue) {
 
 GNYC.data = {
     "all": {},
-    "filtered": {},
 };
 
 
-
-// [formElementID, index, selectionType, shortName, onMapFilters, defaultSelection]
-GNYC.filters = [
-    ['gnsm-boroughs', 0, 'multiple', 'boroughs', false, []],
-    ['gnsm-open-status', 1, 'single', 'open-status', true, 'All'],
-    ['gnsm-target-population', 2, 'single', 'target-population', true, 'All'],
-    ['gnsm-grades-served', 3, 'multiple', 'grades-served', true, []],
-    ['gnsm-services', 4, 'multiple', 'services', true, []],
-    ];
-
-
+/// REMOVE REMOVE REMOVE
 var BrooklynArray = {},
     BronxArray = {},
     QueensArray = {},
     ManhattanArray = {},
     StatenArray = {},
-    parametersJSON = {},
     filterArray = [];
 
 
@@ -216,10 +205,10 @@ GNYC.noQuerySetUp = function() {
     for (var filter in GNYC.filterS) {
         if (GNYC.filterS.hasOwnProperty(filter)) {
             if (GNYC.filterS[filter].type === 'checkbox') {
-                parametersJSON[filter] = GNYC.filterS[filter].default;
+                GNYC.url.parameters[filter] = GNYC.filterS[filter].default;
                 filterArray[GNYC.filterS[filter].order] = GNYC.filterS[filter].default; // REMOVE filterArray at some point
             } else if (GNYC.filterS[filter].type === 'radio') {
-                parametersJSON[filter] = [GNYC.filterS[filter].default];
+                GNYC.url.parameters[filter] = [GNYC.filterS[filter].default];
                 filterArray[GNYC.filterS[filter].order] = GNYC.filterS[filter].default; // REMOVE filterArray at some point
             } else {
                 console.warn('ERROR: INVALID FILTER TYPE: in noQuerySetUp()');
@@ -440,7 +429,7 @@ var createFilteredObj = function (data) {
 }
 
 var updateMap = function () {
-//*
+/*
     var breadcrumbs = "",
         i = 0,
         j = 0;
@@ -490,51 +479,38 @@ var updateMap = function () {
                     return GNYC.color(window[d.properties.boroname + "Array"][key])
                 }
             }
-//*
             return GNYC.color(0)
         });
-}
+};
 
+// Add on change action to each form filter
+GNYC.createFormEventListeners = function() {
+    for (var filter in GNYC.filterS) {
+        var i = 0;
 
+        for (i = 0; i < GNYC.filterS[filter].values.length; i++) {
+            $('#' + GNYC.filterToFieldID(filter, 'gnsm') + i).on('change', function() {
+                var thisFilter = this.name.substring(5);
+                GNYC.filterS[thisFilter].selected = GNYC.filterS[thisFilter].default.slice();
 
-$('#gnsm-boroughs').on('change', function () {
-    var array = $(this).val()? $(this).val(): [];
-    parametersJSON['boroughs'] = array;
-    filterArray[0] = array;
-    var filterData = createFilteredObj(GNYC.data.all)
-    setUpArrays(filterData)
-});
+                $('input[name="' + GNYC.filterToFieldID(thisFilter, 'gnsm') + '"]:checked').each(function() {
+                    if (GNYC.filterS[thisFilter].type === 'checkbox') {
+                        GNYC.filterS[thisFilter].selected.push($(this).val());
+                    } else if (GNYC.filterS[thisFilter].type === 'radio') {
+                        GNYC.filterS[thisFilter].selected = $(this).val();
+                    } else {
+                        console.warn('ERROR: invalid field type');
+                    }
+                });
 
-$('#gnsm-open-status').on('change', function () {
-    parametersJSON['enrollment-type'] = [$(this).val()];
-    filterArray[1] = $(this).val();
-    var filterData = createFilteredObj(GNYC.data.all)
-    setUpArrays(filterData)
-});
-
-$('#gnsm-target-population').on('change', function () {
-    parametersJSON['target-population'] = [$(this).val()];
-    filterArray[2] = $(this).val();
-    var filterData = createFilteredObj(GNYC.data.all)
-    setUpArrays(filterData)
-});
-
-$("#gnsm-grades-served").change(function () {
-    var array = $(this).val()? $(this).val(): [];
-    parametersJSON['grades-served'] = array;
-    filterArray[3] = array;
-    var filterData = createFilteredObj(GNYC.data.all)
-    setUpArrays(filterData)
-});
-
-$("#gnsm-services").change(function () {
-    var array = $(this).val()? $(this).val(): [];
-    parametersJSON['services'] = array;
-    filterArray[4] = array;
-    var filterData = createFilteredObj(GNYC.data.all)
-    setUpArrays(filterData)
-});
-
+                GNYC.url.parameters[thisFilter] = GNYC.filterS[thisFilter].selected.slice();
+                filterArray[GNYC.filterS[thisFilter].order] = GNYC.filterS[thisFilter].selected.slice();
+                var filterData = createFilteredObj(GNYC.data.all);
+                setUpArrays(filterData);
+            });
+        }
+    }
+};
 
 d3.json("../wp-content/plugins/crc-graduate-nyc-survey-map/includes/static/Boroughs.json", function (error, bor) {
     GNYC.groups.boroughs.selectAll(".borough")
@@ -754,21 +730,23 @@ $(document).ready(function () {
     GNYC.createFilterFormFields('map');
 
     if (GETURIRequest.decode()) {
-        parametersJSON = GETURIRequest.decode();
+        GNYC.url.parameters = GETURIRequest.decode();
 
-        filterArray[0] = parametersJSON['boroughs'];
-        filterArray[1] = parametersJSON['enrollment-type'][0];
-        filterArray[2] = parametersJSON['target-population'][0];
-        filterArray[3] = parametersJSON['grades-served'];
-        filterArray[4] = parametersJSON['services'];
+        filterArray[0] = GNYC.url.parameters['boroughs'];
+        filterArray[1] = GNYC.url.parameters['enrollment-type'][0];
+        filterArray[2] = GNYC.url.parameters['target-population'][0];
+        filterArray[3] = GNYC.url.parameters['grades-served'];
+        filterArray[4] = GNYC.url.parameters['services'];
 
         GNYC.updateFilterFieldSelections();
     } else {
         GNYC.noQuerySetUp();
     }
 
+    GNYC.createFormEventListeners();
+
     $('.link-to-listings').click(function () {
-        window.location.href = GETURIRequest.encode(parametersJSON, GNYC.url.basePath() + 'gnsm_listing/');
+        window.location.href = GETURIRequest.encode(GNYC.url.parameters, GNYC.url.basePath() + 'gnsm_listing/');
     })
 });
 
