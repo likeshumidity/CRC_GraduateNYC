@@ -201,6 +201,7 @@ var BrooklynArray = {},
     filterArray = [];
 
 
+// TODO: Change filterArray to GNYC.filterS[filter].selected
 GNYC.noQuerySetUp = function() {
     for (var filter in GNYC.filterS) {
         if (GNYC.filterS.hasOwnProperty(filter)) {
@@ -216,6 +217,7 @@ GNYC.noQuerySetUp = function() {
         }
     }
 
+console.log(filterArray);
     GNYC.updateFilterFieldSelections()
 };
 
@@ -260,29 +262,21 @@ var setUpArrays = function (data) {
     ManhattanArray = {};
     StatenArray = {};
 
-//*
-    for (var bor in GNYC.filterS.boroughs.density) {
-//        bor = bor.replace(" Island", "");
-
+    for (var borough in GNYC.filterS.boroughs.density) {
         for (var key in data) {
-            if (data[key].boroughs.indexOf(bor) >= -1) {
+            if (data[key].boroughs.indexOf(borough) >= -1) {
                 for (var i = 0; i < data[key].neighborhoods.length; i++) {
-                    if (data[key].neighborhoods[i].indexOf(bor) > -1) {
-//console.log(data[key].neighborhoods[i]);
-//console.log(GNYC.filterS.boroughs.density[bor]);
-                        if (data[key].neighborhoods[i] in GNYC.filterS.boroughs.density[bor]) {
-                            GNYC.filterS.boroughs.density[bor][data[key].neighborhoods[i]] += 1;
-//                            console.log(bor + ' - +=1');
+                    if (data[key].neighborhoods[i].indexOf(borough) > -1) {
+                        if (data[key].neighborhoods[i] in GNYC.filterS.boroughs.density[borough]) {
+                            GNYC.filterS.boroughs.density[borough][data[key].neighborhoods[i]] += 1;
                         } else {
-                            GNYC.filterS.boroughs.density[bor][data[key].neighborhoods[i]] = 1;
-//                            console.log(bor + ' - =1');
+                            GNYC.filterS.boroughs.density[borough][data[key].neighborhoods[i]] = 1;
                         }
                     }
                 }
             }
         }
     }
-//*/
 
     for (var key in data) {
 //console.log(key);
@@ -348,7 +342,6 @@ var setUpArrays = function (data) {
     }
 
     updateMap();
-
 }
 
 var filterData = function (program) {
@@ -429,41 +422,6 @@ var createFilteredObj = function (data) {
 }
 
 var updateMap = function () {
-/*
-    var breadcrumbs = "",
-        i = 0,
-        j = 0;
-
-    var filters = [
-        'gnsm-boroughs',
-        'gnsm-open-status',
-        'gnsm-population',
-        'gnsm-grades-served',
-        'gnsm-services',
-        ];
-
-    for (i = 0; i < breadcrumbs.length; i++) {
-        var snippet = filters[0].substring(4).replace('-',' '),
-            capitalizeNext = false;
-
-        for (j = 0; j < snippet.length; j++) {
-            if (j === 0) {
-                snippet[j] = snippet[j].toUpperCase;
-            }
-
-            if (snippet[j] === ' ') {
-                capitalizeNext = true;
-            } else {
-                capitalizeNext = false;
-            }
-        }
-
-        breadcrumbs += snippet;
-    }
-
-    $('.breadcrumbs p').html(breadcrumbs);
-//*/
-
     d3.selectAll('.neighborhood').transition()
         .duration(750)
         .style("fill", function (d) {
@@ -482,6 +440,28 @@ var updateMap = function () {
             return GNYC.color(0)
         });
 };
+
+
+// Update breadcrumbs
+GNYC.updateBreadcrumbs = function(thisFilter) {
+    var theseBreadcrumbs = $('#' + this.filterToFieldID(thisFilter, 'panel') + ' p.breadcrumbs a');
+
+    if (this.filterS[thisFilter].type === 'radio') {
+        theseBreadcrumbs.html(this.filterS[thisFilter].selected);
+    } else if (this.filterS[thisFilter].type === 'checkbox') {
+        theseBreadcrumbs.html('');
+
+        for (var i = 0; i < this.filterS[thisFilter].selected.length; i++) {
+            if (i !== 0) {
+                theseBreadcrumbs.append('; ');
+            }
+            theseBreadcrumbs.append(this.filterS[thisFilter].selected[i]) ;
+        }
+    } else {
+        console.warn('ERROR: invalid field type');
+    }
+};
+
 
 // Add on change action to each form filter
 GNYC.createFormEventListeners = function() {
@@ -507,14 +487,15 @@ GNYC.createFormEventListeners = function() {
                 filterArray[GNYC.filterS[thisFilter].order] = GNYC.filterS[thisFilter].selected.slice();
                 var filterData = createFilteredObj(GNYC.data.all);
                 setUpArrays(filterData);
+                GNYC.updateBreadcrumbs(thisFilter);
             });
         }
     }
 };
 
-d3.json("../wp-content/plugins/crc-graduate-nyc-survey-map/includes/static/Boroughs.json", function (error, bor) {
+d3.json("../wp-content/plugins/crc-graduate-nyc-survey-map/includes/static/Boroughs.json", function (error, borough) {
     GNYC.groups.boroughs.selectAll(".borough")
-        .data(topojson.feature(bor, bor.objects.Boroughs).features)
+        .data(topojson.feature(borough, borough.objects.Boroughs).features)
         .enter().append("path")
         .attr("class", "borough")
         .attr("id", function (d) {
