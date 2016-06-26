@@ -143,15 +143,79 @@ body {
 }
 
 .map-key {
+    position: absolute;
 }
 
-.patterns {
+.map-key p {
+    font-weight: bold;
+}
+
+.map-key ul {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.map-key li {
+    color: #226173;
+    font-size: 12px;
+    list-style: none;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.map-key li span {
+    height: 10px;
+    width: 10px;
+    display: block;
+    float: left;
+    padding: 2px 2px 0 0;
+    margin: 3px 6px 0 0;
+}
+
+.map-key li span.population-1 {background: #f4f7f8;}
+.map-key li span.population-2 {background: #eaf0f2;} 
+.map-key li span.population-3 {background: #dee8ea;}
+.map-key li span.population-4 {background: #cedde0;}
+.map-key li span.population-5 {background: #bfd2d7;}
+
+.patterns h3 {
+    font-size: 20px;
+    color: #226173 !important;
+}
+
+.patterns p {
+    font-style: italic;
+    line-height: 17pt;
+    color: #555555;
 }
 
 /* COLLAPSABLE */
 
 
 /* LISTINGS STYLE */
+
+.view-listings {
+    color: #8a8b8b;
+    font-size: 13px;
+    text-transform: uppercase;
+}
+
+
+.view-listings a span {
+    background: url(http://54.174.151.164/GraduateNYC/wp-content/uploads/2016/06/view-listings-icon1.jpg) no-repeat 0 0;
+    display: inline-block;
+    width: 126px;
+    height: 14px;
+    margin-right: 7px;
+    padding-left: 29px;
+    padding-top: 1px;
+}
+
+.view-listings:hover, .view-listings a span:hover  {
+    background: url(http://54.174.151.164/GraduateNYC/wp-content/uploads/2016/06/view-listings-icon1.jpg) no-repeat 0 -18px;
+    color: #676767;
+    
+}
 
 .program-listing {
     border-bottom: 1px solid #d0d0d0;
@@ -160,7 +224,7 @@ body {
 }
 
 .program-listing .title {
-    color: #226372;
+    color: #555555;
     font-weight: bold;
 }
 
@@ -183,110 +247,70 @@ body {
     font-style: italic;
 }
 
-/* FORM ELEMENTS */
+/* TABS */
 
-input[type=checkbox], input[type=radio] {
-    margin: 4px 7px 7px 0 !important;
+.tab-content {
+    background: #ffffff;
+    width: 455px;
+    top: -26px;
+    position: relative;
+    padding-top: 6px; 
 }
 
-.control-group {
-	display: inline-block;
-	text-align: left;
-	vertical-align: top;
-	background: #fff;
-	box-shadow: 0 1px 2px rgba(0,0,0,.1);
+.nav>li>a {
+ margin-top: 25px;   
 }
 
-.control {
-	font-size: 18px;
-	position: relative;
-	display: block;
-	margin-bottom: 15px;
-	padding-left: 30px;
-	cursor: pointer;
+.nav-pills>li.active>a, .nav-pills>li>a  {
+    border: 1px solid #226173;
+    
+    border-top-right-radius: 50% !important;
+    border-top-left-radius: 50% !important;
+
+    
+    color: #226173;
+    width: 70px;
+    height: 70px;
+    background: #226173 !important;
+    margin-left: 0 !important;
+    margin-right: 10px;
 }
 
-.control input {
-	position: absolute;
-	z-index: -1;
-	opacity: 0;
+.nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover, .nav>li>a:focus, .nav>li>a:hover {
+        background: #226173 !important;
+        top: -10px;
+
 }
 
-.control__indicator {
-	position: relative;
-	top: -33px;
-	width: 20px;
-	height: 20px;
-	background: #e6e6e6;
+.nav-pills>li {
+    margin: 0 !important;
 }
 
-.control--radio .control__indicator {
-	border-radius: 50%;
+/* FORM STYLES */
+
+.panel-body .field-input {
+    display: block;   
 }
 
-/* Hover and focus states */
-.control:hover input ~ .control__indicator,
-.control input:focus ~ .control__indicator {
-	background: #ccc;
+.panel-body .field-input label {
+    margin-left: 10px;
 }
 
-/* Checked state */
-.control input:checked ~ .control__indicator {
-	background: #2aa1c0;
+/* ABOUT */
+
+.about {
+    border-top: 5px solid #555555;
+    margin: 15px !important;
+    padding: 10px 0 0 0 !important;
 }
 
-/* Hover state whilst checked */
-.control:hover input:not([disabled]):checked ~ .control__indicator,
-.control input:checked:focus ~ .control__indicator {
-	background: #0e647d;
+.about h5 {
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #555555 !important;
 }
 
-/* Disabled state */
-.control input:disabled ~ .control__indicator {
-	pointer-events: none;
-	opacity: .6;
-	background: #e6e6e6;
-}
-
-/* Check mark */
-.control__indicator:after {
-	position: absolute;
-	display: none;
-	content: '';
-}
-
-/* Show check mark */
-.control input:checked ~ .control__indicator:after {
-	display: block;
-}
-
-/* Checkbox tick */
-.control--checkbox .control__indicator:after {
-	top: 4px;
-	left: 8px;
-	width: 3px;
-	height: 8px;
-	transform: rotate(45deg);
-	border: solid #fff;
-	border-width: 0 2px 2px 0;
-}
-
-/* Disabled tick colour */
-.control--checkbox input:disabled ~ .control__indicator:after {
-	border-color: #7b7b7b;
-}
-
-/* Radio button inner circle */
-.control--radio .control__indicator:after {
-	top: 7px;
-	left: 7px;
-	width: 6px;
-	height: 6px;
-	border-radius: 50%;
-	background: #fff;
-}
-
-/* Disabled circle colour */
-.control--radio input:disabled ~ .control__indicator:after {
-	background: #7b7b7b;
+.about p {
+    font-style: italic;
 }
