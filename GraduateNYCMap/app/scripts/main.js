@@ -400,6 +400,11 @@ function clicked(d) {
         y = (bounds[0][1] + bounds[1][1]) / 2,
         scale = .5 / Math.max(dx / width, dy / height),
         translate = [width / 2 - scale * x, (height / 2 - scale * y) - 130];
+        
+    if ( curBoro === 'Queens' ){
+        scale = .5 / Math.max(dx / width, dy / height) + .5,
+    }
+
 
     d3.select(".background")
         .attr("cursor", "zoom-out")
