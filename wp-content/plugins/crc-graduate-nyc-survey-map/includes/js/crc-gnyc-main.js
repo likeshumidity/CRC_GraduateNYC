@@ -558,7 +558,12 @@ function clicked(d) {
         x = (bounds[0][0] + bounds[1][0]) / 2,
         y = (bounds[0][1] + bounds[1][1]) / 2,
         scale = .5 / Math.max(dx / GNYC.map.width, dy / GNYC.map.height),
-        translate = [GNYC.map.width / 2 - scale * x, (GNYC.map.height / 2 - scale * y) - 130];
+        translate = [GNYC.map.width / 2 - scale * x, (GNYC.map.height / 2 - scale * y) - 10];
+
+    if (curBoro === 'Queens') {
+        scale += .5;
+        translate = [translate[0] * 2.5, translate[1] * 3.25];
+    }
 
     d3.select(".background")
         .attr("cursor", "zoom-out")
