@@ -251,7 +251,7 @@ d3.json(GNYC.url.basePath() + '?crc-json=all_listings', function (error, json) {
     }
 
     GNYC.data.all = json;
-    var filterData = createFilteredObj(GNYC.data.all);
+    var filterData = GNYC.createFilteredObj(GNYC.data.all);
     GNYC.setUpArrays(filterData);
 });
 
@@ -344,7 +344,7 @@ GNYC.setUpArrays = function (data) {
     updateMap();
 }
 
-var filterData = function (program) {
+GNYC.filterData = function (program) {
     var check = true;
 
     //check boroughs
@@ -411,10 +411,10 @@ var filterData = function (program) {
 
 }
 
-var createFilteredObj = function (data) {
+GNYC.createFilteredObj = function (data) {
     var filterObj = {};
     for (var key in data) {
-        if (filterData(data[key])) {
+        if (GNYC.filterData(data[key])) {
             filterObj[key] = data[key]
         }
     }
@@ -485,7 +485,7 @@ GNYC.createFormEventListeners = function() {
 
                 GNYC.url.parameters[thisFilter] = GNYC.filterS[thisFilter].selected.slice();
                 filterArray[GNYC.filterS[thisFilter].order] = GNYC.filterS[thisFilter].selected.slice();
-                var filterData = createFilteredObj(GNYC.data.all);
+                var filterData = GNYC.createFilteredObj(GNYC.data.all);
                 GNYC.setUpArrays(filterData);
                 GNYC.updateBreadcrumbs(thisFilter);
             });
@@ -518,7 +518,7 @@ d3.json("../wp-content/plugins/crc-graduate-nyc-survey-map/includes/static/Borou
                 .duration(200)
                 .style("opacity", 0);
         })
-        .on("click", clicked)
+        .on("click", GNYC.clicked)
 })
 
 d3.json("../wp-content/plugins/crc-graduate-nyc-survey-map/includes/static/NTA.json", function (error, nta) {
@@ -546,7 +546,7 @@ d3.json("../wp-content/plugins/crc-graduate-nyc-survey-map/includes/static/NTA.j
 })
 
 
-function clicked(d) {
+GNYC.clicked = function(d) {
     var curBoro = d.properties.boroname.replace(" Island", "");
     if (GNYC.map.active.node() === this) return reset();
     GNYC.map.active.classed("active", false);
