@@ -341,7 +341,7 @@ GNYC.setUpArrays = function (data) {
         }
     }
 
-    updateMap();
+    GNYC.updateMap();
 }
 
 GNYC.filterData = function (program) {
@@ -421,7 +421,7 @@ GNYC.createFilteredObj = function (data) {
     return filterObj;
 }
 
-var updateMap = function () {
+GNYC.updateMap = function () {
     d3.selectAll('.neighborhood').transition()
         .duration(750)
         .style("fill", function (d) {
