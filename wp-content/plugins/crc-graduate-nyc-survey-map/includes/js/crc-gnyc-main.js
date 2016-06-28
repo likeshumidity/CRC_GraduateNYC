@@ -252,10 +252,10 @@ d3.json(GNYC.url.basePath() + '?crc-json=all_listings', function (error, json) {
 
     GNYC.data.all = json;
     var filterData = createFilteredObj(GNYC.data.all);
-    setUpArrays(filterData);
+    GNYC.setUpArrays(filterData);
 });
 
-var setUpArrays = function (data) {
+GNYC.setUpArrays = function (data) {
     BrooklynArray = {};
     BronxArray = {};
     QueensArray = {};
@@ -486,7 +486,7 @@ GNYC.createFormEventListeners = function() {
                 GNYC.url.parameters[thisFilter] = GNYC.filterS[thisFilter].selected.slice();
                 filterArray[GNYC.filterS[thisFilter].order] = GNYC.filterS[thisFilter].selected.slice();
                 var filterData = createFilteredObj(GNYC.data.all);
-                setUpArrays(filterData);
+                GNYC.setUpArrays(filterData);
                 GNYC.updateBreadcrumbs(thisFilter);
             });
         }
