@@ -273,10 +273,23 @@ GNYC.setBoroughDensity = function (data) {
     GNYC.updateMap();
 }
 
+GNYC.getFilteredData = function (data) {
+    var filteredData = {};
+
+    for (var program in data) {
+        if (true) {
+            filteredData[program] = data[program];
+        }
+    }
+
+    return filteredData;
+};
+
 GNYC.createFilteredObj = function (data) {
 console.log(data);
     var filterObj = {};
     for (var key in data) {
+console.log(key);
         if (GNYC.filterData(data[key])) {
             filterObj[key] = data[key]
         }
