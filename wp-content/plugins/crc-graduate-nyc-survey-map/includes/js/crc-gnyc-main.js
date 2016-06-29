@@ -280,18 +280,31 @@ GNYC.setBoroughDensity = function (data) {
 
 GNYC.getFilteredData = function (data) {
     var filteredData = {},
-        i = 0,
-        j = 0;
+        i = 0;
 
-    for (var filter in GNYC.filterS) {
-        if (GNYC.filterS.hasOwnProperty(filter)) {
-            for (j = 0; j < GNYC.filtersSelected[filter.order].length; j++) {
-                for (var program in data) {
-                    if (true) {
-                        break;
-                    }
-                }
+    var includeProgram = function (programToCheck) {
+        var isSelected = {
+            'radio': function (programAttribute, selected) {
+            
+            },
+            'checkbox': function (programAttribute, selected) {
+                var wasFound = true;
+
+                return wasFound;
+            },
+        };
+
+        for (var filter in GNYC.filterS) {
+            if (GNYC.filterS.hasOwnProperty(filter)) {
+                return isSelected[GNYC.filterS[filter].type](programToCheck[GNYC.filterS[filter].dataSetName],
+                                                             GNYC.filtersSelected[GNYC.filterS[filter].order]);
             }
+        }
+    };
+
+    for (var program in data) {
+        if (includeProgram(program)) {
+            filteredData[program] = data[program];
         }
     }
 
