@@ -434,19 +434,18 @@ GNYC.updateMap = function () {
     d3.selectAll('.neighborhood').transition()
         .duration(750)
         .style("fill", function (d) {
-//*/
-//            for (var key in GNYC.boroughs.density
-//*/
+//*
             for (var key in window[d.properties.boroname + "Array"]) {
-//console.log(key);
-//console.log(window[d.properties.boroname + 'Array']);
                 var neighb = key.split(" - ")[1]
                 if (d.properties.ntaname.indexOf(neighb) > -1) {
                     d.density = window[d.properties.boroname + "Array"][key];
                     return GNYC.color(window[d.properties.boroname + "Array"][key])
                 }
             }
-            return GNYC.color(0)
+
+            return GNYC.color(0);
+/*/
+//*/
         });
 };
 
