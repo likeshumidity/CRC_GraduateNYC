@@ -219,8 +219,8 @@ GNYC.noQuerySetUp = function() {
         }
     }
 
-console.log(GNYC.filtersSelected);
-console.log(filterArray);
+// console.log(GNYC.filtersSelected);
+// console.log(filterArray);
     GNYC.updateFilterFieldSelections()
 };
 
@@ -419,14 +419,14 @@ GNYC.filterData = function (program) {
 }
 
 GNYC.createFilteredObj = function (data) {
-console.log(data);
+// console.log(data);
     var filterObj = {};
     for (var key in data) {
         if (GNYC.filterData(data[key])) {
             filterObj[key] = data[key]
         }
     }
-console.log(filterObj);
+// console.log(filterObj);
     return filterObj;
 }
 
@@ -435,9 +435,9 @@ GNYC.getDensityColor = function(d) {
         var neighborhood = neighborhoodBorough.split(' - ')[1];
 
         if (d.properties.ntaname.indexOf(neighborhood) > -1) {
-            d.density = GNYC.filterS.boroughs.density[d.properties.boroname][neighborhood];
+            d.density = GNYC.filterS.boroughs.density[d.properties.boroname][neighborhoodBorough];
 
-            return GNYC.color(GNYC.filterS.boroughs.density[d.properties.boroname][neighborhood]);
+            return GNYC.color(GNYC.filterS.boroughs.density[d.properties.boroname][neighborhoodBorough]);
         }
     }
 
@@ -447,23 +447,9 @@ GNYC.getDensityColor = function(d) {
 GNYC.updateMap = function () {
     d3.selectAll('.neighborhood').transition()
         .duration(750)
-/*
         .style('fill', function(d) {
-            return GNYC.getDensityColor(d)
+            return GNYC.getDensityColor(d);
         });
-/*/
-        .style("fill", function (d) {
-            for (var key in window[d.properties.boroname + "Array"]) {
-                var neighb = key.split(" - ")[1]
-                if (d.properties.ntaname.indexOf(neighb) > -1) {
-                    d.density = window[d.properties.boroname + "Array"][key];
-                    return GNYC.color(window[d.properties.boroname + "Array"][key])
-                }
-            }
-
-            return GNYC.color(0);
-        });
-//*/
 };
 
 
@@ -555,22 +541,9 @@ d3.json("../wp-content/plugins/crc-graduate-nyc-survey-map/includes/static/NTA.j
             return d.properties.ntaname;
         })
         .attr("d", GNYC.path)
-/*/
         .style('fill', function(d) {
-            return GNYC.getDensityColor(d)
+            return GNYC.getDensityColor(d);
         })
-/*/
-        .style("fill", function (d) {
-            for (var key in window[d.properties.boroname + "Array"]) {
-                var neighb = key.split(" - ")[1]
-                if (d.properties.ntaname.indexOf(neighb) > -1) {
-                    d.density = window[d.properties.boroname + "Array"][key];
-                    return GNYC.color(window[d.properties.boroname + "Array"][key])
-                }
-            }
-            return GNYC.color(0)
-        })
-//*/
         .style('stroke-width', '.5px')
         .style("stroke", "#cecece")
         .style("pointer-events", 'none');
@@ -578,8 +551,8 @@ d3.json("../wp-content/plugins/crc-graduate-nyc-survey-map/includes/static/NTA.j
 
 
 GNYC.clicked = function(d) {
-    var curBoro = d.properties.boroname.replace(" Island", "");
-//    var curBoro = d.properties.boroname;
+//    var curBoro = d.properties.boroname.replace(" Island", "");
+    var curBoro = d.properties.boroname;
 
     if (GNYC.map.active.node() === this) return reset();
     GNYC.map.active.classed("active", false);
