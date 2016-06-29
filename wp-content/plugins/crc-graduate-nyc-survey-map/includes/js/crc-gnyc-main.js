@@ -251,7 +251,8 @@ d3.json(GNYC.url.basePath() + '?crc-json=all_listings', function (error, json) {
     }
 
     GNYC.data.all = json;
-    GNYC.setBoroughDensity(GNYC.createFilteredObj(GNYC.data.all));
+//    GNYC.setBoroughDensity(GNYC.createFilteredObj(GNYC.data.all));
+    GNYC.setBoroughDensity(GNYC.getFilteredData(GNYC.data.all));
 });
 
 GNYC.setBoroughDensity = function (data) {
@@ -288,7 +289,8 @@ GNYC.getFilteredData = function (programsAll) {
                 if (thisSelected === GNYC.filterS[thisFilter].defaultValue) {
                     return false;
                 // if selected in program, don't exclude program
-                } else if (thisProgram[GNYC.filterS[thisFilter].dataSetName].indexOf[thisSelected] > -1) {
+                //
+                } else if (thisProgram[GNYC.filterS[thisFilter].dataSetName].indexOf(thisSelected) > -1) {
                     return false;
                 // otherwise, exclude program
                 } else {
@@ -329,7 +331,7 @@ GNYC.getFilteredData = function (programsAll) {
     };
 
     for (var program in programsAll) {
-        if (includeProgram(program)) {
+        if (includeProgram(programsAll[program])) {
             filteredData[program] = programsAll[program];
         }
     }
@@ -349,7 +351,6 @@ GNYC.createFilteredObj = function (data) {
 
 GNYC.filterData = function (program) {
     var check = true;
-console.log(program);
 
     //check boroughs
     var neighbCheck = true;
@@ -480,7 +481,8 @@ GNYC.createFormEventListeners = function() {
 
                 GNYC.url.parameters[thisFilter] = GNYC.filterS[thisFilter].selected.slice();
                 GNYC.filtersSelected[GNYC.filterS[thisFilter].order] = GNYC.filterS[thisFilter].selected.slice();
-                GNYC.setBoroughDensity(GNYC.createFilteredObj(GNYC.data.all));
+//                GNYC.setBoroughDensity(GNYC.createFilteredObj(GNYC.data.all));
+                GNYC.setBoroughDensity(GNYC.getFilteredData(GNYC.data.all));
                 GNYC.updateBreadcrumbs(thisFilter);
             });
         }
