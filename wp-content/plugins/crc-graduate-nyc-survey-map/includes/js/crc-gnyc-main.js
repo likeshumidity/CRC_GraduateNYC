@@ -15,6 +15,7 @@ GNYC.url = {
 GNYC.filterS = {
     'boroughs': {
         'order': 0,
+        'dataSetName': 'boroughs',
         'type': 'checkbox',
         'onMap': false,
         'onListings': true,
@@ -36,6 +37,7 @@ GNYC.filterS = {
     },
     'population-served': {
         'order': 2,
+        'dataSetName': 'target_population',
         'type': 'radio',
         'onMap': true,
         'onListings': true,
@@ -56,6 +58,7 @@ GNYC.filterS = {
     },
     'grades-served': {
         'order': 3,
+        'dataSetName': 'grades',
         'type': 'checkbox',
         'onMap': true,
         'onListings': true,
@@ -70,6 +73,7 @@ GNYC.filterS = {
     },
     'enrollment-type': {
         'order': 1,
+        'dataSetName': 'accepting_students',
         'type': 'radio',
         'onMap': true,
         'onListings': true,
@@ -84,6 +88,7 @@ GNYC.filterS = {
     },
     'services': {
         'order': 4,
+        'dataSetName': 'services',
         'type': 'checkbox',
         'onMap': true,
         'onListings': true,
@@ -274,11 +279,19 @@ GNYC.setBoroughDensity = function (data) {
 }
 
 GNYC.getFilteredData = function (data) {
-    var filteredData = {};
+    var filteredData = {},
+        i = 0,
+        j = 0;
 
-    for (var program in data) {
-        if (true) {
-            filteredData[program] = data[program];
+    for (var filter in GNYC.filterS) {
+        if (GNYC.filterS.hasOwnProperty(filter)) {
+            for (j = 0; j < GNYC.filtersSelected[filter.order].length; j++) {
+                for (var program in data) {
+                    if (true) {
+                        break;
+                    }
+                }
+            }
         }
     }
 
@@ -288,10 +301,10 @@ GNYC.getFilteredData = function (data) {
 GNYC.createFilteredObj = function (data) {
 console.log(data);
     var filterObj = {};
-    for (var key in data) {
-console.log(key);
-        if (GNYC.filterData(data[key])) {
-            filterObj[key] = data[key]
+    for (var program in data) {
+console.log(program);
+        if (GNYC.filterData(data[program])) {
+            filterObj[program] = data[program]
         }
     }
 console.log(filterObj);
@@ -300,6 +313,7 @@ console.log(filterObj);
 
 GNYC.filterData = function (program) {
     var check = true;
+console.log(program);
 
     //check boroughs
     var neighbCheck = true;
