@@ -26,7 +26,7 @@ GNYC.filterS = {
             'Queens',
             'Staten Island',
         ],
-        'default': [],
+        'defaultValue': [],
         'density': {
             'Brooklyn': {},
             'Queens': {},
@@ -53,7 +53,7 @@ GNYC.filterS = {
             'Gender',
             'Immigrants/Refugees',
         ],
-        'default': 'All',
+        'defaultValue': 'All',
         'oldName': 'target-population',
     },
     'grades-served': {
@@ -69,7 +69,7 @@ GNYC.filterS = {
             'Post-secondary school',
             'Adult learners and High School Equivalency',
         ],
-        'default': [],
+        'defaultValue': [],
     },
     'enrollment-type': {
         'order': 1,
@@ -83,7 +83,7 @@ GNYC.filterS = {
             'Limited enrollment',
             'Closed program',
         ],
-        'default': 'All',
+        'defaultValue': 'All',
         'oldName': 'open-status',
     },
     'services': {
@@ -98,7 +98,7 @@ GNYC.filterS = {
             'College Retention',
             'Career Preparation',
         ],
-        'default': [],
+        'defaultValue': [],
     },
 };
 
@@ -207,11 +207,11 @@ GNYC.noQuerySetUp = function() {
     for (var filter in GNYC.filterS) {
         if (GNYC.filterS.hasOwnProperty(filter)) {
             if (GNYC.filterS[filter].type === 'checkbox') {
-                GNYC.url.parameters[filter] = GNYC.filterS[filter].default;
-                GNYC.filtersSelected[GNYC.filterS[filter].order] = GNYC.filterS[filter].default;
+                GNYC.url.parameters[filter] = GNYC.filterS[filter].defaultValue;
+                GNYC.filtersSelected[GNYC.filterS[filter].order] = GNYC.filterS[filter].defaultValue;
             } else if (GNYC.filterS[filter].type === 'radio') {
-                GNYC.url.parameters[filter] = [GNYC.filterS[filter].default];
-                GNYC.filtersSelected[GNYC.filterS[filter].order] = GNYC.filterS[filter].default;
+                GNYC.url.parameters[filter] = [GNYC.filterS[filter].defaultValue];
+                GNYC.filtersSelected[GNYC.filterS[filter].order] = GNYC.filterS[filter].defaultValue;
             } else {
                 console.warn('ERROR: INVALID FILTER TYPE: in noQuerySetUp()');
             }
@@ -278,33 +278,57 @@ GNYC.setBoroughDensity = function (data) {
     GNYC.updateMap();
 }
 
-GNYC.getFilteredData = function (data) {
-    var filteredData = {},
-        i = 0;
+GNYC.getFilteredData = function (programsAll) {
+    var filteredData = {};
 
     var includeProgram = function (programToCheck) {
-        var isSelected = {
-            'radio': function (programAttribute, selected) {
-            
+        var isExcluded = {
+            'radio': function (thisProgram, thisSelected, thisFilter) {
+                // if selected equal to default, don't exclude program
+                if (thisSelected === GNYC.filterS[thisFilter].defaultValue) {
+                    return false;
+                // if selected in program, don't exclude program
+                } else if (thisProgram[GNYC.filterS[thisFilter].dataSetName].indexOf[thisSelected] > -1) {
+                    return false;
+                // otherwise, exclude program
+                } else {
+                    return true;
+                }
             },
-            'checkbox': function (programAttribute, selected) {
-                var wasFound = true;
-
-                return wasFound;
+            'checkbox': function (thisProgram, thisSelected, thisFilter) {
+                // if nothing is selected, do not exclude based upon this filter
+                if (thisSelected.length === 0) {
+                    return false;
+                } else {
+                    var i = 0;
+                    // for each selected
+                    for (i = 0; i < thisProgram[GNYC.filterS[filter].dataSetName].length; i++) {
+//                        if (thisSelected.indexOf(
+                    }
+//         if not in thisProgram[thisFilter], return true
+                    
+                }
+//
             },
         };
 
         for (var filter in GNYC.filterS) {
             if (GNYC.filterS.hasOwnProperty(filter)) {
-                return isSelected[GNYC.filterS[filter].type](programToCheck[GNYC.filterS[filter].dataSetName],
-                                                             GNYC.filtersSelected[GNYC.filterS[filter].order]);
+                // rename program, selected, and filter
+                if (isExcluded[GNYC.filterS[filter].type](programToCheck,
+                                                          GNYC.filtersSelected[GNYC.filterS[filter].order],
+                                                          filter)) {
+                    return false;
+                }
             }
         }
+
+        return true; // return true if isExcluded didn't return false
     };
 
-    for (var program in data) {
+    for (var program in programsAll) {
         if (includeProgram(program)) {
-            filteredData[program] = data[program];
+            filteredData[program] = programsAll[program];
         }
     }
 
@@ -312,15 +336,12 @@ GNYC.getFilteredData = function (data) {
 };
 
 GNYC.createFilteredObj = function (data) {
-console.log(data);
     var filterObj = {};
     for (var program in data) {
-console.log(program);
         if (GNYC.filterData(data[program])) {
             filterObj[program] = data[program]
         }
     }
-console.log(filterObj);
     return filterObj;
 }
 
@@ -443,7 +464,7 @@ GNYC.createFormEventListeners = function() {
         for (i = 0; i < GNYC.filterS[filter].values.length; i++) {
             $('#' + GNYC.filterToFieldID(filter, 'gnsm') + i).on('change', function() {
                 var thisFilter = this.name.substring(5);
-                GNYC.filterS[thisFilter].selected = GNYC.filterS[thisFilter].default.slice();
+                GNYC.filterS[thisFilter].selected = GNYC.filterS[thisFilter].defaultValue.slice();
 
                 $('input[name="' + GNYC.filterToFieldID(thisFilter, 'gnsm') + '"]:checked').each(function() {
                     if (GNYC.filterS[thisFilter].type === 'checkbox') {
