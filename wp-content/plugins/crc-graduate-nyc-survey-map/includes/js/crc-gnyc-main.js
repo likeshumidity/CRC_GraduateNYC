@@ -194,13 +194,7 @@ GNYC.data = {
 };
 
 
-/// REMOVE REMOVE REMOVE   filterS.boroughs.density[borough]
-var BrooklynArray = {},
-    BronxArray = {},
-    QueensArray = {},
-    ManhattanArray = {},
-    StatenArray = {},
-    filterArray = [];
+var filterArray = [];   /// REMOVE REMOVE REMOVE
 
 
 // TODO: Change filterArray to GNYC.filterS[filter].selected
@@ -209,18 +203,16 @@ GNYC.noQuerySetUp = function() {
         if (GNYC.filterS.hasOwnProperty(filter)) {
             if (GNYC.filterS[filter].type === 'checkbox') {
                 GNYC.url.parameters[filter] = GNYC.filterS[filter].default;
-                GNYC.filtersSelected[GNYC.filterS[filter].order] = GNYC.filterS[filter].default; // REMOVE filterArray at some point
+                GNYC.filtersSelected[GNYC.filterS[filter].order] = GNYC.filterS[filter].default;
             } else if (GNYC.filterS[filter].type === 'radio') {
                 GNYC.url.parameters[filter] = [GNYC.filterS[filter].default];
-                GNYC.filtersSelected[GNYC.filterS[filter].order] = GNYC.filterS[filter].default; // REMOVE filterArray at some point
+                GNYC.filtersSelected[GNYC.filterS[filter].order] = GNYC.filterS[filter].default;
             } else {
                 console.warn('ERROR: INVALID FILTER TYPE: in noQuerySetUp()');
             }
         }
     }
 
-// console.log(GNYC.filtersSelected);
-// console.log(filterArray);
     GNYC.updateFilterFieldSelections()
 };
 
@@ -263,12 +255,6 @@ GNYC.setBoroughDensity = function (data) {
         GNYC.filterS.boroughs.density[borough] = {};
     }
 
-    BrooklynArray = {};
-    BronxArray = {};
-    QueensArray = {};
-    ManhattanArray = {};
-    StatenArray = {};
-
     for (var borough in GNYC.filterS.boroughs.density) {
         for (var key in data) {
             if (data[key].boroughs.indexOf(borough) >= -1) {
@@ -279,69 +265,6 @@ GNYC.setBoroughDensity = function (data) {
                         } else {
                             GNYC.filterS.boroughs.density[borough][data[key].neighborhoods[i]] = 1;
                         }
-                    }
-                }
-            }
-        }
-    }
-
-    for (var key in data) {
-//console.log(key);
-        if (data[key].boroughs.indexOf("Brooklyn") >= -1) {
-            for (var i = 0; i < data[key].neighborhoods.length; i++) {
-                if (data[key].neighborhoods[i].indexOf("Brooklyn") > -1) {
-                    if (data[key].neighborhoods[i] in BrooklynArray) {
-                        BrooklynArray[data[key].neighborhoods[i]] += 1;
-                    } else {
-                        BrooklynArray[data[key].neighborhoods[i]] = 1;
-                    }
-                }
-            }
-        }
-
-        if (data[key].boroughs.indexOf("Queens") >= -1) {
-            for (var j = 0; j < data[key].neighborhoods.length; j++) {
-                if (data[key].neighborhoods[j].indexOf("Queens") > -1) {
-                    if (data[key].neighborhoods[j] in QueensArray) {
-                        QueensArray[data[key].neighborhoods[j]] += 1;
-                    } else {
-                        QueensArray[data[key].neighborhoods[j]] = 1;
-                    }
-                }
-            }
-        }
-
-        if (data[key].boroughs.indexOf("Bronx") >= -1) {
-            for (var k = 0; k < data[key].neighborhoods.length; k++) {
-                if (data[key].neighborhoods[k].indexOf("Bronx") > -1) {
-                    if (data[key].neighborhoods[k] in BronxArray) {
-                        BronxArray[data[key].neighborhoods[k]] += 1;
-                    } else {
-                        BronxArray[data[key].neighborhoods[k]] = 1;
-                    }
-                }
-            }
-        }
-
-        if (data[key].boroughs.indexOf("Staten") >= -1) {
-            for (var l = 0; l < data[key].neighborhoods.length; l++) {
-                if (data[key].neighborhoods[l].indexOf("Staten") > -1) {
-                    if (data[key].neighborhoods[l] in StatenArray) {
-                        StatenArray[data[key].neighborhoods[l]] += 1;
-                    } else {
-                        StatenArray[data[key].neighborhoods[l]] = 1;
-                    }
-                }
-            }
-        }
-
-        if (data[key].boroughs.indexOf("Manhattan") >= -1) {
-            for (var m = 0; m < data[key].neighborhoods.length; m++) {
-                if (data[key].neighborhoods[m].indexOf("Manhattan") > -1) {
-                    if (data[key].neighborhoods[m] in ManhattanArray) {
-                        ManhattanArray[data[key].neighborhoods[m]] += 1;
-                    } else {
-                        ManhattanArray[data[key].neighborhoods[m]] = 1;
                     }
                 }
             }
@@ -551,7 +474,6 @@ d3.json("../wp-content/plugins/crc-graduate-nyc-survey-map/includes/static/NTA.j
 
 
 GNYC.clicked = function(d) {
-//    var curBoro = d.properties.boroname.replace(" Island", "");
     var curBoro = d.properties.boroname;
 
     if (GNYC.map.active.node() === this) return reset();
