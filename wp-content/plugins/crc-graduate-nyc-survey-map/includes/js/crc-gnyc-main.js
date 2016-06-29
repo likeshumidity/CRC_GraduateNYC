@@ -302,13 +302,15 @@ GNYC.getFilteredData = function (programsAll) {
                 } else {
                     var i = 0;
                     // for each selected
-                    for (i = 0; i < thisProgram[GNYC.filterS[filter].dataSetName].length; i++) {
-//                        if (thisSelected.indexOf(
+                    for (i = 0; i < thisSelected.length; i++) {
+                        // if selected item not in program attributes, return true
+                        if (thisProgram[GNYC.filterS[filter].dataSetName].indexOf(thisSelected[i]) === -1) {
+                            return true;
+                        }
                     }
-//         if not in thisProgram[thisFilter], return true
-                    
                 }
-//
+
+                return false;
             },
         };
 
