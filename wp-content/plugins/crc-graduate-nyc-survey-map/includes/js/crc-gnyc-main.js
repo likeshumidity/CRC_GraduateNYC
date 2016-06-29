@@ -246,8 +246,7 @@ d3.json(GNYC.url.basePath() + '?crc-json=all_listings', function (error, json) {
     }
 
     GNYC.data.all = json;
-    var filterData = GNYC.createFilteredObj(GNYC.data.all);
-    GNYC.setBoroughDensity(filterData);
+    GNYC.setBoroughDensity(GNYC.createFilteredObj(GNYC.data.all));
 });
 
 GNYC.setBoroughDensity = function (data) {
@@ -256,14 +255,14 @@ GNYC.setBoroughDensity = function (data) {
     }
 
     for (var borough in GNYC.filterS.boroughs.density) {
-        for (var key in data) {
-            if (data[key].boroughs.indexOf(borough) >= -1) {
-                for (var i = 0; i < data[key].neighborhoods.length; i++) {
-                    if (data[key].neighborhoods[i].indexOf(borough) > -1) {
-                        if (data[key].neighborhoods[i] in GNYC.filterS.boroughs.density[borough]) {
-                            GNYC.filterS.boroughs.density[borough][data[key].neighborhoods[i]] += 1;
+        for (var program in data) {
+            if (data[program].boroughs.indexOf(borough) >= -1) {
+                for (var i = 0; i < data[program].neighborhoods.length; i++) {
+                    if (data[program].neighborhoods[i].indexOf(borough) > -1) {
+                        if (data[program].neighborhoods[i] in GNYC.filterS.boroughs.density[borough]) {
+                            GNYC.filterS.boroughs.density[borough][data[program].neighborhoods[i]] += 1;
                         } else {
-                            GNYC.filterS.boroughs.density[borough][data[key].neighborhoods[i]] = 1;
+                            GNYC.filterS.boroughs.density[borough][data[program].neighborhoods[i]] = 1;
                         }
                     }
                 }
@@ -272,6 +271,18 @@ GNYC.setBoroughDensity = function (data) {
     }
 
     GNYC.updateMap();
+}
+
+GNYC.createFilteredObj = function (data) {
+console.log(data);
+    var filterObj = {};
+    for (var key in data) {
+        if (GNYC.filterData(data[key])) {
+            filterObj[key] = data[key]
+        }
+    }
+console.log(filterObj);
+    return filterObj;
 }
 
 GNYC.filterData = function (program) {
@@ -338,19 +349,6 @@ GNYC.filterData = function (program) {
     }
 
     return true;
-
-}
-
-GNYC.createFilteredObj = function (data) {
-// console.log(data);
-    var filterObj = {};
-    for (var key in data) {
-        if (GNYC.filterData(data[key])) {
-            filterObj[key] = data[key]
-        }
-    }
-// console.log(filterObj);
-    return filterObj;
 }
 
 GNYC.getDensityColor = function(d) {
@@ -419,8 +417,7 @@ GNYC.createFormEventListeners = function() {
 
                 GNYC.url.parameters[thisFilter] = GNYC.filterS[thisFilter].selected.slice();
                 GNYC.filtersSelected[GNYC.filterS[thisFilter].order] = GNYC.filterS[thisFilter].selected.slice();
-                var filterData = GNYC.createFilteredObj(GNYC.data.all);
-                GNYC.setBoroughDensity(filterData);
+                GNYC.setBoroughDensity(GNYC.createFilteredObj(GNYC.data.all));
                 GNYC.updateBreadcrumbs(thisFilter);
             });
         }
