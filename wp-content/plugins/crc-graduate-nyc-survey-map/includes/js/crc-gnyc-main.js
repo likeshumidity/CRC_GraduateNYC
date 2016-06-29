@@ -430,11 +430,27 @@ console.log(filterObj);
     return filterObj;
 }
 
+GNYC.getDensityColor = function(d) {
+    for (var neighborhoodBorough in GNYC.filterS.boroughs.density[d.properties.boroname]) {
+        var neighborhood = neighborhoodBorough.split(' - ')[1];
+
+        if (d.properties.ntaname.indexOf(neighborhood) > -1) {
+            d.density = GNYC.filterS.boroughs.density[d.properties.boroname][neighborhood];
+
+            return GNYC.color(GNYC.filterS.boroughs.density[d.properties.boroname][neighborhood]);
+        }
+    }
+
+    return GNYC.color(0);
+};
+
 GNYC.updateMap = function () {
     d3.selectAll('.neighborhood').transition()
         .duration(750)
+/*
+        .style('fill', GNYC.getDensityColor);
+//*/
         .style("fill", function (d) {
-//*
             for (var key in window[d.properties.boroname + "Array"]) {
                 var neighb = key.split(" - ")[1]
                 if (d.properties.ntaname.indexOf(neighb) > -1) {
@@ -444,9 +460,8 @@ GNYC.updateMap = function () {
             }
 
             return GNYC.color(0);
-/*/
-//*/
         });
+//*/
 };
 
 
@@ -538,6 +553,9 @@ d3.json("../wp-content/plugins/crc-graduate-nyc-survey-map/includes/static/NTA.j
             return d.properties.ntaname;
         })
         .attr("d", GNYC.path)
+/*/
+        .style('fill', GNYC.getDensityColor);
+//*/
         .style("fill", function (d) {
             for (var key in window[d.properties.boroname + "Array"]) {
                 var neighb = key.split(" - ")[1]
@@ -550,12 +568,15 @@ d3.json("../wp-content/plugins/crc-graduate-nyc-survey-map/includes/static/NTA.j
         })
         .style('stroke-width', '.5px')
         .style("stroke", "#cecece")
-        .style("pointer-events", 'none')
-})
+        .style("pointer-events", 'none');
+//*/
+});
 
 
 GNYC.clicked = function(d) {
     var curBoro = d.properties.boroname.replace(" Island", "");
+//    var curBoro = d.properties.boroname;
+
     if (GNYC.map.active.node() === this) return reset();
     GNYC.map.active.classed("active", false);
     GNYC.map.active = d3.select(this).classed("active", true);
