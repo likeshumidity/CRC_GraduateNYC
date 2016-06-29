@@ -97,6 +97,8 @@ GNYC.filterS = {
     },
 };
 
+GNYC.filtersSelected = [];
+
 GNYC.venues = [
     'map',
     'listings',
@@ -192,7 +194,7 @@ GNYC.data = {
 };
 
 
-/// REMOVE REMOVE REMOVE
+/// REMOVE REMOVE REMOVE   filterS.boroughs.density[borough]
 var BrooklynArray = {},
     BronxArray = {},
     QueensArray = {},
@@ -207,16 +209,17 @@ GNYC.noQuerySetUp = function() {
         if (GNYC.filterS.hasOwnProperty(filter)) {
             if (GNYC.filterS[filter].type === 'checkbox') {
                 GNYC.url.parameters[filter] = GNYC.filterS[filter].default;
-                filterArray[GNYC.filterS[filter].order] = GNYC.filterS[filter].default; // REMOVE filterArray at some point
+                GNYC.filtersSelected[GNYC.filterS[filter].order] = GNYC.filterS[filter].default; // REMOVE filterArray at some point
             } else if (GNYC.filterS[filter].type === 'radio') {
                 GNYC.url.parameters[filter] = [GNYC.filterS[filter].default];
-                filterArray[GNYC.filterS[filter].order] = GNYC.filterS[filter].default; // REMOVE filterArray at some point
+                GNYC.filtersSelected[GNYC.filterS[filter].order] = GNYC.filterS[filter].default; // REMOVE filterArray at some point
             } else {
                 console.warn('ERROR: INVALID FILTER TYPE: in noQuerySetUp()');
             }
         }
     }
 
+console.log(GNYC.filtersSelected);
 console.log(filterArray);
     GNYC.updateFilterFieldSelections()
 };
@@ -227,13 +230,13 @@ GNYC.updateFilterFieldSelections = function () {
 
         thisInput.each(function() {
             if (GNYC.filterS[filter].type === 'checkbox') {
-                if (filterArray[GNYC.filterS[filter].order].indexOf($(this).val()) > -1) {
+                if (GNYC.filtersSelected[GNYC.filterS[filter].order].indexOf($(this).val()) > -1) {
                     this.checked = true;
                 } else {
                     this.checked = false;
                 }
             } else if (GNYC.filterS[filter].type === 'radio') {
-                if (filterArray[GNYC.filterS[filter].order] === $(this).val()) {
+                if (GNYC.filtersSelected[GNYC.filterS[filter].order] === $(this).val()) {
                     this.checked = true;
                 } else {
                     this.checked = false;
@@ -252,10 +255,14 @@ d3.json(GNYC.url.basePath() + '?crc-json=all_listings', function (error, json) {
 
     GNYC.data.all = json;
     var filterData = GNYC.createFilteredObj(GNYC.data.all);
-    GNYC.setUpArrays(filterData);
+    GNYC.setBoroughDensity(filterData);
 });
 
-GNYC.setUpArrays = function (data) {
+GNYC.setBoroughDensity = function (data) {
+    for (borough in GNYC.filterS.boroughs.density) {
+        GNYC.filterS.boroughs.density[borough] = {};
+    }
+
     BrooklynArray = {};
     BronxArray = {};
     QueensArray = {};
@@ -349,21 +356,21 @@ GNYC.filterData = function (program) {
 
     //check boroughs
     var neighbCheck = true;
-    for (var i = 0; i < filterArray[0].length; i++) {
-        if (program.boroughs.indexOf(filterArray[0][i]) > -1) {
+    for (var i = 0; i < GNYC.filtersSelected[0].length; i++) {
+        if (program.boroughs.indexOf(GNYC.filtersSelected[0][i]) > -1) {
             neighbCheck = true;
         } else {
             neighbCheck = false;
             break;
         }
     }
-    if (neighbCheck === false && filterArray[0].length !== 0) {
+    if (neighbCheck === false && GNYC.filtersSelected[0].length !== 0) {
         return false;
     }
 
     //check open status
     var openCheck = false;
-    if (filterArray[1] === "All" || program.accepting_students.indexOf(filterArray[1]) > -1) {
+    if (GNYC.filtersSelected[1] === "All" || program.accepting_students.indexOf(GNYC.filtersSelected[1]) > -1) {
         openCheck = 'true';
     }
     if (openCheck === false) {
@@ -372,7 +379,7 @@ GNYC.filterData = function (program) {
 
     //check target population
     var targetCheck = false;
-    if (filterArray[2] === "All" || program.target_population.indexOf(filterArray[2]) > -1) {
+    if (GNYC.filtersSelected[2] === "All" || program.target_population.indexOf(GNYC.filtersSelected[2]) > -1) {
         targetCheck = 'true';
     }
     if (targetCheck === false) {
@@ -381,43 +388,45 @@ GNYC.filterData = function (program) {
 
     //check grades
     var gradesCheck = true;
-    for (var j = 0; j < filterArray[3].length; j++) {
-        if (program.grades.indexOf(filterArray[3][j]) > -1) {
+    for (var j = 0; j < GNYC.filtersSelected[3].length; j++) {
+        if (program.grades.indexOf(GNYC.filtersSelected[3][j]) > -1) {
             gradesCheck = true;
         } else {
             gradesCheck = false;
             break;
         }
     }
-    if (gradesCheck === false && filterArray[3].length !== 0) {
+    if (gradesCheck === false && GNYC.filtersSelected[3].length !== 0) {
         return false;
     }
 
     //check services
     var serviceCheck = true;
-    for (var k = 0; k < filterArray[4].length; k++) {
-        if (program.services.indexOf(filterArray[4][k]) > -1) {
+    for (var k = 0; k < GNYC.filtersSelected[4].length; k++) {
+        if (program.services.indexOf(GNYC.filtersSelected[4][k]) > -1) {
             serviceCheck = true;
         } else {
             serviceCheck = false;
             break;
         }
     }
-    if (serviceCheck === false && filterArray[4].length !== 0) {
+    if (serviceCheck === false && GNYC.filtersSelected[4].length !== 0) {
         return false;
     }
 
-    return check;
+    return true;
 
 }
 
 GNYC.createFilteredObj = function (data) {
+console.log(data);
     var filterObj = {};
     for (var key in data) {
         if (GNYC.filterData(data[key])) {
             filterObj[key] = data[key]
         }
     }
+console.log(filterObj);
     return filterObj;
 }
 
@@ -484,9 +493,9 @@ GNYC.createFormEventListeners = function() {
                 });
 
                 GNYC.url.parameters[thisFilter] = GNYC.filterS[thisFilter].selected.slice();
-                filterArray[GNYC.filterS[thisFilter].order] = GNYC.filterS[thisFilter].selected.slice();
+                GNYC.filtersSelected[GNYC.filterS[thisFilter].order] = GNYC.filterS[thisFilter].selected.slice();
                 var filterData = GNYC.createFilteredObj(GNYC.data.all);
-                GNYC.setUpArrays(filterData);
+                GNYC.setBoroughDensity(filterData);
                 GNYC.updateBreadcrumbs(thisFilter);
             });
         }
@@ -716,11 +725,11 @@ $(document).ready(function () {
     if (GETURIRequest.decode()) {
         GNYC.url.parameters = GETURIRequest.decode();
 
-        filterArray[0] = GNYC.url.parameters['boroughs'];
-        filterArray[1] = GNYC.url.parameters['enrollment-type'][0];
-        filterArray[2] = GNYC.url.parameters['target-population'][0];
-        filterArray[3] = GNYC.url.parameters['grades-served'];
-        filterArray[4] = GNYC.url.parameters['services'];
+        GNYC.filtersSelected[0] = GNYC.url.parameters['boroughs'];
+        GNYC.filtersSelected[1] = GNYC.url.parameters['enrollment-type'][0];
+        GNYC.filtersSelected[2] = GNYC.url.parameters['target-population'][0];
+        GNYC.filtersSelected[3] = GNYC.url.parameters['grades-served'];
+        GNYC.filtersSelected[4] = GNYC.url.parameters['services'];
 
         GNYC.updateFilterFieldSelections();
     } else {
