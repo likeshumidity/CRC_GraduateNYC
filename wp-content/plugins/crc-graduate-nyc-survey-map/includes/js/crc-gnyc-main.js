@@ -448,8 +448,10 @@ GNYC.updateMap = function () {
     d3.selectAll('.neighborhood').transition()
         .duration(750)
 /*
-        .style('fill', GNYC.getDensityColor);
-//*/
+        .style('fill', function(d) {
+            return GNYC.getDensityColor(d)
+        });
+/*/
         .style("fill", function (d) {
             for (var key in window[d.properties.boroname + "Array"]) {
                 var neighb = key.split(" - ")[1]
@@ -554,8 +556,10 @@ d3.json("../wp-content/plugins/crc-graduate-nyc-survey-map/includes/static/NTA.j
         })
         .attr("d", GNYC.path)
 /*/
-        .style('fill', GNYC.getDensityColor);
-//*/
+        .style('fill', function(d) {
+            return GNYC.getDensityColor(d)
+        })
+/*/
         .style("fill", function (d) {
             for (var key in window[d.properties.boroname + "Array"]) {
                 var neighb = key.split(" - ")[1]
@@ -566,10 +570,10 @@ d3.json("../wp-content/plugins/crc-graduate-nyc-survey-map/includes/static/NTA.j
             }
             return GNYC.color(0)
         })
+//*/
         .style('stroke-width', '.5px')
         .style("stroke", "#cecece")
         .style("pointer-events", 'none');
-//*/
 });
 
 
