@@ -141,7 +141,7 @@ GNYC.svg.append("rect")
     .attr("class", "background")
     .attr("width", GNYC.map.width)
     .attr("height", GNYC.map.height)
-    .on("click", reset);
+    .on("click", GNYC.reset);
 
 GNYC.groups = {
     "neighborhoods": GNYC.svg.append("g"),
@@ -468,7 +468,7 @@ d3.json("../wp-content/plugins/crc-graduate-nyc-survey-map/includes/static/NTA.j
 GNYC.clicked = function(d) {
     var curBoro = d.properties.boroname;
 
-    if (GNYC.map.active.node() === this) return reset();
+    if (GNYC.map.active.node() === this) return GNYC.reset();
     GNYC.map.active.classed("active", false);
     GNYC.map.active = d3.select(this).classed("active", true);
 
@@ -543,7 +543,7 @@ GNYC.clicked = function(d) {
         })
 }
 
-function reset() {
+GNYC.reset = function() {
     GNYC.map.active.classed("active", false);
     GNYC.map.active = d3.select(null);
 
