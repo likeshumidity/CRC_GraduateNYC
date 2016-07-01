@@ -518,7 +518,7 @@ GNYC.clicked = function(d) {
                 GNYC.map.tooltip.transition()
                     .duration(200)
                     .style("opacity", 1);
-                GNYC.map.tooltip.html('<b>' + d.properties.ntaname + ': </b>' + d.density)
+                GNYC.map.tooltip.html('<strong>' + d.properties.ntaname + ': </strong>' + d.density)
                     .style("left", (d3.event.pageX) + "px")
                     .style("top", (d3.event.pageY - 28) + "px");
             }
@@ -536,7 +536,7 @@ GNYC.clicked = function(d) {
                 GNYC.map.tooltip.transition()
                     .duration(200)
                     .style("opacity", .9);
-                GNYC.map.tooltip.html('<b>' + d.properties.ntaname + ': </b>' + d.density)
+                GNYC.map.tooltip.html('<strong>' + d.properties.ntaname + ': </strong>' + d.density)
                     .style("left", (d3.event.pageX) + "px")
                     .style("top", (d3.event.pageY - 28) + "px");
             }
@@ -630,22 +630,7 @@ GETURIRequest.encode = function (parameters, baseURL) {
 };
 
 
-$(document).ready(function () {
-    // If venue not in GNYC.venues:
-    //   BREAK
-    // Create form fields
-    // Get URI parameters if passed
-    // Create form event listeners
-    // Update filters (select based on URI or narrative click)
-    // If venue is map:
-    //   Load map data
-    //   Update map (and link-to-listings)
-    // Else if venue is listings:
-    //   Load listings data
-    //   Update listings (and link-to-map)
-
-    GNYC.createFilterFormFields('map');
-
+GNYC.processURI = function() {
     if (GETURIRequest.decode()) {
         GNYC.url.parameters = GETURIRequest.decode();
 
@@ -659,12 +644,36 @@ $(document).ready(function () {
     } else {
         GNYC.noQuerySetUp();
     }
+}
 
-    GNYC.createFormEventListeners();
 
-    $('.link-to-listings').click(function () {
-        window.location.href = GETURIRequest.encode(GNYC.url.parameters, GNYC.url.basePath() + 'gnsm_listing/');
-    })
+$(document).ready(function () {
+    // Set global GNYC.venue from GNYC_VENUE global and delete GNYC_VENUE global
+    if (window.hasOwnProperty('GNYC_VENUE')) {
+        GNYC.venue = GNYC_VENUE;
+    }
+
+    // If venue not in GNYC.venues:
+    if ($.inArray(GNYC.venue, GNYC.venues) > -1) {
+    // Create form fields
+        GNYC.createFilterFormFields('map');
+    // Create form event listeners
+        GNYC.createFormEventListeners();
+    // Get URI parameters if passed
+        GNYC.processURI();
+    // Update filters
+    // If venue is map:
+    //   Load map data
+    //   Update map (and link-to-listings)
+    // Else if venue is listings:
+    //   Load listings data
+    //   Update listings (and link-to-map)
+        $('.link-to-listings').click(function () {
+            window.location.href = GETURIRequest.encode(GNYC.url.parameters, GNYC.url.basePath() + 'gnsm_listing/');
+        });
+    } else {
+      // DO NOTHING
+    }
 });
 
 
