@@ -12,7 +12,7 @@ GNYC.url = {
     "parameters": {},
 };
 
-GNYC.filterS = {
+GNYC.filters = {
     'boroughs': {
         'order': 0,
         'dataSetName': 'boroughs',
@@ -172,22 +172,22 @@ GNYC.createFilterFormFields = function(venue) {
         i = 0;
 
     if ($.inArray(venue, this.venues) > -1) {
-        for (var filter in this.filterS) {
-            if (GNYC.filterS[filter]['on' + venue.substring(0, 1).toUpperCase() + venue.substring(1)]) {
+        for (var filter in this.filters) {
+            if (GNYC.filters[filter]['on' + venue.substring(0, 1).toUpperCase() + venue.substring(1)]) {
                 fieldSet = $('#' + this.filterToFieldID(filter, 'panel') + ' fieldset');
 
-                for (i = 0; i < this.filterS[filter].values.length; i++) {
-                    fieldInput += '<div class="' + this.filterS[filter].type + '">';
+                for (i = 0; i < this.filters[filter].values.length; i++) {
+                    fieldInput += '<div class="' + this.filters[filter].type + '">';
                     fieldInput += '<span class="field-input">';
-                    fieldInput += '<input type="' + this.filterS[filter].type + '" ';
-                    if (this.filterS[filter].type === 'checkbox') {
+                    fieldInput += '<input type="' + this.filters[filter].type + '" ';
+                    if (this.filters[filter].type === 'checkbox') {
                         fieldInput += 'class="styled" ';
                     }
                     fieldInput += 'name="' + this.filterToFieldID(filter, 'gnsm') + '" ';
                     fieldInput += 'id="' + this.filterToFieldID(filter, 'gnsm') + i + '" ';
-                    fieldInput += 'value="' + this.filterS[filter].values[i] + '" />';
+                    fieldInput += 'value="' + this.filters[filter].values[i] + '" />';
                     fieldInput += '<label for="' + this.filterToFieldID(filter, 'gnsm') + i + '">';
-                    fieldInput += this.filterS[filter].values[i] + '</label>' + '</span>';
+                    fieldInput += this.filters[filter].values[i] + '</label>' + '</span>';
                     fieldInput += '</div>';
 
                     fieldSet.append(fieldInput);
@@ -208,16 +208,16 @@ GNYC.data = {
 var filterArray = [];   /// REMOVE REMOVE REMOVE
 
 
-// TODO: Change filterArray to GNYC.filterS[filter].selected
+// TODO: Change filterArray to GNYC.filters[filter].selected
 GNYC.noQuerySetUp = function() {
-    for (var filter in GNYC.filterS) {
-        if (GNYC.filterS.hasOwnProperty(filter)) {
-            if (GNYC.filterS[filter].type === 'checkbox') {
-                GNYC.url.parameters[filter] = GNYC.filterS[filter].defaultValue;
-                GNYC.filtersSelected[GNYC.filterS[filter].order] = GNYC.filterS[filter].defaultValue;
-            } else if (GNYC.filterS[filter].type === 'radio') {
-                GNYC.url.parameters[filter] = [GNYC.filterS[filter].defaultValue];
-                GNYC.filtersSelected[GNYC.filterS[filter].order] = GNYC.filterS[filter].defaultValue;
+    for (var filter in GNYC.filters) {
+        if (GNYC.filters.hasOwnProperty(filter)) {
+            if (GNYC.filters[filter].type === 'checkbox') {
+                GNYC.url.parameters[filter] = GNYC.filters[filter].defaultValue;
+                GNYC.filtersSelected[GNYC.filters[filter].order] = GNYC.filters[filter].defaultValue;
+            } else if (GNYC.filters[filter].type === 'radio') {
+                GNYC.url.parameters[filter] = [GNYC.filters[filter].defaultValue];
+                GNYC.filtersSelected[GNYC.filters[filter].order] = GNYC.filters[filter].defaultValue;
             } else {
                 console.warn('ERROR: INVALID FILTER TYPE: in noQuerySetUp()');
             }
@@ -228,18 +228,18 @@ GNYC.noQuerySetUp = function() {
 };
 
 GNYC.updateFilterFieldSelections = function () {
-    for (var filter in GNYC.filterS) {
+    for (var filter in GNYC.filters) {
         var thisInput = $('input[name="' + GNYC.filterToFieldID(filter, 'gnsm') + '"]');
 
         thisInput.each(function() {
-            if (GNYC.filterS[filter].type === 'checkbox') {
-                if (GNYC.filtersSelected[GNYC.filterS[filter].order].indexOf($(this).val()) > -1) {
+            if (GNYC.filters[filter].type === 'checkbox') {
+                if (GNYC.filtersSelected[GNYC.filters[filter].order].indexOf($(this).val()) > -1) {
                     this.checked = true;
                 } else {
                     this.checked = false;
                 }
-            } else if (GNYC.filterS[filter].type === 'radio') {
-                if (GNYC.filtersSelected[GNYC.filterS[filter].order] === $(this).val()) {
+            } else if (GNYC.filters[filter].type === 'radio') {
+                if (GNYC.filtersSelected[GNYC.filters[filter].order] === $(this).val()) {
                     this.checked = true;
                 } else {
                     this.checked = false;
@@ -262,19 +262,19 @@ d3.json(GNYC.url.basePath() + '?crc-json=all_listings', function (error, json) {
 });
 
 GNYC.setBoroughDensity = function (data) {
-    for (borough in GNYC.filterS.boroughs.density) {
-        GNYC.filterS.boroughs.density[borough] = {};
+    for (borough in GNYC.filters.boroughs.density) {
+        GNYC.filters.boroughs.density[borough] = {};
     }
 
-    for (var borough in GNYC.filterS.boroughs.density) {
+    for (var borough in GNYC.filters.boroughs.density) {
         for (var program in data) {
             if (data[program].boroughs.indexOf(borough) >= -1) {
                 for (var i = 0; i < data[program].neighborhoods.length; i++) {
                     if (data[program].neighborhoods[i].indexOf(borough) > -1) {
-                        if (data[program].neighborhoods[i] in GNYC.filterS.boroughs.density[borough]) {
-                            GNYC.filterS.boroughs.density[borough][data[program].neighborhoods[i]] += 1;
+                        if (data[program].neighborhoods[i] in GNYC.filters.boroughs.density[borough]) {
+                            GNYC.filters.boroughs.density[borough][data[program].neighborhoods[i]] += 1;
                         } else {
-                            GNYC.filterS.boroughs.density[borough][data[program].neighborhoods[i]] = 1;
+                            GNYC.filters.boroughs.density[borough][data[program].neighborhoods[i]] = 1;
                         }
                     }
                 }
@@ -292,11 +292,11 @@ GNYC.getFilteredData = function (programsAll) {
         var isExcluded = {
             'radio': function (thisProgram, thisSelected, thisFilter) {
                 // if selected equal to default, don't exclude program
-                if (thisSelected === GNYC.filterS[thisFilter].defaultValue) {
+                if (thisSelected === GNYC.filters[thisFilter].defaultValue) {
                     return false;
                 // if selected in program, don't exclude program
                 //
-                } else if (thisProgram[GNYC.filterS[thisFilter].dataSetName].indexOf(thisSelected) > -1) {
+                } else if (thisProgram[GNYC.filters[thisFilter].dataSetName].indexOf(thisSelected) > -1) {
                     return false;
                 // otherwise, exclude program
                 } else {
@@ -312,7 +312,7 @@ GNYC.getFilteredData = function (programsAll) {
                     // for each selected
                     for (i = 0; i < thisSelected.length; i++) {
                         // if selected item not in program attributes, return true
-                        if (thisProgram[GNYC.filterS[filter].dataSetName].indexOf(thisSelected[i]) === -1) {
+                        if (thisProgram[GNYC.filters[filter].dataSetName].indexOf(thisSelected[i]) === -1) {
                             return true;
                         }
                     }
@@ -322,11 +322,11 @@ GNYC.getFilteredData = function (programsAll) {
             },
         };
 
-        for (var filter in GNYC.filterS) {
-            if (GNYC.filterS.hasOwnProperty(filter)) {
+        for (var filter in GNYC.filters) {
+            if (GNYC.filters.hasOwnProperty(filter)) {
                 // rename program, selected, and filter
-                if (isExcluded[GNYC.filterS[filter].type](programToCheck,
-                                                          GNYC.filtersSelected[GNYC.filterS[filter].order],
+                if (isExcluded[GNYC.filters[filter].type](programToCheck,
+                                                          GNYC.filtersSelected[GNYC.filters[filter].order],
                                                           filter)) {
                     return false;
                 }
@@ -346,13 +346,13 @@ GNYC.getFilteredData = function (programsAll) {
 };
 
 GNYC.getDensityColor = function(d) {
-    for (var neighborhoodBorough in GNYC.filterS.boroughs.density[d.properties.boroname]) {
+    for (var neighborhoodBorough in GNYC.filters.boroughs.density[d.properties.boroname]) {
         var neighborhood = neighborhoodBorough.split(' - ')[1];
 
         if (d.properties.ntaname.indexOf(neighborhood) > -1) {
-            d.density = GNYC.filterS.boroughs.density[d.properties.boroname][neighborhoodBorough];
+            d.density = GNYC.filters.boroughs.density[d.properties.boroname][neighborhoodBorough];
 
-            return GNYC.color(GNYC.filterS.boroughs.density[d.properties.boroname][neighborhoodBorough]);
+            return GNYC.color(GNYC.filters.boroughs.density[d.properties.boroname][neighborhoodBorough]);
         }
     }
 
@@ -372,16 +372,16 @@ GNYC.updateMap = function () {
 GNYC.updateBreadcrumbs = function(thisFilter) {
     var theseBreadcrumbs = $('#' + this.filterToFieldID(thisFilter, 'panel') + ' p.breadcrumbs');
 
-    if (this.filterS[thisFilter].type === 'radio') {
-        theseBreadcrumbs.html(this.filterS[thisFilter].selected);
-    } else if (this.filterS[thisFilter].type === 'checkbox') {
+    if (this.filters[thisFilter].type === 'radio') {
+        theseBreadcrumbs.html(this.filters[thisFilter].selected);
+    } else if (this.filters[thisFilter].type === 'checkbox') {
         theseBreadcrumbs.html('');
 
-        for (var i = 0; i < this.filterS[thisFilter].selected.length; i++) {
+        for (var i = 0; i < this.filters[thisFilter].selected.length; i++) {
             if (i !== 0) {
                 theseBreadcrumbs.append('; ');
             }
-            theseBreadcrumbs.append(this.filterS[thisFilter].selected[i]) ;
+            theseBreadcrumbs.append(this.filters[thisFilter].selected[i]) ;
         }
     } else {
         console.warn('ERROR: invalid field type');
@@ -391,26 +391,26 @@ GNYC.updateBreadcrumbs = function(thisFilter) {
 
 // Add on change action to each form filter
 GNYC.createFormEventListeners = function() {
-    for (var filter in GNYC.filterS) {
+    for (var filter in GNYC.filters) {
         var i = 0;
 
-        for (i = 0; i < GNYC.filterS[filter].values.length; i++) {
+        for (i = 0; i < GNYC.filters[filter].values.length; i++) {
             $('#' + GNYC.filterToFieldID(filter, 'gnsm') + i).on('change', function() {
                 var thisFilter = this.name.substring(5);
-                GNYC.filterS[thisFilter].selected = GNYC.filterS[thisFilter].defaultValue.slice();
+                GNYC.filters[thisFilter].selected = GNYC.filters[thisFilter].defaultValue.slice();
 
                 $('input[name="' + GNYC.filterToFieldID(thisFilter, 'gnsm') + '"]:checked').each(function() {
-                    if (GNYC.filterS[thisFilter].type === 'checkbox') {
-                        GNYC.filterS[thisFilter].selected.push($(this).val());
-                    } else if (GNYC.filterS[thisFilter].type === 'radio') {
-                        GNYC.filterS[thisFilter].selected = $(this).val();
+                    if (GNYC.filters[thisFilter].type === 'checkbox') {
+                        GNYC.filters[thisFilter].selected.push($(this).val());
+                    } else if (GNYC.filters[thisFilter].type === 'radio') {
+                        GNYC.filters[thisFilter].selected = $(this).val();
                     } else {
                         console.warn('ERROR: invalid field type');
                     }
                 });
 
-                GNYC.url.parameters[thisFilter] = GNYC.filterS[thisFilter].selected.slice();
-                GNYC.filtersSelected[GNYC.filterS[thisFilter].order] = GNYC.filterS[thisFilter].selected.slice();
+                GNYC.url.parameters[thisFilter] = GNYC.filters[thisFilter].selected.slice();
+                GNYC.filtersSelected[GNYC.filters[thisFilter].order] = GNYC.filters[thisFilter].selected.slice();
 //                GNYC.setBoroughDensity(GNYC.createFilteredObj(GNYC.data.all));
                 GNYC.setBoroughDensity(GNYC.getFilteredData(GNYC.data.all));
                 GNYC.updateBreadcrumbs(thisFilter);
@@ -631,6 +631,19 @@ GETURIRequest.encode = function (parameters, baseURL) {
 
 
 $(document).ready(function () {
+    // If venue not in GNYC.venues:
+    //   BREAK
+    // Create form fields
+    // Get URI parameters if passed
+    // Create form event listeners
+    // Update filters (select based on URI or narrative click)
+    // If venue is map:
+    //   Load map data
+    //   Update map (and link-to-listings)
+    // Else if venue is listings:
+    //   Load listings data
+    //   Update listings (and link-to-map)
+
     GNYC.createFilterFormFields('map');
 
     if (GETURIRequest.decode()) {
