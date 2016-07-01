@@ -236,6 +236,18 @@ ul.gnsm-program-listings {
     border-radius: 4px;
 }
 
+.program-listing div, .program-listing p {
+    padding: 3px 0px;
+}
+
+.program-listing:first-child {
+    padding-top: 0px;
+}
+
+.program-listing:last-child {
+    padding-bottom: 0px;
+}
+
 .program-listing .title {
     color: #555555;
     font-weight: bold;
