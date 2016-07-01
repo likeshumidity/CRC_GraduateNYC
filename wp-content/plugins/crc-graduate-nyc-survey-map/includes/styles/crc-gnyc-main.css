@@ -193,27 +193,26 @@ body {
 
 
 /* LISTINGS STYLE */
+.map-title h3 {
+    margin: 0px;
+}
 
-.view-listings {
+div.link-to-listings {
     color: #8a8b8b;
     font-size: 13px;
     text-transform: uppercase;
+    border-left: 2px solid #555555;
 }
 
-
-.view-listings a span {
-    background: url(http://54.174.151.164/GraduateNYC/wp-content/uploads/2016/06/view-listings-icon1.jpg) no-repeat 0 0;
-    display: inline-block;
-    width: 126px;
-    height: 14px;
-    margin-right: 7px;
+div.link-to-listings a span {
+    background: url(http://54.174.151.164/GraduateNYC/wp-content/uploads/2016/06/view-listings-icon1.jpg) no-repeat 0 0; 
     padding-left: 29px;
-    padding-top: 1px;
 }
 
-.view-listings:hover, .view-listings a span:hover  {
-    background: url(http://54.174.151.164/GraduateNYC/wp-content/uploads/2016/06/view-listings-icon1.jpg) no-repeat 0 -18px;
+div.link-to-listings a:hover, div.link-to-listings a span:hover  {
+/*    background: url(http://54.174.151.164/GraduateNYC/wp-content/uploads/2016/06/view-listings-icon1.jpg) no-repeat 0 -18px; */
     color: #676767;
+    text-decoration: none;
     
 }
 
@@ -251,9 +250,10 @@ body {
 
 .tab-content {
     background: #ffffff;
-    width: 455px;
+/*    width: 455px;
     top: -26px;
     position: relative;
+*/
     padding-top: 6px; 
 }
 
