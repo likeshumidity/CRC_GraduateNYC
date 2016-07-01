@@ -177,12 +177,18 @@ GNYC.createFilterFormFields = function(venue) {
                 fieldSet = $('#' + this.filterToFieldID(filter, 'panel') + ' fieldset');
 
                 for (i = 0; i < this.filterS[filter].values.length; i++) {
+                    fieldInput += '<div class="' + this.filterS[filter].type + '">';
                     fieldInput += '<span class="field-input">';
-                    fieldInput += '<input type="' + this.filterS[filter].type + '" name="' + this.filterToFieldID(filter, 'gnsm') + '" ';
+                    fieldInput += '<input type="' + this.filterS[filter].type + '" ';
+                    if (this.filterS[filter].type === 'checkbox') {
+                        fieldInput += 'class="styled" ';
+                    }
+                    fieldInput += 'name="' + this.filterToFieldID(filter, 'gnsm') + '" ';
                     fieldInput += 'id="' + this.filterToFieldID(filter, 'gnsm') + i + '" ';
                     fieldInput += 'value="' + this.filterS[filter].values[i] + '" />';
                     fieldInput += '<label for="' + this.filterToFieldID(filter, 'gnsm') + i + '">';
                     fieldInput += this.filterS[filter].values[i] + '</label>' + '</span>';
+                    fieldInput += '</div>';
 
                     fieldSet.append(fieldInput);
                     fieldInput = '';
@@ -364,7 +370,7 @@ GNYC.updateMap = function () {
 
 // Update breadcrumbs
 GNYC.updateBreadcrumbs = function(thisFilter) {
-    var theseBreadcrumbs = $('#' + this.filterToFieldID(thisFilter, 'panel') + ' p.breadcrumbs a');
+    var theseBreadcrumbs = $('#' + this.filterToFieldID(thisFilter, 'panel') + ' p.breadcrumbs');
 
     if (this.filterS[thisFilter].type === 'radio') {
         theseBreadcrumbs.html(this.filterS[thisFilter].selected);
