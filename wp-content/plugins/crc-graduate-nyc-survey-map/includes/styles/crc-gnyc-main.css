@@ -222,8 +222,14 @@ div.link-to-listings a:hover, div.link-to-listings a span:hover  {
     color: #676767;
 }
 
+ul.gnsm-program-listings {
+    list-style-type: none !important;
+}
+
 .program-listing {
-    border-bottom: 1px solid #d0d0d0;
+/*    border-bottom: 1px solid #d0d0d0; */
+    background-color: #F5F5F5;
+    padding: 5px !important;
     margin-bottom: 8px;
     padding-bottom: 8px;
 }
