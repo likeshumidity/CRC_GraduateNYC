@@ -229,62 +229,93 @@ GNYC.color = d3.scale.linear()
     .domain([0, 60])
     .range(["white", "#2F5C61"]);
 
-// Get dataset
-d3.json(GNYC.url.basePath() + '?crc-json=all_listings', function (error, json) {
-    if (error) {
-        return console.warn(error);
-    }
 
-    GNYC.data = json;
-    GNYC.setBoroughDensity(GNYC.getFilteredData(GNYC.data));
-});
+// Get dataset
+GNYC.loadDataset = function() {
+    d3.json(GNYC.url.basePath() + '?crc-json=all_listings', function (error, json) {
+        if (error) {
+            return console.warn(error);
+        }
+
+        GNYC.data = json;
+        GNYC.setBoroughDensity(GNYC.getFilteredData(GNYC.data));
+    });
+};
+
+
+// Set filters based on URI
+GNYC.processURI = function() {
+    if (GETURIRequest.decode()) {
+        GNYC.url.parameters = GETURIRequest.decode();
+
+        for (var filter in GNYC.filters) {
+            if (GNYC.filters[filter].type === 'checkbox') {
+                GNYC.filters[filter].selected = GNYC.url.parameters[filter];
+            } else if (GNYC.filters[filter].type === 'radio') {
+                GNYC.filters[filter].selected = GNYC.url.parameters[filter][0];
+            } else {
+                console.warn('ERROR: invalid filter type');
+            }
+        }
+
+        return true;
+    } else {
+        return false;
+    }
+}
+
 
 // Get borough outlines
-d3.json("../wp-content/plugins/crc-graduate-nyc-survey-map/includes/static/Boroughs.json", function (error, borough) {
-    GNYC.groups.boroughs.selectAll(".borough")
-        .data(topojson.feature(borough, borough.objects.Boroughs).features)
-        .enter().append("path")
-        .attr("class", "borough")
-        .attr("id", function (d) {
-            return d.properties.boroname;
-        })
-        .attr("d", GNYC.path)
-        .on("mouseover", function (d) {
-            GNYC.map.tooltip.transition()
-                .duration(500)
-                .style("opacity", 0);
-            GNYC.map.tooltip.transition()
-                .duration(200)
-                .style("opacity", 1);
-            GNYC.map.tooltip.html('<b>' + d.properties.boroname + '</b>')
-                .style("left", (d3.event.pageX) + "px")
-                .style("top", (d3.event.pageY - 28) + "px");
-        })
-        .on("mouseleave", function (d) {
-            GNYC.map.tooltip.transition()
-                .duration(200)
-                .style("opacity", 0);
-        })
-        .on("click", GNYC.clicked)
-})
+GNYC.loadMapBoroughs = function() {
+    d3.json("../wp-content/plugins/crc-graduate-nyc-survey-map/includes/static/Boroughs.json", function (error, borough) {
+        GNYC.groups.boroughs.selectAll(".borough")
+            .data(topojson.feature(borough, borough.objects.Boroughs).features)
+            .enter().append("path")
+            .attr("class", "borough")
+            .attr("id", function (d) {
+                return d.properties.boroname;
+            })
+            .attr("d", GNYC.path)
+            .on("mouseover", function (d) {
+                GNYC.map.tooltip.transition()
+                    .duration(500)
+                    .style("opacity", 0);
+                GNYC.map.tooltip.transition()
+                    .duration(200)
+                    .style("opacity", 1);
+                GNYC.map.tooltip.html('<b>' + d.properties.boroname + '</b>')
+                    .style("left", (d3.event.pageX) + "px")
+                    .style("top", (d3.event.pageY - 28) + "px");
+            })
+            .on("mouseleave", function (d) {
+                GNYC.map.tooltip.transition()
+                    .duration(200)
+                    .style("opacity", 0);
+            })
+            .on("click", GNYC.clicked)
+    });
+};
+
 
 // Get neighborhood outlines
-d3.json("../wp-content/plugins/crc-graduate-nyc-survey-map/includes/static/NTA.json", function (error, nta) {
-    GNYC.groups.neighborhoods.selectAll(".neighborhood")
-        .data(topojson.feature(nta, nta.objects.NTA).features)
-        .enter().append("path")
-        .attr("class", "neighborhood")
-        .attr("id", function (d) {
-            return d.properties.ntaname;
-        })
-        .attr("d", GNYC.path)
-        .style('fill', function(d) {
-            return GNYC.getDensityColor(d);
-        })
-        .style('stroke-width', '.5px')
-        .style("stroke", "#cecece")
-        .style("pointer-events", 'none');
-});
+GNYC.loadMapNeighborhoods = function() {
+    d3.json("../wp-content/plugins/crc-graduate-nyc-survey-map/includes/static/NTA.json", function (error, nta) {
+        GNYC.groups.neighborhoods.selectAll(".neighborhood")
+            .data(topojson.feature(nta, nta.objects.NTA).features)
+            .enter().append("path")
+            .attr("class", "neighborhood")
+            .attr("id", function (d) {
+                return d.properties.ntaname;
+            })
+            .attr("d", GNYC.path)
+            .style('fill', function(d) {
+                return GNYC.getDensityColor(d);
+            })
+            .style('stroke-width', '.5px')
+            .style("stroke", "#cecece")
+            .style("pointer-events", 'none');
+    });
+};
 
 
 // Create filter form fields
@@ -323,7 +354,7 @@ GNYC.createFilterFormFields = function(venue) {
 };
 
 
-GNYC.noQuerySetUp = function() {
+GNYC.setDefaults = function() {
     for (var filter in GNYC.filters) {
         if (GNYC.filters.hasOwnProperty(filter)) {
             if (GNYC.filters[filter].type === 'checkbox') {
@@ -333,12 +364,10 @@ GNYC.noQuerySetUp = function() {
                 GNYC.url.parameters[filter] = [GNYC.filters[filter].defaultValue];
                 GNYC.filters[filter].selected = GNYC.filters[filter].defaultValue;
             } else {
-                console.warn('ERROR: INVALID FILTER TYPE: in noQuerySetUp()');
+                console.warn('ERROR: INVALID FILTER TYPE: in setDefaults()');
             }
         }
     }
-
-    GNYC.updateFilterFieldSelections()
 };
 
 
@@ -625,27 +654,6 @@ GNYC.reset = function() {
 }
 
 
-GNYC.processURI = function() {
-    if (GETURIRequest.decode()) {
-        GNYC.url.parameters = GETURIRequest.decode();
-
-        for (var filter in GNYC.filters) {
-            if (GNYC.filters[filter].type === 'checkbox') {
-                GNYC.filters[filter].selected = GNYC.url.parameters[filter];
-            } else if (GNYC.filters[filter].type === 'radio') {
-                GNYC.filters[filter].selected = GNYC.url.parameters[filter][0];
-            } else {
-                console.warn('ERROR: invalid filter type');
-            }
-        }
-
-        GNYC.updateFilterFieldSelections();
-    } else {
-        GNYC.noQuerySetUp();
-    }
-}
-
-
 $(document).ready(function () {
     // Set global GNYC.venue from GNYC_VENUE global and delete GNYC_VENUE global
     if (window.hasOwnProperty('GNYC_VENUE')) {
@@ -655,13 +663,24 @@ $(document).ready(function () {
     // If venue not in GNYC.venues:
     if ($.inArray(GNYC.venue, GNYC.venues) > -1) {
     // Get URI parameters if passed
-        GNYC.processURI();
-
-        GNYC.createFilterFormFields(GNYC.venue);
         // Load data
-        // Update filters
+        GNYC.loadDataset();
+        GNYC.loadMapBoroughs();
+        GNYC.loadMapNeighborhoods();
+
+        // Create form filter fields
+        GNYC.createFilterFormFields(GNYC.venue);
+
+        // Update form filters selections
+        if (!GNYC.processURI()) {
+            GNYC.setDefaults();
+        }
+
+        GNYC.updateFilterFieldSelections();
+
         // Update results (map/listings and link-to-other-venue)
         // Update listings (and link-to-map)
+        // div.link-to-listings a ... set href = new value when changing selectors
         $('.link-to-listings').click(function () {
             window.location.href = GETURIRequest.encode(GNYC.url.parameters, GNYC.url.basePath() + 'gnsm_listing/');
         });
