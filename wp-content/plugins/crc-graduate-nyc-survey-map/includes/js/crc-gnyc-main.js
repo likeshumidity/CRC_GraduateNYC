@@ -113,7 +113,11 @@ var GNYC = {
         "height": 600,
         "active": d3.select(null),
     },
+    'data': {
+        "all": {},
+    },
 };
+
 
 GNYC.map.tooltip = d3.select("body")
     .append("div")
@@ -141,31 +145,29 @@ GNYC.svg.append("rect")
     .attr("class", "background")
     .attr("width", GNYC.map.width)
     .attr("height", GNYC.map.height)
-    .on("click", GNYC.reset);
+    .on("click", function() {
+        GNYC.reset();
+    });
 
 GNYC.groups = {
     "neighborhoods": GNYC.svg.append("g"),
     "boroughs": GNYC.svg.append("g"),
 };
 
-GNYC.filterToFieldName = function(filter) {
-    var fieldName = filter.replace('-',' ');
 
-    fieldName = fieldName.substring(0,1).toUpperCase() + fieldName.substring(1);
-
-    return fieldName;
-};
-
+// Combine prefix and filter name to create field ID
 GNYC.filterToFieldID = function(filter, prefix) {
     return prefix + '-' + filter;
 };
+
 
 // Range of colors based on density
 GNYC.color = d3.scale.linear()
     .domain([0, 60])
     .range(["white", "#2F5C61"]);
 
-// create filter form fields
+
+// Create filter form fields
 GNYC.createFilterFormFields = function(venue) {
     var fieldSet = {},
         fieldInput = '',
@@ -198,10 +200,6 @@ GNYC.createFilterFormFields = function(venue) {
     } else {
         console.warn('ERROR: invalid venue');
     }
-};
-
-GNYC.data = {
-    "all": {},
 };
 
 
