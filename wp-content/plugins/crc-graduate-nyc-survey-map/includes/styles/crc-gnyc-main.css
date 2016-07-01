@@ -180,11 +180,11 @@ body {
     margin: 3px 6px 0 0;
 }
 
-.map-key li span.population-1 {background: #f4f7f8;}
-.map-key li span.population-2 {background: #eaf0f2;} 
-.map-key li span.population-3 {background: #dee8ea;}
-.map-key li span.population-4 {background: #cedde0;}
-.map-key li span.population-5 {background: #bfd2d7;}
+.map-key li span.population-1 {background: rgb(241, 244, 244);}
+.map-key li span.population-2 {background: rgb(169, 188, 191);} 
+.map-key li span.population-3 {background: rgb(132, 161, 164);}
+.map-key li span.population-4 {background: rgb(96, 133, 138);}
+.map-key li span.population-5 {background: rgb(60, 105, 111);}
 
 .patterns h3 {
     font-size: 20px;
