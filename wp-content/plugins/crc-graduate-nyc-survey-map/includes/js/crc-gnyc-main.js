@@ -1,6 +1,73 @@
 "use strict";
 
-var GETURIRequest = {};
+var GETURIRequest = {
+    'decode': function () {
+    // retrieves GET request from URI and returns parameters as JSON
+    // returns false if no parameters assigned
+        var URIsearch = location.search,
+            requestParameters = {},
+            requests = [],
+            i = 0,
+            keyValPair = [];
+    
+        if (URIsearch.length > 1) {
+            URIsearch = URIsearch.substr(1);
+            URIsearch = URIsearch.split('&');
+    
+            for (i = 0; i < URIsearch.length; i++) {
+                keyValPair = [];
+                keyValPair = URIsearch[i].split('=');
+                keyValPair[0] = decodeURIComponent(keyValPair[0]);
+                keyValPair[1] = decodeURIComponent(keyValPair[1].replace(/\+/g, ' '));
+    
+                if (typeof requestParameters[keyValPair[0]] == 'undefined') {
+                    requestParameters[keyValPair[0]] = [];
+                }
+    
+                requestParameters[keyValPair[0]].push(decodeURI(keyValPair[1]));
+            }
+    
+            return requestParameters;
+        } else {
+            return false;
+        }
+    },
+    'encode': function (parameters, baseURL) {
+        // accepts object in the same format as the output of GETURIRequest.decode
+        // returns string that can be appended to URI
+        var URIsearch = '',
+            key = '',
+            i = 0,
+            isFirst = true;
+    
+        for (var keyArray in parameters) {
+            if (parameters.hasOwnProperty(keyArray)) {
+    //        if (parameters.hasOwnProperty(keyArray) && parameters[keyArray] !== null) {
+    //            console.log(parameters);
+                key = encodeURIComponent(keyArray);
+    
+                for (i = 0; i < parameters[keyArray].length; i++) {
+                    if (isFirst) {
+                        URIsearch += '?';
+                        isFirst = false;
+                    } else {
+                        URIsearch += '&';
+                    }
+                    URIsearch += key.replace(/ /g, '+');
+                    if (parameters[keyArray].length > 1) {
+                            URIsearch += '%5B%5D';
+                    }
+                    URIsearch += '=';
+                    URIsearch += encodeURIComponent(parameters[keyArray][i]).replace(/ /g, '+');
+                }
+            }
+        }
+    
+        return baseURL + URIsearch;
+    },
+};
+
+
 var GNYC = {
     'url': {
         "base": window.location.origin,
@@ -113,12 +180,15 @@ var GNYC = {
         "height": 600,
         "active": d3.select(null),
     },
-    'data': {
-        "all": {},
+    'data': {},
+    // Combine prefix and filter name to create field ID
+    'filterToFieldID': function(filter, prefix) {
+    return prefix + '-' + filter;
     },
 };
 
 
+// Build map structure
 GNYC.map.tooltip = d3.select("body")
     .append("div")
     .attr("class", "tooltip")
@@ -154,17 +224,67 @@ GNYC.groups = {
     "boroughs": GNYC.svg.append("g"),
 };
 
-
-// Combine prefix and filter name to create field ID
-GNYC.filterToFieldID = function(filter, prefix) {
-    return prefix + '-' + filter;
-};
-
-
 // Range of colors based on density
 GNYC.color = d3.scale.linear()
     .domain([0, 60])
     .range(["white", "#2F5C61"]);
+
+// Get dataset
+d3.json(GNYC.url.basePath() + '?crc-json=all_listings', function (error, json) {
+    if (error) {
+        return console.warn(error);
+    }
+
+    GNYC.data = json;
+    GNYC.setBoroughDensity(GNYC.getFilteredData(GNYC.data));
+});
+
+// Get borough outlines
+d3.json("../wp-content/plugins/crc-graduate-nyc-survey-map/includes/static/Boroughs.json", function (error, borough) {
+    GNYC.groups.boroughs.selectAll(".borough")
+        .data(topojson.feature(borough, borough.objects.Boroughs).features)
+        .enter().append("path")
+        .attr("class", "borough")
+        .attr("id", function (d) {
+            return d.properties.boroname;
+        })
+        .attr("d", GNYC.path)
+        .on("mouseover", function (d) {
+            GNYC.map.tooltip.transition()
+                .duration(500)
+                .style("opacity", 0);
+            GNYC.map.tooltip.transition()
+                .duration(200)
+                .style("opacity", 1);
+            GNYC.map.tooltip.html('<b>' + d.properties.boroname + '</b>')
+                .style("left", (d3.event.pageX) + "px")
+                .style("top", (d3.event.pageY - 28) + "px");
+        })
+        .on("mouseleave", function (d) {
+            GNYC.map.tooltip.transition()
+                .duration(200)
+                .style("opacity", 0);
+        })
+        .on("click", GNYC.clicked)
+})
+
+// Get neighborhood outlines
+d3.json("../wp-content/plugins/crc-graduate-nyc-survey-map/includes/static/NTA.json", function (error, nta) {
+    GNYC.groups.neighborhoods.selectAll(".neighborhood")
+        .data(topojson.feature(nta, nta.objects.NTA).features)
+        .enter().append("path")
+        .attr("class", "neighborhood")
+        .attr("id", function (d) {
+            return d.properties.ntaname;
+        })
+        .attr("d", GNYC.path)
+        .style('fill', function(d) {
+            return GNYC.getDensityColor(d);
+        })
+        .style('stroke-width', '.5px')
+        .style("stroke", "#cecece")
+        .style("pointer-events", 'none');
+});
 
 
 // Create filter form fields
@@ -246,15 +366,6 @@ GNYC.updateFilterFieldSelections = function () {
     }
 };
 
-d3.json(GNYC.url.basePath() + '?crc-json=all_listings', function (error, json) {
-    if (error) {
-        return console.warn(error);
-    }
-
-    GNYC.data.all = json;
-//    GNYC.setBoroughDensity(GNYC.createFilteredObj(GNYC.data.all));
-    GNYC.setBoroughDensity(GNYC.getFilteredData(GNYC.data.all));
-});
 
 GNYC.setBoroughDensity = function (data) {
     for (borough in GNYC.filters.boroughs.density) {
@@ -279,6 +390,22 @@ GNYC.setBoroughDensity = function (data) {
 
     GNYC.updateMap();
 }
+
+
+GNYC.getDensityColor = function(d) {
+    for (var neighborhoodBorough in GNYC.filters.boroughs.density[d.properties.boroname]) {
+        var neighborhood = neighborhoodBorough.split(' - ')[1];
+
+        if (d.properties.ntaname.indexOf(neighborhood) > -1) {
+            d.density = GNYC.filters.boroughs.density[d.properties.boroname][neighborhoodBorough];
+
+            return GNYC.color(GNYC.filters.boroughs.density[d.properties.boroname][neighborhoodBorough]);
+        }
+    }
+
+    return GNYC.color(0);
+};
+
 
 GNYC.getFilteredData = function (programsAll) {
     var filteredData = {};
@@ -340,19 +467,6 @@ GNYC.getFilteredData = function (programsAll) {
     return filteredData;
 };
 
-GNYC.getDensityColor = function(d) {
-    for (var neighborhoodBorough in GNYC.filters.boroughs.density[d.properties.boroname]) {
-        var neighborhood = neighborhoodBorough.split(' - ')[1];
-
-        if (d.properties.ntaname.indexOf(neighborhood) > -1) {
-            d.density = GNYC.filters.boroughs.density[d.properties.boroname][neighborhoodBorough];
-
-            return GNYC.color(GNYC.filters.boroughs.density[d.properties.boroname][neighborhoodBorough]);
-        }
-    }
-
-    return GNYC.color(0);
-};
 
 GNYC.updateMap = function () {
     d3.selectAll('.neighborhood').transition()
@@ -406,59 +520,12 @@ GNYC.createFormEventListeners = function() {
 
                 GNYC.url.parameters[thisFilter] = GNYC.filters[thisFilter].selected.slice();
                 GNYC.filters[thisFilter].selected = GNYC.filters[thisFilter].selected.slice();
-//                GNYC.setBoroughDensity(GNYC.createFilteredObj(GNYC.data.all));
-                GNYC.setBoroughDensity(GNYC.getFilteredData(GNYC.data.all));
+                GNYC.setBoroughDensity(GNYC.getFilteredData(GNYC.data));
                 GNYC.updateBreadcrumbs(thisFilter);
             });
         }
     }
 };
-
-d3.json("../wp-content/plugins/crc-graduate-nyc-survey-map/includes/static/Boroughs.json", function (error, borough) {
-    GNYC.groups.boroughs.selectAll(".borough")
-        .data(topojson.feature(borough, borough.objects.Boroughs).features)
-        .enter().append("path")
-        .attr("class", "borough")
-        .attr("id", function (d) {
-            return d.properties.boroname;
-        })
-        .attr("d", GNYC.path)
-        .on("mouseover", function (d) {
-            GNYC.map.tooltip.transition()
-                .duration(500)
-                .style("opacity", 0);
-            GNYC.map.tooltip.transition()
-                .duration(200)
-                .style("opacity", 1);
-            GNYC.map.tooltip.html('<b>' + d.properties.boroname + '</b>')
-                .style("left", (d3.event.pageX) + "px")
-                .style("top", (d3.event.pageY - 28) + "px");
-        })
-        .on("mouseleave", function (d) {
-            GNYC.map.tooltip.transition()
-                .duration(200)
-                .style("opacity", 0);
-        })
-        .on("click", GNYC.clicked)
-})
-
-d3.json("../wp-content/plugins/crc-graduate-nyc-survey-map/includes/static/NTA.json", function (error, nta) {
-    GNYC.groups.neighborhoods.selectAll(".neighborhood")
-        .data(topojson.feature(nta, nta.objects.NTA).features)
-        .enter().append("path")
-        .attr("class", "neighborhood")
-        .attr("id", function (d) {
-            return d.properties.ntaname;
-        })
-        .attr("d", GNYC.path)
-        .style('fill', function(d) {
-            return GNYC.getDensityColor(d);
-        })
-        .style('stroke-width', '.5px')
-        .style("stroke", "#cecece")
-        .style("pointer-events", 'none');
-});
-
 
 GNYC.clicked = function(d) {
     var curBoro = d.properties.boroname;
@@ -556,73 +623,6 @@ GNYC.reset = function() {
     GNYC.groups.neighborhoods.selectAll(".neighborhood")
         .style("pointer-events", 'none')
 }
-
-
-GETURIRequest.decode = function () {
-    // retrieves GET request from URI and returns parameters as JSON
-    // returns false if no parameters assigned
-    var URIsearch = location.search,
-        requestParameters = {},
-        requests = [],
-        i = 0,
-        keyValPair = [];
-
-    if (URIsearch.length > 1) {
-        URIsearch = URIsearch.substr(1);
-        URIsearch = URIsearch.split('&');
-
-        for (i = 0; i < URIsearch.length; i++) {
-            keyValPair = [];
-            keyValPair = URIsearch[i].split('=');
-            keyValPair[0] = decodeURIComponent(keyValPair[0]);
-            keyValPair[1] = decodeURIComponent(keyValPair[1].replace(/\+/g, ' '));
-
-            if (typeof requestParameters[keyValPair[0]] == 'undefined') {
-                requestParameters[keyValPair[0]] = [];
-            }
-
-            requestParameters[keyValPair[0]].push(decodeURI(keyValPair[1]));
-        }
-
-        return requestParameters;
-    } else {
-        return false;
-    }
-};
-
-GETURIRequest.encode = function (parameters, baseURL) {
-    // accepts object in the same format as the output of GETURIRequest.decode
-    // returns string that can be appended to URI
-    var URIsearch = '',
-        key = '',
-        i = 0,
-        isFirst = true;
-
-    for (var keyArray in parameters) {
-        if (parameters.hasOwnProperty(keyArray)) {
-//        if (parameters.hasOwnProperty(keyArray) && parameters[keyArray] !== null) {
-//            console.log(parameters);
-            key = encodeURIComponent(keyArray);
-
-            for (i = 0; i < parameters[keyArray].length; i++) {
-                if (isFirst) {
-                    URIsearch += '?';
-                    isFirst = false;
-                } else {
-                    URIsearch += '&';
-                }
-                URIsearch += key.replace(/ /g, '+');
-                if (parameters[keyArray].length > 1) {
-                        URIsearch += '%5B%5D';
-                }
-                URIsearch += '=';
-                URIsearch += encodeURIComponent(parameters[keyArray][i]).replace(/ /g, '+');
-            }
-        }
-    }
-
-    return baseURL + URIsearch;
-};
 
 
 GNYC.processURI = function() {
