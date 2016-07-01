@@ -1,121 +1,118 @@
 "use strict";
 
 var GETURIRequest = {};
-var GNYC = {};
-
-GNYC.url = {
-    "base": window.location.origin,
-    "rootPath": window.location.pathname.substring(0, window.location.pathname.indexOf("/", 1)),
-    "basePath": function() {
-        return this.base + this.rootPath + '/';
+var GNYC = {
+    'url': {
+        "base": window.location.origin,
+        "rootPath": window.location.pathname.substring(0, window.location.pathname.indexOf("/", 1)),
+        "basePath": function() {
+            return this.base + this.rootPath + '/';
+        },
+        "parameters": {},
     },
-    "parameters": {},
-};
-
-GNYC.filters = {
-    'boroughs': {
-        'order': 0,
-        'dataSetName': 'boroughs',
-        'type': 'checkbox',
-        'onMap': false,
-        'onListings': true,
-        'values': [
-            'Brooklyn',
-            'Bronx',
-            'Manhattan',
-            'Queens',
-            'Staten Island',
-        ],
-        'defaultValue': [],
-        'selected': [],
-        'density': {
-            'Brooklyn': {},
-            'Queens': {},
-            'Bronx': {},
-            'Staten Island': {},
-            'Manhattan': {},
+    'filters': {
+        'boroughs': {
+            'order': 0,
+            'dataSetName': 'boroughs',
+            'type': 'checkbox',
+            'onMap': false,
+            'onListings': true,
+            'values': [
+                'Brooklyn',
+                'Bronx',
+                'Manhattan',
+                'Queens',
+                'Staten Island',
+            ],
+            'defaultValue': [],
+            'selected': [],
+            'density': {
+                'Brooklyn': {},
+                'Queens': {},
+                'Bronx': {},
+                'Staten Island': {},
+                'Manhattan': {},
+            },
+        },
+        'population-served': {
+            'order': 2,
+            'dataSetName': 'target_population',
+            'type': 'radio',
+            'onMap': true,
+            'onListings': true,
+            'values': [
+                'All',
+                'Academic performance level',
+                'English language learners',
+                'Disconnected youth/Out of school youth',
+                'Student with IEP or other learning challenges',
+                'High school equivalency (HSE)',
+                'Poverty guidelines/socioeconomic status',
+                'Justice involved youth',
+                'Gender',
+                'Immigrants/Refugees',
+            ],
+            'defaultValue': 'All',
+            'selected': 'All', 
+            'oldName': 'target-population',
+        },
+        'grades-served': {
+            'order': 3,
+            'dataSetName': 'grades',
+            'type': 'checkbox',
+            'onMap': true,
+            'onListings': true,
+            'values': [
+                'Elementary school (K-5)',
+                'Middle school (6-8)',
+                'High school (9-12)',
+                'Post-secondary school',
+                'Adult learners and High School Equivalency',
+            ],
+            'defaultValue': [],
+            'selected': [],
+        },
+        'enrollment-type': {
+            'order': 1,
+            'dataSetName': 'accepting_students',
+            'type': 'radio',
+            'onMap': true,
+            'onListings': true,
+            'values': [
+                'All',
+                'Open enrollment',
+                'Limited enrollment',
+                'Closed program',
+            ],
+            'defaultValue': 'All',
+            'selected': 'All', 
+            'oldName': 'open-status',
+        },
+        'services': {
+            'order': 4,
+            'dataSetName': 'services',
+            'type': 'checkbox',
+            'onMap': true,
+            'onListings': true,
+            'values': [
+                'College Readiness',
+                'College Matriculation',
+                'College Retention',
+                'Career Preparation',
+            ],
+            'defaultValue': [],
+            'selected': [],
         },
     },
-    'population-served': {
-        'order': 2,
-        'dataSetName': 'target_population',
-        'type': 'radio',
-        'onMap': true,
-        'onListings': true,
-        'values': [
-            'All',
-            'Academic performance level',
-            'English language learners',
-            'Disconnected youth/Out of school youth',
-            'Student with IEP or other learning challenges',
-            'High school equivalency (HSE)',
-            'Poverty guidelines/socioeconomic status',
-            'Justice involved youth',
-            'Gender',
-            'Immigrants/Refugees',
-        ],
-        'defaultValue': 'All',
-        'selected': 'All', 
-        'oldName': 'target-population',
+    'venues': [
+        'map',
+        'listings',
+    ],
+    'map': {
+        "width": 600,
+        "height": 600,
+        "active": d3.select(null),
     },
-    'grades-served': {
-        'order': 3,
-        'dataSetName': 'grades',
-        'type': 'checkbox',
-        'onMap': true,
-        'onListings': true,
-        'values': [
-            'Elementary school (K-5)',
-            'Middle school (6-8)',
-            'High school (9-12)',
-            'Post-secondary school',
-            'Adult learners and High School Equivalency',
-        ],
-        'defaultValue': [],
-        'selected': [],
-    },
-    'enrollment-type': {
-        'order': 1,
-        'dataSetName': 'accepting_students',
-        'type': 'radio',
-        'onMap': true,
-        'onListings': true,
-        'values': [
-            'All',
-            'Open enrollment',
-            'Limited enrollment',
-            'Closed program',
-        ],
-        'defaultValue': 'All',
-        'selected': 'All', 
-        'oldName': 'open-status',
-    },
-    'services': {
-        'order': 4,
-        'dataSetName': 'services',
-        'type': 'checkbox',
-        'onMap': true,
-        'onListings': true,
-        'values': [
-            'College Readiness',
-            'College Matriculation',
-            'College Retention',
-            'Career Preparation',
-        ],
-        'defaultValue': [],
-        'selected': [],
-    },
-};
-
-GNYC.venues = [
-    'map',
-    'listings',
-];
-
-GNYC.map = {
-    "width": 600,
-    "height": 600,
-    "active": d3.select(null),
 };
 
 GNYC.map.tooltip = d3.select("body")
@@ -208,10 +205,6 @@ GNYC.data = {
 };
 
 
-var filterArray = [];   /// REMOVE REMOVE REMOVE
-
-
-// TODO: Change filterArray to GNYC.filters[filter].selected
 GNYC.noQuerySetUp = function() {
     for (var filter in GNYC.filters) {
         if (GNYC.filters.hasOwnProperty(filter)) {
@@ -229,6 +222,7 @@ GNYC.noQuerySetUp = function() {
 
     GNYC.updateFilterFieldSelections()
 };
+
 
 GNYC.updateFilterFieldSelections = function () {
     for (var filter in GNYC.filters) {
