@@ -441,6 +441,14 @@ function crc_gnsm_survey_results_listings_all() {
 			$target_population = get_post_meta($thispost->ID, 'target_population');
 			$services = get_post_meta($thispost->ID, 'services');
 			$accepting_students = get_post_meta($thispost->ID, 'accepting_students');
+			$program_description = get_post_meta($thispost->ID, 'program_description');
+                        $contact_phone = get_post_meta($thispost->ID, 'contact_phone');
+			$address_postal_code = get_post_meta($thispost->ID, 'address_postal_code');
+			$address_state = get_post_meta($thispost->ID, 'address_state');
+			$address_city = get_post_meta($thispost->ID, 'address_city');
+			$address_line_2 = get_post_meta($thispost->ID, 'address_line_2');
+			$address_line_1 = get_post_meta($thispost->ID, 'address_line_1');
+
 			$results[$program_name] = array(
 				'post_id' => $thispost->ID,
 				'program_name' => $program_name,
@@ -450,6 +458,13 @@ function crc_gnsm_survey_results_listings_all() {
 				'target_population' => $target_population[0],
 				'services' => $services[0],
 				'accepting_students' => $accepting_students[0],
+				'program_description' => $program_description,
+                        	'contact_phone' => $contact_phone,
+				'address_postal_code' => $address_postal_code,
+				'address_state' => $address_state,
+				'address_city' => $address_city,
+				'address_line_2' => $address_line_2,
+				'address_line_1' => $address_line_1,
 			);
 			wp_reset_postdata();
 		}
