@@ -79,7 +79,6 @@ var GNYC = {
     },
     'filters': {
         'boroughs': {
-            'order': 0,
             'dataSetName': 'boroughs',
             'type': 'checkbox',
             'onMap': false,
@@ -102,7 +101,6 @@ var GNYC = {
             },
         },
         'population-served': {
-            'order': 2,
             'dataSetName': 'target_population',
             'type': 'radio',
             'onMap': true,
@@ -124,7 +122,6 @@ var GNYC = {
             'oldName': 'target-population',
         },
         'grades-served': {
-            'order': 3,
             'dataSetName': 'grades',
             'type': 'checkbox',
             'onMap': true,
@@ -140,7 +137,6 @@ var GNYC = {
             'selected': [],
         },
         'enrollment-type': {
-            'order': 1,
             'dataSetName': 'accepting_students',
             'type': 'radio',
             'onMap': true,
@@ -156,7 +152,6 @@ var GNYC = {
             'oldName': 'open-status',
         },
         'services': {
-            'order': 4,
             'dataSetName': 'services',
             'type': 'checkbox',
             'onMap': true,
