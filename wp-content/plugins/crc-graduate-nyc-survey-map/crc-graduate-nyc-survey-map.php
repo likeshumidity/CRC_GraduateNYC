@@ -35,7 +35,6 @@ function crc_gnsm_post_type_setup() {
 		'singular_name'         => 'GNYC Survey Listing',
 		'menu_name'             => 'Program Survey Listings',
 		'name_admin_bar'        => 'Survey Listings',
-		'archives'              => 'Graduate NYC Program Survey Listings',
 		'parent_item_colon'     => 'Parent Item:',
 		'all_items'             => 'All Listings',
 		'add_new_item'          => 'Add New Listing',
@@ -66,7 +65,7 @@ function crc_gnsm_post_type_setup() {
 		'show_in_admin_bar'     => true,
 		'show_in_nav_menus'     => false,
 		'can_export'            => true,
-		'has_archive'           => true,		
+		'has_archive'           => false,		
 		'exclude_from_search'   => false,
 		'publicly_queryable'    => true,
 		'capability_type'       => 'post',
@@ -473,66 +472,6 @@ function crc_gnsm_survey_results_listings_all() {
 	wp_send_json($results);
 }
 
-function crc_gnsm_archive_template($archive_template) {
-	global $post;
-
-	if (is_post_type_archive('gnsm_listing')) {
-		$archive_template = dirname(__FILE__) . '/archive-gnsm_listing.php';
-	}
-
-	return $archive_template;
-}
-add_filter('archive_template', 'crc_gnsm_archive_template');
-
-function crc_gnsm_archive_filter($query) {
-	global $crc_gnsm_listing_attributes;
-	if (!is_admin() && is_post_type_archive('gnsm_listing') && $query->is_main_query()) {
-		$query->set('posts_per_page', -1);
-		$query->set('post_type', 'gnsm_listing');
-
-		$meta_query = array();
-
-		foreach($crc_gnsm_listing_attributes as $att => $attDetails) {
-			$attSelected = array();
-
-			foreach($attDetails[1] as $attValue) {
-				if (isset($_GET[$att])) {
-                        		if (gettype($_GET[$att]) == 'array') {
-		                                if (in_array($attValue, $_GET[$att])) {
-							$meta_query[] = array(
-								'key' => $attDetails[2],
-								'value' => $attValue,
-								'compare' => 'LIKE',
-							);
-		                                }
-		                        } else {
-		                                if ($_GET[$att] == $attValue) {
-							$meta_query[] = array(
-								'key' => $attDetails[2],
-								'value' => $attValue,
-								'compare' => 'LIKE',
-							);
-		                                }
-		                        }
-				}
-			}
-		}
-
-		if (!empty($meta_query)) {
-			$meta_query['relation'] = 'AND';
-			$query->set('meta_query', $meta_query);
-		}
-	} else {
-		return $query;
-	}
-}
-add_action('pre_get_posts', 'crc_gnsm_archive_filter');
-
-// Add shortcode to display filters for map
-function crc_gnyc_map_filters_display() {
-	return 'x';
-}
-add_shortcode('crc-gnsm-map-filters', 'crc_gnyc_map_filters_display');
 
 // Add shortcode to display map
 function crc_gnyc_map_display() {
