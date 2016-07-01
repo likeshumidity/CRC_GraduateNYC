@@ -552,7 +552,7 @@ register_deactivation_hook(__FILE__, 'crc_gnsm_deactivate');
 function crc_styles_enqueue() {
 	wp_enqueue_style('bootstrap-crc', '/wp-content/plugins/crc-graduate-nyc-survey-map/includes/styles/bootstrap.css');
 	wp_enqueue_style('crc-gnyc-main', '/wp-content/plugins/crc-graduate-nyc-survey-map/includes/styles/crc-gnyc-main.css');
-	wp_enqueue_style('modernizr-crc', '/wp-content/plugins/crc-graduate-nyc-survey-map/includes/js/modernizr.js');
+	wp_enqueue_style('awesome-bootstrap-checkbox', '/wp-content/plugins/crc-graduate-nyc-survey-map/includes/styles/awesome-bootstrap-checkbox.css');
 }
 add_action('wp_enqueue_scripts', 'crc_styles_enqueue');
 
