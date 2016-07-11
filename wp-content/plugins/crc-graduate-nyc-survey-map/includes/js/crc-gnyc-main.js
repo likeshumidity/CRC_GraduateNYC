@@ -234,7 +234,7 @@ GNYC.groups = {
 
 // Range of colors based on density
 GNYC.color = d3.scale.linear()
-    .domain([0, 32])
+    .domain([0, 35])
     .range(["white", "#2F5C61"]);
 
 
