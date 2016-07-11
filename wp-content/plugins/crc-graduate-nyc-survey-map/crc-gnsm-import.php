@@ -14,7 +14,7 @@ function crc_gnsm_import_data($importFile) {
 	$headers = array();
 	$row = 0;
 
-	$headerCheckboxMap = array();
+	$headerCheckboxIndices = array();
 
 	if (($fh = fopen($importFile, 'r')) !== False) {
 		while (($data = fgetcsv($fh, 0, ',', '"')) !== False) {
@@ -22,16 +22,20 @@ function crc_gnsm_import_data($importFile) {
 				// initialize for header row
 				for ($i = 0; $i < count($data); $i++) {
 					$headers[$data[$i]] = $i;
-				}
-	$matchingIndices = array();
 
-	// get field values for each row with header prefix matching $fieldLabel
-	foreach ($rowHeaderData as $key => $val) {
-		$matchingIndices[] = $key;
-	}
+					if (count(explode('**', $data[$i])) > 1) {
+						$headerCheckboxField = explode('**', $data[$i]);
+
+						if (!isset($headerCheckboxIndices[$headerCheckboxField[0]])) {
+							$headerCheckboxIndices[$headerCheckboxField[0]] = array();
+						}
+
+						$headerCheckboxIndices[$headerCheckboxField[0]][] = array($i, $headerCheckboxField[1]);
+					}
+				}
 			} else {
 				// translate and create post
-				$postData = crc_gnsm_translate_row($data, $headers);
+				$postData = crc_gnsm_translate_row($data, $headers, $headerCheckboxIndices);
 				crc_gnsm_create_post($postData);
 			}
 
@@ -40,7 +44,8 @@ function crc_gnsm_import_data($importFile) {
 	}
 }
 
-function crc_gnsm_translate_row($rowPostData, $rowHeaderData) {
+
+function crc_gnsm_translate_row($rowPostData, $rowHeaderData, $headerCheckboxIndices) {
 	$postData = array();
 	$fieldMap = array(
 		'text' => array(
@@ -76,7 +81,7 @@ function crc_gnsm_translate_row($rowPostData, $rowHeaderData) {
 			if ($fieldType == 'text') {
 				$postData[$fieldKey] = $rowPostData[$rowHeaderData[$fieldLabel]];
 			} else if ($fieldType == 'checkbox') {
-				$postData[$fieldKey] = crc_gnsm_translate_field_checkbox($fieldLabel, $rowHeaderData, $rowPostData);
+				$postData[$fieldKey] = crc_gnsm_translate_field_checkbox($fieldLabel, $rowPostData, $headerCheckboxIndices);
 			}
 		}
 	}
@@ -84,35 +89,20 @@ function crc_gnsm_translate_row($rowPostData, $rowHeaderData) {
 	return $postData;
 }
 
-function crc_gnsm_translate_field_checkbox($fieldLabel, $rowHeaderData, $rowPostData) {
-	$matchingIndices = array();
 
-	// get field values for each row with header prefix matching $fieldLabel
-	foreach ($rowHeaderData as $key => $val) {
-		$matchingIndices[] = $key;
+function crc_gnsm_translate_field_checkbox($fieldLabel, $rowPostData, $headerCheckboxIndices) {
+	$postDataField = array();
+
+	foreach ($headerCheckboxIndices[$fieldLabel] as $key => $val) {
+		// if field value = 1, add row header suffix to value array
+		if ($rowPostData[$val[0]] === '1') {
+			$postDataField[] = $val[1];
+		}
 	}
-	// if field value = 1, add row header suffix to value array
-}
-
-function crc_gnsm_translate_field_array($fieldValue) {
-	$postDataField = crc_gnsm_array_from_string_no_empties($fieldValue);
 
 	return $postDataField;
 }
 
-function crc_gnsm_array_from_string_no_empties($stringValue, $delimiter = ',') {
-	$newArray = array();
-
-	$tempArray = explode($delimiter, $stringValue);
-
-	foreach ($tempArray as $value) {
-		if (!empty($value)) {
-			$newArray[] = $value;
-		}
-	}
-
-	return $newArray;
-}
 
 function crc_gnsm_create_post($postData) {
 // Create post object and assign meta data
