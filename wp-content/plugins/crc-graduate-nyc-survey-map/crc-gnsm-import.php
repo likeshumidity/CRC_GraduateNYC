@@ -36,6 +36,7 @@ function crc_gnsm_import_data($importFile) {
 			} else {
 				// translate and create post
 				$postData = crc_gnsm_translate_row($data, $headers, $headerCheckboxIndices);
+// print_r($postData);
 				crc_gnsm_create_post($postData);
 			}
 
