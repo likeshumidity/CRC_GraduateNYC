@@ -191,7 +191,7 @@ var GNYC = {
     'data': {},
     // Combine prefix and filter name to create field ID
     'filterToFieldID': function(filter, prefix) {
-    return prefix + '-' + filter;
+        return prefix + '-' + filter;
     },
 };
 
@@ -247,6 +247,7 @@ GNYC.loadDataset = function() {
 
         GNYC.data = json;
         GNYC.setBoroughDensity(GNYC.getFilteredData(GNYC.data));
+console.log('data loaded');
     });
 };
 
@@ -270,6 +271,22 @@ GNYC.processURI = function() {
     } else {
         return false;
     }
+}
+
+
+// Load listings
+GNYC.loadListings = function() {
+    GNYC.listings = d3.select('div.crc-gnsm-results-container')
+        .append('ul')
+        .attr('class', 'gnsm-program-listings')
+        .selectAll('li')
+        .data(GNYC.data)
+        .enter()
+        .append('li')
+        .attr('class', 'program-listing')
+        .html('<strong>a test</strong>');
+console.log('loaded listings');
+console.log(GNYC.data);
 }
 
 
@@ -335,7 +352,6 @@ GNYC.createFilterFormFields = function(venue) {
     if ($.inArray(venue, this.venues) > -1) {
         for (var filter in this.filters) {
             if (GNYC.filters[filter]['on' + venue.substring(0, 1).toUpperCase() + venue.substring(1)]) {
-console.log(filter);
                 fieldSet = $('#' + this.filterToFieldID(filter, 'panel') + ' fieldset');
 
                 for (i = 0; i < this.filters[filter].values.length; i++) {
@@ -355,7 +371,6 @@ console.log(filter);
                     fieldSet.append(fieldInput);
                     fieldInput = '';
                 } 
-console.log(fieldSet);
             }
         }
     } else {
@@ -675,8 +690,13 @@ $(document).ready(function () {
     // Get URI parameters if passed
         // Load data
         GNYC.loadDataset();
-        GNYC.loadMapBoroughs();
-        GNYC.loadMapNeighborhoods();
+
+        if (GNYC.venue === 'map') {
+            GNYC.loadMapBoroughs();
+            GNYC.loadMapNeighborhoods();
+//        } else if (GNYC.venue === 'listings') {
+//            GNYC.loadListings();
+        }
 
         // Create form filter fields
         GNYC.createFilterFormFields(GNYC.venue);
