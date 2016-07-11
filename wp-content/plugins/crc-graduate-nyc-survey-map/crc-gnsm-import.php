@@ -14,6 +14,8 @@ function crc_gnsm_import_data($importFile) {
 	$headers = array();
 	$row = 0;
 
+	$headerCheckboxMap = array();
+
 	if (($fh = fopen($importFile, 'r')) !== False) {
 		while (($data = fgetcsv($fh, 0, ',', '"')) !== False) {
 			if ($row == 0) {
@@ -21,6 +23,12 @@ function crc_gnsm_import_data($importFile) {
 				for ($i = 0; $i < count($data); $i++) {
 					$headers[$data[$i]] = $i;
 				}
+	$matchingIndices = array();
+
+	// get field values for each row with header prefix matching $fieldLabel
+	foreach ($rowHeaderData as $key => $val) {
+		$matchingIndices[] = $key;
+	}
 			} else {
 				// translate and create post
 				$postData = crc_gnsm_translate_row($data, $headers);
@@ -36,57 +44,39 @@ function crc_gnsm_translate_row($rowPostData, $rowHeaderData) {
 	$postData = array();
 	$fieldMap = array(
 		'text' => array(
-			'name' => 'org name',
-			'field_5706dda975f1c' => 'response id',
-			'field_5706de6175f21' => 'orgphone',
-			'field_5706dddf75f1d' => 'addressone',
-			'field_5706de0275f1e' => 'addresstwo',
-			'field_5706de2575f1f' => 'city',
-			'field_5706de4675f20' => 'state',
-			'field_5706deca75f22' => 'zip',
-			'field_5706df2275f23' => 'program description',
+			'name' => 'Organization name',
+			'field_5783219899626' => 'Survey number',
+			'field_578321e099627' => 'Organization number',
+			'field_5783221099628' => 'Response ID',
+			'field_5783222899629' => 'Phone',
+			'field_5783223b9962a' => 'Email',
+			'field_578322669962c' => 'Program description',
+			'field_578322769962d' => 'Address - Line 1',
+			'field_578322809962e' => 'Address - Line 2',
+			'field_578322869962f' => 'Address - City',
+			'field_5783229199630' => 'Address - State',
+			'field_5783229a99631' => 'Address - Postal code',
 		),
-		'boolean' => array(
-			'field_570d7e356b64e' => array(
-				'Brooklyn' => 'brooklyn',
-				'Bronx' => 'bronx',
-				'Manhattan' => 'manhattan',
-				'Queens' => 'queens',
-				'Staten Island' => 'statenisland',
-			),
-			'field_57058bf68c3b6' => array(
-				'Open' => 'accepting - open',
-				'Limited' => 'accepting - limited',
-				'Closed' => 'accepting - closed',
-			),
-		),
-		'arrayMulti' => array(
-			'field_570d7e766b64f' => array(
-				'Brooklyn' => 'brooklyn neighborhoods',
-				'Bronx' => 'bronx neighborhoods',
-				'Manhattan' => 'manhattan neighborhoods',
-				'Queens' => 'queens neighborhoods',
-				'Staten Island' => 'staten island neighborhoods',
-			),
-		),
-		'array' => array(
-			'field_57058d1a453c5' => 'target population',
-			'field_570592ca24d14' => 'grades served',
-			'field_570593872b93a' => 'services offered',
+		'checkbox' => array(
+			'field_57832f5dad1dd' => 'Borough',
+			'field_578322d199633' => 'Neighborhoods',
+			'field_578324cf99634' => 'Education Levels Served',
+			'field_5783256c99635' => 'Targeted Populations Served',
+			'field_5783258799636' => 'Services Provided',
+			'field_578325c499637' => 'Services Provided2',
+			'field_5783261999638' => 'Eligibility Criteria',
+			'field_5783264b99639' => 'Eligibility Criteria2',
+			'field_578326e99963a' => 'Enrollment Type',
 		),
 	);
 
 	// iterate through field map and assign values to $postData
 	foreach ($fieldMap as $fieldType => $fieldList) {
-		foreach($fieldList as $fieldName => $fieldTranslation) {
+		foreach($fieldList as $fieldKey => $fieldLabel) {
 			if ($fieldType == 'text') {
-				$postData[$fieldName] = $rowPostData[$rowHeaderData[$fieldTranslation]];
-			} else if ($fieldType == 'boolean') {
-				$postData[$fieldName] = crc_gnsm_translate_field_boolean($fieldTranslation, $rowPostData, $rowHeaderData);
-			} else if ($fieldType == 'arrayMulti') {
-				$postData[$fieldName] = crc_gnsm_translate_field_arrayMulti($fieldTranslation, $rowPostData, $rowHeaderData);
-			} else if ($fieldType == 'array') {
-				$postData[$fieldName] = crc_gnsm_translate_field_array($rowPostData[$rowHeaderData[$fieldTranslation]]);
+				$postData[$fieldKey] = $rowPostData[$rowHeaderData[$fieldLabel]];
+			} else if ($fieldType == 'checkbox') {
+				$postData[$fieldKey] = crc_gnsm_translate_field_checkbox($fieldLabel, $rowHeaderData, $rowPostData);
 			}
 		}
 	}
@@ -94,29 +84,14 @@ function crc_gnsm_translate_row($rowPostData, $rowHeaderData) {
 	return $postData;
 }
 
-function crc_gnsm_translate_field_boolean($fieldValue, $rowPostData, $rowHeaderData) {
-	$valueArray = array();
+function crc_gnsm_translate_field_checkbox($fieldLabel, $rowHeaderData, $rowPostData) {
+	$matchingIndices = array();
 
-	foreach($fieldValue as $title => $reference) {
-		if ($rowPostData[$rowHeaderData[$reference]] == 'TRUE') {
-			$valueArray[] = $title;
-		}
+	// get field values for each row with header prefix matching $fieldLabel
+	foreach ($rowHeaderData as $key => $val) {
+		$matchingIndices[] = $key;
 	}
-
-	return $valueArray;
-}
-
-function crc_gnsm_translate_field_arrayMulti($fieldValue, $rowPostData, $rowHeaderData) {
-	$fullArray = array();
-
-	foreach($fieldValue as $group => $reference) {
-		$partialArray = crc_gnsm_array_from_string_no_empties($rowPostData[$rowHeaderData[$reference]]);
-		foreach($partialArray as $value) {
-			$fullArray[] = $group . ' - ' . $value;
-		}
-	}
-
-	return $fullArray;
+	// if field value = 1, add row header suffix to value array
 }
 
 function crc_gnsm_translate_field_array($fieldValue) {
