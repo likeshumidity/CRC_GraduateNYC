@@ -500,6 +500,7 @@ function crc_gnsm_survey_results_listings_all() {
 			$neighborhoods = get_post_meta($thispost->ID, 'neighborhoods');
 			$grades_served = get_post_meta($thispost->ID, 'education_levels_served');
 			$target_population = get_post_meta($thispost->ID, 'targeted_populations_served');
+			$eligibility_criteria = get_post_meta($thispost->ID, 'eligibility_criteria');
 			$services = get_post_meta($thispost->ID, 'services_provided');
 			$accepting_students = get_post_meta($thispost->ID, 'enrollment_type');
 			$program_description = get_post_meta($thispost->ID, 'program_description');
@@ -517,6 +518,7 @@ function crc_gnsm_survey_results_listings_all() {
 				'neighborhoods' => $neighborhoods[0],
 				'grades' => $grades_served[0],
 				'target_population' => $target_population[0],
+				'eligibility_criteria' => $eligibility_criteria[0],
 				'services' => $services[0],
 				'accepting_students' => $accepting_students[0],
 				'program_description' => $program_description,
@@ -534,12 +536,6 @@ function crc_gnsm_survey_results_listings_all() {
 	wp_send_json($results);
 }
 
-
-// Add shortcode to display map
-function crc_gnyc_map_display() {
-	return 'x';
-}
-add_shortcode('crc-gnsm-map', 'crc_gnyc_map_display');
 
 function crc_gnsm_activate() {
 	// Register custom post types

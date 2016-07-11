@@ -118,7 +118,6 @@ var GNYC = {
             ],
             'defaultValue': 'All',
             'selected': 'All', 
-            'oldName': 'target-population',
         },
         'grades-served': {
             'dataSetName': 'grades',
@@ -148,7 +147,22 @@ var GNYC = {
             ],
             'defaultValue': 'All',
             'selected': 'All', 
-            'oldName': 'open-status',
+        },
+        'eligibility-criteria': {
+            'dataSetName': 'eligibility_criteria',
+            'type': 'radio',
+            'onMap': true,
+            'onListings': true,
+            'values': [
+                'All',
+                'Enrolled in school (K-12)',
+                'Enrolled in college',
+                'Resident of a particular geography',
+                'Grade level',
+                'Special populations (or targeted population)',
+            ],
+            'defaultValue': 'All', 
+            'selected': 'All',
         },
         'services': {
             'dataSetName': 'services',
@@ -220,7 +234,7 @@ GNYC.groups = {
 
 // Range of colors based on density
 GNYC.color = d3.scale.linear()
-    .domain([0, 60])
+    .domain([0, 32])
     .range(["white", "#2F5C61"]);
 
 
@@ -321,6 +335,7 @@ GNYC.createFilterFormFields = function(venue) {
     if ($.inArray(venue, this.venues) > -1) {
         for (var filter in this.filters) {
             if (GNYC.filters[filter]['on' + venue.substring(0, 1).toUpperCase() + venue.substring(1)]) {
+console.log(filter);
                 fieldSet = $('#' + this.filterToFieldID(filter, 'panel') + ' fieldset');
 
                 for (i = 0; i < this.filters[filter].values.length; i++) {
@@ -340,6 +355,7 @@ GNYC.createFilterFormFields = function(venue) {
                     fieldSet.append(fieldInput);
                     fieldInput = '';
                 } 
+console.log(fieldSet);
             }
         }
     } else {
