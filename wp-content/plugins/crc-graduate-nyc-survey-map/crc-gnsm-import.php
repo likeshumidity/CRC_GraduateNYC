@@ -80,7 +80,7 @@ function crc_gnsm_translate_row($rowPostData, $rowHeaderData, $headerCheckboxInd
 	foreach ($fieldMap as $fieldType => $fieldList) {
 		foreach($fieldList as $fieldKey => $fieldLabel) {
 			if ($fieldType == 'text') {
-				$postData[$fieldKey] = $rowPostData[$rowHeaderData[$fieldLabel]];
+				$postData[$fieldKey] = strval($rowPostData[$rowHeaderData[$fieldLabel]]);
 			} else if ($fieldType == 'checkbox') {
 				$postData[$fieldKey] = crc_gnsm_translate_field_checkbox($fieldLabel, $rowPostData, $headerCheckboxIndices);
 			}
@@ -97,7 +97,7 @@ function crc_gnsm_translate_field_checkbox($fieldLabel, $rowPostData, $headerChe
 	foreach ($headerCheckboxIndices[$fieldLabel] as $key => $val) {
 		// if field value = 1, add row header suffix to value array
 		if ($rowPostData[$val[0]] === '1') {
-			$postDataField[] = $val[1];
+			$postDataField[] = strval($val[1]);
 		}
 	}
 
@@ -113,12 +113,24 @@ function crc_gnsm_create_post($postData) {
 	$postArray['post_type'] = 'gnsm_listing';
 
 	if (get_page_by_title($postArray['post_title'], OBJECT, 'post') == null) {
-		$postID = wp_insert_post($postArray, true);
+		try {
+			$postID = wp_insert_post($postArray, true);
+		} catch (Exception $e) {
+			error_log($e->getMessage());
+		}
 
-		//Add Metadata
-		foreach($postData as $key => $val) {
-			if (substr($key, 0, 5) == 'field') {
-				update_field($key, $val, $postID);
+		if ($postID === 0) {
+			error_log(WP_Error::get_error_code());
+		} else {
+			//Add Metadata
+			foreach($postData as $key => $val) {
+				if (substr($key, 0, 5) == 'field') {
+					try{
+						update_field($key, $val, $postID);
+					} catch (Exception $e) {
+						error_log($e->getMessage());
+					}
+				}
 			}
 		}
 
