@@ -1,28 +1,24 @@
 <?php
-// error_reporting(E_ALL);
-// ini_set('display_errors', True);
+error_reporting(E_ALL);
+ini_set('display_errors', True);
 
 /**
  * @package crc-graduate-nyc-survey-map
  * @version 0.1
  * @author Carson Research Consulting (CRC)
  */
-/*
-Graduate NYC - Program Survey Map is licensed exclusively to Graduate NYC and cannot be used, redistributed or sold  except with their permission.
-*/
 
 function crc_gnsm_import_data($importFile) {
 	$importFile = CRC__GNSM_PLUGIN_DIR . $importFile;
 
 	$headers = array();
 	$row = 0;
-	if (($fh = fopen($importFile, 'r')) !== FALSE) {
-		while (($data = fgetcsv($fh, 0, ',', '"')) !== FALSE) {
+
+	if (($fh = fopen($importFile, 'r')) !== False) {
+		while (($data = fgetcsv($fh, 0, ',', '"')) !== False) {
 			if ($row == 0) {
 				// initialize for header row
-				$len = count($data);
-
-				for ($i = 0; $i < $len; $i++) {
+				for ($i = 0; $i < count($data); $i++) {
 					$headers[$data[$i]] = $i;
 				}
 			} else {
