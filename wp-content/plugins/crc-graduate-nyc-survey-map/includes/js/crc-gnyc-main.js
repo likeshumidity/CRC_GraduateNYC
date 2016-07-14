@@ -441,21 +441,68 @@ if (GNYC_VENUE === 'map') {
     };
 } else if (GNYC_VENUE === 'listings') {
 // listing setup
-// Load listings
-GNYC.loadListings = function() {
-    GNYC.listings = d3.select('ul.gnsm-program-listings')
-        .selectAll('li')
-//        .data(GNYC.data)
-        .data([1,2,3,4,5])
-        .enter()
-        .append('li')
-        .attr('class', 'program-listing')
-        .html('<strong>a test</strong>');
-console.log('loaded listings');
-console.log(GNYC.data);
+    // Load listings
+    GNYC.loadListings = function() {
+        GNYC.listings = d3.select('ul.gnsm-program-listings')
+            .selectAll('li')
+            .data(GNYC.objToSortedArray(GNYC.getFilteredData(GNYC.data)))
+    //        .data([1,2,3,4,5])
+            .enter()
+            .append('li')
+            .attr('class', 'program-listing')
+            .html(function(d) {
+                return GNYC.listingItemHTML(d);
+            });
+    }
+
+    GNYC.listingItemHTML = function(item) {
+        var htmlSnippet = '<li class="program-listing">';
+        htmlSnippet += '<div class="title">' + item.program_name + '</div>';
+        htmlSnippet += '<div class="phone">' + item.contact_phone + '</div>';
+        htmlSnippet += '<div class="physical-address">';
+        htmlSnippet += '<span class="google-map-link">';
+//        htmlSnippet += '<a href="' + GNYC.googleMapLink(item) + '">';
+        htmlSnippet += '<a href="">';
+        htmlSnippet += '<img src="../wp-content/plugins/crc-graduate-nyc-survey-map/includes/static/google-maps-logo.png" alt="Google Maps Link" width="20" height="20" />';
+        htmlSnippet += '<span class="line-1">' + item.address_line_1 + '</span>';
+        htmlSnippet += ', ';
+        htmlSnippet += '<span class="line-2">' + item.address_line_2 + '</span>';
+        htmlSnippet += ', ';
+        htmlSnippet += '<span class="city">' + item.address_city + '</span>';
+        htmlSnippet += ', ';
+        htmlSnippet += '<span class="state">' + item.address_state + '</span>';
+        htmlSnippet += '<span class="postal-code">' + item.address_postal_code + '</span>';
+        htmlSnippet += '</a>';
+        htmlSnippet += '</span>';
+        htmlSnippet += '</div>';
+        htmlSnippet += '<p class="program-description">' + item.program_description + '</p>';
+        htmlSnippet += '</li>';
+
+        return htmlSnippet;
+    };
 }
 
-}
+
+// get filtered data sorted alphabetically in an array
+GNYC.objToSortedArray = function(filteredData) {
+    var filteredDataArray = [];
+
+    for (var item in filteredData) {
+        if (filteredData.hasOwnProperty(item)) {
+            filteredDataArray.push(filteredData[item]);
+        }
+    }
+
+    return filteredDataArray.sort(function(a,b) {
+        if (a.program_name < b.program_name) {
+            return -1;
+        } else if (a.program_name > b.program_name) {
+            return 1;
+        } else {
+            return 0;
+        }
+    });
+};
 
 
 // Get dataset
@@ -466,8 +513,12 @@ GNYC.loadDataset = function() {
         }
 
         GNYC.data = json;
-        GNYC.setBoroughDensity(GNYC.getFilteredData(GNYC.data));
-console.log('data loaded');
+
+        if (GNYC.venue === 'map') {
+            GNYC.setBoroughDensity(GNYC.getFilteredData(GNYC.data));
+        } else if (GNYC.venue === 'listings') {
+            GNYC.loadListings();
+        }
     });
 };
 
@@ -704,7 +755,6 @@ $(document).ready(function () {
             GNYC.loadMapBoroughs();
             GNYC.loadMapNeighborhoods();
 //        } else if (GNYC.venue === 'listings') {
-//            GNYC.loadListings();
         }
 
         // Create form filter fields
