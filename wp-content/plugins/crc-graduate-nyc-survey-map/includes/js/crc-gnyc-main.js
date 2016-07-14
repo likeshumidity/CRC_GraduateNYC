@@ -77,6 +77,13 @@ var GNYC = {
         },
         "parameters": {},
     },
+    'addressParts': [
+        ['address_line_1', 0],
+        ['address_line_2', 1],
+        ['address_city', 1],
+        ['address_state', 1],
+        ['address_postal_code', 2],
+    ],
     'filters': {
         'boroughs': {
             'dataSetName': 'boroughs',
@@ -446,7 +453,6 @@ if (GNYC_VENUE === 'map') {
         GNYC.listings = d3.select('ul.gnsm-program-listings')
             .selectAll('li')
             .data(GNYC.objToSortedArray(GNYC.getFilteredData(GNYC.data)))
-    //        .data([1,2,3,4,5])
             .enter()
             .append('li')
             .attr('class', 'program-listing')
@@ -457,15 +463,25 @@ if (GNYC_VENUE === 'map') {
             $('.post-count').text(GNYC.objToSortedArray(GNYC.getFilteredData(GNYC.data)).length + ' matching programs');
     }
 
-    GNYC.listingItemHTML = function(item) {
-        var addressParts = [
-            ['address_line_1', 0],
-            ['address_line_2', 1],
-            ['address_city', 1],
-            ['address_state', 1],
-            ['address_postal_code', 2],
-        ];
+    GNYC.updateListings = function() {
+        $('ul.gnsm-program-listings').html('');
 
+        GNYC.listings = d3.select('ul.gnsm-program-listings')
+            .selectAll('li')
+            .data(GNYC.objToSortedArray(GNYC.getFilteredData(GNYC.data)))
+            .enter()
+            .append('li')
+            .attr('class', 'program-listing')
+            .html(function(d) {
+                return GNYC.listingItemHTML(d);
+            });
+
+            $('.post-count').text(GNYC.objToSortedArray(GNYC.getFilteredData(GNYC.data)).length + ' matching programs');
+
+//            GNYC.listings.exit().remove();
+    };
+
+    GNYC.listingItemHTML = function(item) {
         var htmlSnippet = '<li class="program-listing">';
         htmlSnippet += '<div class="title">' + item.program_name + '</div>';
         htmlSnippet += '<div class="phone">' + item.contact_phone + '</div>';
@@ -474,9 +490,9 @@ if (GNYC_VENUE === 'map') {
         htmlSnippet += '<a href="' + GNYC.googleMapLink(item) + '">';
         htmlSnippet += '<img src="../wp-content/plugins/crc-graduate-nyc-survey-map/includes/static/google-maps-logo.png" alt="Google Maps Link" width="20" height="20" />';
 
-        for (var i = 0; i < addressParts.length; i++) {
+        for (var i = 0; i < GNYC.addressParts.length; i++) {
             var addressPart = {
-                "class": addressParts[i][0].substring(8).replace(/_/, '-'),
+                "class": GNYC.addressParts[i][0].substring(8).replace(/_/, '-'),
                 "prefix": (function(hasPrefix) {
                     if (hasPrefix === 1) {
                         return ', ';
@@ -485,13 +501,13 @@ if (GNYC_VENUE === 'map') {
                     } else {
                         return '';
                     }
-                })(addressParts[i][1]),
+                })(GNYC.addressParts[i][1]),
             };
 
-            if (item[addressParts[i][0]][0].trim().length > 0) {
+            if (item[GNYC.addressParts[i][0]][0].trim().length > 0) {
                 htmlSnippet += '<span class="' + addressPart['class'] + '">';
                 htmlSnippet += addressPart.prefix;
-                htmlSnippet += item[addressParts[i][0]][0].trim();
+                htmlSnippet += item[GNYC.addressParts[i][0]][0].trim();
                 htmlSnippet += '</span>';
             }
         }
@@ -507,25 +523,19 @@ if (GNYC_VENUE === 'map') {
 
     GNYC.googleMapLink = function(item) {
         var baseURL = 'https://www.google.com/maps/place/',
-            query = '',
-            addressParts = [
-            ['address_line_1', 0],
-            ['address_line_2', 1],
-            ['address_city', 1],
-            ['address_state', 1],
-            ['address_postal_code', 2],
-        ];
+            query = '';
 
-        for (var i = 0; i < addressParts.length; i++) {
-            if (item[addressParts[i][0]][0].trim().length > 0) {
-                if (addressParts[i][1] === 1) {
+        for (var i = 0; i < GNYC.addressParts.length; i++) {
+            if (item[GNYC.addressParts[i][0]][0].trim().length > 0) {
+                if (GNYC.addressParts[i][1] === 1) {
                     query += ', ';
-                } else if (addressParts[i][1] === 2) {
+                } else if (GNYC.addressParts[i][1] === 2) {
                     query += ' ';
                 } else {
                     query += '';
                 }
-                query += item[addressParts[i][0]][0].trim();
+
+                query += item[GNYC.addressParts[i][0]][0].trim();
             }
         }
 
@@ -778,10 +788,13 @@ GNYC.createFormEventListeners = function() {
 
                 GNYC.url.parameters[thisFilter] = GNYC.filters[thisFilter].selected.slice();
                 GNYC.filters[thisFilter].selected = GNYC.filters[thisFilter].selected.slice();
+
                 if (GNYC.venue === 'map') {
                     GNYC.setBoroughDensity(GNYC.getFilteredData(GNYC.data));
                 } else if (GNYC.venue === 'listings') {
+                     GNYC.updateListings();
                 }
+
                 GNYC.updateBreadcrumbs(thisFilter);
             });
         }
