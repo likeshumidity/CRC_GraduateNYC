@@ -453,6 +453,8 @@ if (GNYC_VENUE === 'map') {
             .html(function(d) {
                 return GNYC.listingItemHTML(d);
             });
+
+            $('.post-count').text(GNYC.objToSortedArray(GNYC.getFilteredData(GNYC.data)).length + ' matching programs');
     }
 
     GNYC.listingItemHTML = function(item) {
@@ -461,7 +463,7 @@ if (GNYC_VENUE === 'map') {
             ['address_line_2', 1],
             ['address_city', 1],
             ['address_state', 1],
-            ['address_postal_code', 0],
+            ['address_postal_code', 2],
         ];
 
         var htmlSnippet = '<li class="program-listing">';
@@ -469,8 +471,7 @@ if (GNYC_VENUE === 'map') {
         htmlSnippet += '<div class="phone">' + item.contact_phone + '</div>';
         htmlSnippet += '<div class="physical-address">';
         htmlSnippet += '<span class="google-map-link">';
-//        htmlSnippet += '<a href="' + GNYC.googleMapLink(item) + '">';
-        htmlSnippet += '<a href="">';
+        htmlSnippet += '<a href="' + GNYC.googleMapLink(item) + '">';
         htmlSnippet += '<img src="../wp-content/plugins/crc-graduate-nyc-survey-map/includes/static/google-maps-logo.png" alt="Google Maps Link" width="20" height="20" />';
 
         for (var i = 0; i < addressParts.length; i++) {
@@ -479,6 +480,8 @@ if (GNYC_VENUE === 'map') {
                 "prefix": (function(hasPrefix) {
                     if (hasPrefix === 1) {
                         return ', ';
+                    } else if (hasPrefix === 2) {
+                        return ' ';
                     } else {
                         return '';
                     }
@@ -488,7 +491,7 @@ if (GNYC_VENUE === 'map') {
             if (item[addressParts[i][0]][0].trim().length > 0) {
                 htmlSnippet += '<span class="' + addressPart['class'] + '">';
                 htmlSnippet += addressPart.prefix;
-                htmlSnippet += item[addressParts[i][0]];
+                htmlSnippet += item[addressParts[i][0]][0].trim();
                 htmlSnippet += '</span>';
             }
         }
@@ -500,6 +503,33 @@ if (GNYC_VENUE === 'map') {
         htmlSnippet += '</li>';
 
         return htmlSnippet;
+    };
+
+    GNYC.googleMapLink = function(item) {
+        var baseURL = 'https://www.google.com/maps/place/',
+            query = '',
+            addressParts = [
+            ['address_line_1', 0],
+            ['address_line_2', 1],
+            ['address_city', 1],
+            ['address_state', 1],
+            ['address_postal_code', 2],
+        ];
+
+        for (var i = 0; i < addressParts.length; i++) {
+            if (item[addressParts[i][0]][0].trim().length > 0) {
+                if (addressParts[i][1] === 1) {
+                    query += ', ';
+                } else if (addressParts[i][1] === 2) {
+                    query += ' ';
+                } else {
+                    query += '';
+                }
+                query += item[addressParts[i][0]][0].trim();
+            }
+        }
+
+        return baseURL + encodeURIComponent(query);
     };
 }
 
