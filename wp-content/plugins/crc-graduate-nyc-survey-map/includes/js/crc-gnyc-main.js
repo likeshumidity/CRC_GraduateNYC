@@ -32,39 +32,6 @@ var GETURIRequest = {
             return false;
         }
     },
-    'encode': function (parameters, baseURL) {
-        // accepts object in the same format as the output of GETURIRequest.decode
-        // returns string that can be appended to URI
-        var URIsearch = '',
-            key = '',
-            i = 0,
-            isFirst = true;
-    
-        for (var keyArray in parameters) {
-            if (parameters.hasOwnProperty(keyArray)) {
-    //        if (parameters.hasOwnProperty(keyArray) && parameters[keyArray] !== null) {
-    //            console.log(parameters);
-                key = encodeURIComponent(keyArray);
-    
-                for (i = 0; i < parameters[keyArray].length; i++) {
-                    if (isFirst) {
-                        URIsearch += '?';
-                        isFirst = false;
-                    } else {
-                        URIsearch += '&';
-                    }
-                    URIsearch += key.replace(/ /g, '+');
-                    if (parameters[keyArray].length > 1) {
-                            URIsearch += '%5B%5D';
-                    }
-                    URIsearch += '=';
-                    URIsearch += encodeURIComponent(parameters[keyArray][i]).replace(/ /g, '+');
-                }
-            }
-        }
-    
-        return baseURL + URIsearch;
-    },
 };
 
 
@@ -75,7 +42,6 @@ var GNYC = {
         "basePath": function() {
             return this.base + this.rootPath + '/';
         },
-        "parameters": {},
     },
     'addressParts': [
         ['address_line_1', 0],
@@ -586,7 +552,7 @@ GNYC.loadDataset = function() {
 
 // Set filters based on URI
 GNYC.processURI = function() {
-    if (GETURIRequest.decode()) {
+    if (location.search.length > 0) {
         GNYC.url.parameters = GETURIRequest.decode();
 
         for (var filter in GNYC.filters) {
@@ -603,6 +569,55 @@ GNYC.processURI = function() {
     } else {
         return false;
     }
+}
+
+
+// Update link to other venue
+GNYC.updateLinkToOtherVenue = function() {
+    var otherVenue = '',
+        baseURL = '',
+        query = '?',
+        isFirst = true;
+
+    if (GNYC.venue === 'map') {
+        otherVenue = 'listings';
+    } else if (GNYC.venue === 'listings') {
+        otherVenue = 'map';
+    }
+
+    baseURL = $('.link-to-' + otherVenue + ' a').attr('href').split('?')[0];
+
+    for (var filter in GNYC.filters) {
+        if (GNYC.filters.hasOwnProperty(filter)) {
+            if (typeof GNYC.filters[filter].selected === 'string') {
+                if (GNYC.filters[filter].selected !== GNYC.filters[filter].defaultValue) {
+                    if (isFirst === true) {
+                        isFirst = false;
+                    } else {
+                        query += '&';
+                    }
+
+                    query += encodeURIComponent(filter);
+                    query += '=';
+                    query += encodeURIComponent(GNYC.filters[filter].selected);
+                }
+            } else {
+                for (var i = 0; i < GNYC.filters[filter].selected.length; i++) {
+                    if (isFirst === true) {
+                        isFirst = false;
+                    } else {
+                        query += '&';
+                    }
+
+                    query += encodeURIComponent(filter) + '%5B%5D';
+                    query += '=';
+                    query += encodeURIComponent(GNYC.filters[filter].selected);
+                }
+            }
+        }
+    }
+
+    $('.link-to-' + otherVenue + ' a').attr('href', baseURL + query);
 }
 
 
@@ -646,10 +661,8 @@ GNYC.setDefaults = function() {
     for (var filter in GNYC.filters) {
         if (GNYC.filters.hasOwnProperty(filter)) {
             if (GNYC.filters[filter].type === 'checkbox') {
-                GNYC.url.parameters[filter] = GNYC.filters[filter].defaultValue;
                 GNYC.filters[filter].selected = GNYC.filters[filter].defaultValue;
             } else if (GNYC.filters[filter].type === 'radio') {
-                GNYC.url.parameters[filter] = [GNYC.filters[filter].defaultValue];
                 GNYC.filters[filter].selected = GNYC.filters[filter].defaultValue;
             } else {
                 console.warn('ERROR: INVALID FILTER TYPE: in setDefaults()');
@@ -786,7 +799,6 @@ GNYC.createFormEventListeners = function() {
                     }
                 });
 
-                GNYC.url.parameters[thisFilter] = GNYC.filters[thisFilter].selected.slice();
                 GNYC.filters[thisFilter].selected = GNYC.filters[thisFilter].selected.slice();
 
                 if (GNYC.venue === 'map') {
@@ -796,6 +808,7 @@ GNYC.createFormEventListeners = function() {
                 }
 
                 GNYC.updateBreadcrumbs(thisFilter);
+                GNYC.updateLinkToOtherVenue();
             });
         }
     }
@@ -818,7 +831,6 @@ $(document).ready(function () {
         if (GNYC.venue === 'map') {
             GNYC.loadMapBoroughs();
             GNYC.loadMapNeighborhoods();
-//        } else if (GNYC.venue === 'listings') {
         }
 
         // Create form filter fields
@@ -831,15 +843,9 @@ $(document).ready(function () {
 
         GNYC.updateFilterFieldSelections();
 
-        // Update results (map/listings and link-to-other-venue)
-        // Update listings (and link-to-map)
-        // div.link-to-listings a ... set href = new value when changing selectors
-        $('.link-to-listings').click(function () {
-            window.location.href = GETURIRequest.encode(GNYC.url.parameters, GNYC.url.basePath() + 'gnsm_listing/');
-        });
-
         // Create form event listeners
         GNYC.createFormEventListeners();
+        GNYC.updateLinkToOtherVenue();
     } else {
       // DO NOTHING
     }
