@@ -456,6 +456,14 @@ if (GNYC_VENUE === 'map') {
     }
 
     GNYC.listingItemHTML = function(item) {
+        var addressParts = [
+            ['address_line_1', 0],
+            ['address_line_2', 1],
+            ['address_city', 1],
+            ['address_state', 1],
+            ['address_postal_code', 0],
+        ];
+
         var htmlSnippet = '<li class="program-listing">';
         htmlSnippet += '<div class="title">' + item.program_name + '</div>';
         htmlSnippet += '<div class="phone">' + item.contact_phone + '</div>';
@@ -464,14 +472,27 @@ if (GNYC_VENUE === 'map') {
 //        htmlSnippet += '<a href="' + GNYC.googleMapLink(item) + '">';
         htmlSnippet += '<a href="">';
         htmlSnippet += '<img src="../wp-content/plugins/crc-graduate-nyc-survey-map/includes/static/google-maps-logo.png" alt="Google Maps Link" width="20" height="20" />';
-        htmlSnippet += '<span class="line-1">' + item.address_line_1 + '</span>';
-        htmlSnippet += ', ';
-        htmlSnippet += '<span class="line-2">' + item.address_line_2 + '</span>';
-        htmlSnippet += ', ';
-        htmlSnippet += '<span class="city">' + item.address_city + '</span>';
-        htmlSnippet += ', ';
-        htmlSnippet += '<span class="state">' + item.address_state + '</span>';
-        htmlSnippet += '<span class="postal-code">' + item.address_postal_code + '</span>';
+
+        for (var i = 0; i < addressParts.length; i++) {
+            var addressPart = {
+                "class": addressParts[i][0].substring(8).replace(/_/, '-'),
+                "prefix": (function(hasPrefix) {
+                    if (hasPrefix === 1) {
+                        return ', ';
+                    } else {
+                        return '';
+                    }
+                })(addressParts[i][1]),
+            };
+
+            if (item[addressParts[i][0]][0].trim().length > 0) {
+                htmlSnippet += '<span class="' + addressPart['class'] + '">';
+                htmlSnippet += addressPart.prefix;
+                htmlSnippet += item[addressParts[i][0]];
+                htmlSnippet += '</span>';
+            }
+        }
+
         htmlSnippet += '</a>';
         htmlSnippet += '</span>';
         htmlSnippet += '</div>';
