@@ -196,46 +196,141 @@ var GNYC = {
 };
 
 
-// Build map structure
-GNYC.map.tooltip = d3.select("body")
-    .append("div")
-    .attr("class", "tooltip")
-    .style("opacity", 0);
+if (GNYC_VENUE === 'map') {
+    // Build map structure
+    GNYC.map.tooltip = d3.select("body")
+        .append("div")
+        .attr("class", "tooltip")
+        .style("opacity", 0);
+    
+    d3.select(".map")
+        .append("div")
+        .classed("svg-container", true);
+    
+    GNYC.svg = d3.select(".svg-container").append("svg")
+        .attr("preserveAspectRatio", "xMinYMin meet")
+        .attr("viewBox", "0 0 " + GNYC.map.width + " " + GNYC.map.height)
+        .classed("svg-content-responsive", true);
+    
+    GNYC.projection = d3.geo.mercator()
+        .center([-73.94, 40.70])
+        .scale(50000)
+        .translate([(GNYC.map.width) / 2, (GNYC.map.height) / 2]);
+    
+    GNYC.path = d3.geo.path()
+        .projection(GNYC.projection)
+    
+    GNYC.svg.append("rect")
+        .attr("class", "background")
+        .attr("width", GNYC.map.width)
+        .attr("height", GNYC.map.height)
+        .on("click", function() {
+            GNYC.reset();
+        });
+    
+    GNYC.groups = {
+        "neighborhoods": GNYC.svg.append("g"),
+        "boroughs": GNYC.svg.append("g"),
+    };
 
-d3.select(".map")
-    .append("div")
-    .classed("svg-container", true);
+    // Range of colors based on density
+    GNYC.color = d3.scale.linear()
+        .domain([0, 35])
+        .range(["white", "#2F5C61"]);
 
-GNYC.svg = d3.select(".svg-container").append("svg")
-    .attr("preserveAspectRatio", "xMinYMin meet")
-    .attr("viewBox", "0 0 " + GNYC.map.width + " " + GNYC.map.height)
-    .classed("svg-content-responsive", true);
 
-GNYC.projection = d3.geo.mercator()
-    .center([-73.94, 40.70])
-    .scale(50000)
-    .translate([(GNYC.map.width) / 2, (GNYC.map.height) / 2]);
+    // Get borough outlines
+    GNYC.loadMapBoroughs = function() {
+        d3.json("../wp-content/plugins/crc-graduate-nyc-survey-map/includes/static/Boroughs.json", function (error, borough) {
+            GNYC.groups.boroughs.selectAll(".borough")
+                .data(topojson.feature(borough, borough.objects.Boroughs).features)
+                .enter().append("path")
+                .attr("class", "borough")
+                .attr("id", function (d) {
+                    return d.properties.boroname;
+                })
+                .attr("d", GNYC.path)
+                .on("mouseover", function (d) {
+                    GNYC.map.tooltip.transition()
+                        .duration(500)
+                        .style("opacity", 0);
+                    GNYC.map.tooltip.transition()
+                        .duration(200)
+                        .style("opacity", 1);
+                    GNYC.map.tooltip.html('<b>' + d.properties.boroname + '</b>')
+                        .style("left", (d3.event.pageX) + "px")
+                        .style("top", (d3.event.pageY - 28) + "px");
+                })
+                .on("mouseleave", function (d) {
+                    GNYC.map.tooltip.transition()
+                        .duration(200)
+                        .style("opacity", 0);
+                })
+                .on("click", GNYC.clicked)
+        });
+    };
+    
+    
+    // Get neighborhood outlines
+    GNYC.loadMapNeighborhoods = function() {
+        d3.json("../wp-content/plugins/crc-graduate-nyc-survey-map/includes/static/NTA.json", function (error, nta) {
+            GNYC.groups.neighborhoods.selectAll(".neighborhood")
+                .data(topojson.feature(nta, nta.objects.NTA).features)
+                .enter().append("path")
+                .attr("class", "neighborhood")
+                .attr("id", function (d) {
+                    return d.properties.ntaname;
+                })
+                .attr("d", GNYC.path)
+                .style('fill', function(d) {
+                    return GNYC.getDensityColor(d);
+                })
+                .style('stroke-width', '.5px')
+                .style("stroke", "#cecece")
+                .style("pointer-events", 'none');
+        });
+    };
 
-GNYC.path = d3.geo.path()
-    .projection(GNYC.projection)
 
-GNYC.svg.append("rect")
-    .attr("class", "background")
-    .attr("width", GNYC.map.width)
-    .attr("height", GNYC.map.height)
-    .on("click", function() {
-        GNYC.reset();
-    });
-
-GNYC.groups = {
-    "neighborhoods": GNYC.svg.append("g"),
-    "boroughs": GNYC.svg.append("g"),
-};
-
-// Range of colors based on density
-GNYC.color = d3.scale.linear()
-    .domain([0, 35])
-    .range(["white", "#2F5C61"]);
+    GNYC.setBoroughDensity = function (data) {
+        for (borough in GNYC.filters.boroughs.density) {
+            GNYC.filters.boroughs.density[borough] = {};
+        }
+    
+        for (var borough in GNYC.filters.boroughs.density) {
+            for (var program in data) {
+                if (data[program].boroughs.indexOf(borough) >= -1) {
+                    for (var i = 0; i < data[program].neighborhoods.length; i++) {
+                        if (data[program].neighborhoods[i].indexOf(borough) > -1) {
+                            if (data[program].neighborhoods[i] in GNYC.filters.boroughs.density[borough]) {
+                                GNYC.filters.boroughs.density[borough][data[program].neighborhoods[i]] += 1;
+                            } else {
+                                GNYC.filters.boroughs.density[borough][data[program].neighborhoods[i]] = 1;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    
+        GNYC.updateMap();
+    }
+    
+    
+    GNYC.getDensityColor = function(d) {
+        for (var neighborhoodBorough in GNYC.filters.boroughs.density[d.properties.boroname]) {
+            var neighborhood = neighborhoodBorough.split(' - ')[1];
+    
+            if (d.properties.ntaname.indexOf(neighborhood) > -1) {
+                d.density = GNYC.filters.boroughs.density[d.properties.boroname][neighborhoodBorough];
+    
+                return GNYC.color(GNYC.filters.boroughs.density[d.properties.boroname][neighborhoodBorough]);
+            }
+        }
+    
+        return GNYC.color(0);
+    };
+}
 
 
 // Get dataset
@@ -276,11 +371,10 @@ GNYC.processURI = function() {
 
 // Load listings
 GNYC.loadListings = function() {
-    GNYC.listings = d3.select('div.crc-gnsm-results-container')
-        .append('ul')
-        .attr('class', 'gnsm-program-listings')
+    GNYC.listings = d3.select('ul.gnsm-program-listings')
         .selectAll('li')
-        .data(GNYC.data)
+//        .data(GNYC.data)
+        .data([1,2,3,4,5])
         .enter()
         .append('li')
         .attr('class', 'program-listing')
@@ -289,58 +383,6 @@ console.log('loaded listings');
 console.log(GNYC.data);
 }
 
-
-// Get borough outlines
-GNYC.loadMapBoroughs = function() {
-    d3.json("../wp-content/plugins/crc-graduate-nyc-survey-map/includes/static/Boroughs.json", function (error, borough) {
-        GNYC.groups.boroughs.selectAll(".borough")
-            .data(topojson.feature(borough, borough.objects.Boroughs).features)
-            .enter().append("path")
-            .attr("class", "borough")
-            .attr("id", function (d) {
-                return d.properties.boroname;
-            })
-            .attr("d", GNYC.path)
-            .on("mouseover", function (d) {
-                GNYC.map.tooltip.transition()
-                    .duration(500)
-                    .style("opacity", 0);
-                GNYC.map.tooltip.transition()
-                    .duration(200)
-                    .style("opacity", 1);
-                GNYC.map.tooltip.html('<b>' + d.properties.boroname + '</b>')
-                    .style("left", (d3.event.pageX) + "px")
-                    .style("top", (d3.event.pageY - 28) + "px");
-            })
-            .on("mouseleave", function (d) {
-                GNYC.map.tooltip.transition()
-                    .duration(200)
-                    .style("opacity", 0);
-            })
-            .on("click", GNYC.clicked)
-    });
-};
-
-
-// Get neighborhood outlines
-GNYC.loadMapNeighborhoods = function() {
-    d3.json("../wp-content/plugins/crc-graduate-nyc-survey-map/includes/static/NTA.json", function (error, nta) {
-        GNYC.groups.neighborhoods.selectAll(".neighborhood")
-            .data(topojson.feature(nta, nta.objects.NTA).features)
-            .enter().append("path")
-            .attr("class", "neighborhood")
-            .attr("id", function (d) {
-                return d.properties.ntaname;
-            })
-            .attr("d", GNYC.path)
-            .style('fill', function(d) {
-                return GNYC.getDensityColor(d);
-            })
-            .style('stroke-width', '.5px')
-            .style("stroke", "#cecece")
-            .style("pointer-events", 'none');
-    });
-};
 
 
 // Create filter form fields
@@ -418,46 +460,6 @@ GNYC.updateFilterFieldSelections = function () {
             }
         });
     }
-};
-
-
-GNYC.setBoroughDensity = function (data) {
-    for (borough in GNYC.filters.boroughs.density) {
-        GNYC.filters.boroughs.density[borough] = {};
-    }
-
-    for (var borough in GNYC.filters.boroughs.density) {
-        for (var program in data) {
-            if (data[program].boroughs.indexOf(borough) >= -1) {
-                for (var i = 0; i < data[program].neighborhoods.length; i++) {
-                    if (data[program].neighborhoods[i].indexOf(borough) > -1) {
-                        if (data[program].neighborhoods[i] in GNYC.filters.boroughs.density[borough]) {
-                            GNYC.filters.boroughs.density[borough][data[program].neighborhoods[i]] += 1;
-                        } else {
-                            GNYC.filters.boroughs.density[borough][data[program].neighborhoods[i]] = 1;
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    GNYC.updateMap();
-}
-
-
-GNYC.getDensityColor = function(d) {
-    for (var neighborhoodBorough in GNYC.filters.boroughs.density[d.properties.boroname]) {
-        var neighborhood = neighborhoodBorough.split(' - ')[1];
-
-        if (d.properties.ntaname.indexOf(neighborhood) > -1) {
-            d.density = GNYC.filters.boroughs.density[d.properties.boroname][neighborhoodBorough];
-
-            return GNYC.color(GNYC.filters.boroughs.density[d.properties.boroname][neighborhoodBorough]);
-        }
-    }
-
-    return GNYC.color(0);
 };
 
 
