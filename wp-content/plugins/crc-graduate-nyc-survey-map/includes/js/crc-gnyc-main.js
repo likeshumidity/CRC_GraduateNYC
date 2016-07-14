@@ -197,6 +197,7 @@ var GNYC = {
 
 
 if (GNYC_VENUE === 'map') {
+// map setup
     // Build map structure
     GNYC.map.tooltip = d3.select("body")
         .append("div")
@@ -330,6 +331,130 @@ if (GNYC_VENUE === 'map') {
     
         return GNYC.color(0);
     };
+
+
+    // onClick action for boroughs in map
+    GNYC.clicked = function(d) {
+        var curBoro = d.properties.boroname;
+    
+        if (GNYC.map.active.node() === this) return GNYC.reset();
+        GNYC.map.active.classed("active", false);
+        GNYC.map.active = d3.select(this).classed("active", true);
+    
+        var bounds = GNYC.path.bounds(d),
+            dx = bounds[1][0] - bounds[0][0],
+            dy = bounds[1][1] - bounds[0][1],
+            x = (bounds[0][0] + bounds[1][0]) / 2,
+            y = (bounds[0][1] + bounds[1][1]) / 2,
+            scale = .5 / Math.max(dx / GNYC.map.width, dy / GNYC.map.height),
+            translate = [GNYC.map.width / 2 - scale * x, (GNYC.map.height / 2 - scale * y) - 10];
+    
+        if (curBoro === 'Queens') {
+            scale += .5;
+            translate = [translate[0] * 2.5, translate[1] * 3.25];
+        }
+    
+        d3.select(".background")
+            .attr("cursor", "zoom-out")
+    
+        GNYC.map.tooltip.transition()
+            .duration(200)
+            .style("opacity", 0);
+    
+        GNYC.groups.boroughs.transition()
+            .duration(750)
+            .style("stroke-width", 1.5 / scale + "px")
+            .attr("transform", "translate(" + translate + ")scale(" + scale + ")")
+    
+        GNYC.groups.neighborhoods.transition()
+            .duration(750)
+            .style("stroke-width", 1.5 / scale + "px")
+            .attr("transform", "translate(" + translate + ")scale(" + scale + ")")
+    
+        GNYC.groups.neighborhoods.selectAll(".neighborhood")
+            .style("pointer-events", function (d) {
+                if (d.properties.boroname === curBoro) {
+                    return 'all';
+                } else {
+                    return 'none';
+                }
+            })
+            .on("mouseenter", function (d) {
+                if (d.density != undefined) {
+                    GNYC.map.tooltip.transition()
+                        .duration(500)
+                        .style("opacity", 0);
+                    GNYC.map.tooltip.transition()
+                        .duration(200)
+                        .style("opacity", 1);
+                    GNYC.map.tooltip.html('<strong>' + d.properties.ntaname + ': </strong>' + d.density)
+                        .style("left", (d3.event.pageX) + "px")
+                        .style("top", (d3.event.pageY - 28) + "px");
+                }
+            })
+            .on("mouseleave", function (d) {
+                GNYC.map.tooltip.transition()
+                    .duration(200)
+                    .style("opacity", 0);
+            })
+            .on("click", function () {
+                if (d.density != undefined) {
+                    GNYC.map.tooltip.transition()
+                        .duration(500)
+                        .style("opacity", 0);
+                    GNYC.map.tooltip.transition()
+                        .duration(200)
+                        .style("opacity", .9);
+                    GNYC.map.tooltip.html('<strong>' + d.properties.ntaname + ': </strong>' + d.density)
+                        .style("left", (d3.event.pageX) + "px")
+                        .style("top", (d3.event.pageY - 28) + "px");
+                }
+            })
+    }
+    
+    GNYC.reset = function() {
+        GNYC.map.active.classed("active", false);
+        GNYC.map.active = d3.select(null);
+    
+        d3.select(".background")
+            .attr("cursor", "default")
+    
+        GNYC.groups.boroughs.transition()
+            .duration(750)
+            .style("stroke-width", "1.5px")
+            .attr("transform", "");
+        GNYC.groups.neighborhoods.transition()
+            .duration(750)
+            .attr("transform", "");
+    
+        GNYC.groups.neighborhoods.selectAll(".neighborhood")
+            .style("pointer-events", 'none')
+    }
+
+
+    GNYC.updateMap = function () {
+        d3.selectAll('.neighborhood').transition()
+            .duration(750)
+            .style('fill', function(d) {
+                return GNYC.getDensityColor(d);
+        });
+    };
+} else if (GNYC_VENUE === 'listings') {
+// listing setup
+// Load listings
+GNYC.loadListings = function() {
+    GNYC.listings = d3.select('ul.gnsm-program-listings')
+        .selectAll('li')
+//        .data(GNYC.data)
+        .data([1,2,3,4,5])
+        .enter()
+        .append('li')
+        .attr('class', 'program-listing')
+        .html('<strong>a test</strong>');
+console.log('loaded listings');
+console.log(GNYC.data);
+}
+
 }
 
 
@@ -367,22 +492,6 @@ GNYC.processURI = function() {
         return false;
     }
 }
-
-
-// Load listings
-GNYC.loadListings = function() {
-    GNYC.listings = d3.select('ul.gnsm-program-listings')
-        .selectAll('li')
-//        .data(GNYC.data)
-        .data([1,2,3,4,5])
-        .enter()
-        .append('li')
-        .attr('class', 'program-listing')
-        .html('<strong>a test</strong>');
-console.log('loaded listings');
-console.log(GNYC.data);
-}
-
 
 
 // Create filter form fields
@@ -524,15 +633,6 @@ GNYC.getFilteredData = function (programsAll) {
 };
 
 
-GNYC.updateMap = function () {
-    d3.selectAll('.neighborhood').transition()
-        .duration(750)
-        .style('fill', function(d) {
-            return GNYC.getDensityColor(d);
-        });
-};
-
-
 // Update breadcrumbs
 GNYC.updateBreadcrumbs = function(thisFilter) {
     var theseBreadcrumbs = $('#' + this.filterToFieldID(thisFilter, 'panel') + ' p.breadcrumbs');
@@ -576,109 +676,16 @@ GNYC.createFormEventListeners = function() {
 
                 GNYC.url.parameters[thisFilter] = GNYC.filters[thisFilter].selected.slice();
                 GNYC.filters[thisFilter].selected = GNYC.filters[thisFilter].selected.slice();
-                GNYC.setBoroughDensity(GNYC.getFilteredData(GNYC.data));
+                if (GNYC.venue === 'map') {
+                    GNYC.setBoroughDensity(GNYC.getFilteredData(GNYC.data));
+                } else if (GNYC.venue === 'listings') {
+                }
                 GNYC.updateBreadcrumbs(thisFilter);
             });
         }
     }
 };
 
-GNYC.clicked = function(d) {
-    var curBoro = d.properties.boroname;
-
-    if (GNYC.map.active.node() === this) return GNYC.reset();
-    GNYC.map.active.classed("active", false);
-    GNYC.map.active = d3.select(this).classed("active", true);
-
-    var bounds = GNYC.path.bounds(d),
-        dx = bounds[1][0] - bounds[0][0],
-        dy = bounds[1][1] - bounds[0][1],
-        x = (bounds[0][0] + bounds[1][0]) / 2,
-        y = (bounds[0][1] + bounds[1][1]) / 2,
-        scale = .5 / Math.max(dx / GNYC.map.width, dy / GNYC.map.height),
-        translate = [GNYC.map.width / 2 - scale * x, (GNYC.map.height / 2 - scale * y) - 10];
-
-    if (curBoro === 'Queens') {
-        scale += .5;
-        translate = [translate[0] * 2.5, translate[1] * 3.25];
-    }
-
-    d3.select(".background")
-        .attr("cursor", "zoom-out")
-
-    GNYC.map.tooltip.transition()
-        .duration(200)
-        .style("opacity", 0);
-
-    GNYC.groups.boroughs.transition()
-        .duration(750)
-        .style("stroke-width", 1.5 / scale + "px")
-        .attr("transform", "translate(" + translate + ")scale(" + scale + ")")
-
-    GNYC.groups.neighborhoods.transition()
-        .duration(750)
-        .style("stroke-width", 1.5 / scale + "px")
-        .attr("transform", "translate(" + translate + ")scale(" + scale + ")")
-
-    GNYC.groups.neighborhoods.selectAll(".neighborhood")
-        .style("pointer-events", function (d) {
-            if (d.properties.boroname === curBoro) {
-                return 'all';
-            } else {
-                return 'none';
-            }
-        })
-        .on("mouseenter", function (d) {
-            if (d.density != undefined) {
-                GNYC.map.tooltip.transition()
-                    .duration(500)
-                    .style("opacity", 0);
-                GNYC.map.tooltip.transition()
-                    .duration(200)
-                    .style("opacity", 1);
-                GNYC.map.tooltip.html('<strong>' + d.properties.ntaname + ': </strong>' + d.density)
-                    .style("left", (d3.event.pageX) + "px")
-                    .style("top", (d3.event.pageY - 28) + "px");
-            }
-        })
-        .on("mouseleave", function (d) {
-            GNYC.map.tooltip.transition()
-                .duration(200)
-                .style("opacity", 0);
-        })
-        .on("click", function () {
-            if (d.density != undefined) {
-                GNYC.map.tooltip.transition()
-                    .duration(500)
-                    .style("opacity", 0);
-                GNYC.map.tooltip.transition()
-                    .duration(200)
-                    .style("opacity", .9);
-                GNYC.map.tooltip.html('<strong>' + d.properties.ntaname + ': </strong>' + d.density)
-                    .style("left", (d3.event.pageX) + "px")
-                    .style("top", (d3.event.pageY - 28) + "px");
-            }
-        })
-}
-
-GNYC.reset = function() {
-    GNYC.map.active.classed("active", false);
-    GNYC.map.active = d3.select(null);
-
-    d3.select(".background")
-        .attr("cursor", "default")
-
-    GNYC.groups.boroughs.transition()
-        .duration(750)
-        .style("stroke-width", "1.5px")
-        .attr("transform", "");
-    GNYC.groups.neighborhoods.transition()
-        .duration(750)
-        .attr("transform", "");
-
-    GNYC.groups.neighborhoods.selectAll(".neighborhood")
-        .style("pointer-events", 'none')
-}
 
 
 $(document).ready(function () {
