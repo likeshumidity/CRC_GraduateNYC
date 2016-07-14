@@ -176,8 +176,6 @@ body {
     width: 10px;
     display: block;
     float: left;
-    padding: 2px 2px 0 0;
-    margin: 3px 6px 0 0;
 }
 
 .map-key li span.population-1 {background: rgb(241, 244, 244);}
@@ -327,18 +325,21 @@ ul.gnsm-program-listings {
 /* ABOUT */
 
 .about {
+margin-top: 0px;
+/*
     border-top: 5px solid #555555;
     margin: 15px !important;
     padding: 10px 0 0 0 !important;
+*/
 }
 
-.about h5 {
-    font-size: 20px;
-    text-transform: uppercase;
+.about h3 {
+    font-size: 15px;
     font-weight: bold;
     color: #555555 !important;
 }
 
 .about p {
+    display: none;
     font-style: italic;
 }
