@@ -573,9 +573,17 @@ GNYC.processURI = function() {
 
         for (var filter in GNYC.filters) {
             if (GNYC.filters[filter].type === 'checkbox') {
-                GNYC.filters[filter].selected = GNYC.url.parameters[filter];
+                if (GNYC.url.parameters[filter] === undefined) {
+                    GNYC.filters[filter].selected = GNYC.filters[filter].defaultValue;
+                } else {
+                    GNYC.filters[filter].selected = GNYC.url.parameters[filter];
+                }
             } else if (GNYC.filters[filter].type === 'radio') {
-                GNYC.filters[filter].selected = GNYC.url.parameters[filter][0];
+                if (GNYC.url.parameters[filter] === undefined) {
+                    GNYC.filters[filter].selected = GNYC.filters[filter].defaultValue;
+                } else {
+                    GNYC.filters[filter].selected = GNYC.url.parameters[filter][0];
+                }
             } else {
                 console.warn('ERROR: invalid filter type');
             }
@@ -625,9 +633,9 @@ GNYC.updateLinkToOtherVenue = function() {
                         query += '&';
                     }
 
-                    query += encodeURIComponent(filter) + '%5B%5D';
+                    query += encodeURIComponent(filter);
                     query += '=';
-                    query += encodeURIComponent(GNYC.filters[filter].selected);
+                    query += encodeURIComponent(GNYC.filters[filter].selected[i]);
                 }
             }
         }
@@ -855,6 +863,10 @@ $(document).ready(function () {
         // Update form filters selections
         if (!GNYC.processURI()) {
             GNYC.setDefaults();
+        }
+
+        for (var filter in GNYC.filters) {
+            GNYC.updateBreadcrumbs(filter);
         }
 
         GNYC.updateFilterFieldSelections();
