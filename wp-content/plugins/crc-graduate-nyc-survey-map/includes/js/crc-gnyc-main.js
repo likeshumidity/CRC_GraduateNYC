@@ -550,6 +550,22 @@ GNYC.loadDataset = function() {
 };
 
 
+/*
+GNYC.setDefaults = function() {
+    for (var filter in GNYC.filters) {
+        if (GNYC.filters.hasOwnProperty(filter)) {
+            if (GNYC.filters[filter].type === 'checkbox') {
+                GNYC.filters[filter].selected = GNYC.filters[filter].defaultValue;
+            } else if (GNYC.filters[filter].type === 'radio') {
+                GNYC.filters[filter].selected = GNYC.filters[filter].defaultValue;
+            } else {
+                console.warn('ERROR: INVALID FILTER TYPE: in setDefaults()');
+            }
+        }
+    }
+};
+*/
+
 // Set filters based on URI
 GNYC.processURI = function() {
     if (location.search.length > 0) {
@@ -585,7 +601,6 @@ GNYC.updateLinkToOtherVenue = function() {
         otherVenue = 'map';
     }
 
-console.log('.link-to-' + otherVenue + ' a');
     baseURL = $('.link-to-' + otherVenue + ' a').attr('href').split('?')[0];
 
     for (var filter in GNYC.filters) {
