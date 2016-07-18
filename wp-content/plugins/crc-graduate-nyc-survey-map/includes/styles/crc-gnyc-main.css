@@ -338,6 +338,10 @@ ul.gnsm-program-listings {
     border-width: 0px !important;
 }
 
+.panel-body {
+    padding-bottom: 0px !important;
+}
+
 .panel-title {
     color: #888 !important;
 }
@@ -368,3 +372,5 @@ ul.gnsm-program-listings {
     display: none;
     font-style: italic;
 }
+
+
