@@ -585,6 +585,7 @@ GNYC.updateLinkToOtherVenue = function() {
         otherVenue = 'map';
     }
 
+console.log('.link-to-' + otherVenue + ' a');
     baseURL = $('.link-to-' + otherVenue + ' a').attr('href').split('?')[0];
 
     for (var filter in GNYC.filters) {

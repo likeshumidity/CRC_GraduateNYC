@@ -129,7 +129,7 @@ body {
   pointer-events: all;
 }
 
-.link-to-listings {
+.link-to-listings, .link-to-map {
     text-align: right;
     background: white;
     height: auto;
@@ -220,18 +220,21 @@ div.post-count {
     font-style: italic;
 }
 
-div.link-to-listings {
+div.link-to-listings, div.link-to-map {
     color: #8a8b8b;
     font-size: 13px;
     text-transform: uppercase;
 }
 
-div.link-to-listings a span {
+div.link-to-listings a span, div.link-to-map a span {
     background: url(http://54.174.151.164/GraduateNYC/wp-content/uploads/2016/06/view-listings-icon1.jpg) no-repeat 0 0; 
     padding-left: 29px;
 }
 
-div.link-to-listings a:hover, div.link-to-listings a span:hover  {
+div.link-to-map a:hover,
+div.link-to-map a span:hover,
+div.link-to-listings a:hover,
+div.link-to-listings a span:hover {
 /*    background: url(http://54.174.151.164/GraduateNYC/wp-content/uploads/2016/06/view-listings-icon1.jpg) no-repeat 0 -18px; */
     color: #676767;
 }
