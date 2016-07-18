@@ -199,7 +199,7 @@ body {
 
 .patterns h3 {
     font-size: 20px;
-    color: #226173 !important;
+    color: #3C696F !important;
 }
 
 .patterns p {
@@ -305,22 +305,20 @@ ul.gnsm-program-listings {
 }
 
 .nav-pills>li.active>a, .nav-pills>li>a  {
-    border: 1px solid #226173;
+    border: 1px solid #3C696F;
     
-    border-top-right-radius: 50% !important;
-    border-top-left-radius: 50% !important;
-
+    border-radius: 50% !important;
     
-    color: #226173;
+    color: #3C696F;
     width: 70px;
     height: 70px;
-    background: #226173 !important;
+    background: #3C696F !important;
     margin-left: 0 !important;
     margin-right: 10px;
 }
 
 .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover, .nav>li>a:focus, .nav>li>a:hover {
-        background: #226173 !important;
+        background: #3C696F !important;
         top: -10px;
 
 }
@@ -364,7 +362,7 @@ p.breadcrumbs {
 /* ABOUT */
 
 .about {
-    margin-top: 0px;
+    margin-top: 0px !important;
     text-align: right;
     margin-right: 10%;
 }
@@ -373,11 +371,15 @@ p.breadcrumbs {
     font-size: 15px;
     font-weight: bold;
     color: #999999 !important;
+    border-bottom: 1px solid #aaaaaa;
 }
 
 .about p {
-    display: none;
+    text-align: left;
     font-style: italic;
 }
 
+.about p.hidden-start {
+    display: none;
+}
 
