@@ -216,6 +216,10 @@ body {
     margin: 0px;
 }
 
+div.post-count {
+    font-style: italic;
+}
+
 div.link-to-listings {
     color: #8a8b8b;
     font-size: 13px;
@@ -329,6 +333,18 @@ ul.gnsm-program-listings {
     display: block;   
 }
 */
+
+.panel, .panel-body {
+    border-width: 0px !important;
+}
+
+.panel-title {
+    color: #888 !important;
+}
+
+.panel-heading {
+    background-color: rgb(241, 244, 244) !important;
+}
 
 .panel-body .field-input label {
     margin-left: 10px;
