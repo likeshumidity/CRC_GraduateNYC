@@ -166,6 +166,68 @@ var GNYC = {
     'filterToFieldID': function(filter, prefix) {
         return prefix + '-' + filter;
     },
+    'stories': {
+        'gnyc-story01': {
+            'services': {
+            },
+            'eligibility-criteria': {
+            },
+            'enrollment-type': {
+            },
+            'grades-served': {
+            },
+            'population-served': {
+            },
+        },
+        'gnyc-story02': {
+            'services': {
+            },
+            'eligibility-criteria': {
+            },
+            'enrollment-type': {
+            },
+            'grades-served': {
+            },
+            'population-served': {
+            },
+        },
+        'gnyc-story03': {
+            'services': {
+            },
+            'eligibility-criteria': {
+            },
+            'enrollment-type': {
+            },
+            'grades-served': {
+            },
+            'population-served': {
+            },
+        },
+        'gnyc-story04': {
+            'services': {
+            },
+            'eligibility-criteria': {
+            },
+            'enrollment-type': {
+            },
+            'grades-served': {
+            },
+            'population-served': {
+            },
+        },
+        'gnyc-story05': {
+            'services': {
+            },
+            'eligibility-criteria': {
+            },
+            'enrollment-type': {
+            },
+            'grades-served': {
+            },
+            'population-served': {
+            },
+        },
+    },
 };
 
 
