@@ -128,7 +128,9 @@ body {
   fill: none;
   pointer-events: all;
 }
+
 .link-to-listings {
+    text-align: right;
     background: white;
     height: auto;
     width: auto;
@@ -139,6 +141,11 @@ body {
 
 /* SR MAP MOCKUP */
 
+.crc-gnyc-listings a,
+.crc-gnyc-listings a:hover,
+.crc-gnyc-listings a:active,
+.crc-gnyc-listings a:visited,
+.crc-gnyc-listings a:focus,
 .crc-gnyc-map a,
 .crc-gnyc-map a:hover,
 .crc-gnyc-map a:active,
@@ -171,9 +178,9 @@ body {
     padding: 0 !important;
 }
 
-.map-key li span {
-    height: 10px;
-    width: 10px;
+.map-key li span.legend-value {
+    height: 11px;
+    width: 11px;
     display: block;
     float: left;
 }
@@ -183,6 +190,12 @@ body {
 .map-key li span.population-3 {background: rgb(132, 161, 164);}
 .map-key li span.population-4 {background: rgb(96, 133, 138);}
 .map-key li span.population-5 {background: rgb(60, 105, 111);}
+
+.map-key li span.legend-key {
+    padding-left: 4px;
+    position: relative;
+    top: -2px;
+}
 
 .patterns h3 {
     font-size: 20px;
@@ -207,7 +220,6 @@ div.link-to-listings {
     color: #8a8b8b;
     font-size: 13px;
     text-transform: uppercase;
-    border-left: 2px solid #555555;
 }
 
 div.link-to-listings a span {
@@ -228,7 +240,7 @@ ul.gnsm-program-listings {
 
 .program-listing {
 /*    border-bottom: 1px solid #d0d0d0; */
-    background-color: #F5F5F5;
+    background-color: rgb(241, 244, 244);
     padding: 12px !important;
     margin: 0px 0px 10px 0px !important;
     border-radius: 4px;
@@ -325,18 +337,15 @@ ul.gnsm-program-listings {
 /* ABOUT */
 
 .about {
-margin-top: 0px;
-/*
-    border-top: 5px solid #555555;
-    margin: 15px !important;
-    padding: 10px 0 0 0 !important;
-*/
+    margin-top: 0px;
+    text-align: right;
+    margin-right: 10%;
 }
 
 .about h3 {
     font-size: 15px;
     font-weight: bold;
-    color: #555555 !important;
+    color: #999999 !important;
 }
 
 .about p {
