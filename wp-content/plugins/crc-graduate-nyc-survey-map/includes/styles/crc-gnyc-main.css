@@ -239,6 +239,10 @@ div.link-to-listings a span:hover {
     color: #676767;
 }
 
+.crc-gnyc-listings .link-to-map {
+    padding-right: 50px;
+}
+
 ul.gnsm-program-listings {
     list-style-type: none !important;
     padding: 0px !important;
@@ -388,9 +392,22 @@ p.breadcrumbs {
     z-index: 20;
 }
 
-@media screen and (min-width: 480px) {
+.filter-screen-xs {
+    position: fixed;
+    z-index: 20;
+    border-radius: 3px;
+    background-color: rgb(241, 244, 244);
+    background-color: rgb(205, 207, 207);
+    margin-left: -45px;
+    text-align: center;
+    vertical-align: middle;
+    width: 34px;
+    height: 34px;
+}
+
+@media screen and (min-width: 80px) {
 .crc-gnyc-listings .about {
-    padding-top: 0px;
+    padding-top: 20px;
 }
 
 #crc-gnsm-listings-form {
@@ -406,6 +423,7 @@ p.breadcrumbs {
 #crc-gnsm-listings-form {
     display: block;
 }
+
 .filter-screen-xs {
     display: none;
 }
@@ -418,10 +436,6 @@ p.breadcrumbs {
 }
 
 @media screen and (min-width : 992px) {
-.crc-gnyc-listings .about {
-    padding-top: 350px;
-}
-
 .crc-gnyc-listings #crc-gnsm-listings-form {
     width: 263px;
     padding: 0px 15px;
@@ -430,10 +444,6 @@ p.breadcrumbs {
 }
 
 @media screen and (min-width : 1200px) {
-.crc-gnyc-listings .about {
-    padding-top: 350px;
-}
-
 .crc-gnyc-listings #crc-gnsm-listings-form {
     width: 330px;
     padding: 0px 15px;
