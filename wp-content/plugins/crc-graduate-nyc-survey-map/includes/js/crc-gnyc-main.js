@@ -936,6 +936,15 @@ $(document).ready(function () {
         // Create form event listeners
         GNYC.createFormEventListeners();
         GNYC.updateLinkToOtherVenue();
+
+        $(window).resize(function () {
+            if (window.innerWidth >= 768) {
+                $('#crc-gnsm-listings-form').css('display', 'block');
+            }
+            if (window.innerWidth < 768) {
+                $('#crc-gnsm-listings-form').css('display', 'none');
+            }
+        });
     } else {
       // DO NOTHING
     }
