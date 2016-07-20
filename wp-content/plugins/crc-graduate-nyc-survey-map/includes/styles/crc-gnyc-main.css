@@ -383,3 +383,62 @@ p.breadcrumbs {
     display: none;
 }
 
+.crc-gnyc-listings #crc-gnsm-listings-form {
+    position: fixed;
+    z-index: 20;
+}
+
+@media screen and (min-width: 480px) {
+.crc-gnyc-listings .about {
+    padding-top: 0px;
+}
+
+#crc-gnsm-listings-form {
+    display: none;
+}
+}
+
+@media screen and (min-width : 768px) {
+.crc-gnyc-listings .about {
+    padding-top: 350px;
+}
+
+#crc-gnsm-listings-form {
+    display: block;
+}
+.filter-screen-xs {
+    display: none;
+}
+
+.crc-gnyc-listings #crc-gnsm-listings-form {
+    width: 190px;
+    padding: 0px 15px;
+    margin-right: 22px;
+}
+}
+
+@media screen and (min-width : 992px) {
+.crc-gnyc-listings .about {
+    padding-top: 350px;
+}
+
+.crc-gnyc-listings #crc-gnsm-listings-form {
+    width: 263px;
+    padding: 0px 15px;
+    margin-right: 29.328px;
+}
+}
+
+@media screen and (min-width : 1200px) {
+.crc-gnyc-listings .about {
+    padding-top: 350px;
+}
+
+.crc-gnyc-listings #crc-gnsm-listings-form {
+    width: 330px;
+    padding: 0px 15px;
+    margin-right: 29.328px;
+}
+}
+
+
