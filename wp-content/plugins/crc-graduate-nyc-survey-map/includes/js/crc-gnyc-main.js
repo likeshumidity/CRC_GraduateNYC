@@ -510,7 +510,7 @@ if (GNYC_VENUE === 'map') {
     };
 
     GNYC.listingItemHTML = function(item) {
-        var htmlSnippet = '<li class="program-listing">';
+        var htmlSnippet = '';
         htmlSnippet += '<div class="title">' + item.program_name + '</div>';
         htmlSnippet += '<div class="phone">' + item.contact_phone + '</div>';
         htmlSnippet += '<div class="physical-address">';
@@ -562,7 +562,6 @@ if (GNYC_VENUE === 'map') {
 
             htmlSnippet += '</p>';
         }
-        htmlSnippet += '</li>';
 
         return htmlSnippet;
     };
