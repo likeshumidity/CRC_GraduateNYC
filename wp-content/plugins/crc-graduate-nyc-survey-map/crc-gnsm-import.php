@@ -71,7 +71,6 @@ function crc_gnsm_translate_row($rowPostData, $rowHeaderData, $headerCheckboxInd
 			'field_5783258799636' => 'Services Provided',
 			'field_578325c499637' => 'Services Provided2',
 			'field_5783261999638' => 'Eligibility Criteria',
-			'field_5783264b99639' => 'Eligibility Criteria2',
 			'field_578326e99963a' => 'Enrollment Type',
 		),
 	);
