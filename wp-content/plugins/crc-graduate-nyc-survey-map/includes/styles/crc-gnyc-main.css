@@ -366,6 +366,16 @@ p.breadcrumbs {
     margin-bottom: 0px;
 }
 
+.filter-details {
+    text-align: right;
+}
+
+.filter-details p {
+    text-align: left;
+    font-size: smaller;
+    display: none;
+}
+
 #gnyc-reset {
     text-align: right;
     margin-bottom: 16px;
