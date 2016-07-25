@@ -338,6 +338,10 @@ ul.gnsm-program-listings {
 }
 */
 
+.panel-group {
+    margin-bottom: 4px !important;
+}
+
 .panel, .panel-body {
     border-width: 0px !important;
 }
@@ -360,6 +364,12 @@ ul.gnsm-program-listings {
 
 p.breadcrumbs {
     margin-bottom: 0px;
+}
+
+#gnyc-reset {
+    text-align: right;
+    margin-bottom: 16px;
+    font-size: smaller;
 }
 
 /* ABOUT */
@@ -389,6 +399,7 @@ p.breadcrumbs {
 .crc-gnyc-listings #crc-gnsm-listings-form {
     position: fixed;
     z-index: 20;
+    background-color: #ffffff;
 }
 
 .filter-screen-xs {
