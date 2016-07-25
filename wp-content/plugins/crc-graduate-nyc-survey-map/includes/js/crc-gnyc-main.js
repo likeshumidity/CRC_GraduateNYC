@@ -166,6 +166,12 @@ var GNYC = {
     'filterToFieldID': function(filter, prefix) {
         return prefix + '-' + filter;
     },
+    'listingReadmore': {
+        'speed': 75,
+        'moreLink': '<i class="fa fa-plus"></i> more',
+        'lessLink': '<i class=\"fa fa-minus\"></i> less',
+        'heightMargin': 115,
+    },
     'stories': {
         'gnyc-story01': {
             'services': {
@@ -484,11 +490,20 @@ if (GNYC_VENUE === 'map') {
             .enter()
             .append('li')
             .attr('class', 'program-listing')
+            .attr('id', function(d) {
+                return 'program-listing-' + d.post_id;
+            })
             .html(function(d) {
                 return GNYC.listingItemHTML(d);
             });
 
             $('.post-count').text(GNYC.objToSortedArray(GNYC.getFilteredData(GNYC.data)).length + ' matching programs');
+
+/*
+            $('.gnsm-program-listings li').each(function(index, element) {
+                $(element.id).readmore(GNYC.listingReadmore);
+            });
+*/
     }
 
     GNYC.updateListings = function() {
@@ -500,9 +515,18 @@ if (GNYC_VENUE === 'map') {
             .enter()
             .append('li')
             .attr('class', 'program-listing')
+            .attr('id', function(d) {
+                return 'program-listing-' + d.post_id;
+            })
             .html(function(d) {
                 return GNYC.listingItemHTML(d);
             });
+
+/*
+            $('.gnsm-program-listings li').each(function(index, element) {
+                $(element.id).readmore(GNYC.listingReadmore);
+            });
+*/
 
             $('.post-count').text(GNYC.objToSortedArray(GNYC.getFilteredData(GNYC.data)).length + ' matching programs');
 
@@ -562,6 +586,8 @@ if (GNYC_VENUE === 'map') {
 
             htmlSnippet += '</p>';
         }
+
+//        htmlSnippet += '<script>$(\'#program-listing-' + item.post_id + '\').readmore(GNYC.listingReadmore);</script>';
 
         return htmlSnippet;
     };

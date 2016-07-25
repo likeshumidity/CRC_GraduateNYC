@@ -257,6 +257,16 @@ ul.gnsm-program-listings {
     border-radius: 4px;
 }
 
+.program-listing.shortened {
+    max-height: 200px;
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f1f4f4+0,7db9e8+100&1+0,0+18 */
+background: -moz-linear-gradient(top,  rgba(241,244,244,1) 0%, rgba(220,233,242,0) 48%, rgba(125,185,232,0) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top,  rgba(241,244,244,1) 0%,rgba(220,233,242,0) 48%,rgba(125,185,232,0) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom,  rgba(241,244,244,1) 0%,rgba(220,233,242,0) 48%,rgba(125,185,232,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f1f4f4', endColorstr='#007db9e8',GradientType=0 ); /* IE6-9 */
+
+}
+
 .program-listing div, .program-listing p {
     padding: 3px 0px;
 }
