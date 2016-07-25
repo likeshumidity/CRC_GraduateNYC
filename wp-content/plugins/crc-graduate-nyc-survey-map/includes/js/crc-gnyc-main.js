@@ -518,6 +518,13 @@ if (GNYC_VENUE === 'map') {
             .attr('id', function(d) {
                 return 'program-listing-' + d.post_id;
             })
+/*
+            .on('load', function(d) {
+//                $('#program-listing-' + d.post_id).readmore(GNYC.listingReadmore);
+                console.log(d.post_id);
+                $('#program-listing-' + d.post_id).readmore();
+            })
+*/
             .html(function(d) {
                 return GNYC.listingItemHTML(d);
             });
