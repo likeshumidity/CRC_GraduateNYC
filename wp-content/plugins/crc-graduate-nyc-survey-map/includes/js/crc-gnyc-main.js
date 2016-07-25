@@ -612,22 +612,6 @@ GNYC.loadDataset = function() {
 };
 
 
-/*
-GNYC.setDefaults = function() {
-    for (var filter in GNYC.filters) {
-        if (GNYC.filters.hasOwnProperty(filter)) {
-            if (GNYC.filters[filter].type === 'checkbox') {
-                GNYC.filters[filter].selected = GNYC.filters[filter].defaultValue;
-            } else if (GNYC.filters[filter].type === 'radio') {
-                GNYC.filters[filter].selected = GNYC.filters[filter].defaultValue;
-            } else {
-                console.warn('ERROR: INVALID FILTER TYPE: in setDefaults()');
-            }
-        }
-    }
-};
-*/
-
 // Set filters based on URI
 GNYC.processURI = function() {
     if (location.search.length > 0) {
@@ -890,7 +874,7 @@ GNYC.createFormEventListeners = function() {
                 if (GNYC.venue === 'map') {
                     GNYC.setBoroughDensity(GNYC.getFilteredData(GNYC.data));
                 } else if (GNYC.venue === 'listings') {
-                     GNYC.updateListings();
+                    GNYC.updateListings();
                 }
 
                 GNYC.updateBreadcrumbs(thisFilter);
@@ -900,6 +884,25 @@ GNYC.createFormEventListeners = function() {
     }
 };
 
+
+// Reset filter to defaults (clear filters)
+GNYC.clearFilters = function () {
+    GNYC.setDefaults();
+    
+    GNYC.updateFilterFieldSelections();
+
+    if (GNYC.venue === 'map') {
+        GNYC.setBoroughDensity(GNYC.getFilteredData(GNYC.data));
+    } else if (GNYC.venue === 'listings') {
+        GNYC.updateListings();
+    }
+    
+    for (var filter in GNYC.filters) {
+        GNYC.updateBreadcrumbs(filter);
+    }
+
+    GNYC.updateLinkToOtherVenue();
+};
 
 
 $(document).ready(function () {
