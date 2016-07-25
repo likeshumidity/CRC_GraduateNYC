@@ -544,6 +544,24 @@ if (GNYC_VENUE === 'map') {
         htmlSnippet += '</span>';
         htmlSnippet += '</div>';
         htmlSnippet += '<p class="program-description">' + item.program_description + '</p>';
+
+        if (item.services2.length > 0) {
+            htmlSnippet += '<p class="services-provided"><em>Services provided</em>: ';
+
+            for (var i = 0, isFirst = true; i < item.services2.length; i++) {
+                if (item.services2[i].match('(Any)') === null) {
+                    if (isFirst) {
+                        isFirst = false;
+                    } else {
+                        htmlSnippet += ', ';
+                    }
+
+                    htmlSnippet += item.services2[i];
+                }
+            }
+
+            htmlSnippet += '</p>';
+        }
         htmlSnippet += '</li>';
 
         return htmlSnippet;

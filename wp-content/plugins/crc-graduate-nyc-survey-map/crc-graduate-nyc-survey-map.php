@@ -502,6 +502,7 @@ function crc_gnsm_survey_results_listings_all() {
 			$target_population = get_post_meta($thispost->ID, 'targeted_populations_served');
 			$eligibility_criteria = get_post_meta($thispost->ID, 'eligibility_criteria');
 			$services = get_post_meta($thispost->ID, 'services_provided');
+			$services2 = get_post_meta($thispost->ID, 'services_provided2');
 			$accepting_students = get_post_meta($thispost->ID, 'enrollment_type');
 			$program_description = get_post_meta($thispost->ID, 'program_description');
                         $contact_phone = get_post_meta($thispost->ID, 'phone');
@@ -520,6 +521,7 @@ function crc_gnsm_survey_results_listings_all() {
 				'target_population' => $target_population[0],
 				'eligibility_criteria' => $eligibility_criteria[0],
 				'services' => $services[0],
+				'services2' => $services2[0],
 				'accepting_students' => $accepting_students[0],
 				'program_description' => $program_description,
                         	'contact_phone' => $contact_phone,
