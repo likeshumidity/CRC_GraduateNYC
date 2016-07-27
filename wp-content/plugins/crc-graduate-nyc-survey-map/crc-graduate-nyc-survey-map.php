@@ -572,7 +572,7 @@ function crc_gnsm_activate() {
 	crc_gnsm_acf_field_setup_listing_details();
 
 	// Load posts
-	crc_gnsm_import_data('GNYC_SurveyData_PreppedForUpload20160723b.csv');
+	crc_gnsm_import_data('GNYC_SurveyData_PreppedForUpload20160727a.csv');
 
 	// Create listing and map pages TODO
 
