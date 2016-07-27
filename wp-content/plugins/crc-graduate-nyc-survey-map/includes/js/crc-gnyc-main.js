@@ -52,7 +52,7 @@ var GNYC = {
     ],
     'filters': {
         'boroughs': {
-            'dataSetName': 'boroughs_served',
+            'dataSetName': 'boroughs',
             'type': 'checkbox',
             'onMap': false,
             'onListings': true,
@@ -337,7 +337,7 @@ if (GNYC_VENUE === 'map') {
         for (borough in GNYC.filters.boroughs.density) {
             GNYC.filters.boroughs.density[borough] = {};
         }
-    
+
         for (var borough in GNYC.filters.boroughs.density) {
             for (var program in data) {
                 if (data[program].boroughs.indexOf(borough) >= -1) {

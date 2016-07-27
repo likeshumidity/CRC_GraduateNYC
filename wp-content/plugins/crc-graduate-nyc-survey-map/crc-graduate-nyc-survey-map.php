@@ -204,8 +204,8 @@ function crc_gnsm_acf_field_setup_listing_details() {
 			),
 			array (
 				'key' => 'field_57832f5dad1dd',
-				'label' => 'Boroughs Served',
-				'name' => 'boroughs_served',
+				'label' => 'Boroughs',
+				'name' => 'boroughs',
 				'type' => 'checkbox',
 				'choices' => array (
 					'Brooklyn' => 'Brooklyn',
@@ -324,7 +324,6 @@ function crc_gnsm_acf_field_setup_listing_details() {
 				'label' => 'Services Provided',
 				'name' => 'services_provided',
 				'type' => 'checkbox',
-				'instructions' => 'filter for map only',
 				'choices' => array (
 					'College readiness' => 'College readiness',
 					'College matriculation' => 'College matriculation',
@@ -478,7 +477,7 @@ function crc_gnsm_survey_results_listings_all() {
 			$query->the_post();
 			$thispost = get_post();
 			$program_name = get_the_title($thispost->ID);
-			$boroughs_served = get_post_meta($thispost->ID, 'boroughs_served');
+			$boroughs = get_post_meta($thispost->ID, 'boroughs');
 			$neighborhoods = get_post_meta($thispost->ID, 'neighborhoods');
 			$grades_served = get_post_meta($thispost->ID, 'education_levels_served');
 			$target_population = get_post_meta($thispost->ID, 'targeted_populations_served');
@@ -497,7 +496,7 @@ function crc_gnsm_survey_results_listings_all() {
 			$results[$program_name] = array(
 				'post_id' => $thispost->ID,
 				'program_name' => $program_name,
-				'boroughs_served' => $boroughs_served[0],
+				'boroughs' => $boroughs[0],
 				'neighborhoods' => $neighborhoods[0],
 				'grades' => $grades_served[0],
 				'target_population' => $target_population[0],
