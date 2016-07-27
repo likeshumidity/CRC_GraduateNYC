@@ -539,6 +539,36 @@ function crc_gnsm_survey_results_listings_all() {
 }
 
 
+function crc_change_post_status($post_id, $status) {
+        $thisPost = get_post($post_id, 'ARRAY_A');
+        $thisPost['post_status'] = $status;
+
+        wp_update_post($thisPost);
+}
+
+
+function crc_gnsm_post_published_to_draft() {
+	$args = array(
+		'post_type' => array(
+			'gnsm_listing',
+			),
+		'posts_per_page' => -1,
+	);
+
+	$query = new WP_Query($args);
+
+	if ($query->have_posts()) {
+		while ($query->have_posts()) {
+			$query->the_post();
+			$thispost = get_post();
+			$postID = $thispost->ID;
+
+			crc_change_post_status($postID, 'Draft');
+		}
+	}
+}
+
+
 function crc_gnsm_activate() {
 	// Register custom post types
 	crc_gnsm_post_type_setup();
@@ -549,6 +579,8 @@ function crc_gnsm_activate() {
 	// Load posts
 	crc_gnsm_import_data('GNYC_SurveyData_PreppedForUpload20160723b.csv');
 
+	// Create listing and map pages TODO
+
 	// Clear permalinks after post type registered
 	flush_rewrite_rules();
 }
@@ -556,6 +588,9 @@ function crc_gnsm_activate() {
 register_activation_hook(__FILE__, 'crc_gnsm_activate');
 
 function crc_gnsm_deactivate() {
+        // Change existings post status from Publish to Draft
+        crc_gnsm_post_published_to_draft();
+
 	// Clear permalinks to remove post type rules
 	flush_rewrite_rules();
 }
