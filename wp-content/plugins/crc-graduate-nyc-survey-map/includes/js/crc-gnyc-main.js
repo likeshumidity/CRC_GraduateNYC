@@ -54,8 +54,8 @@ var GNYC = {
         'boroughs': {
             'dataSetName': 'boroughs',
             'type': 'checkbox',
-            'onMap': false,
-            'onListings': true,
+            'onmap': false,
+            'onlistings': true,
             'values': [
                 'Brooklyn',
                 'Bronx',
@@ -76,8 +76,8 @@ var GNYC = {
         'neighborhoods': {
             'dataSetName': 'neighborhoods',
             'type': 'radio',
-            'onMap': false,
-            'onListings': true,
+            'onmap': false,
+            'onlistings': true,
             'values': [
                 'All',
                 'Brooklyn - Bay Ridge',
@@ -146,8 +146,8 @@ var GNYC = {
         'population-served': {
             'dataSetName': 'target_population',
             'type': 'radio',
-            'onMap': true,
-            'onListings': true,
+            'onmap': true,
+            'onlistings': true,
             'values': [
                 'All',
                 'Academic performance level',
@@ -164,8 +164,8 @@ var GNYC = {
         'grades-served': {
             'dataSetName': 'grades',
             'type': 'checkbox',
-            'onMap': true,
-            'onListings': true,
+            'onmap': true,
+            'onlistings': true,
             'values': [
                 'Elementary (K-5)',
                 'Middle school (6-8)',
@@ -179,8 +179,8 @@ var GNYC = {
         'enrollment-type': {
             'dataSetName': 'accepting_students',
             'type': 'radio',
-            'onMap': true,
-            'onListings': true,
+            'onmap': true,
+            'onlistings': true,
             'values': [
                 'All',
                 'Open enrollment',
@@ -193,8 +193,8 @@ var GNYC = {
         'eligibility-criteria': {
             'dataSetName': 'eligibility_criteria',
             'type': 'radio',
-            'onMap': true,
-            'onListings': true,
+            'onmap': true,
+            'onlistings': true,
             'values': [
                 'All',
                 'Enrolled in school (K-12)',
@@ -209,8 +209,8 @@ var GNYC = {
         'services': {
             'dataSetName': 'services',
             'type': 'checkbox',
-            'onMap': true,
-            'onListings': true,
+            'onmap': true,
+            'onlistings': true,
             'values': [
                 'College readiness',
                 'College matriculation',
@@ -223,8 +223,8 @@ var GNYC = {
         'organization-type': {
             'dataSetName': 'organization_type',
             'type': 'radio',
-            'onMap': false,
-            'onListings': true,
+            'onmap': false,
+            'onlistings': true,
             'values': [
                 'Supporting students directly',
                 'Supporting college access and success citywide',
@@ -252,68 +252,6 @@ var GNYC = {
         'moreLink': '<i class="fa fa-plus"></i> more',
         'lessLink': '<i class=\"fa fa-minus\"></i> less',
         'heightMargin': 115,
-    },
-    'stories': {
-        'gnyc-story01': {
-            'services': {
-            },
-            'eligibility-criteria': {
-            },
-            'enrollment-type': {
-            },
-            'grades-served': {
-            },
-            'population-served': {
-            },
-        },
-        'gnyc-story02': {
-            'services': {
-            },
-            'eligibility-criteria': {
-            },
-            'enrollment-type': {
-            },
-            'grades-served': {
-            },
-            'population-served': {
-            },
-        },
-        'gnyc-story03': {
-            'services': {
-            },
-            'eligibility-criteria': {
-            },
-            'enrollment-type': {
-            },
-            'grades-served': {
-            },
-            'population-served': {
-            },
-        },
-        'gnyc-story04': {
-            'services': {
-            },
-            'eligibility-criteria': {
-            },
-            'enrollment-type': {
-            },
-            'grades-served': {
-            },
-            'population-served': {
-            },
-        },
-        'gnyc-story05': {
-            'services': {
-            },
-            'eligibility-criteria': {
-            },
-            'enrollment-type': {
-            },
-            'grades-served': {
-            },
-            'population-served': {
-            },
-        },
     },
 };
 
@@ -830,7 +768,7 @@ GNYC.createFilterFormFields = function(venue) {
 
     if ($.inArray(venue, this.venues) > -1) {
         for (var filter in this.filters) {
-            if (GNYC.filters[filter]['on' + venue.substring(0, 1).toUpperCase() + venue.substring(1)]) {
+            if (GNYC.filters[filter]['on' + venue]) {
                 fieldSet = $('#' + this.filterToFieldID(filter, 'panel') + ' fieldset');
 
                 for (i = 0; i < this.filters[filter].values.length; i++) {
@@ -937,11 +875,13 @@ GNYC.getFilteredData = function (programsAll) {
 
         for (var filter in GNYC.filters) {
             if (GNYC.filters.hasOwnProperty(filter)) {
-                // rename program, selected, and filter
-                if (isExcluded[GNYC.filters[filter].type](programToCheck,
-                                                          GNYC.filters[filter].selected,
-                                                          filter)) {
-                    return false;
+                if (GNYC.filters[filter]['on' + GNYC.venue]) {
+                    // rename program, selected, and filter
+                    if (isExcluded[GNYC.filters[filter].type](programToCheck,
+                                                              GNYC.filters[filter].selected,
+                                                              filter)) {
+                        return false;
+                    }
                 }
             }
         }
