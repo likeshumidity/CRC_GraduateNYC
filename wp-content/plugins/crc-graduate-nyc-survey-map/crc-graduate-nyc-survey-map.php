@@ -84,19 +84,6 @@ function crc_gnsm_acf_field_setup_listing_details() {
 		'title' => 'Graduate NYC - College Readiness Map/Listing Details',
 		'fields' => array (
 			array (
-				'key' => 'field_5783219899626',
-				'label' => 'Survey number',
-				'name' => 'survey_number',
-				'type' => 'text',
-				'required' => 1,
-				'default_value' => '',
-				'placeholder' => '',
-				'prepend' => '',
-				'append' => '',
-				'formatting' => 'html',
-				'maxlength' => '',
-			),
-			array (
 				'key' => 'field_578321e099627',
 				'label' => 'Organization number',
 				'name' => 'organization_number',

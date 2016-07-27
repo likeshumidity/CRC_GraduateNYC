@@ -51,7 +51,6 @@ function crc_gnsm_translate_row($rowPostData, $rowHeaderData, $headerCheckboxInd
 	$fieldMap = array(
 		'text' => array(
 			'name' => 'Organization name',
-			'field_5783219899626' => 'Survey number',
 			'field_578321e099627' => 'Organization number',
 			'field_5783221099628' => 'Response ID',
 			'field_5783222899629' => 'Phone',
