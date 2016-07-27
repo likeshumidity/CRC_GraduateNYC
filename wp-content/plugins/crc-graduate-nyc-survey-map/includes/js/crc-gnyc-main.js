@@ -86,7 +86,6 @@ var GNYC = {
                 'Students with IEP or other learning challenges',
                 'High school equivalency (HSE)',
                 'Justice involved youth',
-                'Gender',
                 'Immigrants/Refugees',
             ],
             'defaultValue': 'All',
