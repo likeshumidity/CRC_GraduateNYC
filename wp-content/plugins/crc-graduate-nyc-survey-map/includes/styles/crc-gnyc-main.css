@@ -372,6 +372,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f1f4f4', end
     margin-left: 10px;
 }
 
+#panel-neighborhoods .panel-body {
+    max-height: 200px;
+    overflow: scroll;
+}
+
 p.breadcrumbs {
     margin-bottom: 0px;
 }
@@ -447,7 +452,7 @@ p.breadcrumbs {
 
 @media screen and (min-width : 768px) {
 .crc-gnyc-listings .about {
-    padding-top: 350px;
+    padding-top: 450px;
 }
 
 #crc-gnsm-listings-form {
