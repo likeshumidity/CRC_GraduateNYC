@@ -52,7 +52,7 @@ var GNYC = {
     ],
     'filters': {
         'boroughs': {
-            'dataSetName': 'boroughs',
+            'dataSetName': 'boroughs_served',
             'type': 'checkbox',
             'onMap': false,
             'onListings': true,
