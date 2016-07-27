@@ -64,7 +64,7 @@ function crc_gnsm_translate_row($rowPostData, $rowHeaderData, $headerCheckboxInd
 			'field_5783229a99631' => 'Address - Postal code',
 		),
 		'checkbox' => array(
-			'field_57832f5dad1dd' => 'Borough',
+			'field_57832f5dad1dd' => 'Boroughs Served',
 			'field_578322d199633' => 'Neighborhoods',
 			'field_578324cf99634' => 'Education Levels Served',
 			'field_5783256c99635' => 'Targeted Populations Served',
