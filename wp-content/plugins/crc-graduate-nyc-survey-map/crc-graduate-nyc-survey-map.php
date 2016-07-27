@@ -400,6 +400,22 @@ function crc_gnsm_acf_field_setup_listing_details() {
 				'layout' => 'vertical',
 			),
 			array (
+				'key' => 'field_57985cff9881b',
+                                'label' => 'Organization Type',
+                                'name' => 'organization_type',
+				'type' => 'radio',
+				'instructions' => 'filter for listings only',
+				'required' => 1,
+				'choices' => array (
+					'Supporting college access and success citywide' => 'Supporting college access and success citywide',
+					'Supporting students directly' => 'Supporting students directly',
+				),
+				'other_choice' => 0,
+				'save_other_choice' => 0,
+				'default_value' => 'Supporting students directly',
+				'layout' => 'vertical',
+			),
+			array (
 				'key' => 'field_5783264b99639',
 				'label' => 'Eligibility Criteria2',
 				'name' => 'eligibility_criteria2',
