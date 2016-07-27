@@ -33,6 +33,7 @@ function crc_gnsm_import_data($importFile) {
 						$headerCheckboxIndices[$headerCheckboxField[0]][] = array($i, $headerCheckboxField[1]);
 					}
 				}
+error_log(implode($headers));
 			} else {
 				// translate and create post
 				$postData = crc_gnsm_translate_row($data, $headers, $headerCheckboxIndices);
@@ -64,7 +65,7 @@ function crc_gnsm_translate_row($rowPostData, $rowHeaderData, $headerCheckboxInd
 			'field_5783229a99631' => 'Address - Postal code',
 		),
 		'checkbox' => array(
-			'field_57832f5dad1dd' => 'Boroughs Served',
+			'field_57832f5dad1dd' => 'Boroughs',
 			'field_578322d199633' => 'Neighborhoods',
 			'field_578324cf99634' => 'Education Levels Served',
 			'field_5783256c99635' => 'Targeted Populations Served',
