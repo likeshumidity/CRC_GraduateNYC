@@ -70,6 +70,7 @@ function crc_gnsm_translate_row($rowPostData, $rowHeaderData, $headerCheckboxInd
 			'field_5783256c99635' => 'Targeted Populations Served',
 			'field_5783258799636' => 'Services Provided',
 			'field_578325c499637' => 'Services Provided2',
+			'field_57985cff9881b' => 'Organization Type',
 			'field_5783261999638' => 'Eligibility Criteria',
 			'field_578326e99963a' => 'Enrollment Type',
 		),

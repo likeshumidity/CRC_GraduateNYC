@@ -403,16 +403,13 @@ function crc_gnsm_acf_field_setup_listing_details() {
 				'key' => 'field_57985cff9881b',
                                 'label' => 'Organization Type',
                                 'name' => 'organization_type',
-				'type' => 'radio',
+				'type' => 'checkbox',
 				'instructions' => 'filter for listings only',
-				'required' => 1,
 				'choices' => array (
 					'Supporting college access and success citywide' => 'Supporting college access and success citywide',
 					'Supporting students directly' => 'Supporting students directly',
 				),
-				'other_choice' => 0,
-				'save_other_choice' => 0,
-				'default_value' => 'Supporting students directly',
+				'default_value' => '',
 				'layout' => 'vertical',
 			),
 			array (
