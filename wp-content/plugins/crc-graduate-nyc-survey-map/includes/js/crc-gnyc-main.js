@@ -312,6 +312,7 @@ if (GNYC_VENUE === 'map') {
                 })
                 .attr("d", GNYC.path)
                 .on("mouseover", function (d) {
+                    GNYC.map.tooltip.attr('id', 'map-borough' + d.properties.boroname.replace(' ', '-'));
                     GNYC.map.tooltip.transition()
                         .duration(500)
                         .style("opacity", 0);
@@ -447,16 +448,18 @@ if (GNYC_VENUE === 'map') {
                     GNYC.map.tooltip.transition()
                         .duration(200)
                         .style("opacity", 1);
-                    GNYC.map.tooltip.html('<strong>' + d.properties.ntaname + ': </strong>' + d.density)
+                    GNYC.map.tooltip.html('<a href="' + $('.link-to-listings a').attr('href') + '&neighborhoods=' + encodeURIComponent(d.properties.boroname + ' - ' + d.properties.ntaname) +'"><strong>' + d.properties.ntaname + ': </strong>' + d.density + ' programs</a>')
                         .style("left", (d3.event.pageX) + "px")
                         .style("top", (d3.event.pageY - 28) + "px");
                 }
             })
+/*
             .on("mouseleave", function (d) {
                 GNYC.map.tooltip.transition()
                     .duration(200)
                     .style("opacity", 0);
             })
+*/
             .on("click", function () {
                 if (d.density != undefined) {
                     GNYC.map.tooltip.transition()

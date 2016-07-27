@@ -112,21 +112,30 @@ body {
     stroke-width: 3px;
     pointer-events: none;
 }
+
 .borough:hover{
     stroke: #73DEFF;
     stroke-width: 3px;
 }
+
 .tooltip {
+    position: fixed;
     background: #73DEFF;
     height: auto;
     width: auto;
-    padding: 2px;
+    padding: 2px 5px;
     color: white;
     text-transform: uppercase;
+    border-radius: 2px;
 }
+
+.tooltip a, .tooltip a:visited {
+    color: #ffffff;
+}
+
 .background {
-  fill: none;
-  pointer-events: all;
+    fill: none;
+    pointer-events: all;
 }
 
 .link-to-listings, .link-to-map {
