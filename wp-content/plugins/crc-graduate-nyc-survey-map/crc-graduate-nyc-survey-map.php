@@ -374,7 +374,6 @@ function crc_gnsm_acf_field_setup_listing_details() {
 				'label' => 'Eligibility Criteria',
 				'name' => 'eligibility_criteria',
 				'type' => 'checkbox',
-				'instructions' => 'filter for map only',
 				'choices' => array (
 					'Enrolled in school (K-12)' => 'Enrolled in school (K-12)',
 					'Enrolled in college' => 'Enrolled in college',
