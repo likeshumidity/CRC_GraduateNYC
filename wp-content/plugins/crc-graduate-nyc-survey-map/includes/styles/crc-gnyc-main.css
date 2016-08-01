@@ -256,14 +256,25 @@ ul.gnsm-program-listings {
     list-style-type: none !important;
     padding: 0px !important;
     margin: 0px;
+    text-align: right;
+}
+
+ul.gnsm-program-listings i.readmoreless {
+    position: relative;
+    top: -45px;
+    padding: 5px;
+    background-color: #cccccc;
+    margin: 5px;
+    border-radius: 3px;
 }
 
 .program-listing {
 /*    border-bottom: 1px solid #d0d0d0; */
     background-color: rgb(241, 244, 244);
-    padding: 12px !important;
+    padding: 0px 12px !important;
     margin: 0px 0px 10px 0px !important;
     border-radius: 4px;
+    text-align: left;
 }
 
 .program-listing.shortened {
@@ -450,20 +461,12 @@ p.breadcrumbs {
 }
 
 @media screen and (min-width: 80px) {
-.crc-gnyc-listings .about {
-    padding-top: 20px;
-}
-
 #crc-gnsm-listings-form {
     display: none;
 }
 }
 
 @media screen and (min-width : 768px) {
-.crc-gnyc-listings .about {
-    padding-top: 450px;
-}
-
 #crc-gnsm-listings-form {
     display: block;
 }
