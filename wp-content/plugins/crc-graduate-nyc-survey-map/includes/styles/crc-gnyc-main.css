@@ -163,9 +163,6 @@ body {
     text-decoration: none;
 }
 
-.map {
-}
-
 .map-key {
     position: absolute;
 }
@@ -217,9 +214,6 @@ body {
     color: #555555;
 }
 
-/* COLLAPSABLE */
-
-
 /* LISTINGS STYLE */
 .map-title h3 {
     margin: 0px;
@@ -236,7 +230,7 @@ div.link-to-listings, div.link-to-map {
 }
 
 div.link-to-listings a span, div.link-to-map a span {
-    background: url(http://54.174.151.164/GraduateNYC/wp-content/uploads/2016/06/view-listings-icon1.jpg) no-repeat 0 0; 
+    background: url('../../../../../wp-content/uploads/2016/06/view-listings-icon1.jpg') no-repeat 0 0; 
     padding-left: 29px;
 }
 
@@ -244,7 +238,6 @@ div.link-to-map a:hover,
 div.link-to-map a span:hover,
 div.link-to-listings a:hover,
 div.link-to-listings a span:hover {
-/*    background: url(http://54.174.151.164/GraduateNYC/wp-content/uploads/2016/06/view-listings-icon1.jpg) no-repeat 0 -18px; */
     color: #676767;
 }
 
@@ -269,7 +262,6 @@ ul.gnsm-program-listings i.readmoreless {
 }
 
 .program-listing {
-/*    border-bottom: 1px solid #d0d0d0; */
     background-color: rgb(241, 244, 244);
     padding: 0px 12px !important;
     margin: 0px 0px 10px 0px !important;
@@ -277,15 +269,17 @@ ul.gnsm-program-listings i.readmoreless {
     text-align: left;
 }
 
+/*
 .program-listing.shortened {
     max-height: 200px;
-/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f1f4f4+0,7db9e8+100&1+0,0+18 */
-background: -moz-linear-gradient(top,  rgba(241,244,244,1) 0%, rgba(220,233,242,0) 48%, rgba(125,185,232,0) 100%); /* FF3.6-15 */
-background: -webkit-linear-gradient(top,  rgba(241,244,244,1) 0%,rgba(220,233,242,0) 48%,rgba(125,185,232,0) 100%); /* Chrome10-25,Safari5.1-6 */
-background: linear-gradient(to bottom,  rgba(241,244,244,1) 0%,rgba(220,233,242,0) 48%,rgba(125,185,232,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f1f4f4', endColorstr='#007db9e8',GradientType=0 ); /* IE6-9 */
+// Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f1f4f4+0,7db9e8+100&1+0,0+18
+background: -moz-linear-gradient(top,  rgba(241,244,244,1) 0%, rgba(220,233,242,0) 48%, rgba(125,185,232,0) 100%); // FF3.6-15
+background: -webkit-linear-gradient(top,  rgba(241,244,244,1) 0%,rgba(220,233,242,0) 48%,rgba(125,185,232,0) 100%); // Chrome10-25,Safari5.1-6
+background: linear-gradient(to bottom,  rgba(241,244,244,1) 0%,rgba(220,233,242,0) 48%,rgba(125,185,232,0) 100%); // W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f1f4f4', endColorstr='#007db9e8',GradientType=0 ); // IE6-9
 
 }
+*/
 
 .program-listing div, .program-listing p {
     padding: 3px 0px;
@@ -326,10 +320,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f1f4f4', end
 
 .tab-content {
     background: #ffffff;
-/*    width: 455px;
-    top: -26px;
-    position: relative;
-*/
     padding-top: 6px; 
 }
 
@@ -361,13 +351,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f1f4f4', end
 }
 
 /* FORM STYLES */
-
-/* MAY NEED TO ADD BACK, but put inputs in DIVs, so may not be an issue.
-.panel-body .field-input {
-    display: block;   
-}
-*/
-
 .panel-group {
     margin-bottom: 4px !important;
 }

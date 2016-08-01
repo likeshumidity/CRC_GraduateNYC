@@ -597,8 +597,6 @@ if (GNYC_VENUE === 'map') {
             htmlSnippet += '</p>';
         }
 
-//        htmlSnippet += '<script>$(\'#program-listing-' + item.post_id + '\').readmore(GNYC.listingReadmore);</script>';
-
         return htmlSnippet;
     };
 
@@ -830,7 +828,6 @@ GNYC.getFilteredData = function (programsAll) {
                 if (thisSelected === GNYC.filters[thisFilter].defaultValue) {
                     return false;
                 // if selected in program, don't exclude program
-                //
                 } else if (thisProgram[GNYC.filters[thisFilter].dataSetName].indexOf(thisSelected) > -1) {
                     return false;
                 // otherwise, exclude program
