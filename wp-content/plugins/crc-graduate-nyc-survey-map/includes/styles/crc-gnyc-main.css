@@ -329,9 +329,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f1f4f4', end
 
 .nav-pills>li.active>a, .nav-pills>li>a  {
     border: 1px solid #3C696F;
-    
     border-radius: 50% !important;
-    
     color: #3C696F;
     width: 70px;
     height: 70px;
@@ -404,7 +402,7 @@ p.breadcrumbs {
 
 .about {
     margin-top: 0px !important;
-    text-align: right;
+    text-align: left;
     margin-right: 10%;
 }
 
@@ -423,6 +421,8 @@ p.breadcrumbs {
 .about p.hidden-start {
     display: none;
 }
+
+
 
 .crc-gnyc-listings #crc-gnsm-listings-form {
     position: fixed;
@@ -483,6 +483,11 @@ p.breadcrumbs {
 
 
 /* LINK ICONS */
+.icons {
+    text-align: center;
+    margin: 0px auto;
+}
+
 
 .collegeIcon, .populationIcon, .schoolIcon {
     height: 90px;
