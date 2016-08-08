@@ -482,3 +482,25 @@ p.breadcrumbs {
 }
 
 
+/* LINK ICONS */
+
+.collegeIcon, .populationIcon, .schoolIcon {
+    height: 90px;
+    width: 90px;
+    float: left;
+    margin: 0 5px 5px 0;
+    text-indent: -9999px;
+}
+
+.collegeIcon {background: url(../../../../../wp-content/uploads/2016/08/college-icon.svg);}
+a.collegeIcon:hover {background: url(../../../../../wp-content/uploads/2016/08/college-icon-text.svg);}
+
+.populationIcon {background: url(../../../../../wp-content/uploads/2016/08/population-icon.svg);}
+a.populationIcon:hover {background: url(../../../../../wp-content/uploads/2016/08/population-icon-text.svg);}
+
+.schoolIcon {background: url(../../../../../wp-content/uploads/2016/08/highschool-icon.svg);}
+a.schoolIcon:hover {background: url(../../../../../wp-content/uploads/2016/08/highschool-icon-text.svg);}
+
+
+/* PAGE ICONS */
+

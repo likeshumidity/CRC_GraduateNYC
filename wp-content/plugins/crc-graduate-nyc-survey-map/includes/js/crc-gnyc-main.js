@@ -341,6 +341,7 @@ if (GNYC_VENUE === 'map') {
                 .enter().append("path")
                 .attr("class", "neighborhood")
                 .attr("id", function (d) {
+//console.log(d.properties.ntaname);
                     return d.properties.ntaname;
                 })
                 .attr("d", GNYC.path)
@@ -380,6 +381,7 @@ if (GNYC_VENUE === 'map') {
     
     
     GNYC.getDensityColor = function(d) {
+console.log(d);
         for (var neighborhoodBorough in GNYC.filters.boroughs.density[d.properties.boroname]) {
             var neighborhood = neighborhoodBorough.split(' - ')[1];
     
@@ -451,6 +453,7 @@ if (GNYC_VENUE === 'map') {
                     GNYC.map.tooltip.html('<a href="' + $('.link-to-listings a').attr('href') + '&neighborhoods=' + encodeURIComponent(d.properties.boroname + ' - ' + d.properties.ntaname) +'"><strong>' + d.properties.ntaname + ': </strong>' + d.density + ' programs</a>')
                         .style("left", (d3.event.pageX) + "px")
                         .style("top", (d3.event.pageY - 28) + "px");
+console.log(d.properties);
                 }
             })
 /*
