@@ -242,7 +242,6 @@ div.link-to-listings a span:hover {
 }
 
 .crc-gnyc-listings .link-to-map {
-    padding-right: 50px;
 }
 
 ul.gnsm-program-listings {
@@ -252,12 +251,19 @@ ul.gnsm-program-listings {
     text-align: right;
 }
 
+ul.gnsm-program-listings div.details-more-link {
+    text-align: right;
+    cursor: pointer;
+}
+
+ul.gnsm-program-listings div.details-more {
+    display: none;
+}
+
 ul.gnsm-program-listings i.readmoreless {
-    position: relative;
-    top: -45px;
     padding: 5px;
-    background-color: #cccccc;
-    margin: 5px;
+    background-color: #dddddd;
+    margin: 0px 5px 5px 5px;
     border-radius: 3px;
 }
 
@@ -425,8 +431,9 @@ p.breadcrumbs {
 
 
 .crc-gnyc-listings #crc-gnsm-listings-form {
-    position: fixed;
+/*    position: fixed;
     z-index: 20;
+*/
     background-color: #ffffff;
 }
 

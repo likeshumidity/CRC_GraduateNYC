@@ -335,13 +335,17 @@ if (GNYC_VENUE === 'map') {
     
     // Get neighborhood outlines
     GNYC.loadMapNeighborhoods = function() {
-        d3.json("../wp-content/plugins/crc-graduate-nyc-survey-map/includes/static/NTA.json", function (error, nta) {
+//        d3.json("../wp-content/plugins/crc-graduate-nyc-survey-map/includes/static/NTA.json", function (error, nta) {
+//        d3.json("../wp-content/plugins/crc-graduate-nyc-survey-map/includes/static/88472a1f6fd94fef97b8c06335db60f7nyccommunitydistricts.json", function (error, nta) {
+//        d3.json("../wp-content/plugins/crc-graduate-nyc-survey-map/includes/static/NYC-Community_Districts1470741951.4.json", function (error, nta) {
+        d3.json("../wp-content/plugins/crc-graduate-nyc-survey-map/includes/static/NYC-Community_Districts1470742305.58.json", function (error, nta) {
             GNYC.groups.neighborhoods.selectAll(".neighborhood")
-                .data(topojson.feature(nta, nta.objects.NTA).features)
+                .data(topojson.feature(nta, nta.objects['88472a1f6fd94fef97b8c06335db60f7nyccommunitydistricts']).features)
                 .enter().append("path")
                 .attr("class", "neighborhood")
                 .attr("id", function (d) {
 //console.log(d.properties.ntaname);
+// return d.id;
                     return d.properties.ntaname;
                 })
                 .attr("d", GNYC.path)
@@ -381,7 +385,7 @@ if (GNYC_VENUE === 'map') {
     
     
     GNYC.getDensityColor = function(d) {
-console.log(d);
+//console.log(d);
         for (var neighborhoodBorough in GNYC.filters.boroughs.density[d.properties.boroname]) {
             var neighborhood = neighborhoodBorough.split(' - ')[1];
     
@@ -453,7 +457,7 @@ console.log(d);
                     GNYC.map.tooltip.html('<a href="' + $('.link-to-listings a').attr('href') + '&neighborhoods=' + encodeURIComponent(d.properties.boroname + ' - ' + d.properties.ntaname) +'"><strong>' + d.properties.ntaname + ': </strong>' + d.density + ' programs</a>')
                         .style("left", (d3.event.pageX) + "px")
                         .style("top", (d3.event.pageY - 28) + "px");
-console.log(d.properties);
+// console.log(d.properties);
                 }
             })
 /*
@@ -519,9 +523,11 @@ console.log(d.properties);
                 return GNYC.listingItemHTML(d);
             });
 
+/*
         GNYC.listings.each(function(d, i) {
                 $(GNYC.listings[0][i]).readmore(GNYC.listingReadmore);
             });
+*/
 
             $('.post-count').text(GNYC.objToSortedArray(GNYC.getFilteredData(GNYC.data)).length + ' matching programs');
     }
@@ -539,9 +545,11 @@ console.log(d.properties);
                 return GNYC.listingItemHTML(d);
             });
 
+/*
         GNYC.listings.each(function(d, i) {
                 $(GNYC.listings[0][i]).readmore(GNYC.listingReadmore);
             });
+*/
 
             $('.post-count').text(GNYC.objToSortedArray(GNYC.getFilteredData(GNYC.data)).length + ' matching programs');
     };
@@ -580,6 +588,14 @@ console.log(d.properties);
         htmlSnippet += '</a>';
         htmlSnippet += '</span>';
         htmlSnippet += '</div>';
+        htmlSnippet += '<div class="details-more-link" id="details-more-link-' + item.post_id + '" onclick="GNYC.toggleListingDetail(\'' + item.post_id + '\');">';
+
+        if (item.program_description.length > 0 && item.services2.length > 0) {
+            htmlSnippet += '<i class="fa fa-plus readmoreless"> View program details</i>';
+        }
+
+        htmlSnippet += '</div>';
+        htmlSnippet += '<div class="details-more" id="listing-details-' + item.post_id + '">';
         htmlSnippet += '<p class="program-description">' + item.program_description + '</p>';
 
         if (item.services2.length > 0) {
@@ -599,6 +615,9 @@ console.log(d.properties);
 
             htmlSnippet += '</p>';
         }
+
+//        'lessLink': '<i class="fa fa-minus readmoreless"></i> less',
+        htmlSnippet += '</div>';
 
         return htmlSnippet;
     };
@@ -623,6 +642,43 @@ console.log(d.properties);
 
         return baseURL + encodeURIComponent(query);
     };
+
+    GNYC.toggleListingDetail = function(post_id) {
+        $('#listing-details-' + post_id).toggle();
+    };
+
+/*
+        htmlSnippet += '<div class="details-more-link" id="details-more-link-' + item.post_id + '" onclick="GNYC.toggleListingDetail(\'' + item.post_id + '\');">';
+
+        if (item.program_description.length > 0 && item.services2.length > 0) {
+            htmlSnippet += '<i class="fa fa-plus readmoreless"> View program details</i>';
+        }
+
+        htmlSnippet += '</div>';
+        htmlSnippet += '<div class="details-more" id="listing-details-' + item.post_id + '">';
+        htmlSnippet += '<p class="program-description">' + item.program_description + '</p>';
+
+        if (item.services2.length > 0) {
+            htmlSnippet += '<p class="services-provided"><em>Services provided</em>: ';
+
+            for (var i = 0, isFirst = true; i < item.services2.length; i++) {
+                if (item.services2[i].match('(Any)') === null) {
+                    if (isFirst) {
+                        isFirst = false;
+                    } else {
+                        htmlSnippet += ', ';
+                    }
+
+                    htmlSnippet += item.services2[i];
+                }
+            }
+
+            htmlSnippet += '</p>';
+        }
+
+//        'lessLink': '<i class="fa fa-minus readmoreless"></i> less',
+//
+*/
 }
 
 
