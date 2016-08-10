@@ -1,5 +1,5 @@
 <?php
-
+/* REMOVE
 $crc_gnsm_listing_attributes = array(
 	'boroughs' => array(
 		'select-multiple',
@@ -63,5 +63,5 @@ $crc_gnsm_listing_attributes = array(
 		'services',
 	),
 );
-
+*/
 ?>

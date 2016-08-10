@@ -490,6 +490,17 @@ p.breadcrumbs {
 
 
 /* LINK ICONS */
+
+.iconsSect {
+    border-bottom: 1px solid black;
+    color: #3e696f;
+    margin-bottom: 15px;
+    padding-bottom: 4px;
+    font-size: 16px;
+    font-weight: bold;
+    width: 280px;
+}
+
 .icons {
     text-align: center;
     margin: 0px auto;
@@ -500,19 +511,95 @@ p.breadcrumbs {
     height: 90px;
     width: 90px;
     float: left;
-    margin: 0 5px 5px 0;
+    margin: 0 5px 10px 0;
     text-indent: -9999px;
 }
 
 .collegeIcon {background: url(../../../../../wp-content/uploads/2016/08/college-icon.svg);}
-a.collegeIcon:hover {background: url(../../../../../wp-content/uploads/2016/08/college-icon-text.svg);}
-
 .populationIcon {background: url(../../../../../wp-content/uploads/2016/08/population-icon.svg);}
-a.populationIcon:hover {background: url(../../../../../wp-content/uploads/2016/08/population-icon-text.svg);}
-
 .schoolIcon {background: url(../../../../../wp-content/uploads/2016/08/highschool-icon.svg);}
-a.schoolIcon:hover {background: url(../../../../../wp-content/uploads/2016/08/highschool-icon-text.svg);}
 
 
-/* PAGE ICONS */
+.icons .iconText {
+display: none;
+}
+
+a.collegeIcon:hover, .icons .collegeText {
+    display: block;
+}
+
+
+
+
+
+
+
+
+.icons {
+
+}
+
+.icons a:nth-child(1):hover ~ p.iconsTitle:after {
+  content: "COLLEGE READINESS SERVICES";
+
+  }
+
+.icons a:nth-child(2):hover ~ p.iconsTitle:after {
+  content: "TARGETED POPULATIONS (demographics)";
+  }
+
+.icons a:nth-child(3):hover ~ p.iconsTitle:after {
+  content: "HIGH SCHOOL GRADE LEVELS";
+
+}
+
+
+p.iconsTitle {
+    font-size: 15px;
+    font-weight: bold;
+    height: 50px;
+    display: block !important;
+    color: #3e696f;
+    text-align: left;
+    width: 270px;
+}
+
+
+
+
+
+
+
+/* SERVICE PAGE */
+
+.callout-item .callout-header {
+    height: 100px;
+    padding: 0 50px;
+    position: relative !important;
+}
+
+.callout-header h2 { 
+    bottom: 0;
+    color: #3e696f !important;
+    left: 150px;
+    position: absolute !important;
+}
+
+.callout-item p {
+    margin-bottom: 60px;
+    padding: 0 50px;
+    
+}
+
+.callout-item img {
+ background: #f7f8fa;   
+ border-radius: 10px;
+}
+
+.callout-item .caption {
+     font-size: 17px;
+     font-weight: bold;
+     margin: 0 0 20px 20px;
+     text-transform: uppercase;
+ }
 
