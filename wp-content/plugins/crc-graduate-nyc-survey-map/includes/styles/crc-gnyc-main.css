@@ -1,3 +1,5 @@
+
+
 .browserupgrade {
     margin: 0.2em 0;
     background: #ccc;
@@ -169,7 +171,9 @@ body {
 
 .map-key p {
     font-weight: bold;
-}
+    font-size: 16px;
+    color: #3e696f;
+    }
 
 .map-key ul {
     padding: 0 !important;
@@ -229,10 +233,18 @@ div.link-to-listings, div.link-to-map {
     text-transform: uppercase;
 }
 
-div.link-to-listings a span, div.link-to-map a span {
-    background: url('../../../../../wp-content/uploads/2016/06/view-listings-icon1.jpg') no-repeat 0 0; 
+div.link-to-listings a span.icon-eye, div.link-to-map a span.icon-eye {
     padding-left: 29px;
 }
+
+.icon-eye:before {
+    color: #666666;
+    font-size: 20px;
+    position: relative;
+    top: 2px;
+}
+
+
 
 div.link-to-map a:hover,
 div.link-to-map a span:hover,
@@ -404,6 +416,10 @@ p.breadcrumbs {
     font-size: smaller;
 }
 
+#gnyc-reset a {
+    color: #888888;   
+}
+
 /* ABOUT */
 
 .about {
@@ -489,7 +505,7 @@ p.breadcrumbs {
 }
 
 
-/* LINK ICONS */
+/* Program Findings & Patterns Icons */
 
 .iconsSect {
     border-bottom: 1px solid black;
@@ -506,7 +522,6 @@ p.breadcrumbs {
     margin: 0px auto;
 }
 
-
 .collegeIcon, .populationIcon, .schoolIcon {
     height: 90px;
     width: 90px;
@@ -516,8 +531,15 @@ p.breadcrumbs {
 }
 
 .collegeIcon {background: url(../../../../../wp-content/uploads/2016/08/college-icon.svg);}
+a.collegeIcon:hover {background: url(../../../../../wp-content/uploads/2016/08/college-icon-hover.svg);}
+
 .populationIcon {background: url(../../../../../wp-content/uploads/2016/08/population-icon.svg);}
+a.populationIcon:hover {background: url(../../../../../wp-content/uploads/2016/08/population-icon-hover.svg);}
+
+
 .schoolIcon {background: url(../../../../../wp-content/uploads/2016/08/highschool-icon.svg);}
+a.schoolIcon:hover {background: url(../../../../../wp-content/uploads/2016/08/highschool-icon-hover.svg);}
+
 
 
 .icons .iconText {
@@ -535,22 +557,44 @@ a.collegeIcon:hover, .icons .collegeText {
 
 
 
-.icons {
+.icons a {
 
 }
 
-.icons a:nth-child(1):hover ~ p.iconsTitle:after {
-  content: "COLLEGE READINESS SERVICES";
+.icons a:nth-child(1):hover ~ p.iconsTitle:after, .icons a:nth-child(1):hover ~ .iconsDescServices  {
+  content: "SERVICES";
+  display: block !important;
+float: left;
 
   }
 
-.icons a:nth-child(2):hover ~ p.iconsTitle:after {
-  content: "TARGETED POPULATIONS (demographics)";
+.icons a:nth-child(2):hover ~ p.iconsTitle:after, .icons a:nth-child(2):hover ~ .iconsDescPopulations  {
+  content: "TARGETED POPULATIONS";
+  display: block !important;
+float: left;
   }
 
-.icons a:nth-child(3):hover ~ p.iconsTitle:after {
-  content: "HIGH SCHOOL GRADE LEVELS";
+.icons a:nth-child(3):hover ~ p.iconsTitle:after, .icons a:nth-child(3):hover ~ .iconsDescGrade  {
+  content: "GRADE LEVELS";
+  display: block !important;
+float: left;
 
+}
+
+
+
+.iconsDesc {
+        float: left;
+    display: block;
+    position: relative;
+    left: 0;
+    clear: both;   
+    text-align: left;
+    width: 280px;
+    }
+
+.iconsDescServices, .iconsDescPopulations, .iconsDescGrade {
+    display: none;
 }
 
 
@@ -564,7 +608,15 @@ p.iconsTitle {
     width: 270px;
 }
 
-
+span.iconsTitle {
+    font-size: 15px;
+    font-weight: bold;
+    height: 25px;
+    display: block !important;
+    color: #3e696f;
+    text-align: left;
+    width: 270px;
+}
 
 
 
@@ -602,4 +654,55 @@ p.iconsTitle {
      margin: 0 0 20px 20px;
      text-transform: uppercase;
  }
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+.filter-icons {
+    width: 25px;
+    height: 20px;
+    display: block;
+    float: left;
+    font-size: 20px;
+    padding: 0;
+    color: #666666;    
+    margin: -5px 9px 0 -5px;
+}
+
+#panel-population-servved .filter-icons i {
+    font-family: 'fontello';
+}
+
+
+
+
+
+
+.panel-heading p.breadcrumbs {
+    margin-bottom: 0px;
+    display: block;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 11px;
+    padding-top: 5px;
+    color: #226173;
+    line-height: 16px;
+}
+
+.panel-default>.panel-heading+.panel-collapse>.panel-body {    
+    background: #f1f4f4;
+    border-top-color: #ddd;
+    margin-top: -24px;
+    padding-left: 6px;
+    }
+    
+    .checkbox label, .radio label {
+        padding-left: 7px !important;
+    }
+    
 
