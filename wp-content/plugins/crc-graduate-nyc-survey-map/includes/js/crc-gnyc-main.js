@@ -79,7 +79,7 @@ var GNYC = {
             'onmap': false,
             'onlistings': true,
             'values': [
-                'All',
+                'Any',
                 'Brooklyn - Bay Ridge',
                 'Brooklyn - Bedford Stuyvesant',
                 'Brooklyn - Bensonhurst',
@@ -140,8 +140,8 @@ var GNYC = {
                 'Staten Island - St. George',
                 'Staten Island - Tottenville',
             ],
-            'defaultValue': 'All',
-            'selected': 'All', 
+            'defaultValue': 'Any',
+            'selected': 'Any', 
         },
         'population-served': {
             'dataSetName': 'target_population',
@@ -149,7 +149,7 @@ var GNYC = {
             'onmap': true,
             'onlistings': true,
             'values': [
-                'All',
+                'Any',
                 'Academic performance level',
                 'English language learners',
                 'Disconnected youth/Out of school youth',
@@ -158,8 +158,8 @@ var GNYC = {
                 'Justice involved youth',
                 'Immigrants/Refugees',
             ],
-            'defaultValue': 'All',
-            'selected': 'All', 
+            'defaultValue': 'Any',
+            'selected': 'Any', 
         },
         'grades-served': {
             'dataSetName': 'grades',
@@ -182,13 +182,13 @@ var GNYC = {
             'onmap': true,
             'onlistings': true,
             'values': [
-                'All',
+                'Any',
                 'Open enrollment',
                 'Limited enrollment',
                 'Closed program',
             ],
-            'defaultValue': 'All',
-            'selected': 'All', 
+            'defaultValue': 'Any',
+            'selected': 'Any', 
         },
         'eligibility-criteria': {
             'dataSetName': 'eligibility_criteria',
@@ -196,15 +196,15 @@ var GNYC = {
             'onmap': true,
             'onlistings': true,
             'values': [
-                'All',
+                'Any',
                 'Enrolled in school (K-12)',
                 'Enrolled in college',
                 'Resident of a particular geography',
                 'Grade level',
                 'Special populations (or targeted population)',
             ],
-            'defaultValue': 'All', 
-            'selected': 'All',
+            'defaultValue': 'Any', 
+            'selected': 'Any',
         },
         'services': {
             'dataSetName': 'services',
@@ -944,7 +944,11 @@ GNYC.updateBreadcrumbs = function(thisFilter) {
     var theseBreadcrumbs = $('#' + this.filterToFieldID(thisFilter, 'panel') + ' p.breadcrumbs');
 
     if (this.filters[thisFilter].type === 'radio') {
-        theseBreadcrumbs.html(this.filters[thisFilter].selected);
+        if (this.filters[thisFilter].selected === 'Any') {
+            theseBreadcrumbs.html('');
+        } else {
+            theseBreadcrumbs.html(this.filters[thisFilter].selected);
+        }
     } else if (this.filters[thisFilter].type === 'checkbox') {
         theseBreadcrumbs.html('');
 

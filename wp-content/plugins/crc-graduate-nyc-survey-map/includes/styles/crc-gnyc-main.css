@@ -249,6 +249,10 @@ div.link-to-listings a span.icon-eye, div.link-to-map a span.icon-eye {
     width: 20px;
 }
 
+.fa-question-circle-o {
+    z-index: 20;
+}
+
 div.link-to-map a:hover,
 div.link-to-map a span:hover,
 div.link-to-listings a:hover,
