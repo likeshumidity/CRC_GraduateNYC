@@ -257,6 +257,8 @@ text-align: center;
 }
 
 div.post-count {
+    padding: 2px 15px 2px 0px;
+    height: 26px;
     font-style: italic;
 }
 
@@ -343,6 +345,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f1f4f4', end
 
 }
 */
+.crc-gnsm-results-container .row:first-child {
+    margin-bottom: 5px;
+}
 
 .program-listing div, .program-listing p {
     padding: 3px 0px;
