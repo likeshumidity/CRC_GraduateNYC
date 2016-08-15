@@ -512,6 +512,7 @@ if (GNYC_VENUE === 'map') {
             .attr("transform", "translate(" + translate + ")scale(" + scale + ")");
 
         GNYC.groups.CBOLocations.selectAll('.cbo-location')
+            .style("pointer-events", 'all')
             .on("mouseenter", function (d) {
                 GNYC.map.tooltip.transition()
                     .duration(500)
