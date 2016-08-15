@@ -470,31 +470,30 @@ function crc_gnsm_acf_field_setup_listing_details() {
 add_action('init', 'crc_gnsm_acf_field_setup_listing_details');
 
 function crc_gnsm_survey_results() {
-	add_rewrite_tag('%crc-json%', '([^&]+)');
-	add_rewrite_rule('json/([^&]+)/?', 'index.php?crc-json=$1', 'top');
+	add_rewrite_tag('%crc-data%', '([^&]+)');
+	add_rewrite_rule('data/([^&]+)/?', 'index.php?crc-data=$1', 'top');
 }
 add_action('init', 'crc_gnsm_survey_results');
 
 function crc_gnsm_survey_results_data() {
 	global $wp_query;
 
-	$gnsm_tag = $wp_query->get('crc-json');
+	$gnsm_tag = $wp_query->get('crc-data');
 
 	switch($gnsm_tag) {
-		case 'all_listings':
-			crc_gnsm_survey_results_listings_all();
+		case 'JSON':
+			crc_gnsm_survey_results_JSON();
 			break;
-/*		case 'page_listings_filter':
-			crc_gnsm_survey_results_page_listings_filter();
+		case 'CSV':
+			crc_gnsm_survey_results_CSV();
 			break;
-*/
 		default:
 			return;
 	}
 }
 add_action('template_redirect', 'crc_gnsm_survey_results_data');
 
-function crc_gnsm_survey_results_listings_all() {
+function crc_gnsm_survey_results_JSON() {
 	$results = array();
 
 	$args = array(
@@ -559,6 +558,115 @@ function crc_gnsm_survey_results_listings_all() {
 	}
 
 	wp_send_json($results);
+}
+
+function crc_gnsm_survey_results_CSV() {
+	$results = array();
+
+	$results[] = array(
+		'post_id',
+		'program_name',
+		'boroughs',
+		'neighborhoods',
+		'grades',
+		'target_population',
+		'eligibility_criteria',
+		'services',
+		'services2',
+		'accepting_students',
+		'organization_type',
+		'program_description',
+		'contact_phone',
+		'address_postal_code',
+		'address_state',
+		'address_city',
+		'address_line_2',
+		'address_line_1',
+		'school_partnerships',
+		'cbo_latitude',
+		'cbo_longitude',
+		);
+
+	$args = array(
+		'post_type' => array(
+			'gnsm_listing',
+			),
+		'posts_per_page' => -1,
+	);
+
+	$query = new WP_Query($args);
+
+	if ($query->have_posts()) {
+		while ($query->have_posts()) {
+			$query->the_post();
+			$thispost = get_post();
+			$program_name = get_the_title($thispost->ID);
+			$boroughs = get_post_meta($thispost->ID, 'boroughs');
+			$neighborhoods = get_post_meta($thispost->ID, 'neighborhoods');
+			$grades_served = get_post_meta($thispost->ID, 'education_levels_served');
+			$target_population = get_post_meta($thispost->ID, 'targeted_populations_served');
+			$eligibility_criteria = get_post_meta($thispost->ID, 'eligibility_criteria');
+			$services = get_post_meta($thispost->ID, 'services_provided');
+			$services2 = get_post_meta($thispost->ID, 'services_provided2');
+			$accepting_students = get_post_meta($thispost->ID, 'enrollment_type');
+			$organization_type = get_post_meta($thispost->ID, 'organization_type');
+			$program_description = get_post_meta($thispost->ID, 'program_description');
+                        $contact_phone = get_post_meta($thispost->ID, 'phone');
+			$address_postal_code = get_post_meta($thispost->ID, 'address_-_postal_code');
+			$address_state = get_post_meta($thispost->ID, 'address_-_state');
+			$address_city = get_post_meta($thispost->ID, 'address_-_city');
+			$address_line_2 = get_post_meta($thispost->ID, 'address_-_line_2');
+			$address_line_1 = get_post_meta($thispost->ID, 'address_-_line_1');
+			$school_partnerships = get_post_meta($thispost->ID, 'school_partnerships');
+			$cbo_latitude = get_post_meta($thispost->ID, 'cbo_latitude');
+			$cbo_longitude = get_post_meta($thispost->ID, 'cbo_longitude');
+
+			$results[] = array(
+				$thispost->ID,
+				$program_name,
+				$boroughs[0],
+				$neighborhoods[0],
+				$grades_served[0],
+				$target_population[0],
+				$eligibility_criteria[0],
+				$services[0],
+				$services2[0],
+				$accepting_students[0],
+				$organization_type[0],
+				$program_description,
+                        	$contact_phone,
+				$address_postal_code,
+				$address_state,
+				$address_city,
+				$address_line_2,
+				$address_line_1,
+				$school_partnerships,
+                                $cbo_latitude,
+                                $cbo_longitude,
+			);
+			wp_reset_postdata();
+		}
+	}
+
+	crc_send_csv($results);
+}
+
+
+function crc_send_csv($dataset) {
+    header('Content-Type: text/csv; charset=utf-8');
+    header('Content-Disposition: attachment; filename=GraduateNYCSurveyData.csv');
+
+    $output = fopen('php://output', 'w');
+
+    for ($i = 0; $i < count($dataset); $i++) {
+	foreach($dataset[$i] as $key => $val) {
+		if (gettype($val) == 'array') {
+			$dataset[$i][$key] = implode(';', $dataset[$i][$key]);
+		}
+	}
+
+        fputcsv($output, $dataset[$i]);
+    }
 }
 
 

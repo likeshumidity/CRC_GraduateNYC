@@ -760,7 +760,7 @@ GNYC.objToSortedArray = function(filteredData) {
 
 // Get dataset
 GNYC.loadDataset = function() {
-    d3.json(GNYC.url.basePath() + '?crc-json=all_listings', function (error, json) {
+    d3.json(GNYC.url.basePath() + '?crc-data=JSON', function (error, json) {
         if (error) {
             return console.warn(error);
         }
