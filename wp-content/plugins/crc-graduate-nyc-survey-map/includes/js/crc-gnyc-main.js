@@ -357,6 +357,12 @@ if (GNYC_VENUE === 'map') {
     };
 
 
+    GNYC.updateMap = function(data) {
+        GNYC.setBoroughDensity(data);
+        GNYC.setCBOLocations(data);
+    };
+
+
     GNYC.setBoroughDensity = function (data) {
         for (borough in GNYC.filters.boroughs.density) {
             GNYC.filters.boroughs.density[borough] = {};
@@ -778,8 +784,7 @@ GNYC.loadDataset = function() {
         GNYC.data = json;
 
         if (GNYC.venue === 'map') {
-            GNYC.setBoroughDensity(GNYC.getFilteredData(GNYC.data));
-            GNYC.setCBOLocations(GNYC.getFilteredData(GNYC.data));
+            GNYC.updateMap(GNYC.getFilteredData(GNYC.data));
         } else if (GNYC.venue === 'listings') {
             GNYC.loadListings();
         }
@@ -1052,8 +1057,7 @@ GNYC.createFormEventListeners = function() {
                 GNYC.filters[thisFilter].selected = GNYC.filters[thisFilter].selected.slice();
 
                 if (GNYC.venue === 'map') {
-                    GNYC.setBoroughDensity(GNYC.getFilteredData(GNYC.data));
-                    GNYC.setCBOLocations(GNYC.getFilteredData(GNYC.data));
+                    GNYC.updateMap(GNYC.getFilteredData(GNYC.data));
                 } else if (GNYC.venue === 'listings') {
                     GNYC.updateListings();
                 }
@@ -1073,8 +1077,7 @@ GNYC.clearFilters = function () {
     GNYC.updateFilterFieldSelections();
 
     if (GNYC.venue === 'map') {
-        GNYC.setBoroughDensity(GNYC.getFilteredData(GNYC.data));
-        GNYC.setCBOLocations(GNYC.getFilteredData(GNYC.data));
+        GNYC.updateMap(GNYC.getFilteredData(GNYC.data));
     } else if (GNYC.venue === 'listings') {
         GNYC.updateListings();
     }
