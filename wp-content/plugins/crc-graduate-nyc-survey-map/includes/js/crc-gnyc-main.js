@@ -292,6 +292,7 @@ if (GNYC_VENUE === 'map') {
     GNYC.groups = {
         "neighborhoods": GNYC.svg.append("g"),
         "boroughs": GNYC.svg.append("g"),
+        "CBOlocations": GNYC.svg.append("g"),
     };
 
     // Range of colors based on density
@@ -335,17 +336,12 @@ if (GNYC_VENUE === 'map') {
     
     // Get neighborhood outlines
     GNYC.loadMapNeighborhoods = function() {
-//        d3.json("../wp-content/plugins/crc-graduate-nyc-survey-map/includes/static/NTA.json", function (error, nta) {
-//        d3.json("../wp-content/plugins/crc-graduate-nyc-survey-map/includes/static/88472a1f6fd94fef97b8c06335db60f7nyccommunitydistricts.json", function (error, nta) {
-//        d3.json("../wp-content/plugins/crc-graduate-nyc-survey-map/includes/static/NYC-Community_Districts1470741951.4.json", function (error, nta) {
         d3.json("../wp-content/plugins/crc-graduate-nyc-survey-map/includes/static/NYC-Community_Districts1470742305.58.json", function (error, nta) {
             GNYC.groups.neighborhoods.selectAll(".neighborhood")
                 .data(topojson.feature(nta, nta.objects['88472a1f6fd94fef97b8c06335db60f7nyccommunitydistricts']).features)
                 .enter().append("path")
                 .attr("class", "neighborhood")
                 .attr("id", function (d) {
-//console.log(d.properties.ntaname);
-// return d.id;
                     return d.properties.ntaname;
                 })
                 .attr("d", GNYC.path)
@@ -384,8 +380,36 @@ if (GNYC_VENUE === 'map') {
     }
     
     
+    // add CBO Locations to map
+    GNYC.addCBOLocations = function(data) {
+        GNYC.CBOLocations = [];
+    
+        for (var program in data) {
+            if (data[program].cbo_latitude[0].length > 0 && data[program].cbo_longitude[0].length > 0) {
+                GNYC.CBOLocations.push({
+                    'name': data[program].program_name,
+                    'lat': data[program].cbo_latitude[0],
+                    'lng': data[program].cbo_longitude[0],
+                    'school_partnerships': data[program].school_partnerships[0],
+                });
+            }
+        }
+
+        GNYC.groups.CBOlocations.selectAll(".cbo-location")
+            .data(GNYC.CBOLocations).enter()
+            .append('circle')
+            .attr('class', 'cbo-location')
+//            .attr('cx', function(d) { console.log(GNYC.projection([d.lng, d.lat])); return 0; })
+            .attr('cx', function(d) { return GNYC.projection([d.lng, d.lat])[0]; })
+            .attr('cy', function(d) { return GNYC.projection([d.lng, d.lat])[1]; })
+            .attr('r', '3px')
+            .attr('fill', '#c05f5f');
+
+console.log(GNYC.CBOLocations);
+    };
+
+
     GNYC.getDensityColor = function(d) {
-//console.log(d);
         for (var neighborhoodBorough in GNYC.filters.boroughs.density[d.properties.boroname]) {
             var neighborhood = neighborhoodBorough.split(' - ')[1];
     
@@ -522,12 +546,6 @@ if (GNYC_VENUE === 'map') {
             .html(function(d) {
                 return GNYC.listingItemHTML(d);
             });
-
-/*
-        GNYC.listings.each(function(d, i) {
-                $(GNYC.listings[0][i]).readmore(GNYC.listingReadmore);
-            });
-*/
 
             $('.post-count').text(GNYC.objToSortedArray(GNYC.getFilteredData(GNYC.data)).length + ' matching programs');
     }
@@ -717,6 +735,7 @@ GNYC.loadDataset = function() {
 
         if (GNYC.venue === 'map') {
             GNYC.setBoroughDensity(GNYC.getFilteredData(GNYC.data));
+            GNYC.addCBOLocations(GNYC.getFilteredData(GNYC.data));
         } else if (GNYC.venue === 'listings') {
             GNYC.loadListings();
         }
