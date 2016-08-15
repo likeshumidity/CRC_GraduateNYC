@@ -20,7 +20,6 @@ defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 define( 'CRC__GNSM_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 
 require_once( CRC__GNSM_PLUGIN_DIR . 'crc-gnsm-import.php' );
-require_once( CRC__GNSM_PLUGIN_DIR . 'crc-gnsm-listing-attributes.php' );
 
 // used for debugging
 function console_log($data) {
@@ -412,7 +411,7 @@ function crc_gnsm_acf_field_setup_listing_details() {
 				'layout' => 'vertical',
 			),
 			array (
-				'key' => 'field_5783229f11791',
+				'key' => 'field_57b0e4149c862',
 				'label' => 'School Partnerships',
 				'name' => 'school_partnerships',
 				'type' => 'textarea',
@@ -423,7 +422,7 @@ function crc_gnsm_acf_field_setup_listing_details() {
 				'formatting' => 'br',
 			),
 			array (
-				'key' => 'field_5783229f11789',
+				'key' => 'field_57b0e43f1e248',
 				'label' => 'CBO Latitude',
 				'name' => 'cbo_latitude',
 				'type' => 'text',
@@ -435,7 +434,7 @@ function crc_gnsm_acf_field_setup_listing_details() {
 				'maxlength' => '',
 			),
 			array (
-				'key' => 'field_5783229f11790',
+				'key' => 'field_57b0e47bffd4a',
 				'label' => 'CBO Longitude',
 				'name' => 'cbo_longitude',
 				'type' => 'text',
@@ -528,6 +527,9 @@ function crc_gnsm_survey_results_listings_all() {
 			$address_city = get_post_meta($thispost->ID, 'address_-_city');
 			$address_line_2 = get_post_meta($thispost->ID, 'address_-_line_2');
 			$address_line_1 = get_post_meta($thispost->ID, 'address_-_line_1');
+			$school_partnerships = get_post_meta($thispost->ID, 'school_partnerships');
+			$cbo_latitude = get_post_meta($thispost->ID, 'cbo_latitude');
+			$cbo_longitude = get_post_meta($thispost->ID, 'cbo_longitude');
 
 			$results[$program_name] = array(
 				'post_id' => $thispost->ID,
@@ -548,6 +550,9 @@ function crc_gnsm_survey_results_listings_all() {
 				'address_city' => $address_city,
 				'address_line_2' => $address_line_2,
 				'address_line_1' => $address_line_1,
+				'school_partnerships' => $school_partnerships,
+                                'cbo_latitude' => $cbo_latitude,
+                                'cbo_longitude' => $cbo_longitude,
 			);
 			wp_reset_postdata();
 		}
@@ -595,7 +600,7 @@ function crc_gnsm_activate() {
 	crc_gnsm_acf_field_setup_listing_details();
 
 	// Load posts
-	crc_gnsm_import_data('GNYC_SurveyData_PreppedForUpload20160727a.csv');
+	crc_gnsm_import_data('GNYC_SurveyData_PreppedForUpload20160810b.csv');
 
 	// Create listing and map pages TODO
 
@@ -619,6 +624,7 @@ function crc_styles_enqueue() {
 	wp_enqueue_style('bootstrap-crc', '/wp-content/plugins/crc-graduate-nyc-survey-map/includes/styles/bootstrap.css');
 	wp_enqueue_style('font-awesome', '/wp-content/plugins/crc-graduate-nyc-survey-map/includes/styles/font-awesome.css');
 	wp_enqueue_style('awesome-bootstrap-checkbox', '/wp-content/plugins/crc-graduate-nyc-survey-map/includes/styles/awesome-bootstrap-checkbox.css');
+	wp_enqueue_style('fontello', '/wp-content/plugins/crc-graduate-nyc-survey-map/includes/styles/fontello.css');
 	wp_enqueue_style('crc-gnyc-main', '/wp-content/plugins/crc-graduate-nyc-survey-map/includes/styles/crc-gnyc-main.css');
 }
 add_action('wp_enqueue_scripts', 'crc_styles_enqueue');

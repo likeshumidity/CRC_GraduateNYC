@@ -62,9 +62,12 @@ function crc_gnsm_translate_row($rowPostData, $rowHeaderData, $headerCheckboxInd
 			'field_578322869962f' => 'Address - City',
 			'field_5783229199630' => 'Address - State',
 			'field_5783229a99631' => 'Address - Postal code',
+			'field_57b0e4149c862' => 'School Partnerships',
+			'field_57b0e43f1e248' => 'CBO Latitude',
+			'field_57b0e47bffd4a' => 'CBO Longitude',
 		),
 		'checkbox' => array(
-			'field_57832f5dad1dd' => 'Boroughs',
+			'field_57832f5dad1dd' => 'Boroughs Served',
 			'field_578322d199633' => 'Neighborhoods',
 			'field_578324cf99634' => 'Education Levels Served',
 			'field_5783256c99635' => 'Targeted Populations Served',
@@ -87,6 +90,7 @@ function crc_gnsm_translate_row($rowPostData, $rowHeaderData, $headerCheckboxInd
 		}
 	}
 
+// error_log($postData['field_5783221099628']);
 	return $postData;
 }
 
