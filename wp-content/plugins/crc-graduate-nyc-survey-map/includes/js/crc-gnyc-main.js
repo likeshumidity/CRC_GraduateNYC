@@ -267,6 +267,14 @@ if (GNYC_VENUE === 'map') {
         .style("opacity", 0);
     
     d3.select(".map")
+        .append("canvas")
+        .attr('width', GNYC.map.width)
+        .attr('height', GNYC.map.height)
+        .style('display', 'block')
+        .style('width', '100%')
+        .style('visibility', 'hidden');
+
+    d3.select(".map")
         .append("div")
         .classed("svg-container", true);
     
