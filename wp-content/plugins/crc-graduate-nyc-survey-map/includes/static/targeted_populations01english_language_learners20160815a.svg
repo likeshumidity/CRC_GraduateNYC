@@ -11,8 +11,8 @@
 	.st4{fill:#FFFFFF;stroke:#CECECE;stroke-width:0.5;}
 	.st5{fill:#EDF1F1;stroke:#CECECE;stroke-width:0.5;}
 	.st6{fill:#E1E8E8;stroke:#CECECE;stroke-width:0.5;}
-	.st7{fill:#C05F5F;}
-	.st8{display:none;fill:#C05F5F;}
+	.st7{display:none;fill:#C05F5F;}
+	.st8{fill:#C05F5F;}
 </style>
 <g>
 	<path id="Battery_Park_x2F_Tribeca" class="st0" d="M149.2,279.8l-1.1,2.3l0.1,5.3l-0.9,1.4l2,2.1l-1.8,1.2l-0.2,2.3l-1.6-0.9
@@ -300,46 +300,46 @@
 <g>
 	<circle class="st7" cx="156.2" cy="308.4" r="3"/>
 	<circle class="st7" cx="17.9" cy="415.4" r="3"/>
-	<circle class="st7" cx="226.7" cy="119.3" r="3"/>
+	<circle class="st8" cx="226.7" cy="119.3" r="3"/>
 	<circle class="st7" cx="198.5" cy="177.4" r="3"/>
 	<circle class="st7" cx="154.4" cy="246.3" r="3"/>
 	<circle class="st7" cx="139" cy="295.4" r="3"/>
 	<circle class="st7" cx="157.7" cy="309.9" r="3"/>
-	<circle class="st7" cx="237.9" cy="105.5" r="3"/>
-	<circle class="st7" cx="323.8" cy="296.8" r="3"/>
+	<circle class="st8" cx="237.9" cy="105.5" r="3"/>
+	<circle class="st8" cx="323.8" cy="296.8" r="3"/>
 	<circle class="st7" cx="202.9" cy="132.5" r="3"/>
 	<circle class="st7" cx="66.1" cy="418.7" r="3"/>
-	<circle class="st7" cx="235.3" cy="95.3" r="3"/>
-	<circle class="st7" cx="236" cy="138.1" r="3"/>
-	<circle class="st8" cx="143.8" cy="272.2" r="3"/>
-	<circle class="st8" cx="358.8" cy="-1984.3" r="3"/>
-	<circle class="st8" cx="201.1" cy="181.1" r="3"/>
-	<circle class="st7" cx="175.5" cy="315.5" r="3"/>
-	<circle class="st8" cx="2716" cy="-1631.1" r="3"/>
-	<circle class="st8" cx="215.2" cy="170.6" r="3"/>
-	<circle class="st8" cx="59.7" cy="366" r="3"/>
-	<circle class="st8" cx="252.9" cy="90.3" r="3"/>
-	<circle class="st7" cx="222.1" cy="301.8" r="3"/>
-	<circle class="st7" cx="197.2" cy="196.4" r="3"/>
-	<circle class="st7" cx="279.4" cy="258.2" r="3"/>
-	<circle class="st8" cx="165.1" cy="237.2" r="3"/>
-	<circle class="st8" cx="139" cy="295.4" r="3"/>
-	<circle class="st8" cx="163.8" cy="283.6" r="3"/>
-	<circle class="st8" cx="172.1" cy="237.9" r="3"/>
-	<circle class="st8" cx="156.1" cy="307.5" r="3"/>
-	<circle class="st7" cx="139.2" cy="292.7" r="3"/>
-	<circle class="st8" cx="154.4" cy="245" r="3"/>
-	<circle class="st8" cx="137.8" cy="292.8" r="3"/>
-	<circle class="st8" cx="226.8" cy="180.9" r="3"/>
-	<circle class="st8" cx="180.6" cy="358.6" r="3"/>
-	<circle class="st8" cx="221.4" cy="166.4" r="3"/>
-	<circle class="st7" cx="154.7" cy="312.8" r="3"/>
-	<circle class="st8" cx="220.3" cy="164.6" r="3"/>
-	<circle class="st8" cx="156" cy="236.3" r="3"/>
-	<circle class="st7" cx="156.6" cy="237.1" r="3"/>
-	<circle class="st8" cx="156.8" cy="240.8" r="3"/>
-	<circle class="st8" cx="218.7" cy="165.3" r="3"/>
-	<circle class="st7" cx="137.5" cy="293.3" r="3"/>
-	<circle class="st8" cx="218.8" cy="143" r="3"/>
+	<circle class="st8" cx="235.3" cy="95.3" r="3"/>
+	<circle class="st8" cx="236" cy="138.1" r="3"/>
+	<circle class="st7" cx="143.8" cy="272.2" r="3"/>
+	<circle class="st7" cx="358.8" cy="-1984.3" r="3"/>
+	<circle class="st7" cx="201.1" cy="181.1" r="3"/>
+	<circle class="st8" cx="175.5" cy="315.5" r="3"/>
+	<circle class="st7" cx="2716" cy="-1631.1" r="3"/>
+	<circle class="st7" cx="215.2" cy="170.6" r="3"/>
+	<circle class="st7" cx="59.7" cy="366" r="3"/>
+	<circle class="st7" cx="252.9" cy="90.3" r="3"/>
+	<circle class="st8" cx="222.1" cy="301.8" r="3"/>
+	<circle class="st8" cx="197.2" cy="196.4" r="3"/>
+	<circle class="st8" cx="279.4" cy="258.2" r="3"/>
+	<circle class="st7" cx="165.1" cy="237.2" r="3"/>
+	<circle class="st7" cx="139" cy="295.4" r="3"/>
+	<circle class="st7" cx="163.8" cy="283.6" r="3"/>
+	<circle class="st7" cx="172.1" cy="237.9" r="3"/>
+	<circle class="st7" cx="156.1" cy="307.5" r="3"/>
+	<circle class="st8" cx="139.2" cy="292.7" r="3"/>
+	<circle class="st7" cx="154.4" cy="245" r="3"/>
+	<circle class="st7" cx="137.8" cy="292.8" r="3"/>
+	<circle class="st7" cx="226.8" cy="180.9" r="3"/>
+	<circle class="st7" cx="180.6" cy="358.6" r="3"/>
+	<circle class="st7" cx="221.4" cy="166.4" r="3"/>
+	<circle class="st8" cx="154.7" cy="312.8" r="3"/>
+	<circle class="st7" cx="220.3" cy="164.6" r="3"/>
+	<circle class="st7" cx="156" cy="236.3" r="3"/>
+	<circle class="st8" cx="156.6" cy="237.1" r="3"/>
+	<circle class="st7" cx="156.8" cy="240.8" r="3"/>
+	<circle class="st7" cx="218.7" cy="165.3" r="3"/>
+	<circle class="st8" cx="137.5" cy="293.3" r="3"/>
+	<circle class="st7" cx="218.8" cy="143" r="3"/>
 </g>
 </svg>
