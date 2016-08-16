@@ -359,7 +359,7 @@ if (GNYC_VENUE === 'map') {
 
     GNYC.updateMap = function(data) {
         GNYC.setBoroughDensity(data);
-        GNYC.setCBOLocations(data);
+        GNYC.updateCBOLocations(data);
     };
 
 
@@ -390,10 +390,10 @@ if (GNYC_VENUE === 'map') {
                 return GNYC.getDensityColor(d);
             });
     }
-    
-    
+
+
     // add CBO Locations to map
-    GNYC.setCBOLocations = function(data) {
+    GNYC.addCBOLocations = function(data) {
         GNYC.CBOLocations = [];
     
         for (var program in data) {
@@ -403,11 +403,6 @@ if (GNYC_VENUE === 'map') {
                     'lat': data[program].cbo_latitude[0],
                     'lng': data[program].cbo_longitude[0],
                     'school_partnerships': data[program].school_partnerships[0],
-/*
-                    'visibility': function(d) {
-                        'hidden',
-                    },
-*/
                 });
             }
         }
@@ -420,7 +415,10 @@ if (GNYC_VENUE === 'map') {
             .attr('cy', function(d) { return GNYC.projection([d.lng, d.lat])[1]; })
             .attr('r', '3px')
             .attr('fill', '#c05f5f');
+    };
 
+
+    GNYC.updateCBOLocations = function(data) {
         d3.selectAll('.cbo-location').transition()
             .duration(750)
             .attr('visibility', function(d) {
@@ -430,7 +428,6 @@ if (GNYC_VENUE === 'map') {
                     return 'hidden';
                 }
             });
-// console.log(GNYC.CBOLocations);
     };
 
 
@@ -506,16 +503,8 @@ if (GNYC_VENUE === 'map') {
                     GNYC.map.tooltip.html('<a href="' + $('.link-to-listings a').attr('href') + '&neighborhoods=' + encodeURIComponent(d.properties.boroname + ' - ' + d.properties.ntaname) +'"><strong>' + d.properties.ntaname + ': </strong>' + d.density + ' programs</a>')
                         .style("left", (d3.event.pageX) + "px")
                         .style("top", (d3.event.pageY - 28) + "px");
-// console.log(d.properties);
                 }
             })
-/*
-            .on("mouseleave", function (d) {
-                GNYC.map.tooltip.transition()
-                    .duration(200)
-                    .style("opacity", 0);
-            })
-*/
             .on("click", function () {
                 if (d.density != undefined) {
                     GNYC.map.tooltip.transition()
@@ -613,12 +602,6 @@ if (GNYC_VENUE === 'map') {
                 return GNYC.listingItemHTML(d);
             });
 
-/*
-        GNYC.listings.each(function(d, i) {
-                $(GNYC.listings[0][i]).readmore(GNYC.listingReadmore);
-            });
-*/
-
             $('.post-count').text(GNYC.objToSortedArray(GNYC.getFilteredData(GNYC.data)).length + ' matching programs');
     };
 
@@ -686,7 +669,6 @@ if (GNYC_VENUE === 'map') {
             htmlSnippet += '</p>';
         }
 
-//        'lessLink': '<i class="fa fa-minus readmoreless"></i> less',
         htmlSnippet += '</div>';
 
         return htmlSnippet;
@@ -716,39 +698,6 @@ if (GNYC_VENUE === 'map') {
     GNYC.toggleListingDetail = function(post_id) {
         $('#listing-details-' + post_id).toggle();
     };
-
-/*
-        htmlSnippet += '<div class="details-more-link" id="details-more-link-' + item.post_id + '" onclick="GNYC.toggleListingDetail(\'' + item.post_id + '\');">';
-
-        if (item.program_description.length > 0 && item.services2.length > 0) {
-            htmlSnippet += '<i class="fa fa-plus readmoreless"> View program details</i>';
-        }
-
-        htmlSnippet += '</div>';
-        htmlSnippet += '<div class="details-more" id="listing-details-' + item.post_id + '">';
-        htmlSnippet += '<p class="program-description">' + item.program_description + '</p>';
-
-        if (item.services2.length > 0) {
-            htmlSnippet += '<p class="services-provided"><em>Services provided</em>: ';
-
-            for (var i = 0, isFirst = true; i < item.services2.length; i++) {
-                if (item.services2[i].match('(Any)') === null) {
-                    if (isFirst) {
-                        isFirst = false;
-                    } else {
-                        htmlSnippet += ', ';
-                    }
-
-                    htmlSnippet += item.services2[i];
-                }
-            }
-
-            htmlSnippet += '</p>';
-        }
-
-//        'lessLink': '<i class="fa fa-minus readmoreless"></i> less',
-//
-*/
 }
 
 
@@ -784,6 +733,7 @@ GNYC.loadDataset = function() {
         GNYC.data = json;
 
         if (GNYC.venue === 'map') {
+            GNYC.addCBOLocations(GNYC.data);
             GNYC.updateMap(GNYC.getFilteredData(GNYC.data));
         } else if (GNYC.venue === 'listings') {
             GNYC.loadListings();
@@ -1100,12 +1050,12 @@ $(document).ready(function () {
     if ($.inArray(GNYC.venue, GNYC.venues) > -1) {
     // Get URI parameters if passed
         // Load data
-        GNYC.loadDataset();
-
         if (GNYC.venue === 'map') {
             GNYC.loadMapBoroughs();
             GNYC.loadMapNeighborhoods();
         }
+
+        GNYC.loadDataset();
 
         // Create form filter fields
         GNYC.createFilterFormFields(GNYC.venue);
