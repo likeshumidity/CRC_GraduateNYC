@@ -173,7 +173,18 @@ body {
     font-weight: bold;
     font-size: 16px;
     color: #3e696f;
-    }
+}
+
+.callout-item .map-key {
+    top: 9px;
+    left: 24px;
+}
+
+.callout-item .map-key h4 {
+    font-weight: bold;
+    font-size: 10px;
+    color: #3e696f;
+}
 
 .map-key ul {
     padding: 0 !important;
@@ -188,6 +199,11 @@ body {
     padding: 0 !important;
 }
 
+.callout-item .map-key li {
+    font-size: 10px;
+    height: 
+}
+
 .map-key li span.legend-value {
     height: 11px;
     width: 11px;
@@ -200,11 +216,22 @@ body {
 .map-key li span.population-3 {background: rgb(132, 161, 164);}
 .map-key li span.population-4 {background: rgb(96, 133, 138);}
 .map-key li span.population-5 {background: rgb(60, 105, 111);}
+.map-key li span.population-6 {
+    height: 9px;
+    width: 9px;
+    background: rgb(192, 95, 95);
+    border-radius: 4.5px;
+    margin-top: 1px;
+}
 
 .map-key li span.legend-key {
     padding-left: 4px;
     position: relative;
     top: -2px;
+}
+
+.callout-item .map-key li span.legend-key {
+    top: -4px;
 }
 
 .legend-gradient {
@@ -257,7 +284,7 @@ text-align: center;
 }
 
 div.post-count {
-    padding: 2px 15px 2px 0px;
+    padding: 2px 15px 2px 15px;
     height: 26px;
     font-style: italic;
 }
@@ -531,7 +558,7 @@ p.breadcrumbs {
 .filter-screen-xs {
     position: fixed;
     z-index: 20;
-    border-radius: 3px;
+    border-radius: 4px;
     background-color: rgb(241, 244, 244);
     background-color: rgb(205, 207, 207);
     margin-left: -45px;
