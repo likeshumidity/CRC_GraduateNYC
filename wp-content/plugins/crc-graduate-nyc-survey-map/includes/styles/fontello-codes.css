@@ -13,9 +13,13 @@
 .icon-eye:before { content: '\e80b'; } /* '' */
 .icon-list-1:before { content: '\e80c'; } /* '' */
 .icon-th-list:before { content: '\e80d'; } /* '' */
+.icon-down-circled:before { content: '\e80e'; } /* '' */
+.icon-down-circled2:before { content: '\e80f'; } /* '' */
 .icon-folder-open:before { content: '\f068'; } /* '' */
 .icon-list-bullet:before { content: '\f0ca'; } /* '' */
 .icon-sitemap:before { content: '\f0e8'; } /* '' */
 .icon-sort-alt-up:before { content: '\f160'; } /* '' */
 .icon-newspaper:before { content: '\f1ea'; } /* '' */
+.icon-map-o:before { content: '\f278'; } /* '' */
+.icon-map:before { content: '\f279'; } /* '' */
 .icon-question-circle-o:before { content: '\f29c'; } /* '' */

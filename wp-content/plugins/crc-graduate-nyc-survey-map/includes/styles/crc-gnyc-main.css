@@ -169,7 +169,12 @@ body {
     position: absolute;
 }
 
-.map-key p {
+.map-header {
+    padding-bottom: 0px !important;
+    margin-bottom: 0px !important;
+}
+
+.map-key-title p {
     font-weight: bold;
     font-size: 16px;
     color: #3e696f;
@@ -232,6 +237,9 @@ body {
 
 .callout-item .map-key li span.legend-key {
     top: -4px;
+}
+
+div.map {
 }
 
 .map svg.svg-content-responsive {
@@ -320,7 +328,6 @@ div.link-to-listings a span.icon-eye, div.link-to-map a span.icon-eye {
 }
 
 .fa-question-circle-o {
-    z-index: 20;
 }
 
 div.link-to-map a:hover,
@@ -462,14 +469,20 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f1f4f4', end
 
 .panel-body {
     padding-bottom: 0px !important;
+    padding-top: 0px !important;
+    margin-top: 0px !important;
 }
 
 .panel-title {
     color: #888 !important;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
 }
 
 .panel-heading {
     background-color: rgb(241, 244, 244) !important;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
 }
 
 .panel-body .field-input label {
@@ -478,6 +491,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f1f4f4', end
 
 #panel-neighborhoods .panel-body {
     max-height: 200px;
+    clear: left;
     overflow: scroll;
 }
 
@@ -490,6 +504,8 @@ p.breadcrumbs {
 }
 
 .filter-details p {
+    margin-left: 15px;
+    margin-right: 15px;
     text-align: left;
     font-size: smaller;
     display: none;
@@ -505,7 +521,7 @@ p.breadcrumbs {
     opacity: 0.8;
     position: absolute;
     z-index: 2000;
-    top: 20%;
+    top: 40%;
     right: 20%;
     width: 60%;
     display: none;
@@ -591,27 +607,12 @@ p.breadcrumbs {
     display: none;
 }
 
-.crc-gnyc-listings #crc-gnsm-listings-form {
-    width: 190px;
-    padding: 0px 15px;
-    margin-right: 22px;
-}
 }
 
 @media screen and (min-width : 992px) {
-.crc-gnyc-listings #crc-gnsm-listings-form {
-    width: 263px;
-    padding: 0px 15px;
-    margin-right: 29.328px;
-}
 }
 
 @media screen and (min-width : 1200px) {
-.crc-gnyc-listings #crc-gnsm-listings-form {
-    width: 330px;
-    padding: 0px 15px;
-    margin-right: 29.328px;
-}
 }
 
 
@@ -620,24 +621,29 @@ p.breadcrumbs {
 .iconsSect {
     border-bottom: 1px solid black;
     color: #3e696f;
-    margin-bottom: 15px;
-    padding-bottom: 4px;
     font-size: 16px;
     font-weight: bold;
+    margin-bottom: 15px;
+    padding-bottom: 4px;
     width: 280px;
 }
 
 .icons {
-    text-align: center;
     margin: 0px auto;
+    text-align: center;
 }
 
-.collegeIcon, .populationIcon, .schoolIcon {
-    height: 90px;
-    width: 90px;
+.collegeIcon, .populationIcon, .schoolIcon, .partnershipIcon {
     float: left;
+    height: 65px;
     margin: 0 5px 10px 0;
     text-indent: -9999px;
+    width: 65px;
+}
+
+.callout-header .collegeIcon, .callout-header .populationIcon, .callout-header .schoolIcon, .callout-header .partnershipIcon {
+    height: 90px;
+    width: 90px;
 }
 
 .collegeIcon {background: url(../../../../../wp-content/uploads/2016/08/college-icon.svg);}
@@ -646,52 +652,41 @@ a.collegeIcon:hover {background: url(../../../../../wp-content/uploads/2016/08/c
 .populationIcon {background: url(../../../../../wp-content/uploads/2016/08/population-icon.svg);}
 a.populationIcon:hover {background: url(../../../../../wp-content/uploads/2016/08/population-icon-hover.svg);}
 
-
 .schoolIcon {background: url(../../../../../wp-content/uploads/2016/08/highschool-icon.svg);}
 a.schoolIcon:hover {background: url(../../../../../wp-content/uploads/2016/08/highschool-icon-hover.svg);}
 
+.partnershipIcon {background: url(../../../../../wp-content/uploads/2016/08/partnership-icon.svg);}
+a.partnershipIcon:hover {background: url(../../../../../wp-content/uploads/2016/08/partnership-icon-hover.svg);}
 
-
-.icons .iconText {
-display: none;
-}
+.icons .iconText {display: none;}
 
 a.collegeIcon:hover, .icons .collegeText {
     display: block;
-}
-
-
-
-
-
-
-
-
-.icons a {
-
-}
+    }
 
 .icons a:nth-child(1):hover ~ p.iconsTitle:after, .icons a:nth-child(1):hover ~ .iconsDescServices  {
-  content: "SERVICES";
-  display: block !important;
-float: left;
-
-  }
+    content: "SERVICES";
+    display: block !important;
+    float: left;
+    }
 
 .icons a:nth-child(2):hover ~ p.iconsTitle:after, .icons a:nth-child(2):hover ~ .iconsDescPopulations  {
-  content: "TARGETED POPULATIONS";
-  display: block !important;
-float: left;
-  }
+    content: "TARGETED POPULATIONS";
+    display: block !important;
+    float: left;
+    }
 
 .icons a:nth-child(3):hover ~ p.iconsTitle:after, .icons a:nth-child(3):hover ~ .iconsDescGrade  {
-  content: "GRADE LEVELS";
-  display: block !important;
-float: left;
-
+    content: "GRADE LEVELS";
+    display: block !important;
+    float: left;
 }
 
-
+.icons a:nth-child(4):hover ~ p.iconsTitle:after, .icons a:nth-child(4):hover ~ .iconsDescPartnership  {
+    content: "PARTNERSHIP";
+    display: block !important;
+    float: left;
+}
 
 .iconsDesc {
         float: left;
@@ -701,12 +696,11 @@ float: left;
     clear: both;   
     text-align: left;
     width: 280px;
-    }
-
-.iconsDescServices, .iconsDescPopulations, .iconsDescGrade {
-    display: none;
 }
 
+.iconsDescServices, .iconsDescPopulations, .iconsDescGrade, .iconsDescPartnership {
+    display: none;
+}
 
 p.iconsTitle {
     font-size: 15px;
@@ -727,52 +721,6 @@ span.iconsTitle {
     text-align: left;
     width: 270px;
 }
-
-
-
-
-
-/* SERVICE PAGE */
-
-.callout-item .callout-header {
-    height: 100px;
-    padding: 0 50px;
-    position: relative !important;
-}
-
-.callout-header h2 { 
-    bottom: 0;
-    color: #3e696f !important;
-    left: 150px;
-    position: absolute !important;
-}
-
-.callout-item p {
-    margin-bottom: 60px;
-    padding: 0 50px;
-    
-}
-
-.callout-item img {
- background: #f7f8fa;   
- border-radius: 10px;
-}
-
-.callout-item .caption {
-     font-size: 17px;
-     font-weight: bold;
-     margin: 0 0 20px 20px;
-     text-transform: uppercase;
- }
- 
- 
- 
- 
- 
- 
- 
- 
- 
 .filter-icons {
     width: 25px;
     height: 20px;
@@ -791,17 +739,62 @@ span.iconsTitle {
 
 
 
+/* CALLOUT PAGES */
+
+.callout-item .callout-header {
+    height: 100px;
+    padding: 0 50px;
+    position: relative !important;
+}
+
+.callout-header h2 { 
+    bottom: 0;
+    color: #3e696f !important;
+    left: 150px;
+    position: absolute !important;
+}
+
+.callout-item p {
+    margin-bottom: 60px;
+    padding: 0 50px;
+}
+
+.callout-item img {
+    background: #f7f8fa;   
+    border-radius: 10px;
+}
+
+.callout-item .caption {
+     font-size: 17px;
+     font-weight: bold;
+     margin: 0 0 20px 20px;
+     text-transform: uppercase;
+ }
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
 
 
 .panel-heading p.breadcrumbs {
-    margin-bottom: 0px;
+    color: #226173;
     display: block;
-    text-transform: uppercase;
     font-weight: bold;
     font-size: 11px;
-    padding-top: 5px;
-    color: #226173;
     line-height: 16px;
+    margin-bottom: 0px;
+    padding-top: 5px;
+    text-transform: uppercase;
 }
 
 .panel-default>.panel-heading+.panel-collapse>.panel-body {    
@@ -814,5 +807,32 @@ span.iconsTitle {
     .checkbox label, .radio label {
         padding-left: 7px !important;
     }
+
+.partnershipCallout {
+    width: 530px;
+}
+
+
+
+
+
+/* INTERACTIVE MAP LINK/ICONS */
+p.viewMap a, p.exportCode a {
+    color: #708b8c;
+    cursor: pointer;
+    display: block;
+    font-weight: bold;
+}  
     
+p.viewMap a:hover, p.exportCode a:hover {
+    color: #3d696f; 
+} 
+
+span.icon-map-o, span.icon-down-circled, span.icon-down-circled2 {
+    padding-right: 5px;
+}
+
+
+
+
 

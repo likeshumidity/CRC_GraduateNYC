@@ -201,7 +201,7 @@ var GNYC = {
                 'Any',
                 'K-12 enrollment',
                 'College enrollment',
-                'Grade level',
+                'Education level',
                 'Geographic residence',
                 'Member of a targeted population',
             ],
@@ -216,7 +216,7 @@ var GNYC = {
             'values': [
                 'College Readiness',
                 'College Matriculation',
-                'College Retention',
+                'College Persistence',
                 'Career Preparation',
             ],
             'defaultValue': [],
@@ -265,7 +265,7 @@ if (GNYC_VENUE === 'map') {
         .append("div")
         .attr("class", "tooltip")
         .style("opacity", 0);
-    
+
     d3.select(".map")
         .append("canvas")
         .attr('width', GNYC.map.width)
