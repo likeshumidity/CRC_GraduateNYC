@@ -1007,40 +1007,52 @@ GNYC.createFormEventListeners = function() {
         var i = 0;
 
         for (i = 0; i < GNYC.filters[filter].values.length; i++) {
-            $('#' + GNYC.filterToFieldID(filter, 'gnsm') + i).on('change', function() {
-                var thisFilter = this.name.substring(5);
-                GNYC.filters[thisFilter].selected = GNYC.filters[thisFilter].defaultValue.slice();
-
-                $('input[name="' + GNYC.filterToFieldID(thisFilter, 'gnsm') + '"]:checked').each(function() {
-                    if (GNYC.filters[thisFilter].type === 'checkbox') {
-                        GNYC.filters[thisFilter].selected.push($(this).val());
-                    } else if (GNYC.filters[thisFilter].type === 'radio') {
-                        GNYC.filters[thisFilter].selected = $(this).val();
-                    } else {
-                        console.warn('ERROR: invalid field type');
-                    }
+            if (filter === 'organization-type' && i === 1) {
+                $('#' + GNYC.filterToFieldID(filter, 'gnsm') + i).on('change', function() {
+                    GNYC.clearFilters('Supports the college access and success sector');
                 });
-
-                GNYC.filters[thisFilter].selected = GNYC.filters[thisFilter].selected.slice();
-
-                if (GNYC.venue === 'map') {
-                    GNYC.updateMap(GNYC.getFilteredData(GNYC.data));
-                } else if (GNYC.venue === 'listings') {
-                    GNYC.updateListings();
-                }
-
-                GNYC.updateBreadcrumbs(thisFilter);
-                GNYC.updateLinkToOtherVenue();
-            });
+            } else {
+                $('#' + GNYC.filterToFieldID(filter, 'gnsm') + i).on('change', function() {
+                    var thisFilter = this.name.substring(5);
+                    GNYC.filters[thisFilter].selected = GNYC.filters[thisFilter].defaultValue.slice();
+    
+                    $('input[name="' + GNYC.filterToFieldID(thisFilter, 'gnsm') + '"]:checked').each(function() {
+                        if (GNYC.filters[thisFilter].type === 'checkbox') {
+                            GNYC.filters[thisFilter].selected.push($(this).val());
+                        } else if (GNYC.filters[thisFilter].type === 'radio') {
+                            GNYC.filters[thisFilter].selected = $(this).val();
+                        } else {
+                            console.warn('ERROR: invalid field type');
+                        }
+                    });
+    
+                    GNYC.filters[thisFilter].selected = GNYC.filters[thisFilter].selected.slice();
+    
+                    if (GNYC.venue === 'map') {
+                        GNYC.updateMap(GNYC.getFilteredData(GNYC.data));
+                    } else if (GNYC.venue === 'listings') {
+                        GNYC.updateListings();
+                    }
+    
+                    GNYC.updateBreadcrumbs(thisFilter);
+                    GNYC.updateLinkToOtherVenue();
+                });
+            }
         }
     }
 };
 
 
 // Reset filter to defaults (clear filters)
-GNYC.clearFilters = function () {
+GNYC.clearFilters = function (orgType) {
+    orgType = orgType || '';
+
     GNYC.setDefaults();
-    
+
+    if (orgType === 'Supports the college access and success sector') {
+        GNYC.filters['organization-type'].selected = 'Supports the college access and success sector';
+    }
+
     GNYC.updateFilterFieldSelections();
 
     if (GNYC.venue === 'map') {
