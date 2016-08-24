@@ -774,3 +774,23 @@ span.icon-map-o, span.icon-down-circled, span.icon-down-circled2 {
 main.content {
 padding-top: 5px;
 }
+
+#mapZoomed {
+    position: absolute;
+    z-index: 200;
+    display: none;
+    text-align: center;
+    margin: 0px auto;
+}
+
+#mapZoomed .imageHolder {
+    margin: 0px auto;
+    text-align: center;
+    width: 800px;
+    height: 800px;
+}
+
+#mapZoomed .imageHolder svg {
+    margin: 0px auto;
+    text-align: center;
+}

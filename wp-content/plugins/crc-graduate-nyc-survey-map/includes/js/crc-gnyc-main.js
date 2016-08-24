@@ -257,6 +257,8 @@ var GNYC = {
     },
 };
 
+var GNYC_VENUE2 = GNYC_VENUE || undefined;
+var GNYC_VENUE = GNYC_VENUE2;
 
 if (GNYC_VENUE === 'map') {
 // map setup
@@ -998,6 +1000,15 @@ GNYC.calloutIconsToggle = function(pClass) {
     $('.iconsDesc').css('display', 'none');
 
     $('.' + pClass).css('display', 'block');
+};
+
+
+GNYC.calloutMapZoom = function(svgLink) {
+    var innerHTML = '<img src="' + svgLink + '">';
+
+    $('#mapZoomed .imageHolder').html(innerHTML);
+
+    $('#mapZoomed').toggle();
 };
 
 
