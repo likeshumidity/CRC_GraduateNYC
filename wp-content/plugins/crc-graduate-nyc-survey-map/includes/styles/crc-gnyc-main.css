@@ -614,6 +614,7 @@ p.breadcrumbs {
 
 .row.icons div {
     padding: 0px 5px;
+    cursor: pointer;
 }
 
 .collegeIcon, .populationIcon, .schoolIcon, .partnershipIcon {
@@ -640,27 +641,6 @@ p.breadcrumbs {
     display: none;
 }
 
-/*
-p.iconsTitle {
-    font-size: 15px;
-    font-weight: bold;
-    height: 50px;
-    display: block !important;
-    color: #3e696f;
-    text-align: left;
-    width: 270px;
-}
-
-span.iconsTitle {
-    font-size: 15px;
-    font-weight: bold;
-    height: 25px;
-    display: block !important;
-    color: #3e696f;
-    text-align: left;
-    width: 270px;
-}
-*/
 .filter-icons {
     width: 25px;
     height: 20px;

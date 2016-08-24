@@ -994,6 +994,13 @@ GNYC.updateBreadcrumbs = function(thisFilter) {
 };
 
 
+GNYC.calloutIconsToggle = function(pClass) {
+    $('.iconsDesc').css('display', 'none');
+
+    $('.' + pClass).css('display', 'block');
+};
+
+
 // Add on change action to each form filter
 GNYC.createFormEventListeners = function() {
     for (var filter in GNYC.filters) {
