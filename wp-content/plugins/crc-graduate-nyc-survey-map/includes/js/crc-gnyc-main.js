@@ -501,7 +501,7 @@ if (GNYC_VENUE === 'map') {
                 }
             })
             .on("mouseenter", function (d) {
-                if (d.density != undefined) {
+                if (d.density != undefined && GNYC.cbo_show === false) {
                     GNYC.map.tooltip.transition()
                         .duration(500)
                         .style("opacity", 0);
@@ -741,7 +741,9 @@ GNYC.loadDataset = function() {
         GNYC.data = json;
 
         if (GNYC.venue === 'map') {
-            GNYC.addCBOLocations(GNYC.data);
+            if (GNYC.cbo_show) {
+                GNYC.addCBOLocations(GNYC.data);
+            }
             GNYC.updateMap(GNYC.getFilteredData(GNYC.data));
         } else if (GNYC.venue === 'listings') {
             GNYC.loadListings();
@@ -1054,6 +1056,12 @@ $(document).ready(function () {
         GNYC.venue = GNYC_VENUE;
     }
 
+    if (window.hasOwnProperty('GNYC_CBO_SHOW')) {
+        GNYC.cbo_show = GNYC_CBO_SHOW;
+    } else {
+        GNYC.cbo_show = false;
+    }
+
     // If venue not in GNYC.venues:
     if ($.inArray(GNYC.venue, GNYC.venues) > -1) {
     // Get URI parameters if passed
@@ -1061,6 +1069,38 @@ $(document).ready(function () {
         if (GNYC.venue === 'map') {
             GNYC.loadMapBoroughs();
             GNYC.loadMapNeighborhoods();
+
+            $('collegeIcon').on('mouseover', function() {
+                $('iconsDescServices').style('display', 'block');
+            });
+
+            $('collegeIcon').on('mouseout', function() {
+                $('iconsDescServices').style('display', 'none');
+            });
+
+            $('populationIcon').on('mouseover', function() {
+                $('iconsDescPopulations').style('display', 'block');
+            });
+
+            $('populationIcon').on('mouseout', function() {
+                $('iconsDescPopulations').style('display', 'none');
+            });
+
+            $('schoolIcon').on('mouseover', function() {
+                $('iconsDescGrade').style('display', 'block');
+            });
+
+            $('schoolIcon').on('mouseout', function() {
+                $('iconsDescGrade').style('display', 'none');
+            });
+
+            $('partnershipIcon').on('mouseover', function() {
+                $('iconsDescPartnership').style('display', 'block');
+            });
+
+            $('partnershipIcon').on('mouseout', function() {
+                $('iconsDescPartnership').style('display', 'none');
+            });
         }
 
         GNYC.loadDataset();

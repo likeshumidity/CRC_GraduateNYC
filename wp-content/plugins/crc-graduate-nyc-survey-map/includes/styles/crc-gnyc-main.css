@@ -174,7 +174,7 @@ body {
     margin-bottom: 0px !important;
 }
 
-.map-key-title p {
+.map-key-title, p.map-key-title {
     font-weight: bold;
     font-size: 16px;
     color: #3e696f;
@@ -246,42 +246,9 @@ div.map {
     width: 100%;
     height: 100%;
     position: absolute;
-    top: 0;
+    top: 40px;
     left: 0;
 }
-
-.legend-gradient {
-width: 25px;
-height: 75px;
-/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,3c696f+100 */
-background: rgb(255,255,255); /* Old browsers */
-background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(60,105,111,1) 100%); /* FF3.6-15 */
-background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(60,105,111,1) 100%); /* Chrome10-25,Safari5.1-6 */
-background: linear-gradient(to bottom,  rgba(255,255,255,1) 0%,rgba(60,105,111,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#3c696f',GradientType=0 ); /* IE6-9 */
-/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#3c696f+0,ffffff+100 */
-background: rgb(60,105,111); /* Old browsers */
-background: -moz-linear-gradient(top,  rgba(60,105,111,1) 0%, rgba(255,255,255,1) 100%); /* FF3.6-15 */
-background: -webkit-linear-gradient(top,  rgba(60,105,111,1) 0%,rgba(255,255,255,1) 100%); /* Chrome10-25,Safari5.1-6 */
-background: linear-gradient(to bottom,  rgba(60,105,111,1) 0%,rgba(255,255,255,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3c696f', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
-text-align: center;
-}
-
-.legend-gradient .legend-max {
-    color: #ffffff;
-}
-
-.legend-gradient .legend-mid {
-    padding-top: 12px;
-    color: #ffffff;
-}
-
-.legend-gradient .legend-min {
-    padding-top: 12px;
-    color: #226173;
-}
-
 
 .patterns h3 {
     font-size: 20px;
@@ -376,17 +343,6 @@ ul.gnsm-program-listings em {
     text-align: left;
 }
 
-/*
-.program-listing.shortened {
-    max-height: 200px;
-// Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f1f4f4+0,7db9e8+100&1+0,0+18
-background: -moz-linear-gradient(top,  rgba(241,244,244,1) 0%, rgba(220,233,242,0) 48%, rgba(125,185,232,0) 100%); // FF3.6-15
-background: -webkit-linear-gradient(top,  rgba(241,244,244,1) 0%,rgba(220,233,242,0) 48%,rgba(125,185,232,0) 100%); // Chrome10-25,Safari5.1-6
-background: linear-gradient(to bottom,  rgba(241,244,244,1) 0%,rgba(220,233,242,0) 48%,rgba(125,185,232,0) 100%); // W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f1f4f4', endColorstr='#007db9e8',GradientType=0 ); // IE6-9
-
-}
-*/
 .crc-gnsm-results-container .row:first-child {
     margin-bottom: 5px;
 }
@@ -415,11 +371,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f1f4f4', end
 .program-listing .physical-address .line-1
 {
     padding-left: 5px;
-}
-
-.program-listing .physical-address .state
-{
-    padding-right: 4px;
 }
 
 .program-listing .description {
@@ -512,28 +463,53 @@ p.breadcrumbs {
 }
 
 .map-instructions {
-    text-align: right;    
+    text-align: right;   
 }
 
-.map-instructions p {
-    background-color: #eee;
-    border-radius: 3px;
-    opacity: 0.8;
-    position: absolute;
-    z-index: 2000;
-    top: 40%;
-    right: 20%;
-    width: 60%;
-    display: none;
-    text-align: left;
-    font-size: smaller;
-    padding: 10px;
+.map-instructions .btn {
+    border-style: none;
 }
 
 .map-instructions i {
-    padding: 10px 10px 5px 10px;
+    margin: 0;
+    padding: 5px ;
     font-size: 30px;
     color: #bbb;
+}
+
+.map-instructions span {
+    padding: 5px;
+    font-style: italic;
+    color: #bbb;
+    position: relative;
+    top: -5px;
+}
+
+.map-instructions div {
+    padding: 10px;
+}
+
+#map-instructions {
+    display: none; 
+    margin: 0px auto;
+    position: absolute;
+    z-index: 2000;
+    top: 120px;
+    left: 15%;
+    box-shadow: 10px 10px 5px #888;
+    width: 70%;
+    border-radius: 5px;
+    background-color: rgb(241, 244, 244);
+    background-color: rgb(196, 208, 210);
+    background-color: rgb(230, 235, 236);
+    opacity: 0.85;
+    border: 1px solid #fff;
+}
+
+#map-instructions p {
+    text-align: left;
+    font-size: 12px;
+    padding: 15px;
 }
 
 #gnyc-reset {
@@ -564,18 +540,21 @@ p.breadcrumbs {
 .about p {
     text-align: left;
     font-style: italic;
+    font-size: 10pt !important;
 }
 
 .about p.hidden-start {
     display: none;
 }
 
-
+.two-column {
+    -webkit-column-count: 2; /* Chrome, Safari, Opera */
+    -moz-column-count: 2; /* Firefox */
+    column-count: 2;
+}
 
 .crc-gnyc-listings #crc-gnsm-listings-form {
-/*    position: fixed;
-    z-index: 20;
-*/
+    margin-top: 30px;
     background-color: #ffffff;
 }
 
@@ -633,12 +612,15 @@ p.breadcrumbs {
     text-align: center;
 }
 
+.row.icons div {
+    padding: 0px 5px;
+}
+
 .collegeIcon, .populationIcon, .schoolIcon, .partnershipIcon {
-    float: left;
+    width: 100%;
     height: 65px;
     margin: 0 5px 10px 0;
     text-indent: -9999px;
-    width: 65px;
 }
 
 .callout-header .collegeIcon, .callout-header .populationIcon, .callout-header .schoolIcon, .callout-header .partnershipIcon {
@@ -647,61 +629,18 @@ p.breadcrumbs {
 }
 
 .collegeIcon {background: url(../../../../../wp-content/uploads/2016/08/college-icon.svg);}
-a.collegeIcon:hover {background: url(../../../../../wp-content/uploads/2016/08/college-icon-hover.svg);}
 
 .populationIcon {background: url(../../../../../wp-content/uploads/2016/08/population-icon.svg);}
-a.populationIcon:hover {background: url(../../../../../wp-content/uploads/2016/08/population-icon-hover.svg);}
 
 .schoolIcon {background: url(../../../../../wp-content/uploads/2016/08/highschool-icon.svg);}
-a.schoolIcon:hover {background: url(../../../../../wp-content/uploads/2016/08/highschool-icon-hover.svg);}
 
 .partnershipIcon {background: url(../../../../../wp-content/uploads/2016/08/partnership-icon.svg);}
-a.partnershipIcon:hover {background: url(../../../../../wp-content/uploads/2016/08/partnership-icon-hover.svg);}
-
-.icons .iconText {display: none;}
-
-a.collegeIcon:hover, .icons .collegeText {
-    display: block;
-    }
-
-.icons a:nth-child(1):hover ~ p.iconsTitle:after, .icons a:nth-child(1):hover ~ .iconsDescServices  {
-    content: "SERVICES";
-    display: block !important;
-    float: left;
-    }
-
-.icons a:nth-child(2):hover ~ p.iconsTitle:after, .icons a:nth-child(2):hover ~ .iconsDescPopulations  {
-    content: "TARGETED POPULATIONS";
-    display: block !important;
-    float: left;
-    }
-
-.icons a:nth-child(3):hover ~ p.iconsTitle:after, .icons a:nth-child(3):hover ~ .iconsDescGrade  {
-    content: "GRADE LEVELS";
-    display: block !important;
-    float: left;
-}
-
-.icons a:nth-child(4):hover ~ p.iconsTitle:after, .icons a:nth-child(4):hover ~ .iconsDescPartnership  {
-    content: "PARTNERSHIP";
-    display: block !important;
-    float: left;
-}
-
-.iconsDesc {
-        float: left;
-    display: block;
-    position: relative;
-    left: 0;
-    clear: both;   
-    text-align: left;
-    width: 280px;
-}
 
 .iconsDescServices, .iconsDescPopulations, .iconsDescGrade, .iconsDescPartnership {
     display: none;
 }
 
+/*
 p.iconsTitle {
     font-size: 15px;
     font-weight: bold;
@@ -721,6 +660,7 @@ span.iconsTitle {
     text-align: left;
     width: 270px;
 }
+*/
 .filter-icons {
     width: 25px;
     height: 20px;
@@ -754,6 +694,20 @@ span.iconsTitle {
     position: absolute !important;
 }
 
+.callout-header-partners {
+    color: #3e696f !important;
+}
+
+.callout-header-partners h2 {
+    color: #3e696f !important;
+    padding-top: 25px;
+}
+
+.callout-header-partners .partnershipIcon {
+    background-repeat: no-repeat;
+    width: 90px;
+}
+
 .callout-item p {
     margin-bottom: 60px;
     padding: 0 50px;
@@ -767,11 +721,14 @@ span.iconsTitle {
 .callout-item .caption {
      font-size: 17px;
      font-weight: bold;
-     margin: 0 0 20px 20px;
+     margin: 0 0 0 20px;
      text-transform: uppercase;
  }
  
- 
+.callout-item a {
+     display: block;
+     margin: 1px 0px 20px 20px;
+} 
  
  
  
@@ -818,14 +775,14 @@ span.iconsTitle {
 
 /* INTERACTIVE MAP LINK/ICONS */
 p.viewMap a, p.exportCode a {
-    color: #708b8c;
+    color: #708b8c !important;
     cursor: pointer;
     display: block;
     font-weight: bold;
 }  
     
 p.viewMap a:hover, p.exportCode a:hover {
-    color: #3d696f; 
+    color: #3d696f !important; 
 } 
 
 span.icon-map-o, span.icon-down-circled, span.icon-down-circled2 {
@@ -834,5 +791,6 @@ span.icon-map-o, span.icon-down-circled, span.icon-down-circled2 {
 
 
 
-
-
+main.content {
+padding-top: 5px;
+}
