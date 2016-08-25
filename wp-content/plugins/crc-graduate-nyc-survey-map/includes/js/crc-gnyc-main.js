@@ -1008,6 +1008,7 @@ GNYC.calloutMapZoom = function(svgLink) {
 
     $('#mapZoomed .imageHolder').html(innerHTML);
 
+    $('div#main .container_wrap').prepend('<div class="greybox"></div>');
     $('#mapZoomed').toggle();
 };
 
@@ -1015,15 +1016,31 @@ GNYC.calloutMapZoom = function(svgLink) {
 // Add on change action to each form filter
 GNYC.createFormEventListeners = function() {
     for (var filter in GNYC.filters) {
-        var i = 0;
+        var toHide = [
+            'panel-boroughs',
+            'panel-neighborhoods',
+            'panel-population-served',
+            'panel-grades-served',
+            'panel-enrollment-type',
+            'panel-eligibility-criteria',
+            'panel-services',
+            ],
+            i = 0,
+            j = 0;
 
         for (i = 0; i < GNYC.filters[filter].values.length; i++) {
             if (filter === 'organization-type' && i === 1) {
                 $('#' + GNYC.filterToFieldID(filter, 'gnsm') + i).on('change', function() {
+                    for (j = 0; j < toHide.length; j++) {
+                        $('#' + toHide[j]).hide();
+                    }
                     GNYC.clearFilters('Supports the college access and success sector');
                 });
             } else {
                 $('#' + GNYC.filterToFieldID(filter, 'gnsm') + i).on('change', function() {
+                    for (j = 0; j < toHide.length; j++) {
+                        $('#' + toHide[j]).show();
+                    }
                     var thisFilter = this.name.substring(5);
                     GNYC.filters[thisFilter].selected = GNYC.filters[thisFilter].defaultValue.slice();
     

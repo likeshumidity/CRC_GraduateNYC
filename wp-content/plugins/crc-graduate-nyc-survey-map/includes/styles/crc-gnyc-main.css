@@ -776,21 +776,36 @@ padding-top: 5px;
 }
 
 #mapZoomed {
+    width: 100%;
     position: absolute;
-    z-index: 200;
+    z-index: 300;
     display: none;
     text-align: center;
     margin: 0px auto;
 }
 
+#mapZoomed .map-key {
+    left: 7%;
+}
+
 #mapZoomed .imageHolder {
+    width: 90%;
     margin: 0px auto;
     text-align: center;
-    width: 800px;
-    height: 800px;
 }
 
 #mapZoomed .imageHolder svg {
     margin: 0px auto;
     text-align: center;
 }
+
+.greybox {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    opacity: 0.60;
+}
+
+
