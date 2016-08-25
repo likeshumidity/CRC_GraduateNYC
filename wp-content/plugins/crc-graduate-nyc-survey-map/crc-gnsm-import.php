@@ -4,7 +4,7 @@ ini_set('display_errors', True);
 
 /**
  * @package crc-graduate-nyc-survey-map
- * @version 0.1
+ * @version 1.0
  * @author Carson Research Consulting (CRC)
  */
 
