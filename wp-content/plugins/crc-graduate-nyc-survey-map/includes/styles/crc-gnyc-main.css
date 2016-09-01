@@ -633,13 +633,13 @@ p.breadcrumbs {
     width: 90px;
 }
 
-.collegeIcon {background: url(../../../../../wp-content/uploads/2016/08/college-icon.svg);}
+.collegeIcon {background: url(../../../../../wp-content/plugins/crc-graduate-nyc-survey-map/includes/static/college-icon.svg);}
 
-.populationIcon {background: url(../../../../../wp-content/uploads/2016/08/population-icon.svg);}
+.populationIcon {background: url(../../../../../wp-content/plugins/crc-graduate-nyc-survey-map/includes/static/population-icon.svg);}
 
-.schoolIcon {background: url(../../../../../wp-content/uploads/2016/08/highschool-icon.svg);}
+.schoolIcon {background: url(../../../../../wp-content/plugins/crc-graduate-nyc-survey-map/includes/static/highschool-icon.svg);}
 
-.partnershipIcon {background: url(../../../../../wp-content/uploads/2016/08/partnership-icon.svg);}
+.partnershipIcon {background: url(../../../../../wp-content/plugins/crc-graduate-nyc-survey-map/includes/static/partnership-icon.svg);}
 
 .iconsDescServices, .iconsDescPopulations, .iconsDescGrade, .iconsDescPartnership {
     display: none;
