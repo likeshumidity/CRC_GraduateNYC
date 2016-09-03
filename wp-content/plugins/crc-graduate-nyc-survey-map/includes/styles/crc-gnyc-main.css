@@ -326,7 +326,7 @@ ul.gnsm-program-listings div.details-more {
 ul.gnsm-program-listings i.readmoreless {
 }
 
-ul.gnsm-program-listings em {
+ul.gnsm-program-listings em.viewMore {
     color: #888888;
     font-size: smaller;
     padding: 5px;
@@ -477,7 +477,7 @@ p.breadcrumbs {
 .map-instructions i {
     margin: 0;
     padding: 5px ;
-    font-size: 30px;
+    font-size: 40px;
     color: #bbb;
 }
 
@@ -698,7 +698,6 @@ p.breadcrumbs {
 }
 
 .callout-item img {
-    background: #f7f8fa;   
     border-radius: 10px;
 }
 

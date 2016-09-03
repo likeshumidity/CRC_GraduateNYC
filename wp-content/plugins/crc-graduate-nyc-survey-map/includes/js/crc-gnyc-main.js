@@ -652,9 +652,9 @@ if (GNYC_VENUE === 'map') {
         htmlSnippet += '<div class="details-more-link" id="details-more-link-' + item.post_id + '" onclick="GNYC.toggleListingDetail(\'' + item.post_id + '\');">';
 
         if (item.program_description.length > 0 && item.services2.length > 0) {
-            htmlSnippet += '<em><i class="fa fa-plus readmoreless"></i> View program details</em>';
+            htmlSnippet += '<em class="viewMore"><i class="fa fa-plus readmoreless"></i> View program details</em>';
         } else {
-            htmlSnippet += '<em> No details provided</em>';
+            htmlSnippet += '<em class="viewMore"> No details provided</em>';
         }
 
         htmlSnippet += '</div>';
